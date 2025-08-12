@@ -1,0 +1,440 @@
+# Copyright (C) 2025 Hostinger
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger Reach 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hostinger-reach\n"
+"Last-Translator: Toma Grauzinyte\n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
+"PO-Revision-Date: 2025-08-05 08:46+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-reach\n"
+"\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.27"
+
+#. Plugin Name of the plugin
+#: hostinger-reach.php src/Integrations/ReachFormIntegration.php:83
+#: src/Setup/Assets.php:128
+msgid "Hostinger Reach"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: hostinger-reach.php
+msgid "https://hostinger.com"
+msgstr ""
+
+#. Description of the plugin
+#: hostinger-reach.php
+msgid "Integrate your WordPress site with Hostinger Reach."
+msgstr ""
+
+#. Author of the plugin
+#: hostinger-reach.php
+msgid "Hostinger"
+msgstr ""
+
+#: hostinger-reach.php:50
+msgid "Attention:"
+msgstr ""
+
+#. translators: %s: PHP version
+#: hostinger-reach.php:52
+msgid "Hostinger Reach requires minimum PHP version of <b>%s</b>. "
+msgstr ""
+
+#. translators: %s: PHP version
+#: hostinger-reach.php:56
+msgid "You are running <b>%s</b> PHP version."
+msgstr ""
+
+#: src/Admin/Menus.php:20 src/Admin/Menus.php:21 src/Admin/Menus.php:34
+msgid "Email Marketing"
+msgstr ""
+
+#: src/Blocks/SubscriptionFormBlock.php:18
+msgid "Thanks for subscribing."
+msgstr ""
+
+#: src/Blocks/SubscriptionFormBlock.php:19
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: src/Blocks/SubscriptionFormBlock.php:59
+#: frontend/blocks/subscription-block/src/edit.js:153
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:239
+msgid "Email"
+msgstr ""
+
+#: src/Blocks/SubscriptionFormBlock.php:67
+#: frontend/blocks/subscription-block/src/edit.js:160
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:246
+msgid "Name"
+msgstr ""
+
+#: src/Blocks/SubscriptionFormBlock.php:75
+#: frontend/blocks/subscription-block/src/edit.js:166
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:252
+msgid "Surname"
+msgstr ""
+
+#: src/Blocks/SubscriptionFormBlock.php:83
+msgid "Subscribe"
+msgstr ""
+
+#: src/Integrations/ContactForm7Integration.php:79
+msgid "Contact Form 7"
+msgstr ""
+
+#. translators: %s - form id.
+#: src/Integrations/WpFormsLiteIntegration.php:38
+msgid "WP Forms Lite %s"
+msgstr ""
+
+#: src/Integrations/WpFormsLiteIntegration.php:76
+msgid "WP Forms Lite"
+msgstr ""
+
+#: src/Setup/Assets.php:68
+msgid "Something went wrong"
+msgstr ""
+
+#: src/Setup/Assets.php:69
+msgid "Welcome to Reach"
+msgstr ""
+
+#: src/Setup/Assets.php:70
+msgid ""
+"Create email campaigns using AI-crafted templates that match your style. "
+"Instantly sync with your WordPress site and connect with your audience "
+"easily."
+msgstr ""
+
+#: src/Setup/Assets.php:71
+msgid "Reach is already connected to another site."
+msgstr ""
+
+#: src/Setup/Assets.php:72
+msgid "Disconnect it to link this site instead."
+msgstr ""
+
+#: src/Setup/Assets.php:73
+msgid "Manage"
+msgstr ""
+
+#: src/Setup/Assets.php:74
+msgid "Start for free"
+msgstr ""
+
+#: src/Setup/Assets.php:75
+msgid "This month"
+msgstr ""
+
+#: src/Setup/Assets.php:76
+msgid "Your plan"
+msgstr ""
+
+#: src/Setup/Assets.php:77
+msgid "Upgrade"
+msgstr ""
+
+#: src/Setup/Assets.php:78
+msgid "Emails"
+msgstr ""
+
+#: src/Setup/Assets.php:79 src/Setup/Assets.php:82
+msgid "Sent"
+msgstr ""
+
+#: src/Setup/Assets.php:80 src/Setup/Assets.php:107
+msgid "Remaining"
+msgstr ""
+
+#: src/Setup/Assets.php:81 src/Setup/Assets.php:88
+msgid "Campaigns"
+msgstr ""
+
+#: src/Setup/Assets.php:83
+msgid "Average CTOR"
+msgstr ""
+
+#: src/Setup/Assets.php:84
+msgid "Subscribers"
+msgstr ""
+
+#: src/Setup/Assets.php:85
+msgid "New subscribers"
+msgstr ""
+
+#: src/Setup/Assets.php:86
+msgid "Unsubscribes"
+msgstr ""
+
+#: src/Setup/Assets.php:87
+msgid "Total subscribers"
+msgstr ""
+
+#: src/Setup/Assets.php:89
+msgid "Templates"
+msgstr ""
+
+#: src/Setup/Assets.php:90 frontend/blocks/subscription-block/src/edit.js:97
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:183
+msgid "Settings"
+msgstr ""
+
+#: src/Setup/Assets.php:91
+msgid "Forms"
+msgstr ""
+
+#: src/Setup/Assets.php:92 src/Setup/Assets.php:95 src/Setup/Assets.php:98
+msgid "Add form"
+msgstr ""
+
+#: src/Setup/Assets.php:93
+msgid "Start collecting form submissions"
+msgstr ""
+
+#: src/Setup/Assets.php:94
+msgid ""
+"Choose how you’d like to manage forms on your website. Create a new form "
+"with Hostinger Reach or connect a third-party plugin."
+msgstr ""
+
+#: src/Setup/Assets.php:96
+msgid "Add more forms"
+msgstr ""
+
+#: src/Setup/Assets.php:97
+msgid ""
+"Connect more forms to expand your contact list and capture leads from "
+"different pages."
+msgstr ""
+
+#: src/Setup/Assets.php:99
+msgid "New page"
+msgstr ""
+
+#: src/Setup/Assets.php:100
+msgid "FAQ"
+msgstr ""
+
+#: src/Setup/Assets.php:101
+msgid "What is Hostinger Reach email marketing service?"
+msgstr ""
+
+#: src/Setup/Assets.php:102
+msgid ""
+"Hostinger Reach is an AI-powered email marketing tool for small businesses "
+"and creators. It supports your entire email marketing journey—from building "
+"contact lists to sending campaigns and tracking results."
+msgstr ""
+
+#: src/Setup/Assets.php:103
+msgid "How is Hostinger Reach different from other email marketing apps?"
+msgstr ""
+
+#: src/Setup/Assets.php:104
+msgid ""
+"Hostinger Reach is built for simplicity, speed, and results – no design or "
+"marketing experience needed. Unlike most email tools, at the core of Reach "
+"is its AI-powered template creator. Whether it is a product launch, special "
+"offer, or newsletter update, it instantly crafts a professional, mobile-"
+"friendly email. It not only writes the content for you; it also suggests the "
+"best layout for your message and saves your style settings so you're never "
+"starting from scratch.<br><br>Every template is customizable, so your emails "
+"reflect your brand's look, feel, and voice. And because the templates are "
+"built using proven best practices, they're optimized for readability, "
+"accessibility, and reader engagement."
+msgstr ""
+
+#: src/Setup/Assets.php:105
+msgid "How much does it cost to use Hostinger Reach?"
+msgstr ""
+
+#: src/Setup/Assets.php:106
+msgid ""
+"Reach offers a free plan for one year– perfect for getting started. Paid "
+"plans are based on how many unique contacts you aim to reach and how many "
+"emails you send monthly. As your audience grows, you can upgrade to a plan "
+"that fits your needs. Reach does not limit your contact list, so you don't "
+"need to worry about lost data and can consistently grow your audience."
+msgstr ""
+
+#: src/Setup/Assets.php:108
+msgid "opens in new tab"
+msgstr ""
+
+#: src/Setup/Assets.php:109
+msgid "Banner background image for"
+msgstr ""
+
+#: src/Setup/Assets.php:110
+msgid "Background image for"
+msgstr ""
+
+#: src/Setup/Assets.php:111
+msgid "usage statistics"
+msgstr ""
+
+#: src/Setup/Assets.php:112
+msgid "remaining out of"
+msgstr ""
+
+#: src/Setup/Assets.php:113
+msgid "total"
+msgstr ""
+
+#: src/Setup/Assets.php:114
+msgid "Progress: {current} of {total} used ({percentage}%)"
+msgstr ""
+
+#: src/Setup/Assets.php:115
+msgid ""
+"Click-to-open rate tells you what percent of opens resulted in a click too. "
+"A good CTOR is 6-17%, depending on your industry."
+msgstr ""
+
+#: src/Setup/Assets.php:116
+msgid "Add form clicked"
+msgstr ""
+
+#: src/Setup/Assets.php:117
+msgid "Select page"
+msgstr ""
+
+#: src/Setup/Assets.php:118
+msgid "Plugin"
+msgstr ""
+
+#: src/Setup/Assets.php:119
+msgid "Entries"
+msgstr ""
+
+#: src/Setup/Assets.php:120
+msgid "Status"
+msgstr ""
+
+#: src/Setup/Assets.php:121
+msgid "Active"
+msgstr ""
+
+#: src/Setup/Assets.php:122
+msgid "Inactive"
+msgstr ""
+
+#: src/Setup/Assets.php:123
+msgid "Go to plugin"
+msgstr ""
+
+#: src/Setup/Assets.php:124
+msgid "Disconnect"
+msgstr ""
+
+#: src/Setup/Assets.php:125
+msgid "View form"
+msgstr ""
+
+#: src/Setup/Assets.php:126
+msgid "Edit form"
+msgstr ""
+
+#: src/Setup/Assets.php:127
+msgid "Loading plugins..."
+msgstr ""
+
+#: src/Setup/Assets.php:129
+msgid "Expand {pluginName} details"
+msgstr ""
+
+#: src/Setup/Assets.php:130
+msgid "Collapse {pluginName} details"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:82
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:168
+msgid "Thanks for subscribing"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:85
+#: frontend/blocks/subscription-block/src/edit.js:90
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:171
+#: frontend/dist/blocks/subscription.js:176
+msgid "Something went wrong. Please try again"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:100
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:186
+msgid "Form ID"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:102
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:188
+msgid "Unique identifier for this form"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:105
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:191
+msgid "Contact List"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:108
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:194
+msgid "Create New List"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:123
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:209
+msgid "New Contact List"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:128
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:214
+msgid "Name for the new Contact List"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:131
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:217
+msgid "Show Name Field?"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/edit.js:139
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:225
+msgid "Show Surname Field?"
+msgstr ""
+
+#: frontend/blocks/subscription-block/src/index.js:9
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:394
+msgid "Reach Subscription Form"
+msgstr ""
+
+#: frontend/blocks/subscription-block/block.json
+msgctxt "block title"
+msgid "Reach Subscription Form"
+msgstr ""
+
+#: frontend/blocks/subscription-block/block.json
+msgctxt "block description"
+msgid "Subscription form for Hostinger Reach"
+msgstr ""

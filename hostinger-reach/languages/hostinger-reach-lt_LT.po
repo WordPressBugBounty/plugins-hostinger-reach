@@ -1,0 +1,676 @@
+# Copyright (C) 2025 Hostinger
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger Reach 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hostinger-reach\n"
+"Last-Translator: \n"
+"Language-Team: Lithuanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
+"PO-Revision-Date: 2025-08-06 16:29+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-reach\n"
+"Language: lt_LT\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 "
+"&&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.27"
+
+#: src/Setup/Assets.php:135
+#, fuzzy
+msgid "(no title)"
+msgstr "(be pavadinimo)"
+
+#: src/Setup/Assets.php:123 src/Setup/Assets.php:138
+#, fuzzy
+msgid "Active"
+msgstr "Aktyvus"
+
+#: src/Setup/Assets.php:98 src/Setup/Assets.php:99 src/Setup/Assets.php:115
+#, fuzzy
+msgid "Add form"
+msgstr "Pridėti formą"
+
+#: hostinger-reach.php:49
+#, fuzzy
+msgid "Attention:"
+msgstr "Dėmesio:"
+
+#: src/Setup/Assets.php:87
+#, fuzzy
+msgid "Average CTOR"
+msgstr "Vidutinis CTOR"
+
+#: src/Setup/Assets.php:111
+#, fuzzy
+msgid "Background image for"
+msgstr "Fono paveikslėlis"
+
+#: src/Setup/Assets.php:110
+#, fuzzy
+msgid "Banner background image for"
+msgstr "Skelbimo fono vaizdas"
+
+#: frontend/blocks/subscription-block/block.json
+#, fuzzy
+msgctxt "block description"
+msgid "Subscription form for Hostinger Reach"
+msgstr "\"Hostinger Reach\" prenumeratos forma"
+
+#: frontend/blocks/subscription-block/block.json
+#, fuzzy
+msgctxt "block title"
+msgid "Reach Subscription Form"
+msgstr "Pasiekti prenumeratos forma"
+
+#: src/Setup/Assets.php:85
+#, fuzzy
+msgid "Campaigns"
+msgstr "Kampanijos"
+
+#: src/Setup/Assets.php:118
+#, fuzzy
+msgid "Cancel "
+msgstr "Atšaukti"
+
+#: src/Setup/Assets.php:97
+#, fuzzy
+#| msgid ""
+#| "Choose how you’d like to manage forms on your website. Create a new form "
+#| "with Hostinger Reach or connect a third-party plugin."
+msgid ""
+"Choose how you'd like to manage forms on your website. Create a new form "
+"with Hostinger Reach or connect a third-party plugin."
+msgstr ""
+"Pasirinkite, kaip norite tvarkyti svetainių formas. Sukurkite naują formą su "
+"\"Hostinger Reach\" arba prijunkite trečiosios šalies įskiepį."
+
+#: src/Setup/Assets.php:113
+#, fuzzy
+msgid ""
+"Click-to-open rate tells you what percent of opens resulted in a click too. "
+"A good CTOR is 6-17%, depending on your industry."
+msgstr ""
+"\"Click-to-open\" rodiklis parodo, kiek procentų atidarymo atvejų taip pat "
+"buvo paspausti. Geras CTOR yra 6-17 %, priklausomai nuo jūsų pramonės šakos."
+
+#: src/Setup/Assets.php:133
+#, fuzzy
+msgid "Collapse {pluginName} details"
+msgstr "Žlugti {pluginName} informacija"
+
+#: src/Setup/Assets.php:146
+#, fuzzy
+msgid "Connect"
+msgstr "Prisijungti"
+
+#: frontend/blocks/subscription-block/src/Components/Connect.js:16
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:49
+#, fuzzy
+msgid "Connect Now"
+msgstr "Prisijunkite dabar"
+
+#: src/Setup/Assets.php:74
+#, fuzzy
+msgid "Connect site"
+msgstr "Prijungti svetainę"
+
+#: src/Integrations/PluginManager.php:24 src/Setup/Assets.php:130
+#, fuzzy
+msgid "Contact Form 7"
+msgstr "Kontaktinė forma 7"
+
+#: frontend/blocks/subscription-block/src/edit.js:132
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:240
+#, fuzzy
+msgid "Contact List"
+msgstr "Kontaktų sąrašas"
+
+#: src/Setup/Assets.php:92
+#, fuzzy
+msgid "Create campaign"
+msgstr "Sukurti kampaniją"
+
+#: src/Setup/Assets.php:70
+#, fuzzy
+msgid ""
+"Create email campaigns using AI-crafted templates that match your style. "
+"Instantly sync with your WordPress site and connect with your audience "
+"easily."
+msgstr ""
+"Kurkite el. pašto kampanijas naudodami dirbtinio intelekto sukurtus šablonus,"
+" atitinkančius jūsų stilių. Akimirksniu sinchronizuokite su savo "
+"\"WordPress\" svetaine ir lengvai užmegzkite ryšį su savo auditorija."
+
+#: src/Setup/Assets.php:141
+#, fuzzy
+msgid "Create form"
+msgstr "Sukurti formą"
+
+#: frontend/blocks/subscription-block/src/edit.js:135
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:243
+#, fuzzy
+msgid "Create New List"
+msgstr "Sukurti naują sąrašą"
+
+#: src/Setup/Assets.php:93
+#, fuzzy
+msgid "Create template"
+msgstr "Sukurti šabloną"
+
+#: src/Setup/Assets.php:145
+#, fuzzy
+msgid "Disconnect"
+msgstr "Atjunkite"
+
+#: src/Setup/Assets.php:119
+#, fuzzy
+msgid "Disconnect "
+msgstr "Atjunkite"
+
+#: src/Setup/Assets.php:72
+#, fuzzy
+msgid "Disconnect it to link this site instead."
+msgstr "Atjunkite jį ir vietoj jo susiekite šią svetainę."
+
+#: src/Setup/Assets.php:128
+#, fuzzy
+msgid "Disconnect plugin"
+msgstr "Atjungti įskiepį"
+
+#: src/Setup/Assets.php:116
+#, fuzzy
+msgid "Disconnect plugin?"
+msgstr "Atjungti įskiepį?"
+
+#: src/Setup/Assets.php:117
+#, fuzzy
+msgid ""
+"Disconnecting will stop new contacts from being collected. You can reconnect "
+"or use a different form anytime."
+msgstr ""
+"Atjungimas sustabdys naujų kontaktų rinkimą. Bet kuriuo metu galite iš naujo "
+"prisijungti arba naudoti kitą formą."
+
+#: src/Setup/Assets.php:126
+#, fuzzy
+msgid "Edit form"
+msgstr "Redaguoti formą"
+
+#: src/Blocks/SubscriptionFormBlock.php:59
+#: frontend/blocks/subscription-block/src/edit.js:181
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:289
+#, fuzzy
+msgid "Email"
+msgstr "El. paštas"
+
+#: src/Admin/Menus.php:20 src/Admin/Menus.php:21 src/Admin/Menus.php:34
+#, fuzzy
+msgid "Email Marketing"
+msgstr "El. pašto rinkodara"
+
+#: src/Setup/Assets.php:77
+#, fuzzy
+msgid "Email marketing background with gradient design"
+msgstr "El. pašto rinkodaros fonas su gradientiniu dizainu"
+
+#: src/Setup/Assets.php:78
+#, fuzzy
+msgid ""
+"Email marketing illustration featuring envelopes and communication icons"
+msgstr ""
+"Elektroninio pašto rinkodaros iliustracija su vokais ir komunikacijos "
+"piktogramomis"
+
+#: src/Setup/Assets.php:82
+#, fuzzy
+msgid "Emails"
+msgstr "Elektroniniai laiškai"
+
+#: src/Setup/Assets.php:121
+#, fuzzy
+msgid "Entries"
+msgstr "Įrašai"
+
+#: src/Setup/Assets.php:132
+#, fuzzy
+msgid "Expand {pluginName} details"
+msgstr "Išskleisti {pluginName} informaciją"
+
+#: src/Setup/Assets.php:102
+#, fuzzy
+msgid "FAQ"
+msgstr "DUK"
+
+#: frontend/blocks/subscription-block/src/edit.js:127
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:235
+#, fuzzy
+msgid "Form ID"
+msgstr "Formos ID"
+
+#: src/Setup/Assets.php:95
+#, fuzzy
+msgid "Forms"
+msgstr "Formos"
+
+#: src/Setup/Assets.php:127
+#, fuzzy
+msgid "Go to plugin"
+msgstr "Eiti į įskiepį"
+
+#: src/Setup/Assets.php:75
+#, fuzzy
+msgid "Go to Reach"
+msgstr "Eiti į \"Reach"
+
+#. Author of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Plugin Name of the plugin
+#: hostinger-reach.php src/Integrations/ReachFormIntegration.php:63
+#: src/Setup/Assets.php:76 src/Setup/Assets.php:129
+#, fuzzy
+msgid "Hostinger Reach"
+msgstr "\"Hostinger Reach"
+
+#: src/Setup/Assets.php:104
+#, fuzzy
+msgid ""
+"Hostinger Reach is an AI-powered email marketing tool for small businesses "
+"and creators. It supports your entire email marketing journey—from building "
+"contact lists to sending campaigns and tracking results."
+msgstr ""
+"\"Hostinger Reach\" yra dirbtinio intelekto valdomas el. pašto rinkodaros "
+"įrankis mažosioms įmonėms ir kūrėjams. Ji palaiko visą jūsų el. pašto "
+"rinkodaros kelią - nuo kontaktų sąrašų sudarymo iki kampanijų siuntimo ir "
+"rezultatų stebėjimo."
+
+#: src/Setup/Assets.php:106
+#, fuzzy
+msgid ""
+"Hostinger Reach is built for simplicity, speed, and results – no design or "
+"marketing experience needed. Unlike most email tools, at the core of Reach "
+"is its AI-powered template creator. Whether it is a product launch, special "
+"offer, or newsletter update, it instantly crafts a professional, mobile-"
+"friendly email. It not only writes the content for you; it also suggests the "
+"best layout for your message and saves your style settings so you're never "
+"starting from scratch.<br><br>Every template is customizable, so your emails "
+"reflect your brand's look, feel, and voice. And because the templates are "
+"built using proven best practices, they're optimized for readability, "
+"accessibility, and reader engagement."
+msgstr ""
+"\"Hostinger Reach\" sukurta siekiant paprastumo, greičio ir rezultatų - "
+"nereikia jokios dizaino ar rinkodaros patirties. Skirtingai nuo daugumos el. "
+"pašto įrankių, \"Reach\" pagrindas yra dirbtinio intelekto valdomas šablonų "
+"kūrėjas. Nesvarbu, ar tai būtų produkto pristatymas, specialus pasiūlymas, "
+"ar naujienlaiškio atnaujinimas, jis akimirksniu sukuria profesionalų, "
+"mobiliesiems įrenginiams pritaikytą el. laišką. Jis ne tik sukuria turinį už "
+"jus; jis taip pat pasiūlo geriausią pranešimo išdėstymą ir išsaugo stiliaus "
+"nustatymus, kad niekada nereikėtų pradėti nuo nulio.<br><br>Kiekvienas "
+"šablonas yra pritaikomas, todėl jūsų el. laiškai atspindi jūsų prekės ženklo "
+"išvaizdą, jausmą ir balsą. O kadangi šablonai sukurti naudojant patikrintą "
+"geriausią praktiką, jie optimizuoti taip, kad būtų lengvai skaitomi, "
+"prieinami ir skatintų skaitytojų įsitraukimą."
+
+#. translators: %s: PHP version
+#: hostinger-reach.php:51
+#, fuzzy
+msgid "Hostinger Reach requires minimum PHP version of <b>%s</b>. "
+msgstr "\"Hostinger Reach\" reikalauja minimalios PHP versijos <b>%s</b>."
+
+#: src/Setup/Assets.php:105
+#, fuzzy
+msgid "How is Hostinger Reach different from other email marketing apps?"
+msgstr ""
+"Kuo \"Hostinger Reach\" skiriasi nuo kitų el. pašto rinkodaros programų?"
+
+#: src/Setup/Assets.php:107
+#, fuzzy
+msgid "How much does it cost to use Hostinger Reach?"
+msgstr "Kiek kainuoja naudotis \"Hostinger Reach\"?"
+
+#. Plugin URI of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#. Author URI of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "https://www.hostinger.com/email-marketing"
+msgstr "https://www.hostinger.com/email-marketing"
+
+#: src/Setup/Assets.php:124
+#, fuzzy
+msgid "Inactive"
+msgstr "Neaktyvus"
+
+#: src/Setup/Assets.php:144
+#, fuzzy
+msgid "Install and connect"
+msgstr "Įdiekite ir prijunkite"
+
+#: src/Setup/Assets.php:143
+#, fuzzy
+msgid "Installed plugins"
+msgstr "Įdiegti įskiepiai"
+
+#. Description of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "Integrate your WordPress site with Hostinger Reach."
+msgstr "Integruokite savo \"WordPress\" svetainę su \"Hostinger Reach\"."
+
+#: src/Setup/Assets.php:139
+#, fuzzy
+msgid ""
+"Make sure the people you contact expect your emails and are okay with "
+"receiving them."
+msgstr ""
+"Įsitikinkite, kad žmonės, su kuriais bendraujate, tikisi jūsų el. laiškų ir "
+"sutinka juos gauti."
+
+#: src/Setup/Assets.php:73
+#, fuzzy
+msgid "Manage"
+msgstr "Tvarkykite"
+
+#: src/Blocks/SubscriptionFormBlock.php:67
+#: frontend/blocks/subscription-block/src/edit.js:188
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:296
+#, fuzzy
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: frontend/blocks/subscription-block/src/edit.js:155
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:263
+#, fuzzy
+msgid "Name for the new Contact List"
+msgstr "Naujojo kontaktų sąrašo pavadinimas"
+
+#: src/Setup/Assets.php:140
+#, fuzzy
+msgid "New contact form"
+msgstr "Nauja kontaktinė forma"
+
+#: frontend/blocks/subscription-block/src/edit.js:150
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:258
+#, fuzzy
+msgid "New Contact List"
+msgstr "Naujas kontaktų sąrašas"
+
+#: src/Setup/Assets.php:100
+#, fuzzy
+msgid "New page"
+msgstr "Naujas puslapis"
+
+#: src/Setup/Assets.php:89
+#, fuzzy
+msgid "New subscribers"
+msgstr "Nauji abonentai"
+
+#: src/Setup/Assets.php:134
+#, fuzzy
+msgid "No forms found for this integration."
+msgstr "Šiai integracijai formų nerasta."
+
+#: src/Setup/Assets.php:101
+#, fuzzy
+msgid "No pages available. Create a new page to get started."
+msgstr "Puslapių nėra. Norėdami pradėti, sukurkite naują puslapį."
+
+#: src/Setup/Assets.php:109
+#, fuzzy
+msgid "opens in new tab"
+msgstr "atsidaro naujame skirtuke"
+
+#: src/Setup/Assets.php:120
+#, fuzzy
+msgid "Plugin"
+msgstr "Įskiepis"
+
+#: src/Setup/Assets.php:136
+#, fuzzy
+msgid "Plugin connected successfully"
+msgstr "Įskiepis sėkmingai prijungtas"
+
+#: src/Setup/Assets.php:137
+#, fuzzy
+msgid "Plugin disconnected successfully"
+msgstr "Įskiepis sėkmingai atjungtas"
+
+#: src/Setup/Assets.php:71
+#, fuzzy
+msgid "Reach is already connected to another site."
+msgstr "\"Reach\" jau yra prijungtas prie kitos svetainės."
+
+#: src/Setup/Assets.php:108
+#, fuzzy
+#| msgid ""
+#| "Reach offers a free plan for one year– perfect for getting started. Paid "
+#| "plans are based on how many unique contacts you aim to reach and how many "
+#| "emails you send monthly. As your audience grows, you can upgrade to a "
+#| "plan that fits your needs. Reach does not limit your contact list, so you "
+#| "don't need to worry about lost data and can consistently grow your "
+#| "audience."
+msgid ""
+"Reach offers a <b>free plan</b> for one year– perfect for getting started. "
+"Paid plans are based on how many unique contacts you aim to reach and how "
+"many emails you send monthly. As your audience grows, you can upgrade to a "
+"plan that fits your needs. Reach does not limit your contact list, so you "
+"don't need to worry about lost data and can consistently grow your audience."
+msgstr ""
+"\"Reach\" siūlo nemokamą planą vieneriems metams - puikiai tinka pradžiai. "
+"Mokami planai priklauso nuo to, kiek unikalių kontaktų norite pasiekti ir "
+"kiek el. laiškų siunčiate per mėnesį. Augant auditorijai, galite pereiti "
+"prie jūsų poreikius atitinkančio plano. Programa \"Reach\" neriboja jūsų "
+"kontaktų sąrašo, todėl jums nereikia nerimauti dėl prarastų duomenų ir "
+"galite nuolat didinti savo auditoriją."
+
+#: frontend/blocks/subscription-block/src/index.js:9
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:444
+#, fuzzy
+msgid "Reach Subscription Form"
+msgstr "Pasiekti prenumeratos forma"
+
+#: src/Setup/Assets.php:84
+#, fuzzy
+msgid "Remaining"
+msgstr "Likusi"
+
+#: src/Setup/Assets.php:114
+#, fuzzy
+msgid "Select page"
+msgstr "Pasirinkite puslapį"
+
+#: src/Setup/Assets.php:83 src/Setup/Assets.php:86
+#, fuzzy
+msgid "Sent"
+msgstr "Išsiųsta"
+
+#: src/Setup/Assets.php:94 frontend/blocks/subscription-block/src/edit.js:123
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:231
+#, fuzzy
+msgid "Settings"
+msgstr "Nustatymai"
+
+#: frontend/blocks/subscription-block/src/edit.js:158
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:266
+#, fuzzy
+msgid "Show Name Field?"
+msgstr "Rodyti vardo lauką?"
+
+#: frontend/blocks/subscription-block/src/edit.js:166
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:274
+#, fuzzy
+msgid "Show Surname Field?"
+msgstr "Rodyti pavardės lauką?"
+
+#: src/Setup/Assets.php:68
+#, fuzzy
+msgid "Something went wrong"
+msgstr "Kažkas nutiko ne taip"
+
+#: frontend/blocks/subscription-block/src/edit.js:111
+#: frontend/blocks/subscription-block/src/edit.js:116
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:219
+#: frontend/dist/blocks/subscription.js:224
+#, fuzzy
+msgid "Something went wrong. Please try again"
+msgstr "Kažkas nutiko ne taip. Bandykite dar kartą"
+
+#: src/Blocks/SubscriptionFormBlock.php:19
+#, fuzzy
+msgid "Something went wrong. Please try again."
+msgstr "Kažkas nutiko ne taip. Bandykite dar kartą."
+
+#: src/Setup/Assets.php:96
+#, fuzzy
+msgid "Start collecting form submissions"
+msgstr "Pradėkite rinkti formų pateikimus"
+
+#: src/Setup/Assets.php:122
+#, fuzzy
+msgid "Status"
+msgstr "Statusas"
+
+#: src/Blocks/SubscriptionFormBlock.php:83
+#, fuzzy
+msgid "Subscribe"
+msgstr "Prenumeruoti"
+
+#: src/Setup/Assets.php:88
+#, fuzzy
+msgid "Subscribers"
+msgstr "Prenumeratoriai"
+
+#: src/Blocks/SubscriptionFormBlock.php:75
+#: frontend/blocks/subscription-block/src/edit.js:194
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:302
+#, fuzzy
+msgid "Surname"
+msgstr "Pavardė"
+
+#: frontend/blocks/subscription-block/src/edit.js:108
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:216
+#, fuzzy
+msgid "Thanks for subscribing"
+msgstr "Ačiū už prenumeratą"
+
+#: src/Blocks/SubscriptionFormBlock.php:18
+#, fuzzy
+msgid "Thanks for subscribing."
+msgstr "Ačiū už prenumeratą."
+
+#: src/Setup/Assets.php:79
+#, fuzzy
+msgid "This month"
+msgstr "Šį mėnesį"
+
+#: src/Setup/Assets.php:91
+#, fuzzy
+msgid "Total subscribers"
+msgstr "Iš viso abonentų"
+
+#: frontend/blocks/subscription-block/src/edit.js:129
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:237
+#, fuzzy
+msgid "Unique identifier for this form"
+msgstr "Unikalus šios formos identifikatorius"
+
+#: src/Setup/Assets.php:90
+#, fuzzy
+msgid "Unsubscribes"
+msgstr "Atsisakoma prenumeratos"
+
+#: src/Setup/Assets.php:81
+#, fuzzy
+msgid "Upgrade"
+msgstr "Atnaujinti"
+
+#: src/Setup/Assets.php:112
+#, fuzzy
+msgid "usage statistics"
+msgstr "naudojimo statistika"
+
+#: src/Setup/Assets.php:125
+#, fuzzy
+msgid "View form"
+msgstr "Peržiūrėti formą"
+
+#: src/Setup/Assets.php:142
+#, fuzzy
+msgid "View supported plugins"
+msgstr "Peržiūrėti palaikomus įskiepius"
+
+#: src/Setup/Assets.php:69
+#, fuzzy
+msgid "Welcome to Reach"
+msgstr "Sveiki atvykę į \"Reach"
+
+#: src/Setup/Assets.php:103
+#, fuzzy
+msgid "What is Hostinger Reach email marketing service?"
+msgstr "Kas yra \"Hostinger Reach\" el. pašto rinkodaros paslauga?"
+
+#: src/Integrations/PluginManager.php:33 src/Setup/Assets.php:131
+#, fuzzy
+msgid "WP Forms Lite"
+msgstr "WP Forms Lite"
+
+#. translators: %s - form id.
+#: src/Integrations/WpFormsLiteIntegration.php:41
+#, fuzzy
+msgid "WP Forms Lite %s"
+msgstr "WP Forms Lite %s"
+
+#: frontend/blocks/subscription-block/src/Components/Connect.js:7
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:40
+#, fuzzy
+msgid "You are not connected to Hostinger Reach"
+msgstr "Nesate prisijungę prie \"Hostinger Reach"
+
+#: frontend/blocks/subscription-block/src/Components/Connect.js:10
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:43
+#, fuzzy
+msgid ""
+"You are not connected to Hostinger Reach. To gain full access to this block, "
+"you need to connect your Hostinger Reach account."
+msgstr ""
+"Nesate prisijungę prie \"Hostinger Reach\". Norėdami gauti visišką prieigą "
+"prie šio bloko, turite prisijungti prie \"Hostinger Reach\" paskyros."
+
+#. translators: %s: PHP version
+#: hostinger-reach.php:55
+#, fuzzy
+msgid "You are running <b>%s</b> PHP version."
+msgstr "Jūs naudojate <b>%s</b> PHP versiją."
+
+#: src/Setup/Assets.php:80
+#, fuzzy
+msgid "Your plan"
+msgstr "Jūsų planas"

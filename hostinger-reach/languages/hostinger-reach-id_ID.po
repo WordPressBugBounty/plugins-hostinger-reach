@@ -1,0 +1,673 @@
+# Copyright (C) 2025 Hostinger
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger Reach 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hostinger-reach\n"
+"Last-Translator: \n"
+"Language-Team: Indonesian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
+"PO-Revision-Date: 2025-08-06 16:29+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-reach\n"
+"Language: id_ID\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.27"
+
+#: src/Setup/Assets.php:135
+#, fuzzy
+msgid "(no title)"
+msgstr "(tanpa judul)"
+
+#: src/Setup/Assets.php:123 src/Setup/Assets.php:138
+#, fuzzy
+msgid "Active"
+msgstr "Aktif"
+
+#: src/Setup/Assets.php:98 src/Setup/Assets.php:99 src/Setup/Assets.php:115
+#, fuzzy
+msgid "Add form"
+msgstr "Tambahkan formulir"
+
+#: hostinger-reach.php:49
+#, fuzzy
+msgid "Attention:"
+msgstr "Perhatian:"
+
+#: src/Setup/Assets.php:87
+#, fuzzy
+msgid "Average CTOR"
+msgstr "CTOR rata-rata"
+
+#: src/Setup/Assets.php:111
+#, fuzzy
+msgid "Background image for"
+msgstr "Gambar latar belakang untuk"
+
+#: src/Setup/Assets.php:110
+#, fuzzy
+msgid "Banner background image for"
+msgstr "Gambar latar belakang spanduk untuk"
+
+#: frontend/blocks/subscription-block/block.json
+#, fuzzy
+msgctxt "block description"
+msgid "Subscription form for Hostinger Reach"
+msgstr "Formulir berlangganan untuk Hostinger Reach"
+
+#: frontend/blocks/subscription-block/block.json
+#, fuzzy
+msgctxt "block title"
+msgid "Reach Subscription Form"
+msgstr "Formulir Berlangganan Jangkauan"
+
+#: src/Setup/Assets.php:85
+#, fuzzy
+msgid "Campaigns"
+msgstr "Kampanye"
+
+#: src/Setup/Assets.php:118
+#, fuzzy
+msgid "Cancel "
+msgstr "Batal"
+
+#: src/Setup/Assets.php:97
+#, fuzzy
+#| msgid ""
+#| "Choose how you’d like to manage forms on your website. Create a new form "
+#| "with Hostinger Reach or connect a third-party plugin."
+msgid ""
+"Choose how you'd like to manage forms on your website. Create a new form "
+"with Hostinger Reach or connect a third-party plugin."
+msgstr ""
+"Pilih cara Anda ingin mengelola formulir di situs web Anda. Buat formulir "
+"baru dengan Hostinger Reach atau hubungkan plugin pihak ketiga."
+
+#: src/Setup/Assets.php:113
+#, fuzzy
+msgid ""
+"Click-to-open rate tells you what percent of opens resulted in a click too. "
+"A good CTOR is 6-17%, depending on your industry."
+msgstr ""
+"Rasio klik-terbuka memberi tahu Anda berapa persen dari pembukaan yang "
+"menghasilkan klik juga. CTOR yang baik adalah 6-17%, tergantung pada "
+"industri Anda."
+
+#: src/Setup/Assets.php:133
+#, fuzzy
+msgid "Collapse {pluginName} details"
+msgstr "Tutup detail {namaPengguna}"
+
+#: src/Setup/Assets.php:146
+#, fuzzy
+msgid "Connect"
+msgstr "Menghubungkan"
+
+#: frontend/blocks/subscription-block/src/Components/Connect.js:16
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:49
+#, fuzzy
+msgid "Connect Now"
+msgstr "Hubungkan Sekarang"
+
+#: src/Setup/Assets.php:74
+#, fuzzy
+msgid "Connect site"
+msgstr "Hubungkan situs"
+
+#: src/Integrations/PluginManager.php:24 src/Setup/Assets.php:130
+#, fuzzy
+msgid "Contact Form 7"
+msgstr "Formulir Kontak 7"
+
+#: frontend/blocks/subscription-block/src/edit.js:132
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:240
+#, fuzzy
+msgid "Contact List"
+msgstr "Daftar Kontak"
+
+#: src/Setup/Assets.php:92
+#, fuzzy
+msgid "Create campaign"
+msgstr "Buat kampanye"
+
+#: src/Setup/Assets.php:70
+#, fuzzy
+msgid ""
+"Create email campaigns using AI-crafted templates that match your style. "
+"Instantly sync with your WordPress site and connect with your audience "
+"easily."
+msgstr ""
+"Buat kampanye email menggunakan templat buatan AI yang sesuai dengan gaya "
+"Anda. Sinkronisasi secara instan dengan situs WordPress Anda dan terhubung "
+"dengan audiens Anda dengan mudah."
+
+#: src/Setup/Assets.php:141
+#, fuzzy
+msgid "Create form"
+msgstr "Buat formulir"
+
+#: frontend/blocks/subscription-block/src/edit.js:135
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:243
+#, fuzzy
+msgid "Create New List"
+msgstr "Buat Daftar Baru"
+
+#: src/Setup/Assets.php:93
+#, fuzzy
+msgid "Create template"
+msgstr "Buat templat"
+
+#: src/Setup/Assets.php:145
+#, fuzzy
+msgid "Disconnect"
+msgstr "Putuskan sambungan"
+
+#: src/Setup/Assets.php:119
+#, fuzzy
+msgid "Disconnect "
+msgstr "Putuskan sambungan"
+
+#: src/Setup/Assets.php:72
+#, fuzzy
+msgid "Disconnect it to link this site instead."
+msgstr "Putuskan sambungannya untuk menautkan situs ini."
+
+#: src/Setup/Assets.php:128
+#, fuzzy
+msgid "Disconnect plugin"
+msgstr "Putuskan sambungan plugin"
+
+#: src/Setup/Assets.php:116
+#, fuzzy
+msgid "Disconnect plugin?"
+msgstr "Putuskan sambungan plugin?"
+
+#: src/Setup/Assets.php:117
+#, fuzzy
+msgid ""
+"Disconnecting will stop new contacts from being collected. You can reconnect "
+"or use a different form anytime."
+msgstr ""
+"Memutuskan sambungan akan menghentikan pengumpulan kontak baru. Anda dapat "
+"menghubungkan kembali atau menggunakan formulir yang berbeda kapan saja."
+
+#: src/Setup/Assets.php:126
+#, fuzzy
+msgid "Edit form"
+msgstr "Formulir edit"
+
+#: src/Blocks/SubscriptionFormBlock.php:59
+#: frontend/blocks/subscription-block/src/edit.js:181
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:289
+#, fuzzy
+msgid "Email"
+msgstr "Email"
+
+#: src/Admin/Menus.php:20 src/Admin/Menus.php:21 src/Admin/Menus.php:34
+#, fuzzy
+msgid "Email Marketing"
+msgstr "Pemasaran Email"
+
+#: src/Setup/Assets.php:77
+#, fuzzy
+msgid "Email marketing background with gradient design"
+msgstr "Latar belakang pemasaran email dengan desain gradien"
+
+#: src/Setup/Assets.php:78
+#, fuzzy
+msgid ""
+"Email marketing illustration featuring envelopes and communication icons"
+msgstr "Ilustrasi pemasaran email yang menampilkan amplop dan ikon komunikasi"
+
+#: src/Setup/Assets.php:82
+#, fuzzy
+msgid "Emails"
+msgstr "Email"
+
+#: src/Setup/Assets.php:121
+#, fuzzy
+msgid "Entries"
+msgstr "Entri"
+
+#: src/Setup/Assets.php:132
+#, fuzzy
+msgid "Expand {pluginName} details"
+msgstr "Perluas detail {nama_plugin}"
+
+#: src/Setup/Assets.php:102
+#, fuzzy
+msgid "FAQ"
+msgstr "PERTANYAAN YANG SERING DIAJUKAN"
+
+#: frontend/blocks/subscription-block/src/edit.js:127
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:235
+#, fuzzy
+msgid "Form ID"
+msgstr "ID Formulir"
+
+#: src/Setup/Assets.php:95
+#, fuzzy
+msgid "Forms"
+msgstr "Formulir"
+
+#: src/Setup/Assets.php:127
+#, fuzzy
+msgid "Go to plugin"
+msgstr "Pergi ke plugin"
+
+#: src/Setup/Assets.php:75
+#, fuzzy
+msgid "Go to Reach"
+msgstr "Pergi ke Jangkauan"
+
+#. Author of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Plugin Name of the plugin
+#: hostinger-reach.php src/Integrations/ReachFormIntegration.php:63
+#: src/Setup/Assets.php:76 src/Setup/Assets.php:129
+#, fuzzy
+msgid "Hostinger Reach"
+msgstr "Jangkauan Hostinger"
+
+#: src/Setup/Assets.php:104
+#, fuzzy
+msgid ""
+"Hostinger Reach is an AI-powered email marketing tool for small businesses "
+"and creators. It supports your entire email marketing journey—from building "
+"contact lists to sending campaigns and tracking results."
+msgstr ""
+"Hostinger Reach merupakan sebuah perangkat pemasaran email bertenaga AI "
+"untuk bisnis kecil dan kreator. Ini mendukung seluruh perjalanan pemasaran "
+"email Anda-mulai dari membangun daftar kontak hingga mengirim kampanye dan "
+"melacak hasil."
+
+#: src/Setup/Assets.php:106
+#, fuzzy
+msgid ""
+"Hostinger Reach is built for simplicity, speed, and results – no design or "
+"marketing experience needed. Unlike most email tools, at the core of Reach "
+"is its AI-powered template creator. Whether it is a product launch, special "
+"offer, or newsletter update, it instantly crafts a professional, mobile-"
+"friendly email. It not only writes the content for you; it also suggests the "
+"best layout for your message and saves your style settings so you're never "
+"starting from scratch.<br><br>Every template is customizable, so your emails "
+"reflect your brand's look, feel, and voice. And because the templates are "
+"built using proven best practices, they're optimized for readability, "
+"accessibility, and reader engagement."
+msgstr ""
+"Hostinger Reach dibuat untuk kesederhanaan, kecepatan, dan hasil - tidak "
+"perlu pengalaman desain atau pemasaran. Tidak seperti kebanyakan perangkat "
+"email, inti dari Reach adalah kreator templatnya yang bertenaga AI. Baik itu "
+"peluncuran produk, penawaran khusus, atau pembaruan buletin, Reach langsung "
+"membuat email yang profesional dan ramah seluler. Tidak hanya menulis konten "
+"untuk Anda; tetapi juga menyarankan tata letak terbaik untuk pesan Anda dan "
+"menyimpan pengaturan gaya Anda sehingga Anda tidak perlu memulai dari awal."
+"<br>Setiap templat dapat disesuaikan, sehingga email Anda mencerminkan "
+"tampilan, nuansa, dan suara merek Anda. Dan karena templat dibuat "
+"menggunakan praktik terbaik yang telah terbukti, templat dioptimalkan untuk "
+"keterbacaan, aksesibilitas, dan keterlibatan pembaca."
+
+#. translators: %s: PHP version
+#: hostinger-reach.php:51
+#, fuzzy
+msgid "Hostinger Reach requires minimum PHP version of <b>%s</b>. "
+msgstr "Hostinger Reach membutuhkan versi PHP minimum <b>%s</b>."
+
+#: src/Setup/Assets.php:105
+#, fuzzy
+msgid "How is Hostinger Reach different from other email marketing apps?"
+msgstr "Apa perbedaan Hostinger Reach dengan aplikasi email marketing lainnya?"
+
+#: src/Setup/Assets.php:107
+#, fuzzy
+msgid "How much does it cost to use Hostinger Reach?"
+msgstr "Berapa biaya yang dibutuhkan untuk menggunakan Hostinger Reach?"
+
+#. Plugin URI of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#. Author URI of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "https://www.hostinger.com/email-marketing"
+msgstr "https://www.hostinger.com/email-marketing"
+
+#: src/Setup/Assets.php:124
+#, fuzzy
+msgid "Inactive"
+msgstr "Tidak aktif"
+
+#: src/Setup/Assets.php:144
+#, fuzzy
+msgid "Install and connect"
+msgstr "Pasang dan sambungkan"
+
+#: src/Setup/Assets.php:143
+#, fuzzy
+msgid "Installed plugins"
+msgstr "Plugin yang terinstal"
+
+#. Description of the plugin
+#: hostinger-reach.php
+#, fuzzy
+msgid "Integrate your WordPress site with Hostinger Reach."
+msgstr "Integrasikan situs WordPress Anda dengan Hostinger Reach."
+
+#: src/Setup/Assets.php:139
+#, fuzzy
+msgid ""
+"Make sure the people you contact expect your emails and are okay with "
+"receiving them."
+msgstr ""
+"Pastikan orang yang Anda hubungi mengharapkan email Anda dan tidak keberatan "
+"menerimanya."
+
+#: src/Setup/Assets.php:73
+#, fuzzy
+msgid "Manage"
+msgstr "Mengelola"
+
+#: src/Blocks/SubscriptionFormBlock.php:67
+#: frontend/blocks/subscription-block/src/edit.js:188
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:296
+#, fuzzy
+msgid "Name"
+msgstr "Nama"
+
+#: frontend/blocks/subscription-block/src/edit.js:155
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:263
+#, fuzzy
+msgid "Name for the new Contact List"
+msgstr "Nama untuk Daftar Kontak baru"
+
+#: src/Setup/Assets.php:140
+#, fuzzy
+msgid "New contact form"
+msgstr "Formulir kontak baru"
+
+#: frontend/blocks/subscription-block/src/edit.js:150
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:258
+#, fuzzy
+msgid "New Contact List"
+msgstr "Daftar Kontak Baru"
+
+#: src/Setup/Assets.php:100
+#, fuzzy
+msgid "New page"
+msgstr "Halaman baru"
+
+#: src/Setup/Assets.php:89
+#, fuzzy
+msgid "New subscribers"
+msgstr "Pelanggan baru"
+
+#: src/Setup/Assets.php:134
+#, fuzzy
+msgid "No forms found for this integration."
+msgstr "Tidak ada formulir yang ditemukan untuk integrasi ini."
+
+#: src/Setup/Assets.php:101
+#, fuzzy
+msgid "No pages available. Create a new page to get started."
+msgstr "Tidak ada halaman yang tersedia. Buat halaman baru untuk memulai."
+
+#: src/Setup/Assets.php:109
+#, fuzzy
+msgid "opens in new tab"
+msgstr "terbuka di tab baru"
+
+#: src/Setup/Assets.php:120
+#, fuzzy
+msgid "Plugin"
+msgstr "Plugin"
+
+#: src/Setup/Assets.php:136
+#, fuzzy
+msgid "Plugin connected successfully"
+msgstr "Plugin berhasil tersambung dengan sukses"
+
+#: src/Setup/Assets.php:137
+#, fuzzy
+msgid "Plugin disconnected successfully"
+msgstr "Plugin berhasil diputuskan dengan sukses"
+
+#: src/Setup/Assets.php:71
+#, fuzzy
+msgid "Reach is already connected to another site."
+msgstr "Jangkauan sudah terhubung ke situs lain."
+
+#: src/Setup/Assets.php:108
+#, fuzzy
+#| msgid ""
+#| "Reach offers a free plan for one year– perfect for getting started. Paid "
+#| "plans are based on how many unique contacts you aim to reach and how many "
+#| "emails you send monthly. As your audience grows, you can upgrade to a "
+#| "plan that fits your needs. Reach does not limit your contact list, so you "
+#| "don't need to worry about lost data and can consistently grow your "
+#| "audience."
+msgid ""
+"Reach offers a <b>free plan</b> for one year– perfect for getting started. "
+"Paid plans are based on how many unique contacts you aim to reach and how "
+"many emails you send monthly. As your audience grows, you can upgrade to a "
+"plan that fits your needs. Reach does not limit your contact list, so you "
+"don't need to worry about lost data and can consistently grow your audience."
+msgstr ""
+"Reach menawarkan paket gratis selama satu tahun - sempurna untuk memulai. "
+"Paket berbayar didasarkan pada jumlah kontak unik yang ingin Anda jangkau "
+"dan jumlah email yang Anda kirim setiap bulan. Seiring dengan bertambahnya "
+"audiens Anda, Anda bisa meningkatkan ke paket yang sesuai dengan kebutuhan "
+"Anda. Reach tidak membatasi daftar kontak Anda, jadi Anda tidak perlu "
+"khawatir akan kehilangan data dan bisa mengembangkan audiens Anda secara "
+"konsisten."
+
+#: frontend/blocks/subscription-block/src/index.js:9
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:444
+#, fuzzy
+msgid "Reach Subscription Form"
+msgstr "Formulir Berlangganan Jangkauan"
+
+#: src/Setup/Assets.php:84
+#, fuzzy
+msgid "Remaining"
+msgstr "Sisa"
+
+#: src/Setup/Assets.php:114
+#, fuzzy
+msgid "Select page"
+msgstr "Pilih halaman"
+
+#: src/Setup/Assets.php:83 src/Setup/Assets.php:86
+#, fuzzy
+msgid "Sent"
+msgstr "Terkirim"
+
+#: src/Setup/Assets.php:94 frontend/blocks/subscription-block/src/edit.js:123
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:231
+#, fuzzy
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: frontend/blocks/subscription-block/src/edit.js:158
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:266
+#, fuzzy
+msgid "Show Name Field?"
+msgstr "Tampilkan Bidang Nama?"
+
+#: frontend/blocks/subscription-block/src/edit.js:166
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:274
+#, fuzzy
+msgid "Show Surname Field?"
+msgstr "Tampilkan Bidang Nama Keluarga?"
+
+#: src/Setup/Assets.php:68
+#, fuzzy
+msgid "Something went wrong"
+msgstr "Ada yang tidak beres"
+
+#: frontend/blocks/subscription-block/src/edit.js:111
+#: frontend/blocks/subscription-block/src/edit.js:116
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:219
+#: frontend/dist/blocks/subscription.js:224
+#, fuzzy
+msgid "Something went wrong. Please try again"
+msgstr "Ada yang tidak beres. Silakan coba lagi"
+
+#: src/Blocks/SubscriptionFormBlock.php:19
+#, fuzzy
+msgid "Something went wrong. Please try again."
+msgstr "Ada yang tidak beres. Silakan coba lagi."
+
+#: src/Setup/Assets.php:96
+#, fuzzy
+msgid "Start collecting form submissions"
+msgstr "Mulai mengumpulkan pengiriman formulir"
+
+#: src/Setup/Assets.php:122
+#, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#: src/Blocks/SubscriptionFormBlock.php:83
+#, fuzzy
+msgid "Subscribe"
+msgstr "Berlangganan"
+
+#: src/Setup/Assets.php:88
+#, fuzzy
+msgid "Subscribers"
+msgstr "Pelanggan"
+
+#: src/Blocks/SubscriptionFormBlock.php:75
+#: frontend/blocks/subscription-block/src/edit.js:194
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:302
+#, fuzzy
+msgid "Surname"
+msgstr "Nama keluarga"
+
+#: frontend/blocks/subscription-block/src/edit.js:108
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:216
+#, fuzzy
+msgid "Thanks for subscribing"
+msgstr "Terima kasih telah berlangganan"
+
+#: src/Blocks/SubscriptionFormBlock.php:18
+#, fuzzy
+msgid "Thanks for subscribing."
+msgstr "Terima kasih telah berlangganan."
+
+#: src/Setup/Assets.php:79
+#, fuzzy
+msgid "This month"
+msgstr "Bulan ini"
+
+#: src/Setup/Assets.php:91
+#, fuzzy
+msgid "Total subscribers"
+msgstr "Total pelanggan"
+
+#: frontend/blocks/subscription-block/src/edit.js:129
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:237
+#, fuzzy
+msgid "Unique identifier for this form"
+msgstr "Pengenal unik untuk formulir ini"
+
+#: src/Setup/Assets.php:90
+#, fuzzy
+msgid "Unsubscribes"
+msgstr "Berhenti berlangganan"
+
+#: src/Setup/Assets.php:81
+#, fuzzy
+msgid "Upgrade"
+msgstr "Tingkatkan"
+
+#: src/Setup/Assets.php:112
+#, fuzzy
+msgid "usage statistics"
+msgstr "statistik penggunaan"
+
+#: src/Setup/Assets.php:125
+#, fuzzy
+msgid "View form"
+msgstr "Lihat formulir"
+
+#: src/Setup/Assets.php:142
+#, fuzzy
+msgid "View supported plugins"
+msgstr "Melihat plugin yang didukung"
+
+#: src/Setup/Assets.php:69
+#, fuzzy
+msgid "Welcome to Reach"
+msgstr "Selamat datang di Reach"
+
+#: src/Setup/Assets.php:103
+#, fuzzy
+msgid "What is Hostinger Reach email marketing service?"
+msgstr "Apa itu layanan email marketing Hostinger Reach?"
+
+#: src/Integrations/PluginManager.php:33 src/Setup/Assets.php:131
+#, fuzzy
+msgid "WP Forms Lite"
+msgstr "Formulir WP Lite"
+
+#. translators: %s - form id.
+#: src/Integrations/WpFormsLiteIntegration.php:41
+#, fuzzy
+msgid "WP Forms Lite %s"
+msgstr "Formulir WP Lite %s"
+
+#: frontend/blocks/subscription-block/src/Components/Connect.js:7
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:40
+#, fuzzy
+msgid "You are not connected to Hostinger Reach"
+msgstr "Anda tidak terhubung ke Hostinger Reach"
+
+#: frontend/blocks/subscription-block/src/Components/Connect.js:10
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:43
+#, fuzzy
+msgid ""
+"You are not connected to Hostinger Reach. To gain full access to this block, "
+"you need to connect your Hostinger Reach account."
+msgstr ""
+"Anda tidak terhubung ke Hostinger Reach. Untuk mendapatkan akses penuh ke "
+"blokir ini, Anda perlu menghubungkan akun Hostinger Reach Anda."
+
+#. translators: %s: PHP version
+#: hostinger-reach.php:55
+#, fuzzy
+msgid "You are running <b>%s</b> PHP version."
+msgstr "Anda menjalankan versi PHP <b>%s</b>."
+
+#: src/Setup/Assets.php:80
+#, fuzzy
+msgid "Your plan"
+msgstr "Rencanamu"
