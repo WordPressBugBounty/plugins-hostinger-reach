@@ -8,3 +8,15 @@ Changelog
 1.0.1 (2025-08-06)
 
 - Bump version logic
+
+1.0.2 (2025-08-12)
+- Update translations
+- Fix: loader in select page redirection
+- Fix: Apostrophe is not displayed correctly in page name on Select page modal 
+- Fix: Link Go to Reach in welcome screen should open in new tab
+- Fix: Buttons are not aligned in Forms 
+- Fix: Subscription form not being auto-loaded sometimes 
+- Fix: Change Menu load priority
+- Tweak: Toasts UI
+- Tweak:  Add scrollbar to select page modal
+- Tweak: Add header to overview page 

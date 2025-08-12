@@ -1,10 +1,10 @@
-=== Hostinger Reach ===
+=== Hostinger Reach - AI-Powered Email Marketing for WordPress ===
 Tags: email marketing, marketing, newsletter, subscription, lead generation
 Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,7 +88,7 @@ This plugin connects to Hostinger Reach API service to collect and share the nex
 
  = Compiled code =
 
- In order to optimize the plugin and reduce the size of the bundle whe do minify and compile our JavaScript
+ In order to optimize the plugin and reduce the size of the bundle we minify and compile our JavaScript
  files.
 
  For transparency and following the community guidelines you can find the source code inside the `frontend` folder.
@@ -162,3 +162,15 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 1.0.1 (2025-08-06)
 
 - Bump version logic
+
+1.0.2 (2025-08-12)
+- Update translations
+- Fix: loader in select page redirection
+- Fix: Apostrophe is not displayed correctly in page name on Select page modal 
+- Fix: Link Go to Reach in welcome screen should open in new tab
+- Fix: Buttons are not aligned in Forms 
+- Fix: Subscription form not being auto-loaded sometimes 
+- Fix: Change Menu load priority
+- Tweak: Toasts UI
+- Tweak:  Add scrollbar to select page modal
+- Tweak: Add header to overview page 

@@ -26,9 +26,24 @@ class ReachFormIntegration extends Integration implements IntegrationInterface {
     }
 
     public function init(): void {
+        $this->init_default_forms();
         add_action( 'hostinger_reach_forms', array( $this, 'load_forms' ), 10, 2 );
         add_action( 'transition_post_status', array( $this, 'handle_transition_post_status' ), 10, 3 );
         add_action( 'hostinger_reach_contact_submitted', array( $this, 'handle_submission' ) );
+    }
+
+    public function init_default_forms(): void {
+        $form_ids = apply_filters( 'hostinger_reach_default_forms', array() );
+
+        foreach ( $form_ids as $form_id ) {
+            if ( ! $this->form_repository->exists( $form_id ) ) {
+                $this->form_repository->insert(
+                    array(
+                        'form_id' => $form_id,
+                    )
+                );
+            }
+        }
     }
 
     public function get_forms( array $args ): array {

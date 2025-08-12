@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { HPopoverGlobalBackdrop } from '@hostinger/hcomponents';
+
 import Modals from '@/components/Modals/Modals.vue';
 </script>
 
@@ -7,5 +9,6 @@ import Modals from '@/components/Modals/Modals.vue';
 		<RouterView />
 		<Modals />
 		<HToast />
+		<HPopoverGlobalBackdrop />
 	</div>
 </template>

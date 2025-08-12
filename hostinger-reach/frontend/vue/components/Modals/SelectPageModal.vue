@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { HSkeletonLoader } from '@hostinger/hcomponents';
+import { ref } from 'vue';
+
 import BaseModal from '@/components/Modals/Base/BaseModal.vue';
 import type { Page } from '@/types/models/pagesModels';
 import { translate } from '@/utils/translate';
@@ -13,11 +16,26 @@ const props = defineProps<Props>();
 
 const NEW_FORM_BUTTON_LINK = '/wp-admin/post-new.php?post_type=page&hostinger_reach_add_block=1';
 
+const loadingPageId = ref<string | null>(null);
+const isNewFormButtonLoading = ref(false);
+
 const handlePageClick = (page: Page) => {
+	if (loadingPageId.value) return;
+
+	loadingPageId.value = page.id;
+
 	const baseUrl = `/wp-admin/post.php?post=${page.id}&action=edit`;
 	const editUrl = page.isAdded ? baseUrl : `${baseUrl}&hostinger_reach_add_block=1`;
 
 	window.location.href = editUrl;
+};
+
+const handleNewFormClick = () => {
+	if (isNewFormButtonLoading.value) return;
+
+	isNewFormButtonLoading.value = true;
+
+	window.location.href = NEW_FORM_BUTTON_LINK;
 };
 
 const handleBackClick = () => {
@@ -43,21 +61,29 @@ const handleBackClick = () => {
 						v-for="page in pages"
 						:key="page.id"
 						class="select-page-modal__page-item"
-						:class="{ 'select-page-modal__page-item--selected': page.isAdded }"
+						:class="{
+							'select-page-modal__page-item--selected': page.isAdded,
+							'select-page-modal__page-item--loading': loadingPageId === page.id
+						}"
 						@click="handlePageClick(page)"
 					>
-						<div class="select-page-modal__page-content">
-							<HText variant="body-2-bold" as="span" class="select-page-modal__page-name">
-								{{ page.name || translate('hostinger_reach_forms_no_title') }}
-							</HText>
+						<div v-if="loadingPageId === page.id" class="select-page-modal__page-loading">
+							<HSkeletonLoader width="60%" height="20px" border-radius="sm" />
 						</div>
+						<template v-else>
+							<div class="select-page-modal__page-content">
+								<HText variant="body-2-bold" as="span" class="select-page-modal__page-name">
+									{{ page.name || translate('hostinger_reach_forms_no_title') }}
+								</HText>
+							</div>
 
-						<div>
-							<HIcon
-								:name="page.isAdded ? 'ic-checkmark-circle-filled-24' : 'ic-circle-empty-24'"
-								:color="page.isAdded ? 'primary--500' : 'neutral--200'"
-							/>
-						</div>
+							<div>
+								<HIcon
+									:name="page.isAdded ? 'ic-checkmark-circle-filled-24' : 'ic-circle-empty-24'"
+									:color="page.isAdded ? 'primary--500' : 'neutral--200'"
+								/>
+							</div>
+						</template>
 					</div>
 				</div>
 				<div v-else class="select-page-modal__no-pages">
@@ -68,7 +94,14 @@ const handleBackClick = () => {
 			</div>
 
 			<div class="select-page-modal__footer">
-				<HButton variant="outline" color="neutral" size="small" icon-prepend="ic-add-16" :to="NEW_FORM_BUTTON_LINK">
+				<HButton
+					variant="outline"
+					color="neutral"
+					size="small"
+					:icon-prepend="isNewFormButtonLoading ? undefined : 'ic-add-16'"
+					:is-loading="isNewFormButtonLoading"
+					@click="handleNewFormClick"
+				>
 					{{ translate('hostinger_reach_forms_new_page_text') }}
 				</HButton>
 			</div>
@@ -155,15 +188,30 @@ const handleBackClick = () => {
 		border-radius: 16px;
 		background: var(--neutral--0);
 		cursor: pointer;
-		transition: border-color 0.2s ease;
+		transition:
+			border-color 0.2s ease,
+			opacity 0.2s ease;
 
-		&:hover {
+		&:hover:not(&--loading) {
 			border-color: var(--primary--500);
 		}
 
 		&--selected {
 			border-color: var(--primary--500);
 		}
+
+		&--loading {
+			cursor: not-allowed;
+			opacity: 0.7;
+			border-color: var(--neutral--300);
+		}
+	}
+
+	&__page-loading {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 12px;
 	}
 
 	&__page-content {
