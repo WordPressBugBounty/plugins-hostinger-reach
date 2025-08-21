@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 import reachBackgroundImage from '@/assets/images/backgrounds/email-reach-background.svg';
-import reachBackgroundImageOverlay from '@/assets/images/backgrounds/email-reach-background-image.svg';
+import reachBackgroundImageOverlay from '@/assets/images/backgrounds/email-reach-background-image.png';
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { translate } from '@/utils/translate';

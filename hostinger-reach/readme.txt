@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,11 +166,16 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 1.0.2 (2025-08-12)
 - Update translations
 - Fix: loader in select page redirection
-- Fix: Apostrophe is not displayed correctly in page name on Select page modal 
+- Fix: Apostrophe is not displayed correctly in page name on Select page modal
 - Fix: Link Go to Reach in welcome screen should open in new tab
-- Fix: Buttons are not aligned in Forms 
-- Fix: Subscription form not being auto-loaded sometimes 
+- Fix: Buttons are not aligned in Forms
+- Fix: Subscription form not being auto-loaded sometimes
 - Fix: Change Menu load priority
 - Tweak: Toasts UI
 - Tweak:  Add scrollbar to select page modal
-- Tweak: Add header to overview page 
+- Tweak: Add header to overview page
+
+1.0.3 (2025-08-21)
+- Fix: Replace Connect Hero image
+- Fix: Reach plugin content not visible when no other Hostinger plugin is installed
+- Feat: Implement ServerSideRendering component in the Gutenberg Block

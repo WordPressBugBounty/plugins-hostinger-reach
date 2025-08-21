@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react";
 import apiFetch from '@wordpress/api-fetch';
+import ServerSideRender from "@wordpress/server-side-render";
 import {useBlockProps, InspectorControls} from "@wordpress/block-editor";
 import {
-	Button,
 	PanelBody, SelectControl,
 	TextControl,
 	ToggleControl,
@@ -20,15 +20,10 @@ const statuses = {
 const Edit = ({attributes, setAttributes, clientId}) => {
 	const blockProps = useBlockProps();
 	const nonce = wp.data.select('core/editor').getEditorSettings().nonce || '';
-	const [email, setEmail] = useState('');
-	const [name, setName] = useState('');
-	const [surname, setSurname] = useState('');
 	const [showNewContactList, setShowNewContactList] = useState(attributes.contactList === '');
 	const [isConnected, setIsConnected] = useState(true);
 	const [contactLists, setContactLists] = useState([]);
 	const [status, setStatus] = useState(statuses.ready);
-	const [message, setMessage] = useState('');
-	const isLoading = status === statuses.loading;
 
 	useEffect(() => {
 		fetchContactLists();
@@ -82,41 +77,6 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 			setContactLists(await response.json());
 		}
 	}
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		setStatus(statuses.loading);
-		try {
-			const response = await apiFetch({
-				path: '/hostinger-reach/v1/contact',
-				method: 'POST',
-				headers: {
-					'X-WP-Nonce': nonce,
-				},
-				data: {
-					email,
-					name,
-					surname,
-					id: attributes.formId,
-					group: attributes.contactList,
-				},
-				parse: false,
-			});
-
-			if (response.ok) {
-				setStatus(statuses.success);
-				setMessage(__('Thanks for subscribing', 'hostinger-reach'));
-			} else {
-				setStatus(statuses.error);
-				setMessage(__('Something went wrong. Please try again', 'hostinger-reach'));
-			}
-
-		} catch (err) {
-			setStatus(statuses.error);
-			setMessage(__('Something went wrong. Please try again', 'hostinger-reach'));
-		}
-	};
-
 
 	return <div {...blockProps}>
 		<InspectorControls key="hostinger-reach-block-controls">
@@ -172,45 +132,12 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 				/>
 			</PanelBody>
 		</InspectorControls>
-		<form className="hostinger-reach-block-subscription-form" onSubmit={handleSubmit}>
-			{!isConnected && <Connect/>}
-			<input type='hidden' name='group' value={attributes.contactList}/>
-			<input type='hidden' name='id' value={attributes.formId}/>
-			<TextControl
-				required
-				label={__('Email', 'hostinger-reach')}
-				type="email"
-				key="hostinger-reach-block-email-field"
-				value={email}
-				onChange={(value) => setEmail(value)}
-			/>
-			{attributes.showName && <TextControl
-				label={__('Name', 'hostinger-reach')}
-				key="hostinger-reach-block-name-field"
-				value={name}
-				onChange={(value) => setName(value)}
-			/>}
-			{attributes.showSurname && <TextControl
-				label={__('Surname', 'hostinger-reach')}
-				key="hostinger-reach-block-surname-field"
-				value={surname}
-				onChange={(value) => setSurname(value)}
-			/>}
-			{status !== statuses.success &&
-				<Button
-					disabled={isLoading}
-					type="submit"
-					variant="primary"
-					key="hostinger-reach-block-submit"
-					className="hostinger-reach-block-submit wp-block-button__link has-dark-color has-color-1-background-color has-text-color has-background has-link-color has-medium-font-size wp-element-button"
-				>
-					{__("Subscribe", "hostinger-affiliate-plugin")}
-				</Button>
-			}
-			{
-				message && <div className="reach-subscription-message">{message}</div>
-			}
-		</form>
+		{!isConnected && <Connect/>}
+		<ServerSideRender
+			key="hostinger-reach-server-side-renderer"
+			block="hostinger-reach/subscription"
+			attributes={attributes}
+		/>
 	</div>
 
 }

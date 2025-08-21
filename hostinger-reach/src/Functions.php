@@ -55,11 +55,37 @@ class Functions {
             return false;
         }
 
-        $admin_path = wp_parse_url( admin_url(), PHP_URL_PATH );
-
         foreach ( self::ASSET_PAGES as $page ) {
-            if ( stripos( $current_uri, $admin_path . $page ) !== false ) {
+            if ( $this->is_current_uri_in_page( $current_uri, $page ) ) {
                 return true;
+            }
+        }
+
+        return $this->is_single_hostinger_plugin_page( $current_uri );
+    }
+
+    public function is_current_uri_in_page( string $current_uri, string $page ): bool {
+        $admin_path = wp_parse_url( admin_url(), PHP_URL_PATH );
+        return stripos( $current_uri, $admin_path . $page ) !== false;
+    }
+
+    public function is_single_hostinger_plugin_page( string $current_uri ): bool {
+        global $submenu;
+
+        if ( is_null( $submenu ) || ! array_key_exists( 'hostinger', $submenu ) ) {
+            return false;
+        }
+
+        $hostinger_menu = $submenu['hostinger'];
+
+        foreach ( $hostinger_menu as $submenu_item_index => $submenu_item ) {
+            if ( ! in_array( 'hostinger-reach', $submenu_item, true ) ) {
+                continue;
+            }
+
+            // If Hostinger reach submenu is in position 1. Load the assets as well in Hostinger parent page.
+            if ( $submenu_item_index === 1 ) {
+                return $this->is_current_uri_in_page( $current_uri, 'admin.php?page=hostinger' );
             }
         }
 

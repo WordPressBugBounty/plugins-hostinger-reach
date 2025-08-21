@@ -19,12 +19,15 @@ class Assets {
     }
 
     public function init(): void {
-        if ( $this->functions->need_to_load_assets() ) {
-            add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-        }
+        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
     }
 
     public function admin_enqueue_scripts(): void {
+
+        if ( ! $this->functions->need_to_load_assets() ) {
+            return;
+        }
+
         if ( file_exists( $this->functions->get_frontend_dir() . 'main.js' ) === false ) {
             return;
         }
