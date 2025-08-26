@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -185,3 +185,6 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Remove Warnings when running FE linter
 - Fix: Footer and View form links
 - Feat: Add satisfaction survey
+
+1.0.5 (2025-08-26)
+- Fix: Assets compiler flag

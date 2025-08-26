@@ -31,3 +31,6 @@ Changelog
 - Fix: Remove Warnings when running FE linter
 - Fix: Footer and View form links
 - Feat: Add satisfaction survey
+
+1.0.5 (2025-08-26)
+- Fix: Assets compiler flag

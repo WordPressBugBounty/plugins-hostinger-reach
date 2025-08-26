@@ -3,7 +3,7 @@
         'name' => 'hostinger/hostinger-reach',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '94a61d343afe3b287d52dae6ca757136ade92133',
+        'reference' => '0ca2a84107ca08245af3a8c5a9ab2995ca7237b7',
         'type' => 'plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -24,7 +24,7 @@
         'hostinger/hostinger-reach' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '94a61d343afe3b287d52dae6ca757136ade92133',
+            'reference' => '0ca2a84107ca08245af3a8c5a9ab2995ca7237b7',
             'type' => 'plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
