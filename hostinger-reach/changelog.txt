@@ -25,3 +25,9 @@ Changelog
 - Fix: Replace Connect Hero image
 - Fix: Reach plugin content not visible when no other Hostinger plugin is installed
 - Feat: Implement ServerSideRendering component in the Gutenberg Block
+
+1.0.4 (2025-08-25)
+- Fix: Lock background scroll if a modal is open
+- Fix: Remove Warnings when running FE linter
+- Fix: Footer and View form links
+- Feat: Add satisfaction survey

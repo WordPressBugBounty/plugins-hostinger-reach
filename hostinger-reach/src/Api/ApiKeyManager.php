@@ -10,9 +10,11 @@ class ApiKeyManager {
     public const CSRF_TRANSIENT            = 'hostinger_reach_csrf_token';
     public const CSRF_TRANSIENT_EXPIRATION = 500;
     public const API_KEY_NAME              = 'hostinger_reach_api_key';
+    public const API_CONNECTION_TIME_NAME  = 'hostinger_reach_api_connection_time';
     public const ENCRYPT_METHOD            = 'AES-256-CBC';
 
     public function store_token( string $token ): bool {
+        add_option( self::API_CONNECTION_TIME_NAME, time() );
         return update_option( self::API_KEY_NAME, $this->encrypt_token( $token ) );
     }
 
@@ -28,6 +30,7 @@ class ApiKeyManager {
         $key       = hash( 'sha256', AUTH_KEY, true );
         $iv        = openssl_random_pseudo_bytes( 16 );
         $encrypted = openssl_encrypt( $token, self::ENCRYPT_METHOD, $key, 0, $iv );
+
         return base64_encode( $iv . $encrypted );
     }
 
@@ -87,6 +90,7 @@ class ApiKeyManager {
         $hostinger_parts = explode( '/', __DIR__ );
         if ( count( $hostinger_parts ) >= 3 ) {
             $hostinger_root = '/' . $hostinger_parts[1] . '/' . $hostinger_parts[2];
+
             return $hostinger_root . '/.api_token';
         }
 

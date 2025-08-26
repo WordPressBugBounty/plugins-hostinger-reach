@@ -1,12 +1,32 @@
 <script lang="ts" setup>
+import { onMounted, onUnmounted } from 'vue';
+
+import { useScrollLock } from '@/composables/useScrollLock';
+
 interface Props {
 	title?: string;
 	subtitle?: string;
 	titleAlignment?: 'centered' | 'left';
+	disableScroll?: boolean;
 }
 
-withDefaults(defineProps<Props>(), {
-	titleAlignment: 'left'
+const props = withDefaults(defineProps<Props>(), {
+	titleAlignment: 'left',
+	disableScroll: true
+});
+
+const { lockScroll, unlockScroll } = useScrollLock();
+
+onMounted(() => {
+	if (props.disableScroll) {
+		lockScroll();
+	}
+});
+
+onUnmounted(() => {
+	if (props.disableScroll) {
+		unlockScroll();
+	}
 });
 </script>
 

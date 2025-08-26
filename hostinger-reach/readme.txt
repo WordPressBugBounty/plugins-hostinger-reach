@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -179,3 +179,9 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Replace Connect Hero image
 - Fix: Reach plugin content not visible when no other Hostinger plugin is installed
 - Feat: Implement ServerSideRendering component in the Gutenberg Block
+
+1.0.4 (2025-08-25)
+- Fix: Lock background scroll if a modal is open
+- Fix: Remove Warnings when running FE linter
+- Fix: Footer and View form links
+- Feat: Add satisfaction survey

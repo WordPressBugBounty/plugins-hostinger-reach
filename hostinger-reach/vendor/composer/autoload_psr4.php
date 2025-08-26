@@ -10,6 +10,7 @@ return array(
     'Hostinger\\WpMenuManager\\' => array($vendorDir . '/hostinger/hostinger-wp-menu-manager/src'),
     'Hostinger\\WpHelper\\' => array($vendorDir . '/hostinger/hostinger-wp-helper/src'),
     'Hostinger\\Tests\\' => array($vendorDir . '/hostinger/hostinger-wp-helper/tests/phpunit'),
+    'Hostinger\\Surveys\\' => array($vendorDir . '/hostinger/hostinger-wp-surveys/src'),
     'Hostinger\\Reach\\' => array($baseDir . '/src'),
     'Automattic\\Jetpack\\Autoloader\\' => array($vendorDir . '/automattic/jetpack-autoloader/src'),
 );

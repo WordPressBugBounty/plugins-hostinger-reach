@@ -92,6 +92,10 @@ const handleFormToggleStatus = async (form: Form, status: boolean) => {
 };
 
 const handleViewForm = (form: Form) => {
+	if (form.formId === 'ai-theme-footer-form') {
+		window.open(hostinger_reach_reach_data.site_url, '_blank');
+	}
+
 	if (form.post?.guid) {
 		window.open(form.post.guid, '_blank');
 	}
@@ -108,8 +112,12 @@ const handleEditForm = (form: Form) => {
 
 	if (editUrl.includes('{post_id}')) {
 		editUrl = editUrl.replace('{post_id}', form.post?.ID.toString() ?? '');
-	} else {
+	} else if (editUrl.includes('{form_id}')) {
 		editUrl = editUrl.replace('{form_id}', form.formId);
+	}
+
+	if (form.formId === 'ai-theme-footer-form') {
+		editUrl = 'site-editor.php?p=%2Fwp_template_part%2Fhostinger-ai-theme%2F%2Ffooter&canvas=edit';
 	}
 
 	if (!editUrl.startsWith('http') && !editUrl.startsWith('/')) {

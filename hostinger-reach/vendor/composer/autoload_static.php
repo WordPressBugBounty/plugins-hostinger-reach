@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
+class ComposerStaticInit165e82d911730e51d56a875217170fc5
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
@@ -16,6 +16,7 @@ class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
             'Hostinger\\WpMenuManager\\' => 24,
             'Hostinger\\WpHelper\\' => 19,
             'Hostinger\\Tests\\' => 16,
+            'Hostinger\\Surveys\\' => 18,
             'Hostinger\\Reach\\' => 16,
         ),
         'A' => 
@@ -41,6 +42,10 @@ class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
         array (
             0 => __DIR__ . '/..' . '/hostinger/hostinger-wp-helper/tests/phpunit',
         ),
+        'Hostinger\\Surveys\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src',
+        ),
         'Hostinger\\Reach\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
@@ -64,6 +69,8 @@ class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
         'Hostinger\\Reach\\Admin\\Database\\FormsTable' => __DIR__ . '/../..' . '/src/Admin/Database/FormsTable.php',
         'Hostinger\\Reach\\Admin\\Menus' => __DIR__ . '/../..' . '/src/Admin/Menus.php',
         'Hostinger\\Reach\\Admin\\Redirects' => __DIR__ . '/../..' . '/src/Admin/Redirects.php',
+        'Hostinger\\Reach\\Admin\\Surveys\\SatisfactionSurvey' => __DIR__ . '/../..' . '/src/Admin/Surveys/SatisfactionSurvey.php',
+        'Hostinger\\Reach\\Admin\\Surveys\\Survey' => __DIR__ . '/../..' . '/src/Admin/Surveys/Survey.php',
         'Hostinger\\Reach\\Api\\ApiKeyManager' => __DIR__ . '/../..' . '/src/Api/ApiKeyManager.php',
         'Hostinger\\Reach\\Api\\Handlers\\ApiHandler' => __DIR__ . '/../..' . '/src/Api/Handlers/ApiHandler.php',
         'Hostinger\\Reach\\Api\\Handlers\\FormsApiHandler' => __DIR__ . '/../..' . '/src/Api/Handlers/FormsApiHandler.php',
@@ -96,6 +103,7 @@ class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
         'Hostinger\\Reach\\Providers\\ProviderInterface' => __DIR__ . '/../..' . '/src/Providers/ProviderInterface.php',
         'Hostinger\\Reach\\Providers\\RedirectsProvider' => __DIR__ . '/../..' . '/src/Providers/RedirectsProvider.php',
         'Hostinger\\Reach\\Providers\\RoutesProvider' => __DIR__ . '/../..' . '/src/Providers/RoutesProvider.php',
+        'Hostinger\\Reach\\Providers\\SurveysProvider' => __DIR__ . '/../..' . '/src/Providers/SurveysProvider.php',
         'Hostinger\\Reach\\Providers\\WpdbProvider' => __DIR__ . '/../..' . '/src/Providers/WpdbProvider.php',
         'Hostinger\\Reach\\Repositories\\ContactListRepository' => __DIR__ . '/../..' . '/src/Repositories/ContactListRepository.php',
         'Hostinger\\Reach\\Repositories\\FormRepository' => __DIR__ . '/../..' . '/src/Repositories/FormRepository.php',
@@ -105,6 +113,12 @@ class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
         'Hostinger\\Reach\\Setup\\Assets' => __DIR__ . '/../..' . '/src/Setup/Assets.php',
         'Hostinger\\Reach\\Setup\\Blocks' => __DIR__ . '/../..' . '/src/Setup/Blocks.php',
         'Hostinger\\Reach\\Setup\\Database' => __DIR__ . '/../..' . '/src/Setup/Database.php',
+        'Hostinger\\Surveys\\Ajax' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Ajax.php',
+        'Hostinger\\Surveys\\Assets' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Assets.php',
+        'Hostinger\\Surveys\\Loader' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Loader.php',
+        'Hostinger\\Surveys\\Rest' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Rest.php',
+        'Hostinger\\Surveys\\SurveyLoader' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/SurveyLoader.php',
+        'Hostinger\\Surveys\\SurveyManager' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/SurveyManager.php',
         'Hostinger\\WpHelper\\Config' => __DIR__ . '/..' . '/hostinger/hostinger-wp-helper/src/Config.php',
         'Hostinger\\WpHelper\\Constants' => __DIR__ . '/..' . '/hostinger/hostinger-wp-helper/src/Constants.php',
         'Hostinger\\WpHelper\\Requests\\Client' => __DIR__ . '/..' . '/hostinger/hostinger-wp-helper/src/Requests/Client.php',
@@ -120,9 +134,9 @@ class ComposerStaticInitf77f276181dc0140c2839db37ee0474f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf77f276181dc0140c2839db37ee0474f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf77f276181dc0140c2839db37ee0474f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf77f276181dc0140c2839db37ee0474f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit165e82d911730e51d56a875217170fc5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit165e82d911730e51d56a875217170fc5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit165e82d911730e51d56a875217170fc5::$classMap;
 
         }, null, ClassLoader::class);
     }

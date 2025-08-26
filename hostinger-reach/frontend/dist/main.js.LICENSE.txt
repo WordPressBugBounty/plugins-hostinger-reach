@@ -39,30 +39,30 @@
 
 /*! #__NO_SIDE_EFFECTS__ */
 
-/*! @license DOMPurify 3.2.5 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.5/LICENSE */
+/*! @license DOMPurify 3.2.6 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.6/LICENSE */
 
 /*! js-cookie v3.0.5 | MIT */
 
 /**
-  * vee-validate v4.15.0
-  * (c) 2024 Abdelrahman Awad
+  * vee-validate v4.15.1
+  * (c) 2025 Abdelrahman Awad
   * @license MIT
   */
 
 /**
-* @vue/runtime-core v3.5.18
+* @vue/runtime-core v3.5.19
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/runtime-dom v3.5.18
+* @vue/runtime-dom v3.5.19
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/shared v3.5.18
+* @vue/shared v3.5.19
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/

@@ -3,7 +3,7 @@
  * Plugin Name:       Hostinger Reach
  * Plugin URI:        https://hostinger.com
  * Description:       Integrate your WordPress site with Hostinger Reach.
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            Hostinger
  * Requires PHP:      8.0
  * Requires at least: 6.0
@@ -19,12 +19,13 @@
 
 use Hostinger\Reach\Setup\Activator;
 use Hostinger\WpMenuManager\Manager;
+use Hostinger\Surveys\Loader;
 
 if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
 
-define( 'HOSTINGER_REACH_PLUGIN_VERSION', '1.0.3' );
+define( 'HOSTINGER_REACH_PLUGIN_VERSION', '1.0.4' );
 define( 'HOSTINGER_REACH_DB_VERSION', '1.0.0' );
 define( 'HOSTINGER_REACH_MINIMUM_PHP_VERSION', '8.0' );
 define( 'HOSTINGER_REACH_PLUGIN_FILE', __FILE__ );
@@ -86,4 +87,15 @@ if ( ! function_exists( 'hostinger_load_menus' ) ) {
 
 if ( ! has_action( 'plugins_loaded', 'hostinger_load_menus' ) ) {
     add_action( 'plugins_loaded', 'hostinger_load_menus' );
+}
+
+if ( ! function_exists( 'hostinger_add_surveys' ) ) {
+    function hostinger_add_surveys(): void {
+        $surveys = Loader::getInstance();
+        $surveys->boot();
+    }
+}
+
+if ( ! empty( $_SERVER['H_PLATFORM'] ) && ! has_action( 'plugins_loaded', 'hostinger_add_surveys' ) ) {
+    add_action( 'plugins_loaded', 'hostinger_add_surveys' );
 }

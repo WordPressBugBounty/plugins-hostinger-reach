@@ -15,11 +15,15 @@ use Hostinger\Reach\Providers\MenusProvider;
 use Hostinger\Reach\Providers\ProviderInterface;
 use Hostinger\Reach\Providers\RedirectsProvider;
 use Hostinger\Reach\Providers\RoutesProvider;
+use Hostinger\Reach\Providers\SurveysProvider;
 use Hostinger\Reach\Providers\WpdbProvider;
 
 class Boot {
     private Container $container;
-    private array $providers       = array(
+
+    private array $all_providers = array();
+
+    private array $providers = array(
         WpdbProvider::class,
         ContainerProvider::class,
         DatabaseProvider::class,
@@ -30,6 +34,11 @@ class Boot {
         IntegrationsProvider::class,
         RedirectsProvider::class,
     );
+
+    private array $hostinger_providers = array(
+        SurveysProvider::class,
+    );
+
     private static ?Boot $instance = null;
 
     private function __construct() {
@@ -45,11 +54,20 @@ class Boot {
     }
 
     public function plugins_loaded(): void {
+        $this->set_providers();
         $this->register_providers();
     }
 
+    public function set_providers(): void {
+        $this->all_providers = $this->providers;
+
+        if ( ! empty( $_SERVER['H_PLATFORM'] ) ) {
+            $this->all_providers = array_merge( $this->all_providers, $this->hostinger_providers );
+        }
+    }
+
     private function register_providers(): void {
-        foreach ( $this->providers as $provider_class ) {
+        foreach ( $this->all_providers as $provider_class ) {
             $provider = new $provider_class();
             if ( $provider instanceof ProviderInterface ) {
                 $provider->register( $this->container );
