@@ -74,7 +74,12 @@ class IntegrationsApiHandler extends ApiHandler {
             return false;
         }
 
-        return $this->plugin_manager->activate( $integration_name );
+        $activated = $this->plugin_manager->activate( $integration_name );
+        if ( $activated ) {
+            do_action( 'hostinger_reach_integration_activated', $integration_name );
+        }
+
+        return $activated;
     }
 
     public function get_integration_data( string $integration_name ): array {

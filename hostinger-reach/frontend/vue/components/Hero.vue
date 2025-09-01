@@ -68,7 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
 				</HText>
 				<HSnackbar
 					v-if="props.isConnectedToAnotherSite"
-					class="d-flex align-items-center"
+					class="hero__warning-snackbar"
 					icon-color="warning--700"
 					icon="ic-warning-circle-filled-24"
 					border-color="warning--500"
@@ -286,6 +286,11 @@ const props = withDefaults(defineProps<Props>(), {
 			padding: 0 8px;
 			margin-bottom: 12px;
 		}
+	}
+
+	&__warning-snackbar {
+		display: flex;
+		align-items: center;
 	}
 
 	&__header-content {

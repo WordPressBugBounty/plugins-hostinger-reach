@@ -142,6 +142,14 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/ContactForm7Integration.php'
 	),
+	'Hostinger\\Reach\\Integrations\\Elementor\\ElementorIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/Elementor/ElementorIntegration.php'
+	),
+	'Hostinger\\Reach\\Integrations\\Elementor\\SubscriptionFormElementorWidget' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/Elementor/SubscriptionFormElementorWidget.php'
+	),
 	'Hostinger\\Reach\\Integrations\\Integration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/Integration.php'
@@ -149,6 +157,10 @@ return array(
 	'Hostinger\\Reach\\Integrations\\IntegrationInterface' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/IntegrationInterface.php'
+	),
+	'Hostinger\\Reach\\Integrations\\IntegrationWithForms' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/IntegrationWithForms.php'
 	),
 	'Hostinger\\Reach\\Integrations\\PluginManager' => array(
 		'version' => 'dev-main',
@@ -350,6 +362,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ContactForm7IntegrationTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ElementorIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ElementorIntegrationTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\IntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/IntegrationTest.php'
@@ -357,6 +373,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormIntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ReachFormIntegrationTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\SubscriptionFormElementorWidgetTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SubscriptionFormElementorWidgetTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WpFormsLiteIntegrationTest' => array(
 		'version' => 'dev-main',
@@ -385,6 +405,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\DatabaseProviderTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/DatabaseProviderTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\IntegrationsProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/IntegrationsProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\RoutesProviderTest' => array(
 		'version' => 'dev-main',

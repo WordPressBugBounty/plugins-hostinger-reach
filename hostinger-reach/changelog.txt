@@ -34,3 +34,10 @@ Changelog
 
 1.0.5 (2025-08-26)
 - Fix: Assets compiler flag
+
+1.0.6 (2025-09-01)
+- Feature: Elementor integration
+- Tweak: Load plugin entries if any 3rd party plugin is active 
+- Tweak: Update translations
+- Tweak: Remove Bootstrap dependencies
+- Fix: update Reach URLs to use new route structure

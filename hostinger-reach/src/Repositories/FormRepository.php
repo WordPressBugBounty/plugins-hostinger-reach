@@ -90,6 +90,20 @@ class FormRepository extends Repository {
         );
     }
 
+    public function delete_all_from_post( int $post_id, string $type ): bool {
+        if ( empty( $type ) ) {
+            return false;
+        }
+
+        return (bool) $this->db->delete(
+            $this->table->table_name(),
+            array(
+                'post_id' => $post_id,
+                'type'    => $type,
+            )
+        );
+    }
+
     /**
      * @throws Exception
      */

@@ -45,8 +45,8 @@ class ReachApiHandler extends ApiHandler {
         $email   = $request->get_param( 'email' );
         $name    = $request->get_param( 'name' );
         $surname = $request->get_param( 'surname' );
-        $group   = $request->get_param( 'group' );
         $form_id = $request->get_param( 'id' );
+        $group   = apply_filters( 'hostinger_reach_get_group', $request->get_param( 'group' ), $form_id );
 
         return $this->post_contact(
             array(

@@ -42,14 +42,19 @@ class SubscriptionFormBlock extends Block {
     }
 
     public function render( array $attributes ): bool|string {
+        ob_start();
+        $this->render_block_html( $attributes );
+        return ob_get_clean();
+    }
+
+    public static function render_block_html( array $attributes ): void {
         $form_id      = $attributes['formId'] ?? '';
         $show_name    = $attributes['showName'] ?? false;
         $show_surname = $attributes['showSurname'] ?? false;
         $contact_list = $attributes['contactList'] ?? '';
-
-        ob_start();
         ?>
         <div class="hostinger-reach-block-subscription-form-wrapper">
+
             <form id="<?php echo esc_attr( $form_id ); ?>" class="hostinger-reach-block-subscription-form">
                 <input type="hidden" name="group" value="<?php echo esc_attr( $contact_list ); ?>">
                 <input type="hidden" name="id" value="<?php echo esc_attr( $form_id ); ?>">
@@ -87,6 +92,5 @@ class SubscriptionFormBlock extends Block {
             </form>
         </div>
         <?php
-        return ob_get_clean();
     }
 }

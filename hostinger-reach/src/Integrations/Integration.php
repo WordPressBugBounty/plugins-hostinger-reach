@@ -15,8 +15,6 @@ abstract class Integration {
 
     abstract public static function get_name(): string;
 
-    abstract public function get_post_type(): string|null;
-
     public function load_forms( array $forms, array $args ): array {
         if ( ! isset( $args['type'] ) || $args['type'] === $this->get_name() ) {
             $integration_forms = $this->get_forms( $args );
@@ -77,5 +75,9 @@ abstract class Integration {
         }
 
         return $is_active_meta === 'yes';
+    }
+
+    public function get_post_type(): string|null {
+        return null;
     }
 }

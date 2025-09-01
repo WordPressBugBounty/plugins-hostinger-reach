@@ -10,15 +10,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
-"PO-Revision-Date: 2025-08-06 16:29+0000\n"
+"PO-Revision-Date: 2025-08-13 09:44+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: hostinger-reach\n"
 "Language: nl_NL_formal\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.27"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.27"
 
 #: src/Setup/Assets.php:135
-#, fuzzy
 msgid "(no title)"
 msgstr "(geen titel)"
 
@@ -61,12 +60,10 @@ msgid "Campaigns"
 msgstr "Campagnes"
 
 #: src/Setup/Assets.php:118
-#, fuzzy
 msgid "Cancel "
 msgstr "Annuleren"
 
 #: src/Setup/Assets.php:97
-#, fuzzy
 #| msgid ""
 #| "Choose how you’d like to manage forms on your website. Create a new form "
 #| "with Hostinger Reach or connect a third-party plugin."
@@ -91,19 +88,16 @@ msgid "Collapse {pluginName} details"
 msgstr "Details {pluginName} samenvouwen"
 
 #: src/Setup/Assets.php:146
-#, fuzzy
 msgid "Connect"
 msgstr "Verbind"
 
 #: frontend/blocks/subscription-block/src/Components/Connect.js:16
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:49
-#, fuzzy
 msgid "Connect Now"
 msgstr "Nu verbinden"
 
 #: src/Setup/Assets.php:74
-#, fuzzy
 msgid "Connect site"
 msgstr "Website aansluiten"
 
@@ -118,7 +112,6 @@ msgid "Contact List"
 msgstr "Contactlijst"
 
 #: src/Setup/Assets.php:92
-#, fuzzy
 msgid "Create campaign"
 msgstr "Campagne maken"
 
@@ -133,9 +126,8 @@ msgstr ""
 "contact met je publiek."
 
 #: src/Setup/Assets.php:141
-#, fuzzy
 msgid "Create form"
-msgstr "Vorm maken"
+msgstr "Formulier maken"
 
 #: frontend/blocks/subscription-block/src/edit.js:135
 #: frontend/dist/blocks/subscription.js:1
@@ -144,16 +136,14 @@ msgid "Create New List"
 msgstr "Nieuwe lijst maken"
 
 #: src/Setup/Assets.php:93
-#, fuzzy
 msgid "Create template"
-msgstr "Sjabloon maken"
+msgstr "Template maken"
 
 #: src/Setup/Assets.php:145
 msgid "Disconnect"
 msgstr "Ontkoppelen"
 
 #: src/Setup/Assets.php:119
-#, fuzzy
 msgid "Disconnect "
 msgstr "Ontkoppelen"
 
@@ -162,23 +152,20 @@ msgid "Disconnect it to link this site instead."
 msgstr "Koppel deze site los en verbind in plaats daarvan met deze site."
 
 #: src/Setup/Assets.php:128
-#, fuzzy
 msgid "Disconnect plugin"
 msgstr "Plugin uitschakelen"
 
 #: src/Setup/Assets.php:116
-#, fuzzy
 msgid "Disconnect plugin?"
 msgstr "Plugin uitschakelen?"
 
 #: src/Setup/Assets.php:117
-#, fuzzy
 msgid ""
 "Disconnecting will stop new contacts from being collected. You can reconnect "
 "or use a different form anytime."
 msgstr ""
-"Als u de verbinding verbreekt, worden er geen nieuwe contactpersonen meer "
-"verzameld. U kunt op elk moment opnieuw verbinding maken of een ander "
+"Als je de verbinding verbreekt, worden er geen nieuwe contactpersonen meer "
+"verzameld. Je kunt op elk moment opnieuw verbinding maken of een ander "
 "formulier gebruiken."
 
 #: src/Setup/Assets.php:126
@@ -197,12 +184,10 @@ msgid "Email Marketing"
 msgstr "E-mailmarketing"
 
 #: src/Setup/Assets.php:77
-#, fuzzy
 msgid "Email marketing background with gradient design"
 msgstr "E-mailmarketingachtergrond met gradiëntontwerp"
 
 #: src/Setup/Assets.php:78
-#, fuzzy
 msgid ""
 "Email marketing illustration featuring envelopes and communication icons"
 msgstr ""
@@ -239,9 +224,8 @@ msgid "Go to plugin"
 msgstr "Ga naar plug-in"
 
 #: src/Setup/Assets.php:75
-#, fuzzy
 msgid "Go to Reach"
-msgstr "Ga naar Bereiken"
+msgstr "Ga naar Reach"
 
 #. Author of the plugin
 #: hostinger-reach.php
@@ -311,7 +295,6 @@ msgstr "https://hostinger.nl"
 
 #. Author URI of the plugin
 #: hostinger-reach.php
-#, fuzzy
 msgid "https://www.hostinger.com/email-marketing"
 msgstr "https://www.hostinger.com/email-marketing"
 
@@ -320,12 +303,10 @@ msgid "Inactive"
 msgstr "Inactief"
 
 #: src/Setup/Assets.php:144
-#, fuzzy
 msgid "Install and connect"
 msgstr "Installeren en aansluiten"
 
 #: src/Setup/Assets.php:143
-#, fuzzy
 msgid "Installed plugins"
 msgstr "Geïnstalleerde plugins"
 
@@ -335,13 +316,12 @@ msgid "Integrate your WordPress site with Hostinger Reach."
 msgstr "Integreer je WordPress site met Hostinger Reach."
 
 #: src/Setup/Assets.php:139
-#, fuzzy
 msgid ""
 "Make sure the people you contact expect your emails and are okay with "
 "receiving them."
 msgstr ""
-"Zorg ervoor dat de mensen met wie u contact opneemt uw e-mails verwachten en "
-"het goed vinden om ze te ontvangen."
+"Zorg ervoor dat de mensen met wie je contact opneemt je e-mails verwachten "
+"en het goed vinden om ze te ontvangen."
 
 #: src/Setup/Assets.php:73
 msgid "Manage"
@@ -361,7 +341,6 @@ msgid "Name for the new Contact List"
 msgstr "Naam voor de nieuwe Contactlijst"
 
 #: src/Setup/Assets.php:140
-#, fuzzy
 msgid "New contact form"
 msgstr "Nieuw contactformulier"
 
@@ -380,12 +359,10 @@ msgid "New subscribers"
 msgstr "Nieuwe abonnees"
 
 #: src/Setup/Assets.php:134
-#, fuzzy
 msgid "No forms found for this integration."
 msgstr "Geen formulieren gevonden voor deze integratie."
 
 #: src/Setup/Assets.php:101
-#, fuzzy
 msgid "No pages available. Create a new page to get started."
 msgstr "Geen pagina's beschikbaar. Maak een nieuwe pagina om te beginnen."
 
@@ -398,12 +375,10 @@ msgid "Plugin"
 msgstr "Plug-in"
 
 #: src/Setup/Assets.php:136
-#, fuzzy
 msgid "Plugin connected successfully"
 msgstr "Plugin succesvol verbonden"
 
 #: src/Setup/Assets.php:137
-#, fuzzy
 msgid "Plugin disconnected successfully"
 msgstr "Plugin succesvol losgekoppeld"
 
@@ -412,7 +387,6 @@ msgid "Reach is already connected to another site."
 msgstr "Reach is al met een andere site verbonden."
 
 #: src/Setup/Assets.php:108
-#, fuzzy
 #| msgid ""
 #| "Reach offers a free plan for one year– perfect for getting started. Paid "
 #| "plans are based on how many unique contacts you aim to reach and how many "
@@ -550,7 +524,6 @@ msgid "View form"
 msgstr "Formulier bekijken"
 
 #: src/Setup/Assets.php:142
-#, fuzzy
 msgid "View supported plugins"
 msgstr "Ondersteunde plugins bekijken"
 
@@ -574,20 +547,18 @@ msgstr "WP Formulieren Lite %s"
 #: frontend/blocks/subscription-block/src/Components/Connect.js:7
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:40
-#, fuzzy
 msgid "You are not connected to Hostinger Reach"
-msgstr "U bent niet verbonden met Hostinger Reach"
+msgstr "Je bent niet verbonden met Hostinger Reach"
 
 #: frontend/blocks/subscription-block/src/Components/Connect.js:10
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:43
-#, fuzzy
 msgid ""
 "You are not connected to Hostinger Reach. To gain full access to this block, "
 "you need to connect your Hostinger Reach account."
 msgstr ""
-"U bent niet verbonden met Hostinger Reach. Om volledige toegang tot dit blok "
-"te krijgen, moet u verbinding maken met uw Hostinger Reach account."
+"Je bent niet verbonden met Hostinger Reach. Om volledige toegang tot dit "
+"blok te krijgen, moet je verbinding maken met je Hostinger Reach account."
 
 #. translators: %s: PHP version
 #: hostinger-reach.php:55

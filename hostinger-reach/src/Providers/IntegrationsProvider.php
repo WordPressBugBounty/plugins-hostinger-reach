@@ -7,6 +7,7 @@ use Hostinger\Reach\Api\Handlers\ReachApiHandler;
 use Hostinger\Reach\Container;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\ContactForm7Integration;
+use Hostinger\Reach\Integrations\Elementor\ElementorIntegration;
 use Hostinger\Reach\Integrations\ReachFormIntegration;
 use Hostinger\Reach\Integrations\WpFormsLiteIntegration;
 use Hostinger\Reach\Repositories\ContactListRepository;
@@ -22,6 +23,7 @@ class IntegrationsProvider implements ProviderInterface {
         ReachFormIntegration::INTEGRATION_NAME    => ReachFormIntegration::class,
         ContactForm7Integration::INTEGRATION_NAME => ContactForm7Integration::class,
         WpFormsLiteIntegration::INTEGRATION_NAME  => WpFormsLiteIntegration::class,
+        ElementorIntegration::INTEGRATION_NAME    => ElementorIntegration::class,
     );
 
     public function register( Container $container ): void {
@@ -39,6 +41,11 @@ class IntegrationsProvider implements ProviderInterface {
             WpFormsLiteIntegration::class  => array(
                 $container->get( ReachApiHandler::class ),
                 $container->get( IntegrationsApiHandler::class ),
+            ),
+            ElementorIntegration::class    => array(
+                $container->get( ReachApiHandler::class ),
+                $container->get( IntegrationsApiHandler::class ),
+                $container->get( FormRepository::class ),
             ),
         );
 

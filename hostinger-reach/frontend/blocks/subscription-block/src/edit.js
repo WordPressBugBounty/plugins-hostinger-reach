@@ -23,7 +23,6 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 	const [showNewContactList, setShowNewContactList] = useState(attributes.contactList === '');
 	const [isConnected, setIsConnected] = useState(true);
 	const [contactLists, setContactLists] = useState([]);
-	const [status, setStatus] = useState(statuses.ready);
 
 	useEffect(() => {
 		fetchContactLists();

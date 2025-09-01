@@ -2,6 +2,7 @@
 
 namespace Hostinger\Reach\Integrations;
 
+use Hostinger\Reach\Integrations\Elementor\ElementorIntegration;
 use Plugin_Upgrader;
 use Plugin_Upgrader_Skin;
 use WP_Error;
@@ -31,6 +32,15 @@ class PluginManager {
                 'url'          => 'https://wordpress.org/plugins/wpforms-lite/',
                 'download_url' => 'https://downloads.wordpress.org/plugin/wpforms-lite.zip',
                 'title'        => __( 'WP Forms Lite', 'hostinger-reach' ),
+            ),
+            ElementorIntegration::INTEGRATION_NAME    => array(
+                'folder'       => 'elementor',
+                'file'         => 'elementor.php',
+                'admin_url'    => 'admin.php?page=elementor',
+                'edit_url'     => 'post.php?post={post_id}&action=elementor',
+                'url'          => 'https://wordpress.org/plugins/elementor/',
+                'download_url' => 'https://downloads.wordpress.org/plugin/elementor.zip',
+                'title'        => __( 'Elementor', 'hostinger-reach' ),
             ),
         );
     }

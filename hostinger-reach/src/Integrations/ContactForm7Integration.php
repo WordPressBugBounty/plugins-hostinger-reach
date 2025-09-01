@@ -18,8 +18,9 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
     protected IntegrationsApiHandler $integrations_api_handler;
 
     public function __construct( ReachApiHandler $reach_api_handler, IntegrationsApiHandler $integrations_api_handler ) {
-        $this->reach_api_handler        = $reach_api_handler;
         $this->integrations_api_handler = $integrations_api_handler;
+
+        $this->reach_api_handler = $reach_api_handler;
     }
 
     public function init(): void {

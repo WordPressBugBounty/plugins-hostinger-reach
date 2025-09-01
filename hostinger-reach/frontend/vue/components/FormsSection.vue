@@ -25,9 +25,12 @@ const handleAddForm = () => {
 	openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
 };
 
-const isBannerVisible = computed(() => !integrationsStore.isLoading && !integrationsStore.hasAnyForms);
-const isTableVisible = computed(() => integrationsStore.isLoading || integrationsStore.hasAnyForms);
-const isAddButtonVisible = computed(() => !integrationsStore.isLoading && integrationsStore.hasAnyForms);
+const shouldShowTable = computed(
+	() => integrationsStore?.activeIntegrations?.length > 1 || integrationsStore.hasAnyForms
+);
+const isBannerVisible = computed(() => !integrationsStore.isLoading && !shouldShowTable.value);
+const isTableVisible = computed(() => integrationsStore.isLoading || shouldShowTable.value);
+const isAddButtonVisible = computed(() => !integrationsStore.isLoading && shouldShowTable.value);
 </script>
 
 <template>

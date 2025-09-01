@@ -28,7 +28,9 @@ const getStatusLabel = () =>
 
 const getStatusColor = () => (props.form.isActive ? 'success' : 'gray');
 
-const isReachPlugin = computed(() => props.form.type === PLUGIN_IDS.HOSTINGER_REACH);
+const canToggle = computed(
+	() => props.form.type !== PLUGIN_IDS.HOSTINGER_REACH && props.form.type !== PLUGIN_IDS.ELEMENTOR
+);
 </script>
 
 <template>
@@ -36,7 +38,7 @@ const isReachPlugin = computed(() => props.form.type === PLUGIN_IDS.HOSTINGER_RE
 		<div class="form-item__cell form-item__cell--plugin">
 			<div class="form-item__form-content">
 				<Toggle
-					v-if="!isReachPlugin"
+					v-if="canToggle"
 					:value="props.form.isActive"
 					:is-disabled="form.isLoading"
 					@toggle="(status) => emit('toggleStatus', props.form, status)"

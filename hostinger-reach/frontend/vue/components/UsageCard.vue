@@ -78,11 +78,7 @@ const SKELETON_CONFIG = {
 									<HText v-else as="div" variant="body-3-secondary" class="usage-card__metric-label">
 										{{ metric.label }}
 									</HText>
-									<span
-										v-if="metric.hasIcon && !isLoading"
-										v-tooltip="metric.tooltip"
-										class="d-flex align-items-center"
-									>
+									<span v-if="metric.hasIcon && !isLoading" v-tooltip="metric.tooltip" class="usage-card__metric-icon">
 										<HIcon name="ic-info-circle-filled-16" color="neutral--300" aria-hidden="true" />
 									</span>
 								</div>
@@ -196,6 +192,11 @@ $mobile-breakpoint: 767px;
 		align-items: center;
 		gap: 8px;
 		margin-bottom: 4px;
+	}
+
+	&-icon {
+		display: flex;
+		align-items: center;
 	}
 
 	&-label {

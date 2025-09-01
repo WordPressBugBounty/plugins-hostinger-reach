@@ -1,4 +1,5 @@
 import contactForm7PluginIcon from '@/assets/images/icons/contact-form-7-plugin.svg';
+import elementorPluginIcon from '@/assets/images/icons/elementor-plugin.svg';
 import emailReachPluginIcon from '@/assets/images/icons/email-reach-plugin.svg';
 import wpFormsLitePluginIcon from '@/assets/images/icons/wp-forms-lite-plugin.svg';
 import type { Integration } from '@/types/models';
@@ -6,19 +7,22 @@ import type { Integration } from '@/types/models';
 export const PLUGIN_IDS = {
 	HOSTINGER_REACH: 'hostinger-reach',
 	CONTACT_FORM_7: 'contact-form-7',
-	WP_FORMS_LITE: 'wp-forms-lite'
+	WP_FORMS_LITE: 'wp-forms-lite',
+	ELEMENTOR: 'elementor'
 } as const;
 
 export const INTEGRATION_TO_FORM_TYPE_MAP: Record<string, string> = {
 	hostingerReach: 'hostinger-reach',
 	'contactForm-7': 'contact-form-7',
-	wpformsLite: 'wpforms-lite'
+	wpformsLite: 'wpforms-lite',
+	elementor: 'elementor'
 } as const;
 
 export const PLUGIN_TITLES = {
 	HOSTINGER_REACH: 'hostinger_reach_plugin_titles_hostinger_reach',
 	CONTACT_FORM_7: 'hostinger_reach_plugin_titles_contact_form_7',
-	WP_FORMS_LITE: 'hostinger_reach_plugin_titles_wp_forms_lite'
+	WP_FORMS_LITE: 'hostinger_reach_plugin_titles_wp_forms_lite',
+	ELEMENTOR: 'hostinger_reach_plugin_titles_elementor'
 } as const;
 
 export const PLUGIN_STATUSES = {
@@ -50,6 +54,11 @@ export const DEFAULT_PLUGIN_DATA: Record<string, PluginInfo> = {
 		id: 'wpformsLite',
 		title: PLUGIN_TITLES.WP_FORMS_LITE,
 		icon: wpFormsLitePluginIcon
+	},
+	elementor: {
+		id: 'elementor',
+		title: PLUGIN_TITLES.ELEMENTOR,
+		icon: elementorPluginIcon
 	}
 } as const;
 

@@ -11,16 +11,15 @@ if ( ! DEFINED( 'ABSPATH' ) ) {
     exit;
 }
 
-class ReachFormIntegration extends Integration implements IntegrationInterface {
+class ReachFormIntegration extends IntegrationWithForms implements IntegrationInterface {
 
     public const INTEGRATION_NAME = 'hostinger-reach';
 
-    protected FormRepository $form_repository;
     protected ContactListRepository $contact_list_repository;
     protected Functions $functions;
 
     public function __construct( FormRepository $form_repository, ContactListRepository $contact_list_repository, Functions $functions ) {
-        $this->form_repository         = $form_repository;
+        parent::__construct( $form_repository );
         $this->contact_list_repository = $contact_list_repository;
         $this->functions               = $functions;
     }
@@ -82,8 +81,18 @@ class ReachFormIntegration extends Integration implements IntegrationInterface {
         );
     }
 
-    public function get_post_type(): string|null {
-        return null;
+    public function get_form_ids( WP_Post $post ): array {
+        $blocks           = $this->functions->get_reach_subscription_blocks( $post->ID );
+        $current_form_ids = array();
+
+        foreach ( $blocks as $block ) {
+            if ( empty( $block['formId'] ) ) {
+                continue;
+            }
+            $current_form_ids[] = $block['formId'];
+        }
+
+        return $current_form_ids;
     }
 
     private function set_contact_list( string $name ): array {
@@ -112,33 +121,6 @@ class ReachFormIntegration extends Integration implements IntegrationInterface {
             } else {
                 $this->form_repository->insert( array_merge( $form, array( 'post_id' => $post->ID ) ) );
             }
-        }
-    }
-
-    private function maybe_unset_forms( WP_Post $post ): void {
-        $previous_forms    = $this->form_repository->all( array( 'post_id' => $post->ID ) );
-        $previous_form_ids = array_column( $previous_forms, 'form_id' );
-        $blocks            = $this->functions->get_reach_subscription_blocks( $post->ID );
-        $current_form_ids  = array();
-
-        foreach ( $blocks as $block ) {
-            if ( empty( $block['formId'] ) ) {
-                continue;
-            }
-            $current_form_ids[] = $block['formId'];
-        }
-
-        foreach ( $previous_form_ids as $form_id ) {
-            if ( ! in_array( $form_id, $current_form_ids, true ) ) {
-                $this->form_repository->delete( $form_id );
-            }
-        }
-    }
-
-    private function unset_all_forms( WP_Post $post ): void {
-        $forms = $this->form_repository->all( array( 'post_id' => $post->ID ) );
-        foreach ( $forms as $form ) {
-            $this->form_repository->delete( $form['form_id'] );
         }
     }
 }

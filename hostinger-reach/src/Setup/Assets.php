@@ -132,6 +132,7 @@ class Assets {
             'hostinger_reach_plugin_titles_hostinger_reach'           => __( 'Hostinger Reach', 'hostinger-reach' ),
             'hostinger_reach_plugin_titles_contact_form_7'            => __( 'Contact Form 7', 'hostinger-reach' ),
             'hostinger_reach_plugin_titles_wp_forms_lite'             => __( 'WP Forms Lite', 'hostinger-reach' ),
+            'hostinger_reach_plugin_titles_elementor'                 => __( 'Elementor', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_expand_aria'        => __( 'Expand {pluginName} details', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_collapse_aria'      => __( 'Collapse {pluginName} details', 'hostinger-reach' ),
             'hostinger_reach_plugin_expansion_no_forms'               => __( 'No forms found for this integration.', 'hostinger-reach' ),

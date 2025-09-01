@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -188,3 +188,10 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 
 1.0.5 (2025-08-26)
 - Fix: Assets compiler flag
+
+1.0.6 (2025-09-01)
+- Feature: Elementor integration
+- Tweak: Load plugin entries if any 3rd party plugin is active 
+- Tweak: Update translations
+- Tweak: Remove Bootstrap dependencies
+- Fix: update Reach URLs to use new route structure
