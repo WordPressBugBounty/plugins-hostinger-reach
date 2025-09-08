@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,7 +75,7 @@ With over 20 years of experience helping people succeed online, Hostinger create
 This plugin connects to Hostinger Reach API service to collect and share the next information:
 
  - Collect your Reach account overview stats and show them in the wp-admin dashboard
- - Send new email subscription data to Reach in order to the user to collect subscribers
+ - Automatically sync new subscribers from your site to Reach
  - Authentication with Hostinger Reach to share ecrypted keys, secure, and protect the communication channel
 
  Hostinger Reach plugin goal is to offer a seamless integration within Hostinger Reach service. Hence, a communication
@@ -88,8 +88,7 @@ This plugin connects to Hostinger Reach API service to collect and share the nex
 
  = Compiled code =
 
- In order to optimize the plugin and reduce the size of the bundle we minify and compile our JavaScript
- files.
+ In order to optimize the plugin and reduce the size of the bundle we minify and compile our JavaScript files.
 
  For transparency and following the community guidelines you can find the source code inside the `frontend` folder.
 
@@ -136,14 +135,14 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 1. Install the plugin
     - Use the built-in WordPress plugin installer, or manually upload the plugin:
     - Download the ZIP file
-    - Extract the file and upload its contents to your ``/wp-content/plugins/` directory
+    - Extract the file and upload its contents to your `/wp-content/plugins/` directory
 
 2. Activate Reach
     - After installing the plugin, just click the Activate button to get started. Alternatively, go to your WordPress Admin area → Plugins → Find Hostinger Reach and click Activate
-    - After activation of the plugin, you will see the Hostinger menu item on the left navigation bar with.
+    - After activation of the plugin, you will see the Hostinger menu item in the left navigation bar
 
 3. Start using Reach
-    - Click get started to connect your WordPress site with just one click.
+    - Click get started to connect your WordPress site with just one click
 
 4. Complete the setup
     - Create a new subscription form or sync your existing contact forms
@@ -164,6 +163,7 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Bump version logic
 
 1.0.2 (2025-08-12)
+
 - Update translations
 - Fix: loader in select page redirection
 - Fix: Apostrophe is not displayed correctly in page name on Select page modal
@@ -176,22 +176,38 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Tweak: Add header to overview page
 
 1.0.3 (2025-08-21)
+
 - Fix: Replace Connect Hero image
 - Fix: Reach plugin content not visible when no other Hostinger plugin is installed
 - Feat: Implement ServerSideRendering component in the Gutenberg Block
 
 1.0.4 (2025-08-25)
+
 - Fix: Lock background scroll if a modal is open
 - Fix: Remove Warnings when running FE linter
 - Fix: Footer and View form links
 - Feat: Add satisfaction survey
 
 1.0.5 (2025-08-26)
+
 - Fix: Assets compiler flag
 
 1.0.6 (2025-09-01)
+
 - Feature: Elementor integration
-- Tweak: Load plugin entries if any 3rd party plugin is active 
+- Tweak: Load plugin entries if any 3rd party plugin is active
 - Tweak: Update translations
 - Tweak: Remove Bootstrap dependencies
 - Fix: update Reach URLs to use new route structure
+
+1.0.7 (2025-09-08)
+
+- Feature: Add Dialog when a post is published with Reach Block
+- Fix: Add/edit forms for elementor pages doesn't open Elementor
+- Fix: Elementor pages with Reach forms not recognized
+- Fix: Submit button style overrides theme styles
+- Fix: Prevent Toggle On/Off an invalid form
+- Dev: Update PR templates
+- Dev: Add staging support for Reach API
+- Dev: Fix Lint workflow
+- Dev: Implement JavaScript unit test coverage

@@ -151,8 +151,14 @@ class ReachApiHandler extends ApiHandler {
     }
 
     private function set_api_base_name(): void {
-        $this->hostinger_auth_url = 'https://auth.hostinger.com/login';
-        $this->reach_domain       = 'https://reach.hostinger.com/';
-        $this->api_base_name      = $this->reach_domain . 'api/public/v1/';
+        if ( $this->get_functions()->is_staging() ) {
+            $this->hostinger_auth_url = 'https://auth.hostinger.dev/login';
+            $this->reach_domain       = 'https://reach.hostinger.dev/';
+        } else {
+            $this->hostinger_auth_url = 'https://auth.hostinger.com/login';
+            $this->reach_domain       = 'https://reach.hostinger.com/';
+        }
+
+        $this->api_base_name = $this->reach_domain . 'api/public/v1/';
     }
 }

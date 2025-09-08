@@ -77,6 +77,12 @@ const handleFormToggleStatus = async (form: Form, status: boolean) => {
 		integration.forms[formIndex].isLoading = false;
 	}
 
+	if (error?.response?.data?.error) {
+		showError(error?.response?.data?.error);
+
+		return;
+	}
+
 	if (error) {
 		showError(translate('hostinger_reach_error_message'));
 

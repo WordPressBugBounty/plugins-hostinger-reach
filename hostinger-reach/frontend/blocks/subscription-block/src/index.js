@@ -41,6 +41,11 @@ registerBlockType('hostinger-reach/subscription',
 				type: 'string',
 				default: '',
 			},
+			layout: {
+				type: 'string',
+				default: 'default',
+				enum: ['default', 'inline']
+			}
 		},
 		edit: Edit,
 		save: () => {

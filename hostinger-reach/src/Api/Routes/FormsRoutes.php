@@ -100,13 +100,31 @@ class FormsRoutes extends Routes {
                 ),
             )
         );
+        register_rest_field(
+            'page',
+            '_hostinger_reach_plugin_is_elementor',
+            array(
+                'get_callback' => array( $this, 'is_elementor' ),
+                'schema'       => array(
+                    'type' => 'boolean',
+                ),
+            )
+        );
     }
 
-    public function has_subscription_block( array $post, string $field_name, WP_REST_Request $request ): bool {
-        if ( ! $request->has_param( 'hostinger_reach_has_subscription_block' ) ) {
+    public function is_elementor( array $post, string $field_name, WP_REST_Request $request ): bool {
+        if ( ! $request->has_param( 'hostinger_reach_page_query' ) ) {
             return false;
         }
 
-        return $this->handler->get_functions()->has_reach_subscription_block( $post['id'] );
+        return $this->handler->get_functions()->is_elementor( $post['id'] );
+    }
+
+    public function has_subscription_block( array $post, string $field_name, WP_REST_Request $request ): bool {
+        if ( ! $request->has_param( 'hostinger_reach_page_query' ) ) {
+            return false;
+        }
+
+        return $this->handler->get_functions()->has_reach_form( $post['id'] );
     }
 }

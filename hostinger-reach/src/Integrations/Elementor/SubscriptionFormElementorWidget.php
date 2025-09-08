@@ -8,9 +8,10 @@ use Hostinger\Reach\Blocks\SubscriptionFormBlock;
 class SubscriptionFormElementorWidget extends Widget_Base {
 
     public const FORM_ID_PREFIX = 'elementor-hostinger-reach-form-';
+    public const WIDGET_NAME    = 'hostinger-reach';
 
     public function get_name(): string {
-        return 'hostinger-reach';
+        return self::WIDGET_NAME;
     }
 
 

@@ -18,6 +18,6 @@ export const pagesRepo = {
 			}
 		};
 
-		return httpService.get<WordPressPagesList>(`${URL}/pages?hostinger_reach_has_subscription_block=1`, config);
+		return httpService.get<WordPressPagesList>(`${URL}/pages?hostinger_reach_page_query=1`, config);
 	}
 };

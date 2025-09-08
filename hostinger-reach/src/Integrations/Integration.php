@@ -3,6 +3,8 @@
 namespace Hostinger\Reach\Integrations;
 
 use Hostinger\Reach\Models\Form;
+use Exception;
+use WP_Post;
 
 if ( ! defined( 'ABSPATH' ) ) {
     die;
@@ -25,9 +27,18 @@ abstract class Integration {
         return $forms;
     }
 
-    public function on_form_activation_change( bool $reach_form_was_updated, string $form_id, bool $is_active ): bool {
-        if ( $reach_form_was_updated ) {
-            return $reach_form_was_updated;
+    public function on_form_activation_change( bool $repository_form_was_updated, string $form_id, bool $is_active ): bool {
+        if ( $repository_form_was_updated ) {
+            return $repository_form_was_updated;
+        }
+
+        $post = get_post( $form_id );
+        if ( ! $post || $this->get_post_type() !== $post->post_type ) {
+            return $repository_form_was_updated;
+        }
+
+        if ( $is_active && ! $this->is_form_valid( $post ) ) {
+            throw new Exception( __( 'This form has not an email field. Create an email field in the form to allow it to be synced with Reach', 'hostinger-reach' ) );
         }
 
         return (bool) update_post_meta( (int) $form_id, Integration::HOSTINGER_REACH_IS_ACTIVE_META_KEY, $is_active ? 'yes' : 'no' );
@@ -54,7 +65,7 @@ abstract class Integration {
                         'form_id'     => $post->ID,
                         'post_id'     => $post->ID,
                         'type'        => $this->get_name(),
-                        'is_active'   => $this->is_form_enabled( $post->ID ),
+                        'is_active'   => $this->is_form_valid( $post ) && $this->is_form_enabled( $post->ID ),
                         'submissions' => (int) get_post_meta( $post->ID, Integration::HOSTINGER_REACH_SUBMISSIONS_META_KEY, true ),
                     )
                 );
@@ -79,5 +90,9 @@ abstract class Integration {
 
     public function get_post_type(): string|null {
         return null;
+    }
+
+    public function is_form_valid( WP_Post $post ): bool {
+        return true;
     }
 }

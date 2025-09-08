@@ -37,12 +37,26 @@ const handleCreateForm = () => {
 					openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
 				}
 			},
-			pages: pagesStore.pages.map((page) => ({
-				id: page.id.toString(),
-				name: decode(page.title.rendered),
-				link: page.link,
-				isAdded: page.HostingerReachPluginHasSubscriptionBlock ?? false
-			}))
+			pages: pagesStore.pages.map((page) => {
+				let pageUrl = `/wp-admin/post.php?post=${page.id}`;
+
+				if (!page.HostingerReachPluginHasSubscriptionBlock) {
+					pageUrl = `${pageUrl}&hostinger_reach_add_block=1`;
+				}
+
+				if (page.HostingerReachPluginIsElementor) {
+					pageUrl = `${pageUrl}&action=elementor`;
+				} else {
+					pageUrl = `${pageUrl}&action=edit`;
+				}
+
+				return {
+					id: page.id.toString(),
+					name: decode(page.title.rendered),
+					link: pageUrl,
+					isAdded: page.HostingerReachPluginHasSubscriptionBlock ?? false
+				};
+			})
 		},
 		{
 			hasCloseButton: true

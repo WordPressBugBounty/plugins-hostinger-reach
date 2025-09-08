@@ -63,6 +63,7 @@ export interface WordPressPage {
 	meta: Meta;
 	classList: string[];
 	HostingerReachPluginHasSubscriptionBlock: boolean;
+	HostingerReachPluginIsElementor: boolean;
 	links: Links;
 }
 

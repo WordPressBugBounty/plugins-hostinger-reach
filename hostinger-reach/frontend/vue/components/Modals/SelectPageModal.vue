@@ -24,10 +24,7 @@ const handlePageClick = (page: Page) => {
 
 	loadingPageId.value = page.id;
 
-	const baseUrl = `/wp-admin/post.php?post=${page.id}&action=edit`;
-	const editUrl = page.isAdded ? baseUrl : `${baseUrl}&hostinger_reach_add_block=1`;
-
-	window.location.href = editUrl;
+	window.location.href = page.link;
 };
 
 const handleNewFormClick = () => {

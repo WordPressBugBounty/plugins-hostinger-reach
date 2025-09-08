@@ -23,8 +23,13 @@
 		"contactList": {
 			"type": "string",
 			"default": ""
-		}
-	},
+		},
+    "layout": {
+      "type": "string",
+      "default": "default",
+      "enum": ["default", "inline"]
+    }
+  },
 	"supports": {
 		"html": false
 	}

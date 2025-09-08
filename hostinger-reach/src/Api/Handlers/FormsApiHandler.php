@@ -7,6 +7,7 @@ use Hostinger\Reach\Repositories\ContactListRepository;
 use Hostinger\Reach\Repositories\FormRepository;
 use WP_REST_Request;
 use WP_REST_Response;
+use Exception;
 
 if ( ! defined( 'ABSPATH' ) ) {
     die;
@@ -59,17 +60,30 @@ class FormsApiHandler extends ApiHandler {
         $form_id   = $request->get_param( 'form_id' );
         $is_active = (int) $request->get_param( 'is_active' );
 
-        $is_updated = apply_filters(
-            'hostinger_reach_after_form_state_is_set',
-            $this->form_repository->update(
+        try {
+            $is_updated = apply_filters(
+                'hostinger_reach_after_form_state_is_set',
+                $this->form_repository->update(
+                    array(
+                        'form_id'   => $form_id,
+                        'is_active' => $is_active,
+                    )
+                ),
+                $form_id,
+                $is_active
+            );
+        } catch ( Exception $e ) {
+            $message = $e->getMessage();
+
+            return $this->handle_response(
                 array(
-                    'form_id'   => $form_id,
-                    'is_active' => $is_active,
+                    'body'     => wp_json_encode( array( 'error' => sanitize_text_field( $message ) ) ),
+                    'response' => array(
+                        'code' => 400,
+                    ),
                 )
-            ),
-            $form_id,
-            $is_active
-        );
+            );
+        }
 
         return $this->handle_response(
             array(

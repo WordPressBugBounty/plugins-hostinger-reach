@@ -1,5 +1,7 @@
 import {useState, useEffect} from "react";
 import apiFetch from '@wordpress/api-fetch';
+import { useSelect, select } from '@wordpress/data';
+
 import ServerSideRender from "@wordpress/server-side-render";
 import {useBlockProps, InspectorControls} from "@wordpress/block-editor";
 import {
@@ -9,22 +11,35 @@ import {
 } from "@wordpress/components";
 import {__} from '@wordpress/i18n';
 import Connect from "./Components/Connect";
-
-const statuses = {
-	ready: 'ready',
-	success: 'success',
-	error: 'error',
-	loading: 'loading',
-}
+import Dialog from "./Components/Dialog";
 
 const Edit = ({attributes, setAttributes, clientId}) => {
+	const { isPostPublished, postPermalink } = useSelect((select) => ({
+		isPostPublished: select('core/editor').isCurrentPostPublished()
+	}));
+
 	const blockProps = useBlockProps();
 	const nonce = wp.data.select('core/editor').getEditorSettings().nonce || '';
 	const [showNewContactList, setShowNewContactList] = useState(attributes.contactList === '');
 	const [isConnected, setIsConnected] = useState(true);
 	const [contactLists, setContactLists] = useState([]);
+	const [showDialog, setShowDialog] = useState(false);
+	const [lastStatus, setLastStatus] = useState(null);
+
+	const layoutOptions = [
+		{ label: __('Default', 'hostinger-reach'), value: 'default' },
+		{ label: __('Inline', 'hostinger-reach'), value: 'inline' }
+	];
 
 	useEffect(() => {
+		if ( isPostPublished && lastStatus !== null && lastStatus !== 'publish' ) {
+			setShowDialog(true);
+		}
+	}, [isPostPublished, lastStatus]);
+
+
+	useEffect(() => {
+		setLastPostStatus();
 		fetchContactLists();
 		checkConnection();
 	}, []);
@@ -60,6 +75,11 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 		} catch (err) {
 			setIsConnected(false);
 		}
+	}
+
+	const setLastPostStatus = () => {
+		const lastKnownStatus = select('core/editor').getEditedPostAttribute('status');
+		setLastStatus(lastKnownStatus);
 	}
 
 	const getContactLists = async () => {
@@ -130,6 +150,15 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 					}
 				/>
 			</PanelBody>
+			<PanelBody title={__('Layout Settings', 'hostinger-reach')}>
+				<SelectControl
+					label={__('Layout', 'hostinger-reach')}
+					value={attributes.layout}
+					options={layoutOptions}
+					onChange={(value) => setAttributes({ layout: value })}
+				/>
+			</PanelBody>
+
 		</InspectorControls>
 		{!isConnected && <Connect/>}
 		<ServerSideRender
@@ -137,6 +166,7 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 			block="hostinger-reach/subscription"
 			attributes={attributes}
 		/>
+		{showDialog && <Dialog onClose={() => setShowDialog(false)} /> }
 	</div>
 
 }

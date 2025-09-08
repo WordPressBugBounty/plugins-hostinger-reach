@@ -2,6 +2,8 @@
 
 namespace Hostinger\Reach;
 
+use Hostinger\Reach\Integrations\Elementor\SubscriptionFormElementorWidget;
+
 if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
@@ -117,10 +119,54 @@ class Functions {
         return isset( $_SERVER['H_STAGING'] ) && filter_var( wp_unslash( $_SERVER['H_STAGING'] ), FILTER_VALIDATE_BOOLEAN ) === true;
     }
 
-    public function has_reach_subscription_block( int $id ): bool {
-        $content = get_post_field( 'post_content', $id );
+    public function has_reach_subscription_block( int $post_id ): bool {
+        $content = get_post_field( 'post_content', $post_id );
 
         return str_contains( $content, '<!-- wp:hostinger-reach/subscription' );
+    }
+
+    public function is_elementor( int $post_id ): bool {
+        return get_post_meta( $post_id, '_elementor_data', true );
+    }
+
+    public function has_reach_subscription_elementor_widget( int $post_id ): bool {
+        $meta = get_post_meta( $post_id, '_elementor_data', true );
+        if ( ! empty( $meta ) ) {
+            $meta     = json_decode( $meta, true ) ?? array();
+            $elements = $meta[0]['elements'] ?? array();
+        }
+
+        if ( empty( $elements ) ) {
+            return false;
+        }
+
+        return $this->elementor_contains_reach_widget( $elements );
+    }
+
+    private function elementor_contains_reach_widget( array $elements ): bool {
+        foreach ( $elements as $element ) {
+            if ( ! is_array( $element ) ) {
+                continue;
+            }
+
+            $is_widget   = isset( $element['elType'] ) && $element['elType'] === 'widget';
+            $widget_type = $element['widgetType'] ?? '';
+
+            if ( $is_widget && $widget_type === SubscriptionFormElementorWidget::WIDGET_NAME ) {
+                return true;
+            }
+
+            $children = isset( $element['elements'] ) && is_array( $element['elements'] ) ? $element['elements'] : array();
+            if ( ! empty( $children ) && $this->elementor_contains_reach_widget( $children ) ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function has_reach_form( int $post_id ): bool {
+        return $this->has_reach_subscription_elementor_widget( $post_id ) || $this->has_reach_subscription_block( $post_id );
     }
 
     public function get_reach_subscription_blocks( int $id ): array {

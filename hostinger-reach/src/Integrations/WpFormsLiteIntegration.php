@@ -4,6 +4,7 @@ namespace Hostinger\Reach\Integrations;
 
 use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
+use WP_Post;
 
 if ( ! DEFINED( 'ABSPATH' ) ) {
     exit;
@@ -69,5 +70,11 @@ class WpFormsLiteIntegration extends Integration implements IntegrationInterface
 
     public function get_post_type(): string {
         return 'wpforms';
+    }
+
+    public function is_form_valid( WP_Post $post ): bool {
+        $form_fields = wpforms_get_form_fields( $post->ID, array( 'email' ) );
+
+        return ! empty( $form_fields );
     }
 }

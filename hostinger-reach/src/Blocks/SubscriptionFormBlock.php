@@ -44,6 +44,7 @@ class SubscriptionFormBlock extends Block {
     public function render( array $attributes ): bool|string {
         ob_start();
         $this->render_block_html( $attributes );
+
         return ob_get_clean();
     }
 
@@ -52,6 +53,8 @@ class SubscriptionFormBlock extends Block {
         $show_name    = $attributes['showName'] ?? false;
         $show_surname = $attributes['showSurname'] ?? false;
         $contact_list = $attributes['contactList'] ?? '';
+        $layout       = $attributes['layout'] ?? 'default';
+        $is_inline    = $layout === 'inline';
         ?>
         <div class="hostinger-reach-block-subscription-form-wrapper">
 
@@ -59,34 +62,37 @@ class SubscriptionFormBlock extends Block {
                 <input type="hidden" name="group" value="<?php echo esc_attr( $contact_list ); ?>">
                 <input type="hidden" name="id" value="<?php echo esc_attr( $form_id ); ?>">
 
-                <div class="hostinger-reach-block-form-field">
-                    <label
-                        for="<?php echo esc_attr( $form_id ); ?>-email"><?php esc_html_e( 'Email', 'hostinger-reach' ); ?>
-                        <span class="required">*</span></label>
-                    <input type="email" id="<?php echo esc_attr( $form_id ); ?>-email" name="email" required>
-                </div>
-
-                <?php if ( $show_name ) : ?>
+                <div
+                    class="hostinger-reach-block-form-fields <?php echo esc_attr( $is_inline ? 'hostinger-reach-block-form-fields--inline' : '' ); ?>">
                     <div class="hostinger-reach-block-form-field">
                         <label
-                            for="<?php echo esc_attr( $form_id ); ?>-name"><?php esc_html_e( 'Name', 'hostinger-reach' ); ?></label>
-                        <input type="text" id="<?php echo esc_attr( $form_id ); ?>-name" name="name">
+                            for="<?php echo esc_attr( $form_id ); ?>-email"><?php esc_html_e( 'Email', 'hostinger-reach' ); ?>
+                            <span class="required">*</span></label>
+                        <input type="email" id="<?php echo esc_attr( $form_id ); ?>-email" name="email" required>
                     </div>
-                <?php endif; ?>
 
-                <?php if ( $show_surname ) : ?>
-                    <div class="hostinger-reach-block-form-field">
-                        <label
-                            for="<?php echo esc_attr( $form_id ); ?>-surname"><?php esc_html_e( 'Surname', 'hostinger-reach' ); ?></label>
-                        <input type="text" id="<?php echo esc_attr( $form_id ); ?>-surname" name="surname">
-                    </div>
-                <?php endif; ?>
+                    <?php if ( $show_name ) : ?>
+                        <div class="hostinger-reach-block-form-field">
+                            <label
+                                for="<?php echo esc_attr( $form_id ); ?>-name"><?php esc_html_e( 'Name', 'hostinger-reach' ); ?></label>
+                            <input type="text" id="<?php echo esc_attr( $form_id ); ?>-name" name="name">
+                        </div>
+                    <?php endif; ?>
 
-                <button
-                    type="submit"
-                    class="hostinger-reach-block-submit wp-block-button__link has-dark-color has-color-1-background-color has-text-color has-background has-link-color has-medium-font-size wp-element-button">
+                    <?php if ( $show_surname ) : ?>
+                        <div class="hostinger-reach-block-form-field">
+                            <label
+                                for="<?php echo esc_attr( $form_id ); ?>-surname"><?php esc_html_e( 'Surname', 'hostinger-reach' ); ?></label>
+                            <input type="text" id="<?php echo esc_attr( $form_id ); ?>-surname" name="surname">
+                        </div>
+                    <?php endif; ?>
+
+                    <button
+                        type="submit"
+                        class="hostinger-reach-block-submit has-dark-color has-color-1-background-color has-text-color has-background has-link-color">
                         <?php esc_html_e( 'Subscribe', 'hostinger-reach' ); ?>
-                </button>
+                    </button>
+                </div>
 
                 <div class="reach-subscription-message" style="display: none;"></div>
             </form>

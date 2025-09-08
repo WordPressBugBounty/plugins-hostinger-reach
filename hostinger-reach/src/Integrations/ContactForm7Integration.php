@@ -6,6 +6,8 @@ use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
 use WPCF7_ContactForm;
 use WPCF7_Submission;
+use WP_Post;
+use WPCF7_FormTag;
 
 if ( ! DEFINED( 'ABSPATH' ) ) {
     exit;
@@ -37,7 +39,7 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
         }
 
         $contact_list = $contact_form->title();
-        $email        = $this->find_field( $contact_form, array( 'basetype' => 'email' ) );
+        $email        = $this->get_field_data( $contact_form, array( 'basetype' => 'email' ) );
         if ( $email ) {
             $response = $this->reach_api_handler->post_contact(
                 array(
@@ -52,17 +54,25 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
         }
     }
 
-    public function find_field( WPCF7_ContactForm $contact_form, array $condition ): string {
-        $tags       = $contact_form->scan_form_tags( $condition );
-        $submission = WPCF7_Submission::get_instance();
+    public function get_field_data( WPCF7_ContactForm $contact_form, array $condition ): string {
+        $tag = $this->find_field( $contact_form, $condition );
 
-        if ( ! empty( $tags ) ) {
-            $tag = $tags[0];
-
+        if ( ! is_null( $tag ) ) {
+            $submission = WPCF7_Submission::get_instance();
             return $submission->get_posted_data( $tag->name );
         }
 
         return '';
+    }
+
+    public function find_field( WPCF7_ContactForm $contact_form, array $condition ): ?WPCF7_FormTag {
+        $tags = $contact_form->scan_form_tags( $condition );
+
+        if ( ! empty( $tags ) ) {
+            return $tags[0];
+        }
+
+        return null;
     }
 
     public function get_post_type(): string {
@@ -71,5 +81,15 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
 
     public static function get_name(): string {
         return self::INTEGRATION_NAME;
+    }
+
+
+    public function is_form_valid( WP_Post $post ): bool {
+        $contact_form = WPCF7_ContactForm::get_instance( $post->ID );
+        if ( is_null( $contact_form ) ) {
+            return false;
+        }
+
+        return ! is_null( $this->find_field( $contact_form, array( 'basetype' => 'email' ) ) );
     }
 }
