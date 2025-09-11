@@ -96,19 +96,19 @@ class IntegrationsApiHandler extends ApiHandler {
 
         foreach ( $available_integrations as $integration_name => $integration_class ) {
 
-            if ( $integration_name === ReachFormIntegration::INTEGRATION_NAME ) {
-                $integrations[ $integration_name ] = ReachFormIntegration::get_data();
-                continue;
-            }
+            $is_hostinger_reach = $integration_name === ReachFormIntegration::INTEGRATION_NAME;
 
-            $plugin_data                       = $this->plugin_manager->get_plugin( $integration_name );
+            $plugin_data = $this->plugin_manager->get_plugin( $integration_name );
+            $is_active   = $this->plugin_manager->is_active( $integration_name ) && ( $available_integrations_state[ $integration_name ]['is_active'] ?? false );
+
             $integrations[ $integration_name ] = array(
-                'is_plugin_active' => $this->plugin_manager->is_active( $integration_name ),
-                'is_active'        => $this->plugin_manager->is_active( $integration_name ) && ( $available_integrations_state[ $integration_name ]['is_active'] ?? false ),
+                'is_plugin_active' => $is_hostinger_reach || $this->plugin_manager->is_active( $integration_name ),
+                'is_active'        => $is_hostinger_reach || $is_active,
                 'title'            => $plugin_data['title'] ?? '',
                 'url'              => $plugin_data['url'] ?? '',
                 'admin_url'        => $plugin_data['admin_url'] ?? '',
                 'edit_url'         => $plugin_data['edit_url'] ?? '',
+                'add_form_url'     => $plugin_data['add_form_url'] ?? '',
             );
         }
 

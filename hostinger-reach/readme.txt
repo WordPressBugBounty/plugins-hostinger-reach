@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -211,3 +211,9 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Dev: Add staging support for Reach API
 - Dev: Fix Lint workflow
 - Dev: Implement JavaScript unit test coverage
+
+1.0.8 (2025-09-11)
+
+- Feature: Integration with WooCommerce Checkout
+- Tweak: Include Add Form entry in the Integrations menu
+- Fix: Routes not working with simple Permalinks

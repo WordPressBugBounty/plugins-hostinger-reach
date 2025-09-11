@@ -12,6 +12,7 @@ interface PluginEntryData {
 	name: string;
 	icon: string;
 	entries: number;
+	showAddForm: boolean;
 	status: PluginStatus;
 	forms: Form[];
 }
@@ -32,6 +33,7 @@ const emit = defineEmits<{
 	toggleFormStatus: [form: Form, status: boolean];
 	viewForm: [form: Form];
 	editForm: [form: Form];
+	addForm: [id: string];
 }>();
 
 const SKELETON_COUNT = 3;
@@ -48,11 +50,12 @@ const pluginEntries = computed((): PluginEntryData[] => {
 
 			return {
 				id: integration.id,
-				name: pluginInfo.title ? translate(pluginInfo.title) : integration.title,
+				name: integration.title,
 				icon: pluginInfo.icon || '',
 				entries: totalSubmissions,
 				status: integration.isActive ? PLUGIN_STATUSES.ACTIVE : PLUGIN_STATUSES.INACTIVE,
-				forms
+				forms,
+				showAddForm: !!integration.addFormUrl
 			} as PluginEntryData;
 		})
 		.filter((pluginEntry) => pluginEntry.status === PLUGIN_STATUSES.ACTIVE);
@@ -93,6 +96,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 					:plugin-name="pluginEntry.name"
 					:plugin-icon="pluginEntry.icon"
 					:plugin-status="pluginEntry.status"
+					:show-add-form="pluginEntry.showAddForm"
 					:total-entries="pluginEntry.entries"
 					:forms="pluginEntry.forms"
 					:class="{
@@ -102,6 +106,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 					@toggle-form-status="(form: Form, status: boolean) => emit('toggleFormStatus', form, status)"
 					@view-form="emit('viewForm', $event)"
 					@edit-form="emit('editForm', $event)"
+					@add-form="emit('addForm', $event)"
 					@go-to-plugin="emit('goToPlugin', $event)"
 					@disconnect-plugin="emit('disconnectPlugin', $event)"
 				/>
@@ -229,7 +234,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 		img {
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
+			object-fit: contain;
 		}
 	}
 

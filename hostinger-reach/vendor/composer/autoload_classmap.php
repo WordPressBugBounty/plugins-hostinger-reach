@@ -42,6 +42,7 @@ return array(
     'Hostinger\\Reach\\Integrations\\IntegrationWithForms' => $baseDir . '/src/Integrations/IntegrationWithForms.php',
     'Hostinger\\Reach\\Integrations\\PluginManager' => $baseDir . '/src/Integrations/PluginManager.php',
     'Hostinger\\Reach\\Integrations\\ReachFormIntegration' => $baseDir . '/src/Integrations/ReachFormIntegration.php',
+    'Hostinger\\Reach\\Integrations\\WooCommerce\\WooCommerceIntegration' => $baseDir . '/src/Integrations/WooCommerce/WooCommerceIntegration.php',
     'Hostinger\\Reach\\Integrations\\WpFormsLiteIntegration' => $baseDir . '/src/Integrations/WpFormsLiteIntegration.php',
     'Hostinger\\Reach\\Models\\ContactList' => $baseDir . '/src/Models/ContactList.php',
     'Hostinger\\Reach\\Models\\Form' => $baseDir . '/src/Models/Form.php',

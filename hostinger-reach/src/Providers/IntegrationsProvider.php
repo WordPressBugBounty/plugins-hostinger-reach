@@ -9,6 +9,7 @@ use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\ContactForm7Integration;
 use Hostinger\Reach\Integrations\Elementor\ElementorIntegration;
 use Hostinger\Reach\Integrations\ReachFormIntegration;
+use Hostinger\Reach\Integrations\WooCommerce\WooCommerceIntegration;
 use Hostinger\Reach\Integrations\WpFormsLiteIntegration;
 use Hostinger\Reach\Repositories\ContactListRepository;
 use Hostinger\Reach\Repositories\FormRepository;
@@ -24,6 +25,7 @@ class IntegrationsProvider implements ProviderInterface {
         ContactForm7Integration::INTEGRATION_NAME => ContactForm7Integration::class,
         WpFormsLiteIntegration::INTEGRATION_NAME  => WpFormsLiteIntegration::class,
         ElementorIntegration::INTEGRATION_NAME    => ElementorIntegration::class,
+        WooCommerceIntegration::INTEGRATION_NAME  => WooCommerceIntegration::class,
     );
 
     public function register( Container $container ): void {
@@ -46,6 +48,12 @@ class IntegrationsProvider implements ProviderInterface {
                 $container->get( ReachApiHandler::class ),
                 $container->get( IntegrationsApiHandler::class ),
                 $container->get( FormRepository::class ),
+            ),
+            WooCommerceIntegration::class  => array(
+                $container->get( FormRepository::class ),
+                $container->get( IntegrationsApiHandler::class ),
+                $container->get( ReachApiHandler::class ),
+
             ),
         );
 

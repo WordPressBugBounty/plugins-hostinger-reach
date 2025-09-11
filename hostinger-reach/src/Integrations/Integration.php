@@ -16,6 +16,11 @@ abstract class Integration {
     public const HOSTINGER_REACH_IS_ACTIVE_META_KEY   = '_hostinger_reach_is_active';
 
     abstract public static function get_name(): string;
+    abstract public function get_plugin_data( array $plugin_data ): array;
+
+    public function __construct() {
+        add_filter( 'hostinger_reach_plugin_data', array( $this, 'get_plugin_data' ) );
+    }
 
     public function load_forms( array $forms, array $args ): array {
         if ( ! isset( $args['type'] ) || $args['type'] === $this->get_name() ) {

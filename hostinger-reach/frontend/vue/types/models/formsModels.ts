@@ -12,6 +12,7 @@ export interface Form {
 	isActive: boolean;
 	isLoading?: boolean;
 	isViewFormHidden?: boolean;
+	isEditFormHidden?: boolean;
 	submissions: number;
 	post?: {
 		ID: number;
@@ -75,6 +76,7 @@ export interface Integration {
 	title: string;
 	url: string;
 	adminUrl: string;
+	addFormUrl: string;
 	isPluginActive: boolean;
 	editUrl?: string;
 	forms?: Form[];
@@ -86,6 +88,7 @@ export interface IntegrationsResponse {
 		title: string;
 		url: string;
 		adminUrl: string;
+		addFormUrl: string;
 		editUrl: string;
 		isAvailable: boolean;
 		isPluginActive: boolean;

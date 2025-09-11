@@ -5,7 +5,7 @@ import { OverviewData } from '@/types/models/reachDataModels';
 import { generateCorrelationId } from '@/utils/helpers';
 import httpService from '@/utils/services/httpService';
 
-const URL = `${hostinger_reach_reach_data.site_url}/wp-json/hostinger-reach/v1`;
+const URL = `${hostinger_reach_reach_data.rest_base_url}hostinger-reach/v1`;
 
 export const reachRepo = {
 	generateAuthUrl: (headers?: AuthorizeRequestHeaders) => {

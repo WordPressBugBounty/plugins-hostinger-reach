@@ -13,6 +13,7 @@ interface Props {
 	pluginIcon: string;
 	pluginStatus: PluginStatus;
 	totalEntries: number;
+	showAddForm: boolean;
 	forms: Form[];
 }
 
@@ -24,6 +25,7 @@ const emit = defineEmits<{
 	disconnectPlugin: [id: string];
 	viewForm: [form: Form];
 	editForm: [form: Form];
+	addForm: [id: string];
 }>();
 
 const isExpanded = ref(false);
@@ -113,6 +115,11 @@ const expandButtonAriaLabel = computed(() => {
 						</button>
 					</template>
 					<div class="plugin-entry-row__popover-menu">
+						<div v-if="props.showAddForm" class="plugin-entry-row__menu-item" @click="emit('addForm', props.pluginId)">
+							<HIcon name="ic-plus-16" />
+							<span>{{ translate('hostinger_reach_plugin_entries_table_add_form') }}</span>
+							<HIcon name="ic-arrow-up-right-square-16" />
+						</div>
 						<div class="plugin-entry-row__menu-item" @click="emit('goToPlugin', props.pluginId)">
 							<HIcon name="ic-blocks-plus-16" />
 							<span>{{ translate('hostinger_reach_plugin_entries_table_go_to_plugin') }}</span>
@@ -228,7 +235,7 @@ const expandButtonAriaLabel = computed(() => {
 		img {
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
+			object-fit: contain;
 		}
 	}
 

@@ -2,6 +2,7 @@
 
 namespace Hostinger\Reach\Integrations\Elementor;
 
+use Elementor\Core\Documents_Manager;
 use Elementor\Plugin as ElementorPlugin;
 use Elementor\Widget_Base;
 use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
@@ -30,11 +31,11 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     public function init(): void {
+        parent::init();
         add_action( 'hostinger_reach_integration_activated', array( $this, 'set_elementor_onboarding' ) );
         if ( $this->integrations_api_handler->is_active( self::INTEGRATION_NAME ) ) {
             add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
             add_action( 'transition_post_status', array( $this, 'handle_transition_post_status' ), 10, 3 );
-            add_action( 'hostinger_reach_forms', array( $this, 'load_forms' ), 10, 2 );
             add_filter( 'hostinger_reach_get_group', array( $this, 'filter_hostinger_reach_get_group' ), 10, 2 );
         }
     }
@@ -58,16 +59,6 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         ElementorPlugin::instance()->widgets_manager->register( $this->get_widget() );
     }
 
-    public function load_forms( array $forms, array $args ): array {
-        if ( ! isset( $args['type'] ) || $args['type'] === $this->get_name() ) {
-            $integration_forms = $this->get_forms( $args );
-
-            return array_merge( $forms, $integration_forms );
-        }
-
-        return $forms;
-    }
-
     public function filter_hostinger_reach_get_group( string $group, string $form_id ): string {
         if ( ! empty( $group ) || ! $this->is_elementor_form_id( $form_id ) ) {
             return $group;
@@ -86,20 +77,33 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         return self::INTEGRATION_NAME;
     }
 
-    public function get_forms( array $args ): array {
-        if ( ! isset( $args['type'] ) ) {
-            $args['type'] = self::INTEGRATION_NAME;
-        }
-
-        return $this->form_repository->all( $args );
-    }
-
     public static function get_name(): string {
         return self::INTEGRATION_NAME;
     }
 
     public function get_form_ids( WP_Post $post ): array {
         return $this->get_elementor_form_ids_from_content( $post->post_content );
+    }
+
+    public function get_plugin_data( array $plugin_data ): array {
+        if ( class_exists( 'Elementor\Core\Documents_Manager' ) ) {
+            $add_form_url = Documents_Manager::get_create_new_post_url();
+        } else {
+            $add_form_url = null;
+        }
+
+        $plugin_data[ self::INTEGRATION_NAME ] = array(
+            'folder'       => 'elementor',
+            'file'         => 'elementor.php',
+            'admin_url'    => 'admin.php?page=elementor',
+            'add_form_url' => $add_form_url,
+            'edit_url'     => 'post.php?post={post_id}&action=elementor',
+            'url'          => 'https://wordpress.org/plugins/elementor/',
+            'download_url' => 'https://downloads.wordpress.org/plugin/elementor.zip',
+            'title'        => __( 'Elementor', 'hostinger-reach' ),
+        );
+
+        return $plugin_data;
     }
 
     private function get_widget(): Widget_Base {

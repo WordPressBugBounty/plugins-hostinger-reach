@@ -11,6 +11,7 @@ export interface ReachData {
 
 export interface HstReachDataRaw {
 	site_url: string;
+	rest_base_url: string;
 	ajax_url: string;
 	nonce: string;
 	plugin_url: string;

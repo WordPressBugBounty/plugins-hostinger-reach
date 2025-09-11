@@ -1,6 +1,7 @@
 import contactForm7PluginIcon from '@/assets/images/icons/contact-form-7-plugin.svg';
 import elementorPluginIcon from '@/assets/images/icons/elementor-plugin.svg';
 import emailReachPluginIcon from '@/assets/images/icons/email-reach-plugin.svg';
+import wooCommercePluginIcon from '@/assets/images/icons/woocommerce-plugin.svg';
 import wpFormsLitePluginIcon from '@/assets/images/icons/wp-forms-lite-plugin.svg';
 import type { Integration } from '@/types/models';
 
@@ -8,21 +9,16 @@ export const PLUGIN_IDS = {
 	HOSTINGER_REACH: 'hostinger-reach',
 	CONTACT_FORM_7: 'contact-form-7',
 	WP_FORMS_LITE: 'wp-forms-lite',
-	ELEMENTOR: 'elementor'
+	ELEMENTOR: 'elementor',
+	WOOCOMMERCE: 'woocommerce'
 } as const;
 
 export const INTEGRATION_TO_FORM_TYPE_MAP: Record<string, string> = {
 	hostingerReach: 'hostinger-reach',
 	'contactForm-7': 'contact-form-7',
 	wpformsLite: 'wpforms-lite',
-	elementor: 'elementor'
-} as const;
-
-export const PLUGIN_TITLES = {
-	HOSTINGER_REACH: 'hostinger_reach_plugin_titles_hostinger_reach',
-	CONTACT_FORM_7: 'hostinger_reach_plugin_titles_contact_form_7',
-	WP_FORMS_LITE: 'hostinger_reach_plugin_titles_wp_forms_lite',
-	ELEMENTOR: 'hostinger_reach_plugin_titles_elementor'
+	elementor: 'elementor',
+	woocommerce: 'woocommerce'
 } as const;
 
 export const PLUGIN_STATUSES = {
@@ -30,35 +26,45 @@ export const PLUGIN_STATUSES = {
 	INACTIVE: 'inactive'
 } as const;
 
-export type PluginId = (typeof PLUGIN_IDS)[keyof typeof PLUGIN_IDS];
 export type PluginStatus = (typeof PLUGIN_STATUSES)[keyof typeof PLUGIN_STATUSES];
 
 export interface PluginInfo {
 	id: string;
-	title: string;
 	icon: string;
+	isViewFormHidden: boolean;
+	isEditFormHidden: boolean;
 }
 
 export const DEFAULT_PLUGIN_DATA: Record<string, PluginInfo> = {
 	hostingerReach: {
 		id: 'hostingerReach',
-		title: PLUGIN_TITLES.HOSTINGER_REACH,
-		icon: emailReachPluginIcon
+		icon: emailReachPluginIcon,
+		isViewFormHidden: false,
+		isEditFormHidden: false
 	},
 	'contactForm-7': {
 		id: 'contactForm-7',
-		title: PLUGIN_TITLES.CONTACT_FORM_7,
-		icon: contactForm7PluginIcon
+		icon: contactForm7PluginIcon,
+		isViewFormHidden: true,
+		isEditFormHidden: false
 	},
 	wpformsLite: {
 		id: 'wpformsLite',
-		title: PLUGIN_TITLES.WP_FORMS_LITE,
-		icon: wpFormsLitePluginIcon
+		icon: wpFormsLitePluginIcon,
+		isViewFormHidden: true,
+		isEditFormHidden: false
 	},
 	elementor: {
 		id: 'elementor',
-		title: PLUGIN_TITLES.ELEMENTOR,
-		icon: elementorPluginIcon
+		icon: elementorPluginIcon,
+		isViewFormHidden: false,
+		isEditFormHidden: false
+	},
+	woocommerce: {
+		id: 'woocommerce',
+		icon: wooCommercePluginIcon,
+		isViewFormHidden: true,
+		isEditFormHidden: true
 	}
 } as const;
 
@@ -69,7 +75,8 @@ export const getPluginInfo = (integration: Integration): PluginInfo => {
 
 	return {
 		id: integration.id,
-		title: defaultInfo?.title || integration.title,
-		icon: defaultInfo?.icon || ''
+		icon: defaultInfo?.icon || '',
+		isViewFormHidden: defaultInfo?.isViewFormHidden || true,
+		isEditFormHidden: defaultInfo?.isEditFormHidden || false
 	};
 };

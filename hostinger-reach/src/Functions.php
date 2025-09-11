@@ -130,6 +130,11 @@ class Functions {
     }
 
     public function has_reach_subscription_elementor_widget( int $post_id ): bool {
+
+        if ( ! class_exists( 'Elementor\Widget_Base' ) ) {
+            return false;
+        }
+
         $meta = get_post_meta( $post_id, '_elementor_data', true );
         if ( ! empty( $meta ) ) {
             $meta     = json_decode( $meta, true ) ?? array();

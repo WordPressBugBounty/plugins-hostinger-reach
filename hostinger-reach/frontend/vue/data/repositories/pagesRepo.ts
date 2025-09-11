@@ -5,7 +5,7 @@ import type { WordPressPagesList } from '@/types/models/pagesModels';
 import { generateCorrelationId } from '@/utils/helpers';
 import httpService from '@/utils/services/httpService';
 
-const URL = `${hostinger_reach_reach_data.site_url}/wp-json/wp/v2`;
+const URL = `${hostinger_reach_reach_data.rest_base_url}wp/v2`;
 
 export const pagesRepo = {
 	getPagesWithSubscriptionBlock: (headers?: AuthorizeRequestHeaders) => {

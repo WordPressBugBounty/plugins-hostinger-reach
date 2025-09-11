@@ -107,6 +107,15 @@ const handleViewForm = (form: Form) => {
 	}
 };
 
+const handleAddForm = (id: string) => {
+	const integration = integrationsStore.integrations.find((i) => i.id === id);
+	if (!integration?.addFormUrl) {
+		return;
+	}
+
+	window.open(integration.addFormUrl, '_blank');
+};
+
 const handleEditForm = (form: Form) => {
 	const integration = integrationsStore.integrations.find((i) => i.forms?.some((f) => f.formId === form.formId));
 
@@ -192,6 +201,7 @@ onMounted(() => {
 				@toggle-form-status="handleFormToggleStatus"
 				@view-form="handleViewForm"
 				@edit-form="handleEditForm"
+				@add-form="handleAddForm"
 			/>
 		</div>
 	</div>
@@ -254,7 +264,7 @@ onMounted(() => {
 		flex-direction: column;
 		align-items: flex-end;
 		gap: 32px;
-		padding: 20px 0 0;
+		padding: 20px 0;
 		width: 860px;
 		margin: 0 auto;
 	}
@@ -306,7 +316,7 @@ onMounted(() => {
 	.overview {
 		&__content {
 			width: 100%;
-			padding: 24px 16px 0;
+			padding: 24px 16px;
 		}
 
 		&__title {

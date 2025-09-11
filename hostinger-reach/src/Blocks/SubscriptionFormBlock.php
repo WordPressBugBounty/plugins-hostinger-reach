@@ -12,7 +12,7 @@ class SubscriptionFormBlock extends Block {
 
     public function data(): array {
         return array(
-            'endpoint'     => '/wp-json/hostinger-reach/v1/contact',
+            'endpoint'     => esc_url_raw( rest_url() ) . 'hostinger-reach/v1/contact',
             'nonce'        => wp_create_nonce( 'wp_rest' ),
             'translations' => array(
                 'thanks' => __( 'Thanks for subscribing.', 'hostinger-reach' ),

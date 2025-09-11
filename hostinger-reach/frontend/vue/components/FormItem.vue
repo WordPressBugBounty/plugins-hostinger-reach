@@ -31,6 +31,8 @@ const getStatusColor = () => (props.form.isActive ? 'success' : 'gray');
 const canToggle = computed(
 	() => props.form.type !== PLUGIN_IDS.HOSTINGER_REACH && props.form.type !== PLUGIN_IDS.ELEMENTOR
 );
+
+const hasActions = computed(() => !props.form.isViewFormHidden || !props.form.isEditFormHidden);
 </script>
 
 <template>
@@ -66,6 +68,7 @@ const canToggle = computed(
 		</div>
 		<div class="form-item__cell form-item__cell--actions">
 			<HPopover
+				v-if="hasActions"
 				placement="bottom-end"
 				:show-arrow="false"
 				background-color="neutral--0"
@@ -82,7 +85,7 @@ const canToggle = computed(
 						<HIcon name="ic-arrow-up-right-square-16" />
 						<span>{{ translate('hostinger_reach_plugin_entries_table_view_form') }}</span>
 					</div>
-					<div class="form-item__menu-item" @click="emit('editForm', props.form)">
+					<div v-if="!form.isEditFormHidden" class="form-item__menu-item" @click="emit('editForm', props.form)">
 						<HIcon name="ic-edit-16" />
 						<span>{{ translate('hostinger_reach_plugin_entries_table_edit_form') }}</span>
 					</div>

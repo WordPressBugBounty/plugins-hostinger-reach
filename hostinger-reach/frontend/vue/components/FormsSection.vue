@@ -16,6 +16,7 @@ const emit = defineEmits<{
 	toggleFormStatus: [form: Form, status: boolean];
 	viewForm: [form: Form];
 	editForm: [form: Form];
+	addForm: [id: string];
 }>();
 
 const { openModal } = useModal();
@@ -73,6 +74,7 @@ const isAddButtonVisible = computed(() => !integrationsStore.isLoading && should
 			@toggle-form-status="(form, status) => emit('toggleFormStatus', form, status)"
 			@view-form="emit('viewForm', $event)"
 			@edit-form="emit('editForm', $event)"
+			@add-form="emit('addForm', $event)"
 		/>
 	</div>
 </template>

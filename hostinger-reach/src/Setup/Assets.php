@@ -55,6 +55,7 @@ class Assets {
             'hostinger_reach_reach_data',
             array(
                 'site_url'          => get_site_url(),
+                'rest_base_url'     => esc_url_raw( rest_url() ),
                 'ajax_url'          => admin_url( 'admin-ajax.php' ),
                 'nonce'             => wp_create_nonce( 'wp_rest' ),
                 'plugin_url'        => HOSTINGER_REACH_PLUGIN_URL,
@@ -129,6 +130,7 @@ class Assets {
             'hostinger_reach_plugin_entries_table_edit_form'          => __( 'Edit form', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_go_to_plugin'       => __( 'Go to plugin', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_disconnect_plugin'  => __( 'Disconnect plugin', 'hostinger-reach' ),
+            'hostinger_reach_plugin_entries_table_add_form'           => __( 'Add form', 'hostinger-reach' ),
             'hostinger_reach_plugin_titles_hostinger_reach'           => __( 'Hostinger Reach', 'hostinger-reach' ),
             'hostinger_reach_plugin_titles_contact_form_7'            => __( 'Contact Form 7', 'hostinger-reach' ),
             'hostinger_reach_plugin_titles_wp_forms_lite'             => __( 'WP Forms Lite', 'hostinger-reach' ),

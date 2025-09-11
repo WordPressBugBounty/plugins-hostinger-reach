@@ -58,3 +58,9 @@ Changelog
 - Dev: Add staging support for Reach API
 - Dev: Fix Lint workflow
 - Dev: Implement JavaScript unit test coverage
+
+1.0.8 (2025-09-11)
+
+- Feature: Integration with WooCommerce Checkout
+- Tweak: Include Add Form entry in the Integrations menu
+- Fix: Routes not working with simple Permalinks

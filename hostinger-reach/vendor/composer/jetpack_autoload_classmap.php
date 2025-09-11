@@ -170,6 +170,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/ReachFormIntegration.php'
 	),
+	'Hostinger\\Reach\\Integrations\\WooCommerce\\WooCommerceIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/WooCommerce/WooCommerceIntegration.php'
+	),
 	'Hostinger\\Reach\\Integrations\\WpFormsLiteIntegration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/WpFormsLiteIntegration.php'
@@ -377,6 +381,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\SubscriptionFormElementorWidgetTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SubscriptionFormElementorWidgetTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WooCommerceIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/WooCommerceIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WpFormsLiteIntegrationTest' => array(
 		'version' => 'dev-main',

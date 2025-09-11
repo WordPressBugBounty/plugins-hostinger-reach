@@ -93,6 +93,7 @@ class ComposerStaticInit165e82d911730e51d56a875217170fc5
         'Hostinger\\Reach\\Integrations\\IntegrationWithForms' => __DIR__ . '/../..' . '/src/Integrations/IntegrationWithForms.php',
         'Hostinger\\Reach\\Integrations\\PluginManager' => __DIR__ . '/../..' . '/src/Integrations/PluginManager.php',
         'Hostinger\\Reach\\Integrations\\ReachFormIntegration' => __DIR__ . '/../..' . '/src/Integrations/ReachFormIntegration.php',
+        'Hostinger\\Reach\\Integrations\\WooCommerce\\WooCommerceIntegration' => __DIR__ . '/../..' . '/src/Integrations/WooCommerce/WooCommerceIntegration.php',
         'Hostinger\\Reach\\Integrations\\WpFormsLiteIntegration' => __DIR__ . '/../..' . '/src/Integrations/WpFormsLiteIntegration.php',
         'Hostinger\\Reach\\Models\\ContactList' => __DIR__ . '/../..' . '/src/Models/ContactList.php',
         'Hostinger\\Reach\\Models\\Form' => __DIR__ . '/../..' . '/src/Models/Form.php',

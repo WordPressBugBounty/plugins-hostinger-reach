@@ -36,7 +36,8 @@ export const useIntegrationsStore = defineStore(
 				?.filter((form) => INTEGRATION_TO_FORM_TYPE_MAP[integrationId] === form.type)
 				.map((form) => ({
 					...form,
-					isViewFormHidden: integrationId !== DEFAULT_PLUGIN_DATA.hostingerReach.id
+					isViewFormHidden: DEFAULT_PLUGIN_DATA[integrationId].isViewFormHidden,
+					isEditFormHidden: DEFAULT_PLUGIN_DATA[integrationId].isEditFormHidden
 				})) || [];
 
 		const loadIntegrations = async () => {
@@ -60,6 +61,7 @@ export const useIntegrationsStore = defineStore(
 					title: integration.title,
 					url: integration.url,
 					adminUrl: integration.adminUrl,
+					addFormUrl: integration.addFormUrl,
 					isPluginActive: integration.isPluginActive,
 					editUrl: integration.editUrl,
 					forms: mapAndFilterForms(formsData || [], id)

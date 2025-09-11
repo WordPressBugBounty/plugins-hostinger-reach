@@ -20,9 +20,9 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
     protected IntegrationsApiHandler $integrations_api_handler;
 
     public function __construct( ReachApiHandler $reach_api_handler, IntegrationsApiHandler $integrations_api_handler ) {
+        parent::__construct();
         $this->integrations_api_handler = $integrations_api_handler;
-
-        $this->reach_api_handler = $reach_api_handler;
+        $this->reach_api_handler        = $reach_api_handler;
     }
 
     public function init(): void {
@@ -91,5 +91,20 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
         }
 
         return ! is_null( $this->find_field( $contact_form, array( 'basetype' => 'email' ) ) );
+    }
+
+    public function get_plugin_data( array $plugin_data ): array {
+        $plugin_data[ self::INTEGRATION_NAME ] = array(
+            'folder'       => 'contact-form-7',
+            'file'         => 'wp-contact-form-7.php',
+            'admin_url'    => 'admin.php?page=wpcf7',
+            'add_form_url' => 'admin.php?page=wpcf7-new',
+            'edit_url'     => 'admin.php?page=wpcf7&post={form_id}&action=edit',
+            'url'          => 'https://wordpress.org/plugins/contact-form-7/',
+            'download_url' => 'https://downloads.wordpress.org/plugin/contact-form-7.zip',
+            'title'        => __( 'Contact Form 7', 'hostinger-reach' ),
+        );
+
+        return $plugin_data;
     }
 }

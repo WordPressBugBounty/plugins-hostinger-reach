@@ -126,4 +126,17 @@ class FormRepository extends Repository {
             return false;
         }
     }
+
+    public function is_form_active( string $form_id ): bool {
+        if ( empty( $form_id ) ) {
+            return false;
+        }
+
+        try {
+            $form = $this->get( $form_id );
+            return $form['is_active'];
+        } catch ( Exception $e ) {
+            return false;
+        }
+    }
 }

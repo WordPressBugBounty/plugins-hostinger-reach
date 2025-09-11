@@ -25,8 +25,8 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     public function init(): void {
+        parent::init();
         $this->init_default_forms();
-        add_action( 'hostinger_reach_forms', array( $this, 'load_forms' ), 10, 2 );
         add_action( 'transition_post_status', array( $this, 'handle_transition_post_status' ), 10, 3 );
         add_action( 'hostinger_reach_contact_submitted', array( $this, 'handle_submission' ) );
     }
@@ -45,14 +45,6 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
         }
     }
 
-    public function get_forms( array $args ): array {
-        if ( ! isset( $args['type'] ) ) {
-            $args['type'] = self::INTEGRATION_NAME;
-        }
-
-        return $this->form_repository->all( $args );
-    }
-
     public function handle_transition_post_status( string $new_status, string $old_status, WP_Post $post ): void {
         if ( $new_status === 'publish' ) {
             $this->set_forms( $post );
@@ -66,19 +58,22 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
         $this->form_repository->submit( $data );
     }
 
-    public static function get_name(): string {
-        return self::INTEGRATION_NAME;
-    }
-
-    public static function get_data(): array {
-        return array(
+    public function get_plugin_data( array $plugin_data ): array {
+        $plugin_data[ self::INTEGRATION_NAME ] = array(
             'is_active'        => true,
             'is_plugin_active' => true,
             'title'            => __( 'Hostinger Reach', 'hostinger-reach' ),
             'admin_url'        => 'admin.php?page=hostinger-reach',
+            'add_form_url'     => 'post-new.php?post_type=page&hostinger_reach_add_block=1',
             'edit_url'         => 'post.php?post={post_id}&action=edit',
             'url'              => 'https://wordpress.org/plugins/hostinger-reach',
         );
+
+        return $plugin_data;
+    }
+
+    public static function get_name(): string {
+        return self::INTEGRATION_NAME;
     }
 
     public function get_form_ids( WP_Post $post ): array {

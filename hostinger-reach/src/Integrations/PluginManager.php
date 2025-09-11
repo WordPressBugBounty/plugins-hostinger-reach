@@ -2,7 +2,6 @@
 
 namespace Hostinger\Reach\Integrations;
 
-use Hostinger\Reach\Integrations\Elementor\ElementorIntegration;
 use Plugin_Upgrader;
 use Plugin_Upgrader_Skin;
 use WP_Error;
@@ -14,35 +13,7 @@ if ( ! DEFINED( 'ABSPATH' ) ) {
 class PluginManager {
 
     public static function plugin_data(): array {
-        return array(
-            ContactForm7Integration::INTEGRATION_NAME => array(
-                'folder'       => 'contact-form-7',
-                'file'         => 'wp-contact-form-7.php',
-                'admin_url'    => 'admin.php?page=wpcf7',
-                'edit_url'     => 'admin.php?page=wpcf7&post={form_id}&action=edit',
-                'url'          => 'https://wordpress.org/plugins/contact-form-7/',
-                'download_url' => 'https://downloads.wordpress.org/plugin/contact-form-7.zip',
-                'title'        => __( 'Contact Form 7', 'hostinger-reach' ),
-            ),
-            WpFormsLiteIntegration::INTEGRATION_NAME  => array(
-                'folder'       => 'wpforms-lite',
-                'file'         => 'wpforms.php',
-                'admin_url'    => 'admin.php?page=wpforms-overview',
-                'edit_url'     => 'admin.php?page=wpforms-builder&view=fields&form_id={form_id}',
-                'url'          => 'https://wordpress.org/plugins/wpforms-lite/',
-                'download_url' => 'https://downloads.wordpress.org/plugin/wpforms-lite.zip',
-                'title'        => __( 'WP Forms Lite', 'hostinger-reach' ),
-            ),
-            ElementorIntegration::INTEGRATION_NAME    => array(
-                'folder'       => 'elementor',
-                'file'         => 'elementor.php',
-                'admin_url'    => 'admin.php?page=elementor',
-                'edit_url'     => 'post.php?post={post_id}&action=elementor',
-                'url'          => 'https://wordpress.org/plugins/elementor/',
-                'download_url' => 'https://downloads.wordpress.org/plugin/elementor.zip',
-                'title'        => __( 'Elementor', 'hostinger-reach' ),
-            ),
-        );
+        return apply_filters( 'hostinger_reach_plugin_data', array() );
     }
 
     public function install( string $plugin_name ): bool|WP_Error {
@@ -101,7 +72,7 @@ class PluginManager {
         $plugin = $this->get_plugin( $plugin_name );
 
         if ( ! isset( $plugin['folder'] ) || ! isset( $plugin['file'] ) ) {
-            return '';
+            return '/';
         }
 
         return $plugin['folder'] . '/' . $plugin['file'];

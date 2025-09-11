@@ -17,6 +17,7 @@ class WpFormsLiteIntegration extends Integration implements IntegrationInterface
     protected IntegrationsApiHandler $integrations_api_handler;
 
     public function __construct( ReachApiHandler $reach_api_handler, IntegrationsApiHandler $integrations_api_handler ) {
+        parent::__construct();
         $this->reach_api_handler        = $reach_api_handler;
         $this->integrations_api_handler = $integrations_api_handler;
     }
@@ -76,5 +77,20 @@ class WpFormsLiteIntegration extends Integration implements IntegrationInterface
         $form_fields = wpforms_get_form_fields( $post->ID, array( 'email' ) );
 
         return ! empty( $form_fields );
+    }
+
+    public function get_plugin_data( array $plugin_data ): array {
+        $plugin_data[ self::INTEGRATION_NAME ] = array(
+            'folder'       => 'wpforms-lite',
+            'file'         => 'wpforms.php',
+            'admin_url'    => 'admin.php?page=wpforms-overview',
+            'add_form_url' => 'admin.php?page=wpforms-builder',
+            'edit_url'     => 'admin.php?page=wpforms-builder&view=fields&form_id={form_id}',
+            'url'          => 'https://wordpress.org/plugins/wpforms-lite/',
+            'download_url' => 'https://downloads.wordpress.org/plugin/wpforms-lite.zip',
+            'title'        => __( 'WP Forms Lite', 'hostinger-reach' ),
+        );
+
+        return $plugin_data;
     }
 }
