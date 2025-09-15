@@ -12,7 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			const data = {};
 
 			formData.forEach((value, key) => {
-				data[key] = value;
+				if (key.includes('.')) {
+					const [ mainKey, subkey ] = key.split('.');
+
+					if ( ! data[mainKey] ) {
+						data[mainKey] = {};
+					}
+
+					data[mainKey][subkey] = value;
+				} else {
+					data[key] = value;
+				}
 			});
 
 			submitBtn.disabled = true;

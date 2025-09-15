@@ -28,31 +28,40 @@ class ReachRoutes extends Routes {
                 'callback'            => array( $this->handler, 'post_contact_handler' ),
                 'permission_callback' => '__return_true',
                 'args'                => array(
-                    'id'      => array(
+                    'id'       => array(
                         'required' => true,
                         'type'     => 'string',
                     ),
-                    'group'   => array(
+                    'group'    => array(
                         'required' => false,
                         'default'  => HOSTINGER_REACH_DEFAULT_CONTACT_LIST,
                         'type'     => 'string',
                     ),
-                    'email'   => array(
+                    'email'    => array(
                         'required'          => true,
                         'type'              => 'string',
                         'validate_callback' => function ( $param ) {
                             return filter_var( $param, FILTER_VALIDATE_EMAIL );
                         },
                     ),
-                    'name'    => array(
+                    'name'     => array(
                         'required' => false,
                         'default'  => '',
                         'type'     => 'string',
                     ),
-                    'surname' => array(
+                    'surname'  => array(
                         'required' => false,
                         'default'  => '',
                         'type'     => 'string',
+                    ),
+                    'metadata' => array(
+                        'required'   => false,
+                        'type'       => 'object',
+                        'properties' => array(
+                            'plugin' => array(
+                                'type' => 'string',
+                            ),
+                        ),
                     ),
                 ),
             )

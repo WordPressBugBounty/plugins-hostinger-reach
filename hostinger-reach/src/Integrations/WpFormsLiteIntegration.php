@@ -40,8 +40,11 @@ class WpFormsLiteIntegration extends Integration implements IntegrationInterface
             $response = $this->reach_api_handler->post_contact(
                 array(
                     // translators: %s - form id.
-                    'group' => $form_data['settings']['form_title'] ?? sprintf( __( 'WP Forms Lite %s', 'hostinger-reach' ), $form_data['id'] ),
-                    'email' => $email,
+                    'group'    => $form_data['settings']['form_title'] ?? sprintf( __( 'WP Forms Lite %s', 'hostinger-reach' ), $form_data['id'] ),
+                    'email'    => $email,
+                    'metadata' => array(
+                        'plugin' => self::INTEGRATION_NAME,
+                    ),
                 )
             );
 

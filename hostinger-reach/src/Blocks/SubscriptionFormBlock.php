@@ -3,6 +3,8 @@
 namespace Hostinger\Reach\Blocks;
 
 
+use Hostinger\Reach\Integrations\ReachFormIntegration;
+
 if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
@@ -48,19 +50,21 @@ class SubscriptionFormBlock extends Block {
         return ob_get_clean();
     }
 
-    public static function render_block_html( array $attributes ): void {
+    public static function render_block_html( array $attributes, string $plugin = null ): void {
         $form_id      = $attributes['formId'] ?? '';
         $show_name    = $attributes['showName'] ?? false;
         $show_surname = $attributes['showSurname'] ?? false;
         $contact_list = $attributes['contactList'] ?? '';
         $layout       = $attributes['layout'] ?? 'default';
         $is_inline    = $layout === 'inline';
+        $plugin       = $plugin ?? ReachFormIntegration::INTEGRATION_NAME;
         ?>
         <div class="hostinger-reach-block-subscription-form-wrapper">
 
             <form id="<?php echo esc_attr( $form_id ); ?>" class="hostinger-reach-block-subscription-form">
                 <input type="hidden" name="group" value="<?php echo esc_attr( $contact_list ); ?>">
                 <input type="hidden" name="id" value="<?php echo esc_attr( $form_id ); ?>">
+                <input type="hidden" name="metadata.plugin" value="<?php echo esc_attr( $plugin ); ?>">
 
                 <div
                     class="hostinger-reach-block-form-fields <?php echo esc_attr( $is_inline ? 'hostinger-reach-block-form-fields--inline' : '' ); ?>">

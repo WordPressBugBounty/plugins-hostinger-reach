@@ -90,7 +90,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-        SubscriptionFormBlock::render_block_html( $settings );
+        SubscriptionFormBlock::render_block_html( $settings, ElementorIntegration::INTEGRATION_NAME );
     }
 
     protected function content_template(): void {
@@ -98,6 +98,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
         <div class="hostinger-reach-block-subscription-form-wrapper">
             <form id="{{{ settings.formId }}}" class="hostinger-reach-block-subscription-form">
                 <input type="hidden" name="id" value="{{{ settings.formId }}}">
+                <input type="hidden" name="metadata.plugin" value="elementor">
 
                 <div class="hostinger-reach-block-form-field">
                     <label

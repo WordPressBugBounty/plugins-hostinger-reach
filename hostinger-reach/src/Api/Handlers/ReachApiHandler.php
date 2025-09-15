@@ -4,6 +4,7 @@ namespace Hostinger\Reach\Api\Handlers;
 
 use Hostinger\Reach\Api\ApiKeyManager;
 use Hostinger\Reach\Functions;
+use Hostinger\Reach\Integrations\ReachFormIntegration;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -42,19 +43,21 @@ class ReachApiHandler extends ApiHandler {
             return $this->handle_wp_error( new WP_Error( 'Not authorized', 'You cannot perform this action' ) );
         }
 
-        $email   = $request->get_param( 'email' );
-        $name    = $request->get_param( 'name' );
-        $surname = $request->get_param( 'surname' );
-        $form_id = $request->get_param( 'id' );
-        $group   = apply_filters( 'hostinger_reach_get_group', $request->get_param( 'group' ), $form_id );
+        $email    = $request->get_param( 'email' );
+        $name     = $request->get_param( 'name' );
+        $surname  = $request->get_param( 'surname' );
+        $form_id  = $request->get_param( 'id' );
+        $metadata = $request->get_param( 'metadata' );
+        $group    = apply_filters( 'hostinger_reach_get_group', $request->get_param( 'group' ), $form_id );
 
         return $this->post_contact(
             array(
-                'form_id' => $form_id,
-                'group'   => $group,
-                'email'   => $email,
-                'name'    => $name,
-                'surname' => $surname,
+                'form_id'  => $form_id,
+                'group'    => $group,
+                'email'    => $email,
+                'name'     => $name,
+                'surname'  => $surname,
+                'metadata' => $metadata,
             )
         );
     }
@@ -128,6 +131,17 @@ class ReachApiHandler extends ApiHandler {
         if ( ! empty( $data['surname'] ) ) {
             $contact['surname'] = $data['surname'];
         }
+
+        $metadata = $data['metadata'] ?? array();
+        if ( ! is_array( $metadata ) ) {
+            $metadata = array();
+        }
+
+        if ( ! isset( $metadata['plugin'] ) ) {
+            $metadata['plugin'] = ReachFormIntegration::INTEGRATION_NAME;
+        }
+
+        $contact['metadata'] = $metadata;
 
         $args = array(
             'groupName' => $data['group'] ? $data['group'] : HOSTINGER_REACH_DEFAULT_CONTACT_LIST,

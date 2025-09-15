@@ -64,3 +64,9 @@ Changelog
 - Feature: Integration with WooCommerce Checkout
 - Tweak: Include Add Form entry in the Integrations menu
 - Fix: Routes not working with simple Permalinks
+
+1.0.9 (2025-09-15)
+
+- Feature: Send metadata with contacts
+- Feature: Readme update
+- Feature: Dependency update

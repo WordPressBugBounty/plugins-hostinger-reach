@@ -43,8 +43,11 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
         if ( $email ) {
             $response = $this->reach_api_handler->post_contact(
                 array(
-                    'group' => $contact_list,
-                    'email' => $email,
+                    'group'    => $contact_list,
+                    'email'    => $email,
+                    'metadata' => array(
+                        'plugin' => self::INTEGRATION_NAME,
+                    ),
                 )
             );
 

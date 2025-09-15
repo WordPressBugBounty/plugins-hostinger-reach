@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,10 +28,12 @@ Hostinger Reach is your all-in-one email marketing plugin, built for creators, s
 
 Reach lets you create forms directly within the native WordPress Block Editor – no extra plugins required.
 
-Reach is also fully compatible with these popular form builders:
+Reach is also fully compatible with these popular form builders and plugins:
 
 * **WPForms**
 * **Contact Form 7**
+* **WooCommerce**
+* **Elementor**
 
 More integrations are coming soon.
 
@@ -217,3 +219,9 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Feature: Integration with WooCommerce Checkout
 - Tweak: Include Add Form entry in the Integrations menu
 - Fix: Routes not working with simple Permalinks
+
+1.0.9 (2025-09-15)
+
+- Feature: Send metadata with contacts
+- Feature: Readme update
+- Feature: Dependency update
