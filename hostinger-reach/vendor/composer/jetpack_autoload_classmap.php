@@ -447,27 +447,27 @@ return array(
 		'path'    => $baseDir . '/tests/phpunit/Integration/TestCase.php'
 	),
 	'Hostinger\\Surveys\\Ajax' => array(
-		'version' => '1.1.15.0',
+		'version' => '1.1.17.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Ajax.php'
 	),
 	'Hostinger\\Surveys\\Assets' => array(
-		'version' => '1.1.15.0',
+		'version' => '1.1.17.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Assets.php'
 	),
 	'Hostinger\\Surveys\\Loader' => array(
-		'version' => '1.1.15.0',
+		'version' => '1.1.17.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Loader.php'
 	),
 	'Hostinger\\Surveys\\Rest' => array(
-		'version' => '1.1.15.0',
+		'version' => '1.1.17.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Rest.php'
 	),
 	'Hostinger\\Surveys\\SurveyLoader' => array(
-		'version' => '1.1.15.0',
+		'version' => '1.1.17.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/SurveyLoader.php'
 	),
 	'Hostinger\\Surveys\\SurveyManager' => array(
-		'version' => '1.1.15.0',
+		'version' => '1.1.17.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/SurveyManager.php'
 	),
 	'Hostinger\\WpHelper\\Config' => array(

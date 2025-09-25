@@ -93,14 +93,16 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         }
 
         $plugin_data[ self::INTEGRATION_NAME ] = array(
-            'folder'       => 'elementor',
-            'file'         => 'elementor.php',
-            'admin_url'    => 'admin.php?page=elementor',
-            'add_form_url' => $add_form_url,
-            'edit_url'     => 'post.php?post={post_id}&action=elementor',
-            'url'          => 'https://wordpress.org/plugins/elementor/',
-            'download_url' => 'https://downloads.wordpress.org/plugin/elementor.zip',
-            'title'        => __( 'Elementor', 'hostinger-reach' ),
+            'folder'              => 'elementor',
+            'file'                => 'elementor.php',
+            'admin_url'           => 'admin.php?page=elementor',
+            'add_form_url'        => $add_form_url,
+            'edit_url'            => 'post.php?post={post_id}&action=elementor',
+            'url'                 => 'https://wordpress.org/plugins/elementor/',
+            'download_url'        => 'https://downloads.wordpress.org/plugin/elementor.zip',
+            'title'               => __( 'Elementor', 'hostinger-reach' ),
+            'is_view_form_hidden' => false,
+            'can_toggle_forms'    => false,
         );
 
         return $plugin_data;

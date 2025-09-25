@@ -152,14 +152,15 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
 
     public function get_plugin_data( array $plugin_data ): array {
         $plugin_data[ self::INTEGRATION_NAME ] = array(
-            'folder'       => 'woocommerce',
-            'file'         => 'woocommerce.php',
-            'admin_url'    => 'admin.php?page=wc-admin',
-            'add_form_url' => null,
-            'edit_url'     => null,
-            'url'          => 'https://wordpress.org/plugins/woocommerce/',
-            'download_url' => 'https://downloads.wordpress.org/plugin/woocommerce.zip',
-            'title'        => __( 'WooCommerce', 'hostinger-reach' ),
+            'folder'              => 'woocommerce',
+            'file'                => 'woocommerce.php',
+            'admin_url'           => 'admin.php?page=wc-admin',
+            'add_form_url'        => null,
+            'edit_url'            => null,
+            'url'                 => 'https://wordpress.org/plugins/woocommerce/',
+            'download_url'        => 'https://downloads.wordpress.org/plugin/woocommerce.zip',
+            'title'               => __( 'WooCommerce', 'hostinger-reach' ),
+            'is_edit_form_hidden' => true,
         );
 
         return $plugin_data;

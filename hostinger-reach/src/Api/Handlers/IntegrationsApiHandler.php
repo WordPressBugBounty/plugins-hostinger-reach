@@ -98,17 +98,25 @@ class IntegrationsApiHandler extends ApiHandler {
 
             $is_hostinger_reach = $integration_name === ReachFormIntegration::INTEGRATION_NAME;
 
-            $plugin_data = $this->plugin_manager->get_plugin( $integration_name );
-            $is_active   = $this->plugin_manager->is_active( $integration_name ) && ( $available_integrations_state[ $integration_name ]['is_active'] ?? false );
+            $plugin_data      = $this->plugin_manager->get_plugin( $integration_name );
+            $is_active        = $this->plugin_manager->is_active( $integration_name ) && ( $available_integrations_state[ $integration_name ]['is_active'] ?? false );
+            $default_icon_url = $this->get_functions()->get_frontend_url() . 'icons/' . $integration_name . '.svg';
 
             $integrations[ $integration_name ] = array(
-                'is_plugin_active' => $is_hostinger_reach || $this->plugin_manager->is_active( $integration_name ),
-                'is_active'        => $is_hostinger_reach || $is_active,
-                'title'            => $plugin_data['title'] ?? '',
-                'url'              => $plugin_data['url'] ?? '',
-                'admin_url'        => $plugin_data['admin_url'] ?? '',
-                'edit_url'         => $plugin_data['edit_url'] ?? '',
-                'add_form_url'     => $plugin_data['add_form_url'] ?? '',
+                'id'                      => $integration_name,
+                'icon'                    => $plugin_data['icon'] ?? $default_icon_url,
+                'is_plugin_active'        => $is_hostinger_reach || $this->plugin_manager->is_active( $integration_name ),
+                'is_active'               => $is_hostinger_reach || $is_active,
+                'title'                   => $plugin_data['title'] ?? '',
+                'url'                     => $plugin_data['url'] ?? '',
+                'admin_url'               => $plugin_data['admin_url'] ?? '',
+                'edit_url'                => $plugin_data['edit_url'] ?? '',
+                'add_form_url'            => $plugin_data['add_form_url'] ?? '',
+                'can_deactivate'          => ! $is_hostinger_reach,
+                'is_go_to_plugin_visible' => ! $is_hostinger_reach,
+                'is_view_form_hidden'     => $plugin_data['is_view_form_hidden'] ?? true,
+                'is_edit_form_hidden'     => $plugin_data['is_edit_form_hidden'] ?? false,
+                'can_toggle_forms'        => $plugin_data['can_toggle_forms'] ?? true,
             );
         }
 
