@@ -73,5 +73,5 @@ export interface Integration {
 }
 
 export interface IntegrationsResponse {
-	[key: string]: Integration
+	[key: string]: Integration;
 }

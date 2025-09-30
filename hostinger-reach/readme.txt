@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.8
-Stable tag: 1.0.10
+Stable tag: 1.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -231,8 +231,14 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Context menu dropdown
 - Fix: Change elementor logo
 - Tweak: Refactor FE Integration logic
-- tweak: Integrate Review plugin step in CSAT 
+- tweak: Integrate Review plugin step in CSAT
 - Dev: Implement Coderabbit
 - Dev: Add automated Jira integration for release workflow
-- Dev: Fix Release Updater errors 
+- Dev: Fix Release Updater errors
 - Dev: Bump dependencies
+
+1.0.11 (2025-09-30)
+
+- Tweak: Add Pagination in Add form pages list 
+- Tweak:  Include platform metadata in contact submission
+- Tweak: Bump dependencies

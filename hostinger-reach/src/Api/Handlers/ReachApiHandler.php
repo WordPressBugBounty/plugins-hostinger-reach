@@ -137,13 +137,15 @@ class ReachApiHandler extends ApiHandler {
             $metadata = array();
         }
 
+        // phpcs:ignore WordPress.WP.CapitalPDangit.MisspelledInText -- Internal metadata key.
+        $metadata['platform'] = 'wordpress';
+
         if ( ! isset( $metadata['plugin'] ) ) {
             $metadata['plugin'] = ReachFormIntegration::INTEGRATION_NAME;
         }
 
         $contact['metadata'] = $metadata;
-
-        $args = array(
+        $args                = array(
             'groupName' => $data['group'] ? $data['group'] : HOSTINGER_REACH_DEFAULT_CONTACT_LIST,
             'contacts'  => array( $contact ),
         );

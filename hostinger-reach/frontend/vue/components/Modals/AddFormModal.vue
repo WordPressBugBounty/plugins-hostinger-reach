@@ -83,7 +83,7 @@ const togglePluginsSection = () => {
 	showPlugins.value = !showPlugins.value;
 };
 
-pagesStore.loadPages();
+pagesStore.loadData();
 </script>
 
 <template>

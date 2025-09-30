@@ -63,6 +63,7 @@ class Assets {
                 'is_connected'      => $this->reach_api_handler->is_connected(),
                 'is_hostinger_user' => $this->functions->is_hostinger_user(),
                 'is_staging'        => $this->functions->is_staging(),
+                'total_form_pages'  => (int) wp_count_posts( 'page' )->publish,
             )
         );
     }
