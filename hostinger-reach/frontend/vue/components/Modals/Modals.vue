@@ -11,7 +11,7 @@ const activeModal = computed(() => modalStore.activeModal);
 const modalComponent = computed(() => {
 	if (!activeModal.value) return null;
 
-	return defineAsyncComponent(() => import(`@/components/Modals/${activeModal.value?.name}.vue`));
+	return defineAsyncComponent(() => import(`@/components/Modals/Types/${activeModal.value?.name}.vue`));
 });
 </script>
 

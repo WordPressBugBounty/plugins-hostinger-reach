@@ -3,14 +3,17 @@
 namespace Hostinger\Reach\Providers;
 
 use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
-use Hostinger\Reach\Api\Handlers\ReachApiHandler;
 use Hostinger\Reach\Container;
 use Hostinger\Reach\Functions;
-use Hostinger\Reach\Integrations\ContactForm7Integration;
+use Hostinger\Reach\Integrations\ContactForm7\ContactForm7Integration;
 use Hostinger\Reach\Integrations\Elementor\ElementorIntegration;
-use Hostinger\Reach\Integrations\ReachFormIntegration;
+use Hostinger\Reach\Integrations\Forminator\ForminatorIntegration;
+use Hostinger\Reach\Integrations\NinjaForms\NinjaFormsIntegration;
+use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
+use Hostinger\Reach\Integrations\SureForms\SureFormsIntegration;
 use Hostinger\Reach\Integrations\WooCommerce\WooCommerceIntegration;
-use Hostinger\Reach\Integrations\WpFormsLiteIntegration;
+use Hostinger\Reach\Integrations\WPFormsLite\WpFormsLiteIntegration;
+use Hostinger\Reach\Integrations\WSForms\WSFormsIntegration;
 use Hostinger\Reach\Repositories\ContactListRepository;
 use Hostinger\Reach\Repositories\FormRepository;
 
@@ -26,6 +29,10 @@ class IntegrationsProvider implements ProviderInterface {
         WpFormsLiteIntegration::INTEGRATION_NAME  => WpFormsLiteIntegration::class,
         ElementorIntegration::INTEGRATION_NAME    => ElementorIntegration::class,
         WooCommerceIntegration::INTEGRATION_NAME  => WooCommerceIntegration::class,
+        NinjaFormsIntegration::INTEGRATION_NAME   => NinjaFormsIntegration::class,
+        SureFormsIntegration::INTEGRATION_NAME    => SureFormsIntegration::class,
+        WSFormsIntegration::INTEGRATION_NAME      => WSFormsIntegration::class,
+        ForminatorIntegration::INTEGRATION_NAME   => ForminatorIntegration::class,
     );
 
     public function register( Container $container ): void {
@@ -36,25 +43,18 @@ class IntegrationsProvider implements ProviderInterface {
                 $container->get( ContactListRepository::class ),
                 $container->get( Functions::class ),
             ),
-            ContactForm7Integration::class => array(
-                $container->get( ReachApiHandler::class ),
-                $container->get( IntegrationsApiHandler::class ),
-            ),
-            WpFormsLiteIntegration::class  => array(
-                $container->get( ReachApiHandler::class ),
-                $container->get( IntegrationsApiHandler::class ),
-            ),
+            ContactForm7Integration::class => array(),
+            WpFormsLiteIntegration::class  => array(),
             ElementorIntegration::class    => array(
-                $container->get( ReachApiHandler::class ),
-                $container->get( IntegrationsApiHandler::class ),
                 $container->get( FormRepository::class ),
             ),
             WooCommerceIntegration::class  => array(
                 $container->get( FormRepository::class ),
-                $container->get( IntegrationsApiHandler::class ),
-                $container->get( ReachApiHandler::class ),
-
             ),
+            NinjaFormsIntegration::class   => array(),
+            SureFormsIntegration::class    => array(),
+            WSFormsIntegration::class      => array(),
+            ForminatorIntegration::class   => array(),
         );
 
         foreach ( $integrations as $class_name => $dependencies ) {
@@ -67,8 +67,9 @@ class IntegrationsProvider implements ProviderInterface {
             );
 
             $integration = $container->get( $integration::class );
-
-            add_action( 'init', array( $integration, 'init' ) );
+            $integration->init();
         }
+
+        $container->get( IntegrationsApiHandler::class )->init_hooks();
     }
 }

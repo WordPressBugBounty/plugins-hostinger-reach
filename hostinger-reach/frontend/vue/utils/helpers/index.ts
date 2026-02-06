@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import type { AxiosResponse } from 'axios';
 
 interface BaseApiResponse<T> {
 	success?: boolean;
@@ -10,18 +10,18 @@ export const generateCorrelationId = (): string => `${Date.now()}-${Math.random(
 
 export const asyncCall = async <T>(
 	promise: Promise<AxiosResponse<BaseApiResponse<T>>>
-): Promise<[T | null, Error | null]> => {
+): Promise<[T | null, Error | null, number | null]> => {
 	try {
 		const response = await promise;
 
 		if (!response.data.error || (Array.isArray(response.data.error) && !response.data.error.length)) {
 			const responseData = response.data.data || response.data;
 
-			return [responseData as T, null];
+			return [responseData as T, null, response.status];
 		}
 
-		return [null, response.data.error as Error];
+		return [null, response.data.error as Error, response.status];
 	} catch (error) {
-		return [null, error as Error];
+		return [null, error as Error, error.status];
 	}
 };

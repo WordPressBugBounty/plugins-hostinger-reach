@@ -51,7 +51,7 @@ export const formsRepo = {
 		return httpService.get<ContactList[]>(`${URL}/contact-lists`, config);
 	},
 
-	toggleFormStatus: (formId: string, isActive: boolean, headers?: AuthorizeRequestHeaders) => {
+	toggleFormStatus: (formId: string, isActive: boolean, type: string, headers?: AuthorizeRequestHeaders) => {
 		const { nonce } = useGeneralDataStore();
 
 		const config = {
@@ -63,7 +63,8 @@ export const formsRepo = {
 
 		const data = {
 			formId,
-			isActive
+			isActive,
+			type
 		};
 
 		return httpService.post<{ success: boolean }>(`${URL}/forms`, data, config);
@@ -114,5 +115,22 @@ export const formsRepo = {
 		};
 
 		return httpService.post<{ success: boolean }>(`${URL}/integrations`, data, config);
+	},
+	sync: (importRequest: Record<string, Set<string>>, headers?: AuthorizeRequestHeaders) => {
+		const { nonce } = useGeneralDataStore();
+
+		const config = {
+			headers: {
+				[Header.CORRELATION_ID]: headers?.[Header.CORRELATION_ID] || generateCorrelationId(),
+				[Header.WP_NONCE]: nonce
+			}
+		};
+
+		const integrations = {};
+		Object.entries(importRequest).forEach(([integrationId, formIds]) => {
+			integrations[integrationId] = Array.from(formIds);
+		});
+
+		return httpService.post<{ success: boolean }>(`${URL}/import`, { integrations }, config);
 	}
 };

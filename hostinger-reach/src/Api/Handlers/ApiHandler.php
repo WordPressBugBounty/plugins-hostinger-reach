@@ -32,6 +32,11 @@ class ApiHandler {
         return $this->default_headers;
     }
 
+    public function get_generic_error_message(): string {
+        return __( 'Something went wrong. Please try again.', 'hostinger-reach' );
+    }
+
+
     public function get( string $endpoint, array $params = array(), array $headers = array(), int $timeout = 120 ): WP_Error|array {
         $url          = $this->get_api_basename() . $endpoint;
         $request_args = array(
@@ -44,9 +49,7 @@ class ApiHandler {
             $url = add_query_arg( $params, $url );
         }
 
-        $response = wp_remote_get( $url, $request_args );
-
-        return $response;
+        return wp_remote_get( $url, $request_args );
     }
 
     public function post( string $endpoint, array $params = array(), array $headers = array(), int $timeout = 120 ): mixed {
@@ -62,9 +65,15 @@ class ApiHandler {
     }
 
     public function handle_wp_error( WP_Error $error ): WP_REST_Response {
-        $response = new WP_REST_Response();
-        $response->set_data( array( 'errors' => $error->get_error_code() ) );
-        $response->set_status( WP_Http::BAD_REQUEST );
+        $response   = new WP_REST_Response();
+        $error_data = $error->get_error_data() ?? array( 'status' => WP_Http::BAD_REQUEST );
+        if ( current_user_can( 'manage_options' ) ) {
+            $response->set_data( array( 'errors' => $error->get_error_code() ) );
+        } else {
+            $response->set_data( array( 'errors' => $this->get_generic_error_message() ) );
+        }
+
+        $response->set_status( $error_data['status'] );
         return $response;
     }
 

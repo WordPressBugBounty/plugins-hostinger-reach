@@ -35,20 +35,27 @@ document.addEventListener('DOMContentLoaded', function() {
 				},
 				body: JSON.stringify(data)
 			})
-				.then(response => {
+				.then(async response => {
 					messageEl.style.display = 'block';
 					form.reset();
 
-					if ( response.ok ) {
+					if (response.ok) {
 						messageEl.textContent = translations.thanks;
 						const submitBtn = form.querySelector('.hostinger-reach-block-submit');
 						submitBtn.style.display = 'none';
 					} else {
-						throw new Error(response.statusText);
-					}
+						const data = await response.json();
+						if ( data.errors ) {
+							messageEl.textContent = data.errors;
+							messageEl.style.display = 'block';
+							submitBtn.disabled = false;
+						} else {
+							throw new Error();
+						}
 
+					}
 				})
-				.catch(error => {
+				.catch(err => {
 					messageEl.textContent = translations.error;
 					messageEl.style.display = 'block';
 					submitBtn.disabled = false;

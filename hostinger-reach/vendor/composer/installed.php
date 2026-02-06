@@ -3,7 +3,7 @@
         'name' => 'hostinger/hostinger-reach',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '57cde2a1f8eebfd5a4e68a6e348b6c8765114550',
+        'reference' => 'e8bbd981fedef57ecde292c5efd18797a9b10c08',
         'type' => 'plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'automattic/jetpack-autoloader' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '272f0a1e119175623b440699e7af79de2a6ed44b',
+            'reference' => '93ee25013a9c765ab3504e23e4b87f1a6d939880',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../automattic/jetpack-autoloader',
             'aliases' => array(
@@ -24,7 +24,7 @@
         'hostinger/hostinger-reach' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '57cde2a1f8eebfd5a4e68a6e348b6c8765114550',
+            'reference' => 'e8bbd981fedef57ecde292c5efd18797a9b10c08',
             'type' => 'plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -66,6 +66,15 @@
             'aliases' => array(
                 0 => '2.0.x-dev',
             ),
+            'dev_requirement' => false,
+        ),
+        'woocommerce/action-scheduler' => array(
+            'pretty_version' => '3.9.3',
+            'version' => '3.9.3.0',
+            'reference' => 'c58cdbab17651303d406cd3b22cf9d75c71c986c',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../woocommerce/action-scheduler',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
     ),

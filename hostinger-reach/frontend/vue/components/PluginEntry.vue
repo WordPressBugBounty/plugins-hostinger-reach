@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { HIcon, HLabel, HPopover } from '@hostinger/hcomponents';
+import { HIcon, HPopover } from '@hostinger/hcomponents';
 import { computed, ref } from 'vue';
 
 import PluginExpansion from '@/components/PluginExpansion.vue';
-import { PLUGIN_STATUSES, type PluginStatus } from '@/data/pluginData';
+import SyncStatusLabel from '@/components/SyncStatusLabel.vue';
+import { useModal } from '@/composables';
+import { type PluginStatus } from '@/data/pluginData';
+import { IMPORT_STATUSES, ModalName } from '@/types';
 import type { Form, Integration } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 interface Props {
 	integration: Integration;
 	pluginStatus: PluginStatus;
-	totalEntries: number;
 	forms: Form[];
+	initiallyExpanded: boolean;
 }
 
 const props = defineProps<Props>();
+const { openModal } = useModal();
 
 const emit = defineEmits<{
 	toggleFormStatus: [form: Form, status: boolean];
@@ -25,21 +29,26 @@ const emit = defineEmits<{
 	addForm: [id: string];
 }>();
 
-const isExpanded = ref(false);
+const isExpanded = ref(props.initiallyExpanded ?? false);
 
 const toggleExpansion = () => {
 	isExpanded.value = !isExpanded.value;
 };
 
-const getStatusLabel = (status: PluginStatus) =>
-	status === PLUGIN_STATUSES.ACTIVE
-		? translate('hostinger_reach_plugin_entries_table_status_active')
-		: translate('hostinger_reach_plugin_entries_table_status_inactive');
-
-const getStatusColor = (status: PluginStatus) => (status === PLUGIN_STATUSES.ACTIVE ? 'success' : 'gray');
-
 const handleToggleFormStatus = (form: Form, status: boolean) => {
 	emit('toggleFormStatus', form, status);
+};
+
+const handleContactSyncClick = (integration: Integration) => {
+	openModal(
+		ModalName.SYNC_CONTACTS_MODAL,
+		{
+			title: translate('hostinger_reach_contacts_modal_title'),
+			subtitle: translate('hostinger_reach_contacts_modal_subtitle'),
+			data: { integrations: [integration] }
+		},
+		{ hasCloseButton: true }
+	);
 };
 
 const handleViewForm = (form: Form) => {
@@ -52,6 +61,13 @@ const handleEditForm = (form: Form) => {
 
 const showPopover = computed(
 	() => props.integration.canDeactivate || !!props.integration.addFormUrl || props.integration.isGoToPluginVisible
+);
+
+const activeForms = computed(() => props.forms.filter((form) => form.isActive));
+
+const canSync = computed(
+	() =>
+		props.integration.importEnabled && props.integration.forms?.length > 0 && props.integration.importStatus.total > 0
 );
 
 const expandButtonAriaLabel = computed(() => {
@@ -85,21 +101,24 @@ const expandButtonAriaLabel = computed(() => {
 					</div>
 				</div>
 			</div>
-			<div class="plugin-entry-row__cell plugin-entry-row__cell--entries">
+			<div class="plugin-entry-row__cell plugin-entry-row__cell--forms">
 				<span class="plugin-entry-row__mobile-label">
-					{{ translate('hostinger_reach_plugin_entries_table_entries_header') }}:
+					{{ translate('hostinger_reach_plugin_entries_table_syncing_header') }}:
 				</span>
-				<span class="plugin-entry-row__entries-count">{{ totalEntries }}</span>
+				<span class="plugin-entry-row__entries-count">
+					<span>{{ activeForms.length }}</span>
+					<span>{{ translate('hostinger_reach_plugin_entries_table_of') }}</span>
+					<span>{{ props.integration.forms?.length }}</span>
+				</span>
 			</div>
 			<div class="plugin-entry-row__cell plugin-entry-row__cell--status">
 				<span class="plugin-entry-row__mobile-label">
 					{{ translate('hostinger_reach_plugin_entries_table_status_header') }}:
 				</span>
-				<div class="plugin-entry-row__status-content">
-					<HLabel variant="outline" :color="getStatusColor(pluginStatus)" class="plugin-entry-row__status-label">
-						{{ getStatusLabel(pluginStatus) }}
-					</HLabel>
-				</div>
+				<SyncStatusLabel
+					:enabled="props.integration.importEnabled"
+					:status="activeForms.length <= 0 ? IMPORT_STATUSES.OFF : props.integration.importStatus.status"
+				/>
 			</div>
 			<div class="plugin-entry-row__cell plugin-entry-row__cell--actions">
 				<HPopover
@@ -124,6 +143,10 @@ const expandButtonAriaLabel = computed(() => {
 							<HIcon name="ic-plus-16" />
 							<span>{{ translate('hostinger_reach_plugin_entries_table_add_form') }}</span>
 							<HIcon name="ic-arrow-up-right-square-16" />
+						</div>
+						<div v-if="canSync" class="plugin-entry-row__menu-item" @click="handleContactSyncClick(props.integration)">
+							<HIcon name="ic-arrows-circle-16" />
+							<span>{{ translate('hostinger_reach_sync_contacts_button_text') }}</span>
 						</div>
 						<div
 							v-if="props.integration.isGoToPluginVisible"
@@ -170,12 +193,12 @@ const expandButtonAriaLabel = computed(() => {
 		align-items: center;
 
 		&--plugin {
-			width: 50%;
+			width: 39%;
 			order: 1;
 		}
 
-		&--entries {
-			width: 20%;
+		&--forms {
+			width: 21%;
 			order: 2;
 		}
 
@@ -185,7 +208,7 @@ const expandButtonAriaLabel = computed(() => {
 		}
 
 		&--actions {
-			width: 10%;
+			width: 20%;
 			display: flex;
 			justify-content: flex-end;
 			order: 4;
@@ -262,11 +285,25 @@ const expandButtonAriaLabel = computed(() => {
 		font-weight: 400;
 		font-size: 14px;
 		color: var(--neutral--500);
+		display: flex;
+		gap: 4px;
 	}
 
 	&__status-content {
 		display: flex;
 		align-items: center;
+		gap: 5px;
+
+		&[data-availabe='false'] {
+			color: var(--neutral--300);
+			opacity: 0.7;
+		}
+
+		&[data-status='importing'] {
+			svg {
+				animation: spin 2.5s linear infinite;
+			}
+		}
 	}
 
 	&__status-label {
@@ -323,14 +360,14 @@ const expandButtonAriaLabel = computed(() => {
 		}
 
 		&__cell--plugin,
-		&__cell--entries,
+		&__cell--forms,
 		&__cell--status,
 		&__cell--actions {
 			width: 100%;
 			justify-content: flex-start;
 		}
 
-		&__cell--entries,
+		&__cell--forms,
 		&__cell--status {
 			align-items: flex-start;
 		}

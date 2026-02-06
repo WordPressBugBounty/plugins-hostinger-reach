@@ -3,29 +3,23 @@
 namespace Hostinger\Reach\Integrations\WooCommerce;
 
 use Automattic\WooCommerce\Internal\Admin\Onboarding\OnboardingProfile;
-use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
-use Hostinger\Reach\Api\Handlers\ReachApiHandler;
+use Hostinger\Reach\Api\Webhooks\Handlers\CartAbandoned;
+use Hostinger\Reach\Api\Webhooks\Handlers\OrderPurchased;
 use Hostinger\Reach\Integrations\IntegrationInterface;
 use Hostinger\Reach\Integrations\IntegrationWithForms;
+use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Repositories\FormRepository;
+use stdClass;
 use WC_Order;
 use WP_Post;
 use WP_REST_Request;
 
 class WooCommerceIntegration extends IntegrationWithForms implements IntegrationInterface {
     public FormRepository $form_repository;
-    protected IntegrationsApiHandler $integrations_api_handler;
-    protected ReachApiHandler $reach_api_handler;
 
     public const INTEGRATION_NAME     = 'woocommerce';
     public const OPTIN_KEY            = 'hostinger_reach_optin';
     public const ORDER_META_OPTIN_KEY = '_wc_other/hostinger-reach/newsletter-optin';
-
-    public function __construct( FormRepository $form_repository, IntegrationsApiHandler $integrations_api_handler, ReachApiHandler $reach_api_handler ) {
-        parent::__construct( $form_repository );
-        $this->reach_api_handler        = $reach_api_handler;
-        $this->integrations_api_handler = $integrations_api_handler;
-    }
 
     public static function get_name(): string {
         return self::INTEGRATION_NAME;
@@ -34,10 +28,11 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
     public function init(): void {
         parent::init();
         add_action( 'hostinger_reach_integration_activated', array( $this, 'set_woocommerce_onboarding_skipped' ) );
-        if ( $this->integrations_api_handler->is_active( self::INTEGRATION_NAME ) ) {
-            $this->add_form();
-        }
+    }
 
+    public function active_integration_hooks(): void {
+        $this->add_form();
+        $this->add_automations();
         if ( $this->form_repository->is_form_active( self::INTEGRATION_NAME ) ) {
             $this->init_optin_actions();
 
@@ -54,7 +49,15 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
             add_action( 'woocommerce_blocks_loaded', array( $this, 'register_checkout_blocks_field' ) );
         }
 
-        add_action( 'woocommerce_store_api_checkout_update_order_from_request', array( $this, 'handle_checkout_blocks_optin' ), 10, 2 );
+        add_action(
+            'woocommerce_store_api_checkout_update_order_from_request',
+            array(
+                $this,
+                'handle_checkout_blocks_optin',
+            ),
+            10,
+            2
+        );
         add_action( 'woocommerce_checkout_after_terms_and_conditions', array( $this, 'add_optin_checkbox' ) );
     }
 
@@ -98,14 +101,37 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
     }
 
     public function add_form(): void {
-        $checkout_page_id = wc_get_page_id( 'checkout' );
+        $checkout_page_id = null;
 
-        if ( $checkout_page_id && ! $this->form_repository->exists( self::INTEGRATION_NAME ) ) {
+        if ( method_exists( $this, 'wc_get_page_id' ) ) {
+            $checkout_page_id = wc_get_page_id( 'checkout' );
+        }
+
+        if ( ! $this->form_repository->exists( self::INTEGRATION_NAME ) ) {
             $this->form_repository->insert(
                 array(
-                    'form_id' => self::INTEGRATION_NAME,
-                    'type'    => self::INTEGRATION_NAME,
-                    'post_id' => $checkout_page_id,
+                    'form_id'    => self::INTEGRATION_NAME,
+                    'type'       => self::INTEGRATION_NAME,
+                    'post_id'    => $checkout_page_id,
+                    'form_title' => __( 'Checkout', 'hostinger-reach' ),
+                )
+            );
+        }
+    }
+
+    public function add_automations(): void {
+        $this->add_automation( OrderPurchased::WEBHOOK_NAME, __( 'Automation -  Purchases', 'hostinger-reach' ) );
+        $this->add_automation( CartAbandoned::WEBHOOK_NAME, __( 'Automation - Abandoned Carts', 'hostinger-reach' ) );
+    }
+
+    public function add_automation( string $automation_name, string $title ): void {
+        if ( ! $this->form_repository->exists( $automation_name ) ) {
+            $this->form_repository->insert(
+                array(
+                    'form_id'    => $automation_name,
+                    'form_title' => $title,
+                    'type'       => self::INTEGRATION_NAME,
+                    'post_id'    => null,
                 )
             );
         }
@@ -136,7 +162,8 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
         $name    = $order->get_billing_first_name();
         $surname = $order->get_billing_last_name();
         if ( $email ) {
-            $this->reach_api_handler->post_contact(
+            do_action(
+                'hostinger_reach_submit',
                 array(
                     'group'    => self::INTEGRATION_NAME,
                     'email'    => $email,
@@ -150,24 +177,87 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
         }
     }
 
-    public function get_plugin_data( array $plugin_data ): array {
-        $plugin_data[ self::INTEGRATION_NAME ] = array(
-            'folder'              => 'woocommerce',
-            'file'                => 'woocommerce.php',
-            'admin_url'           => 'admin.php?page=wc-admin',
-            'add_form_url'        => null,
-            'edit_url'            => null,
-            'url'                 => 'https://wordpress.org/plugins/woocommerce/',
-            'download_url'        => 'https://downloads.wordpress.org/plugin/woocommerce.zip',
-            'title'               => __( 'WooCommerce', 'hostinger-reach' ),
-            'is_edit_form_hidden' => true,
+    public function get_plugin_data(): PluginData {
+        return PluginData::from_array(
+            array(
+                'id'                  => self::INTEGRATION_NAME,
+                'type'                => self::HOSTINGER_INTEGRATION_TYPE_ECOMMERCE,
+                'folder'              => 'woocommerce',
+                'file'                => 'woocommerce.php',
+                'admin_url'           => 'admin.php?page=wc-admin',
+                'add_form_url'        => null,
+                'edit_url'            => null,
+                'url'                 => 'https://wordpress.org/plugins/woocommerce/',
+                'download_url'        => 'https://downloads.wordpress.org/plugin/woocommerce.zip',
+                'title'               => __( 'WooCommerce', 'hostinger-reach' ),
+                'is_edit_form_hidden' => true,
+                'is_active'           => class_exists( 'WooCommerce' ),
+                'import_enabled'      => true,
+            )
         );
-
-        return $plugin_data;
     }
 
     public function get_form_ids( WP_Post $post ): array {
         return array();
+    }
+
+    public function get_import_summary(): array {
+        if ( ! $this->is_woo_customer_data_available() ) {
+            return array();
+        }
+
+        return array(
+            wc_get_page_id( 'checkout' ) => array(
+                'title'    => __( 'WooCommerce Customers', 'hostinger-reach' ),
+                'contacts' => $this->get_contacts_count(),
+            ),
+        );
+    }
+
+    public function get_contacts( mixed $form_id = null, ?int $limit = 100, ?int $offset = 0 ): array {
+        if ( ! $this->is_woo_customer_data_available() ) {
+            return array();
+        }
+
+        global $wpdb;
+        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+        $table = $wpdb->prefix . 'wc_customer_lookup';
+        $sql   = "SELECT email, first_name FROM {$table}";
+
+        if ( $limit > 0 ) {
+            $sql .= $wpdb->prepare( ' LIMIT %d', $limit );
+        }
+
+        if ( $offset > 0 ) {
+            $sql .= $wpdb->prepare( ' OFFSET %d', $offset );
+        }
+
+        return array_map(
+            function ( stdClass $user ) {
+                return array(
+                    'email'    => $user->email ?? '',
+                    'name'     => $user->first_name ?? '',
+                    'metadata' => array(
+                        'form_id' => wc_get_page_id( 'checkout' ),
+                        'plugin'  => self::INTEGRATION_NAME,
+                        'group'   => self::INTEGRATION_NAME,
+                    ),
+                );
+            },
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+            $wpdb->get_results( $sql )
+        );
+    }
+
+    public function get_contacts_count(): int {
+        global $wpdb;
+        if ( ! $this->is_woo_customer_data_available() ) {
+            return 0;
+        }
+
+        $table = $this->get_woocommerce_customer_table();
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ) ?? 0;
     }
 
     private function set_opted_in( bool $opted_in, mixed $oder_id ): void {
@@ -194,6 +284,19 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
         }
 
         return $is_opted_in === 'yes';
+    }
+
+    private function get_woocommerce_customer_table(): string {
+        global $wpdb;
+        return "{$wpdb->prefix}wc_customer_lookup";
+    }
+
+    private function is_woo_customer_data_available(): bool {
+        global $wpdb;
+        $table = $this->get_woocommerce_customer_table();
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        $table_exists = $wpdb->get_var( "SHOW TABLES LIKE '$table'" ) === $table;
+        return function_exists( 'wc_get_page_id' ) && $table_exists;
     }
 
     private function load_template(): void {

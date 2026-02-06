@@ -1,7 +1,9 @@
+import { decode } from 'html-entities';
+
 import { useGeneralDataStore } from '@/stores/generalDataStore';
 import { Header } from '@/types/enums';
 import type { AuthorizeRequestHeaders } from '@/types/models/httpModels';
-import type { WordPressPagesList } from '@/types/models/pagesModels';
+import type { Page, WordPressPagesList } from '@/types/models/pagesModels';
 import { generateCorrelationId } from '@/utils/helpers';
 import httpService from '@/utils/services/httpService';
 
@@ -47,8 +49,30 @@ export const pagesRepo = {
 				return [null, error];
 			}
 
-			const paginatedResponse: PaginatedResponse<WordPressPagesList> = {
-				data: data || [],
+			const pages =
+				data?.map((page) => {
+					let pageUrl = `/wp-admin/post.php?post=${page.id}`;
+
+					if (!page.HostingerReachPluginHasSubscriptionBlock) {
+						pageUrl = `${pageUrl}&hostinger_reach_add_block=1`;
+					}
+
+					if (page.HostingerReachPluginIsElementor) {
+						pageUrl = `${pageUrl}&action=elementor`;
+					} else {
+						pageUrl = `${pageUrl}&action=edit`;
+					}
+
+					return {
+						id: page.id.toString(),
+						name: decode(page.title.rendered),
+						link: pageUrl,
+						isAdded: page.HostingerReachPluginHasSubscriptionBlock ?? false
+					};
+				}) || [];
+
+			const paginatedResponse: PaginatedResponse<Page[]> = {
+				data: pages,
 				pagination: {
 					currentPage: page,
 					totalPages,

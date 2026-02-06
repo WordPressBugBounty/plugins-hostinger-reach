@@ -3,11 +3,11 @@
  * Plugin Name:       Hostinger Reach
  * Plugin URI:        https://hostinger.com
  * Description:       Integrate your WordPress site with Hostinger Reach.
- * Version:           1.0.11
+ * Version:           1.3.4
  * Author:            Hostinger
- * Requires PHP:      8.0
+ * Requires PHP:      8.1
  * Requires at least: 6.0
- * Tested up to:      6.8
+ * Tested up to:      6.9
  * Author URI:        https://www.hostinger.com/email-marketing
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -25,8 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
 
-define( 'HOSTINGER_REACH_PLUGIN_VERSION', '1.0.11' );
-define( 'HOSTINGER_REACH_DB_VERSION', '1.0.0' );
+define( 'HOSTINGER_REACH_PLUGIN_VERSION', '1.3.4' );
+define( 'HOSTINGER_REACH_DB_VERSION', '1.2.1' );
 define( 'HOSTINGER_REACH_MINIMUM_PHP_VERSION', '8.0' );
 define( 'HOSTINGER_REACH_PLUGIN_FILE', __FILE__ );
 define( 'HOSTINGER_REACH_PLUGIN_SLUG', basename( __FILE__, '.php' ) );
@@ -35,6 +35,8 @@ define( 'HOSTINGER_REACH_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'HOSTINGER_REACH_PLUGIN_REST_API_BASE', 'hostinger-reach/v1' );
 define( 'HOSTINGER_REACH_REST_URI', 'https://reach.hostinger.com' );
 define( 'HOSTINGER_REACH_DEFAULT_CONTACT_LIST', 'WordPress' );
+define( 'HOSTINGER_INTEGRATIONS_SUPPORTED', true );
+define( 'HOSTINGER_REACH_DEFAULT_ABANDONED_CART_THRESHOLD', 4 * HOUR_IN_SECONDS );
 
 $hostinger_dir_parts        = explode( '/', __DIR__ );
 $hostinger_server_root_path = '/' . $hostinger_dir_parts[1] . '/' . $hostinger_dir_parts[2];

@@ -13,6 +13,7 @@ class FormsTable extends DatabaseTable {
         return array(
             'id mediumint(9) NOT NULL AUTO_INCREMENT',
             'form_id varchar(255) NOT NULL',
+            'form_title varchar(255)',
             'post_id int(11)',
             'contact_list_id int(11)',
             'type varchar(255) NOT NULL',

@@ -7,44 +7,48 @@ $baseDir   = dirname($vendorDir);
 
 return array(
 	'Autoloader' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader.php'
 	),
 	'Autoloader_Handler' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-handler.php'
 	),
 	'Autoloader_Locator' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-locator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadFileWriter.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadProcessor' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadProcessor.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/CustomAutoloaderPlugin.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\ManifestGenerator' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/ManifestGenerator.php'
 	),
 	'Container' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-container.php'
 	),
 	'Hook_Manager' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-hook-manager.php'
+	),
+	'Hostinger\\Reach\\Admin\\Database\\CartsTable' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Admin/Database/CartsTable.php'
 	),
 	'Hostinger\\Reach\\Admin\\Database\\ContactListsTable' => array(
 		'version' => 'dev-main',
@@ -65,6 +69,10 @@ return array(
 	'Hostinger\\Reach\\Admin\\Menus' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Admin/Menus.php'
+	),
+	'Hostinger\\Reach\\Admin\\Notices\\ConnectionNotice' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Admin/Notices/ConnectionNotice.php'
 	),
 	'Hostinger\\Reach\\Admin\\Redirects' => array(
 		'version' => 'dev-main',
@@ -118,6 +126,18 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Api/Routes/Routes.php'
 	),
+	'Hostinger\\Reach\\Api\\Webhooks\\Handlers\\CartAbandoned' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Api/Webhooks/Handlers/CartAbandoned.php'
+	),
+	'Hostinger\\Reach\\Api\\Webhooks\\Handlers\\OrderPurchased' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Api/Webhooks/Handlers/OrderPurchased.php'
+	),
+	'Hostinger\\Reach\\Api\\Webhooks\\Handlers\\WebhookHandler' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Api/Webhooks/Handlers/WebhookHandler.php'
+	),
 	'Hostinger\\Reach\\Blocks\\Block' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Blocks/Block.php'
@@ -134,13 +154,33 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Container.php'
 	),
+	'Hostinger\\Reach\\Dto\\Cart' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Dto/Cart.php'
+	),
+	'Hostinger\\Reach\\Dto\\CartItem' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Dto/CartItem.php'
+	),
+	'Hostinger\\Reach\\Dto\\PluginData' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Dto/PluginData.php'
+	),
+	'Hostinger\\Reach\\Dto\\ReachContact' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Dto/ReachContact.php'
+	),
+	'Hostinger\\Reach\\Dto\\Totals' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Dto/Totals.php'
+	),
 	'Hostinger\\Reach\\Functions' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Functions.php'
 	),
-	'Hostinger\\Reach\\Integrations\\ContactForm7Integration' => array(
+	'Hostinger\\Reach\\Integrations\\ContactForm7\\ContactForm7Integration' => array(
 		'version' => 'dev-main',
-		'path'    => $baseDir . '/src/Integrations/ContactForm7Integration.php'
+		'path'    => $baseDir . '/src/Integrations/ContactForm7/ContactForm7Integration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Elementor\\ElementorIntegration' => array(
 		'version' => 'dev-main',
@@ -149,6 +189,14 @@ return array(
 	'Hostinger\\Reach\\Integrations\\Elementor\\SubscriptionFormElementorWidget' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/Elementor/SubscriptionFormElementorWidget.php'
+	),
+	'Hostinger\\Reach\\Integrations\\Forminator\\ForminatorIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/Forminator/ForminatorIntegration.php'
+	),
+	'Hostinger\\Reach\\Integrations\\ImportManager' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/ImportManager.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Integration' => array(
 		'version' => 'dev-main',
@@ -162,21 +210,69 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/IntegrationWithForms.php'
 	),
+	'Hostinger\\Reach\\Integrations\\NinjaForms\\NinjaFormsIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/NinjaForms/NinjaFormsIntegration.php'
+	),
 	'Hostinger\\Reach\\Integrations\\PluginManager' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/PluginManager.php'
 	),
-	'Hostinger\\Reach\\Integrations\\ReachFormIntegration' => array(
+	'Hostinger\\Reach\\Integrations\\Reach\\ReachFormIntegration' => array(
 		'version' => 'dev-main',
-		'path'    => $baseDir . '/src/Integrations/ReachFormIntegration.php'
+		'path'    => $baseDir . '/src/Integrations/Reach/ReachFormIntegration.php'
+	),
+	'Hostinger\\Reach\\Integrations\\SureForms\\SureFormsIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/SureForms/SureFormsIntegration.php'
+	),
+	'Hostinger\\Reach\\Integrations\\WPFormsLite\\WpFormsLiteIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/WPFormsLite/WpFormsLiteIntegration.php'
+	),
+	'Hostinger\\Reach\\Integrations\\WSForms\\WSFormsIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/WSForms/WSFormsIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\WooCommerce\\WooCommerceIntegration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/WooCommerce/WooCommerceIntegration.php'
 	),
-	'Hostinger\\Reach\\Integrations\\WpFormsLiteIntegration' => array(
+	'Hostinger\\Reach\\Jobs\\AbandonedCartsJob' => array(
 		'version' => 'dev-main',
-		'path'    => $baseDir . '/src/Integrations/WpFormsLiteIntegration.php'
+		'path'    => $baseDir . '/src/Jobs/AbandonedCartsJob.php'
+	),
+	'Hostinger\\Reach\\Jobs\\AbstractBatchedJob' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/AbstractBatchedJob.php'
+	),
+	'Hostinger\\Reach\\Jobs\\AbstractJob' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/AbstractJob.php'
+	),
+	'Hostinger\\Reach\\Jobs\\ActionScheduler' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/ActionScheduler.php'
+	),
+	'Hostinger\\Reach\\Jobs\\CleanupCartsJob' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/CleanupCartsJob.php'
+	),
+	'Hostinger\\Reach\\Jobs\\ImportJob' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/ImportJob.php'
+	),
+	'Hostinger\\Reach\\Jobs\\JobInterface' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/JobInterface.php'
+	),
+	'Hostinger\\Reach\\Jobs\\RecurringJobInterface' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Jobs/RecurringJobInterface.php'
+	),
+	'Hostinger\\Reach\\Models\\Cart' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Models/Cart.php'
 	),
 	'Hostinger\\Reach\\Models\\ContactList' => array(
 		'version' => 'dev-main',
@@ -189,6 +285,10 @@ return array(
 	'Hostinger\\Reach\\Models\\Model' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Models/Model.php'
+	),
+	'Hostinger\\Reach\\Models\\PluginData' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Models/PluginData.php'
 	),
 	'Hostinger\\Reach\\Providers\\AssetsProvider' => array(
 		'version' => 'dev-main',
@@ -210,9 +310,17 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/IntegrationsProvider.php'
 	),
+	'Hostinger\\Reach\\Providers\\JobsProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/JobsProvider.php'
+	),
 	'Hostinger\\Reach\\Providers\\MenusProvider' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/MenusProvider.php'
+	),
+	'Hostinger\\Reach\\Providers\\NoticesProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/NoticesProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\ProviderInterface' => array(
 		'version' => 'dev-main',
@@ -230,9 +338,21 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/SurveysProvider.php'
 	),
+	'Hostinger\\Reach\\Providers\\TrackingProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/TrackingProvider.php'
+	),
+	'Hostinger\\Reach\\Providers\\WebhooksProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/WebhooksProvider.php'
+	),
 	'Hostinger\\Reach\\Providers\\WpdbProvider' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/WpdbProvider.php'
+	),
+	'Hostinger\\Reach\\Repositories\\CartRepository' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Repositories/CartRepository.php'
 	),
 	'Hostinger\\Reach\\Repositories\\ContactListRepository' => array(
 		'version' => 'dev-main',
@@ -266,9 +386,17 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Setup/Database.php'
 	),
+	'Hostinger\\Reach\\Setup\\Encrypt' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Setup/Encrypt.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\ActivatorTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Setup/ActivatorTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Database\\CartsTableTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Database/CartsTableTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Database\\ContactListsTableTest' => array(
 		'version' => 'dev-main',
@@ -289,6 +417,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\MenusTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/MenusTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Notices\\ConnectionNoticeScreenTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Notices/ConnectionNoticeTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\RedirectsProviderTest' => array(
 		'version' => 'dev-main',
@@ -334,6 +466,22 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/ReachRoutesTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\CartAbandonedTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/CartAbandonedTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\DummyWebhookHandler' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/WebhookHandlerTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\OrderPurchasedTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/OrderPurchasedTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\WebhookHandlerTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/WebhookHandlerTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\AssetsTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Setup/AssetsTest.php'
@@ -354,6 +502,14 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/ContainerTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Dto\\CartTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Dto/CartTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Dto\\PluginDataTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Dto/PluginDataTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\FunctionsTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/FunctionsTest.php'
@@ -370,9 +526,21 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ElementorIntegrationTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ForminatorIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ForminatorIntegrationTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ImportManagerTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ImportManagerTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\IntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/IntegrationTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\NinjaFormsIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/NinjaFormsIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormIntegrationTest' => array(
 		'version' => 'dev-main',
@@ -382,6 +550,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SubscriptionFormElementorWidgetTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\SureFormsIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SureFormsIntegrationTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WooCommerceIntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/WooCommerceIntegrationTest.php'
@@ -389,6 +561,26 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WpFormsLiteIntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/WpFormsLiteIntegrationTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Jobs\\AbandonedCartsJobTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Jobs/AbandonedCartsJobTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Jobs\\CleanupCartsJobTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Jobs/CleanupCartsJobTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Jobs\\ImportJobTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Jobs/ImportJobTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Models\\CartItemTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Dto/CartItemTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Models\\CartTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Models/CartTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Models\\ContactListTest' => array(
 		'version' => 'dev-main',
@@ -418,6 +610,14 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/IntegrationsProviderTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\JobsProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/JobsProviderTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\NoticesProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/NoticesProviderTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\RoutesProviderTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/RoutesProviderTest.php'
@@ -425,6 +625,18 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\SurveysProviderTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/SurveysProviderTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\TrackingProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/TrackingProviderTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\WebhooksProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/WebhooksProviderTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Repositories\\CartRepositoryTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Repositories/CartRepositoryTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Repositories\\ContactListRepositoryTest' => array(
 		'version' => 'dev-main',
@@ -445,6 +657,14 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\TestCase' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/TestCase.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Tracking\\AbandonedCartsTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/AbandonedCartsTest.php'
+	),
+	'Hostinger\\Reach\\Tracking\\AbandonedCarts' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Tracking/AbandonedCarts.php'
 	),
 	'Hostinger\\Surveys\\Ajax' => array(
 		'version' => '1.1.17.0',
@@ -499,27 +719,27 @@ return array(
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-menu-manager/src/Menus.php'
 	),
 	'Latest_Autoloader_Guard' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-latest-autoloader-guard.php'
 	),
 	'Manifest_Reader' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-manifest-reader.php'
 	),
 	'PHP_Autoloader' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-php-autoloader.php'
 	),
 	'Path_Processor' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-path-processor.php'
 	),
 	'Plugin_Locator' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-plugin-locator.php'
 	),
 	'Plugins_Handler' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-plugins-handler.php'
 	),
 	'Psr\\Container\\ContainerExceptionInterface' => array(
@@ -535,15 +755,15 @@ return array(
 		'path'    => $vendorDir . '/psr/container/src/NotFoundExceptionInterface.php'
 	),
 	'Shutdown_Handler' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-shutdown-handler.php'
 	),
 	'Version_Loader' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-version-loader.php'
 	),
 	'Version_Selector' => array(
-		'version' => '5.0.9',
+		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-version-selector.php'
 	),
 );

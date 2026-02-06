@@ -3,13 +3,12 @@ import { computed } from 'vue';
 
 import PluginEntry from '@/components/PluginEntry.vue';
 import PluginEntrySkeleton from '@/components/skeletons/PluginEntrySkeleton.vue';
-import { PLUGIN_STATUSES, type PluginStatus } from '@/data/pluginData';
+import { PLUGIN_STATUSES, type PluginStatus, WOOCOMMERCE_ID } from '@/data/pluginData';
 import type { Form, Integration } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 interface PluginEntryData {
 	integration: Integration;
-	entries: number;
 	status: PluginStatus;
 	forms: Form[];
 }
@@ -42,11 +41,9 @@ const pluginEntries = computed((): PluginEntryData[] => {
 		.filter((integration) => integration.isPluginActive)
 		.map((integration) => {
 			const forms = integration.forms || [];
-			const totalSubmissions = forms.reduce((sum, form) => sum + (form.submissions || 0), 0);
 
 			return {
 				integration,
-				entries: totalSubmissions,
 				status: integration.isActive ? PLUGIN_STATUSES.ACTIVE : PLUGIN_STATUSES.INACTIVE,
 				forms
 			} as PluginEntryData;
@@ -64,9 +61,9 @@ const pluginEntries = computed((): PluginEntryData[] => {
 						{{ translate('hostinger_reach_plugin_entries_table_plugin_header') }}
 					</span>
 				</div>
-				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--entries">
+				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--forms">
 					<span class="plugin-entries-table__column-title">
-						{{ translate('hostinger_reach_plugin_entries_table_entries_header') }}
+						{{ translate('hostinger_reach_plugin_entries_table_syncing_header') }}
 					</span>
 				</div>
 				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--status">
@@ -74,7 +71,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 						{{ translate('hostinger_reach_plugin_entries_table_status_header') }}
 					</span>
 				</div>
-				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--actions" />
+				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--actions"></div>
 			</div>
 
 			<template v-if="isLoading">
@@ -85,9 +82,9 @@ const pluginEntries = computed((): PluginEntryData[] => {
 				<PluginEntry
 					v-for="(pluginEntry, index) in pluginEntries"
 					:key="pluginEntry.integration.id"
+					:initially-expanded="pluginEntry.integration.id === WOOCOMMERCE_ID"
 					:integration="pluginEntry.integration"
 					:plugin-status="pluginEntry.status"
-					:total-entries="pluginEntry.entries"
 					:forms="pluginEntry.forms"
 					:class="{
 						'plugin-entries-table__entry-row--with-spacing':
@@ -125,23 +122,22 @@ const pluginEntries = computed((): PluginEntryData[] => {
 		padding: 12px 0px;
 
 		&--plugin {
-			width: 49%;
+			width: 38%;
 			order: 1;
-			padding-right: 16px;
 		}
 
-		&--entries {
-			width: 19%;
+		&--forms {
+			width: 20%;
 			order: 2;
 		}
 
 		&--status {
-			width: 21%;
+			width: 20%;
 			order: 3;
 		}
 
 		&--actions {
-			width: 10%;
+			width: 20%;
 			order: 4;
 		}
 	}
@@ -166,14 +162,9 @@ const pluginEntries = computed((): PluginEntryData[] => {
 			order: 1;
 		}
 
-		&--entries {
-			width: 20%;
-			order: 2;
-		}
-
 		&--status {
 			width: 20%;
-			order: 3;
+			order: 2;
 		}
 
 		&--actions {
@@ -181,7 +172,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 			display: flex;
 			justify-content: flex-end;
 			padding-right: 16px;
-			order: 4;
+			order: 3;
 		}
 	}
 
@@ -234,12 +225,6 @@ const pluginEntries = computed((): PluginEntryData[] => {
 		color: var(--neutral--500);
 	}
 
-	&__entries-count {
-		font-weight: 400;
-		font-size: 14px;
-		color: var(--neutral--500);
-	}
-
 	&__status-content {
 		display: flex;
 		align-items: center;
@@ -288,10 +273,6 @@ const pluginEntries = computed((): PluginEntryData[] => {
 			padding-left: 16px;
 		}
 
-		.plugin-entries-table__cell--entries {
-			width: 20%;
-		}
-
 		.plugin-entries-table__cell--status {
 			width: 20%;
 		}
@@ -323,10 +304,6 @@ const pluginEntries = computed((): PluginEntryData[] => {
 		.plugin-entries-table__cell--plugin {
 			width: 50%;
 			padding-left: 32px;
-		}
-
-		.plugin-entries-table__cell--entries {
-			width: 20%;
 		}
 
 		.plugin-entries-table__cell--status {

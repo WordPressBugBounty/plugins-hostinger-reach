@@ -45,13 +45,26 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 .plugin-expansion-content {
-	background-color: var(--neutral--50);
 	border-radius: 12px;
 	padding: 16px;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 	box-sizing: border-box;
+
+	&__coming-soon-notice {
+		background: var(--neutral--100);
+		padding: 8px 16px;
+		gap: 10px;
+		border-radius: 12px;
+		font-size: 14px;
+		color: #1d1e20;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-evenly;
+		margin-bottom: 20px;
+	}
 
 	&__forms-list {
 		display: flex;

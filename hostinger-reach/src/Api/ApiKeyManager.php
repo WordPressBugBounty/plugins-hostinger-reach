@@ -2,6 +2,9 @@
 
 namespace Hostinger\Reach\Api;
 
+use Hostinger\Reach\Admin\Notices\ConnectionNotice;
+use Hostinger\Reach\Setup\Encrypt;
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -11,10 +14,10 @@ class ApiKeyManager {
     public const CSRF_TRANSIENT_EXPIRATION = 500;
     public const API_KEY_NAME              = 'hostinger_reach_api_key';
     public const API_CONNECTION_TIME_NAME  = 'hostinger_reach_api_connection_time';
-    public const ENCRYPT_METHOD            = 'AES-256-CBC';
 
     public function store_token( string $token ): bool {
         add_option( self::API_CONNECTION_TIME_NAME, time() );
+
         return update_option( self::API_KEY_NAME, $this->encrypt_token( $token ) );
     }
 
@@ -23,28 +26,11 @@ class ApiKeyManager {
     }
 
     public function encrypt_token( string $token ): string {
-        if ( ! $this->can_encrypt() ) {
-            return base64_encode( $token );
-        }
-
-        $key       = hash( 'sha256', AUTH_KEY, true );
-        $iv        = openssl_random_pseudo_bytes( 16 );
-        $encrypted = openssl_encrypt( $token, self::ENCRYPT_METHOD, $key, 0, $iv );
-
-        return base64_encode( $iv . $encrypted );
+        return Encrypt::encrypt( $token );
     }
 
     public function decrypt_token( string $token ): string {
-        if ( ! $this->can_encrypt() ) {
-            return base64_decode( $token );
-        }
-
-        $data      = base64_decode( $token );
-        $iv        = substr( $data, 0, 16 );
-        $encrypted = substr( $data, 16 );
-        $key       = hash( 'sha256', AUTH_KEY, true );
-
-        return openssl_decrypt( $encrypted, self::ENCRYPT_METHOD, $key, 0, $iv );
+        return Encrypt::decrypt( $token );
     }
 
     public function validate_csrf( string $csrf ): bool {
@@ -69,8 +55,13 @@ class ApiKeyManager {
         return get_transient( self::CSRF_TRANSIENT );
     }
 
-    public function clear_csrf(): string {
-        return delete_transient( self::CSRF_TRANSIENT );
+    public function clear_csrf(): void {
+        delete_transient( self::CSRF_TRANSIENT );
+    }
+
+    public function clear_token(): void {
+        delete_option( self::API_KEY_NAME );
+        delete_transient( ConnectionNotice::NOTICE_DISMISS_TRANSIENT );
     }
 
     protected function get_order_id(): string {
@@ -95,17 +86,5 @@ class ApiKeyManager {
         }
 
         return '';
-    }
-
-    private function get_auth_key(): string {
-        if ( ! DEFINED( 'AUTH_KEY' ) ) {
-            return '';
-        }
-
-        return AUTH_KEY;
-    }
-
-    private function can_encrypt(): bool {
-        return extension_loaded( 'openssl' ) && $this->get_auth_key();
     }
 }

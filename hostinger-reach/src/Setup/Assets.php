@@ -34,7 +34,7 @@ class Assets {
 
         wp_enqueue_script(
             'hostinger-reach',
-            $this->functions->get_frontend_url() . 'main.js',
+            Functions::get_frontend_url() . 'main.js',
             array(),
             filemtime( $this->functions->get_frontend_dir() . 'main.js' ),
             true
@@ -44,7 +44,7 @@ class Assets {
         if ( file_exists( $css_file ) ) {
             wp_enqueue_style(
                 'hostinger-reach-styles',
-                $this->functions->get_frontend_url() . 'main.css',
+                Functions::get_frontend_url() . 'main.css',
                 array(),
                 filemtime( $css_file )
             );
@@ -70,6 +70,7 @@ class Assets {
 
     private function get_translations(): array {
         return array(
+            'hostinger_reach_back'                                    => __( 'Back', 'hostinger-reach' ),
             'hostinger_reach_error_message'                           => __( 'Something went wrong', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_title'                      => __( 'Welcome to Reach', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_description'                => __( 'Create email campaigns using AI-crafted templates that match your style. Instantly sync with your WordPress site and connect with your audience easily.', 'hostinger-reach' ),
@@ -97,11 +98,16 @@ class Assets {
             'hostinger_reach_overview_campaigns_text'                 => __( 'Create campaign', 'hostinger-reach' ),
             'hostinger_reach_overview_templates_text'                 => __( 'Create template', 'hostinger-reach' ),
             'hostinger_reach_overview_settings_text'                  => __( 'Settings', 'hostinger-reach' ),
+            'hostinger_reach_integrations_title'                      => __( 'Integrations', 'hostinger-reach' ),
+            'hostinger_reach_ecommerce_title'                         => __( 'E-Commerce', 'hostinger-reach' ),
+            'hostinger_reach_ecommerce_banner_title'                  => __( 'Connect WooCommerce', 'hostinger-reach' ),
+            'hostinger_reach_ecommerce_banner_description'            => __( 'Add an online store to your site, sell products or services, and connect subscriber tools automatically..', 'hostinger-reach' ),
+            'hostinger_reach_ecommerce_banner_button_text'            => __( 'Connect WooCommerce', 'hostinger-reach' ),
             'hostinger_reach_forms_title'                             => __( 'Forms', 'hostinger-reach' ),
-            'hostinger_reach_forms_card_title'                        => __( 'Start collecting form submissions', 'hostinger-reach' ),
-            'hostinger_reach_forms_card_description'                  => __( 'Choose how you\'d like to manage forms on your website. Create a new form with Hostinger Reach or connect a third-party plugin.', 'hostinger-reach' ),
-            'hostinger_reach_forms_card_button_text'                  => __( 'Add form', 'hostinger-reach' ),
-            'hostinger_reach_forms_add_more_button_text'              => __( 'Add form', 'hostinger-reach' ),
+            'hostinger_reach_forms_banner_title'                      => __( 'Start by adding a form or connect a plugin', 'hostinger-reach' ),
+            'hostinger_reach_forms_banner_description'                => __( 'Add a new contact form with Reach or connect a plugin to start collecting contacts and sending campaigns.', 'hostinger-reach' ),
+            'hostinger_reach_forms_banner_button_text'                => __( 'Add form or plugin', 'hostinger-reach' ),
+            'hostinger_reach_forms_add_more_button_text'              => __( 'Add form or plugin', 'hostinger-reach' ),
             'hostinger_reach_forms_new_page_text'                     => __( 'New page', 'hostinger-reach' ),
             'hostinger_reach_forms_no_pages_available'                => __( 'No pages available. Create a new page to get started.', 'hostinger-reach' ),
             'hostinger_reach_faq_title'                               => __( 'FAQ', 'hostinger-reach' ),
@@ -117,13 +123,15 @@ class Assets {
             'hostinger_reach_ui_usage_statistics'                     => __( 'usage statistics', 'hostinger-reach' ),
             'hostinger_reach_ui_tooltip_ctor_info'                    => __( 'Click-to-open rate tells you what percent of opens resulted in a click too. A good CTOR is 6-17%, depending on your industry.', 'hostinger-reach' ),
             'hostinger_reach_forms_modal_title'                       => __( 'Select page', 'hostinger-reach' ),
-            'hostinger_reach_add_form_modal_title'                    => __( 'Add form', 'hostinger-reach' ),
+            'hostinger_reach_add_form_modal_title'                    => __( 'Add form or plugin', 'hostinger-reach' ),
             'hostinger_reach_confirm_disconnect_modal_title'          => __( 'Disconnect plugin?', 'hostinger-reach' ),
             'hostinger_reach_confirm_disconnect_modal_text'           => __( 'Disconnecting will stop new contacts from being collected. You can reconnect or use a different form anytime.', 'hostinger-reach' ),
             'hostinger_reach_confirm_disconnect_modal_cancel'         => __( 'Cancel ', 'hostinger-reach' ),
             'hostinger_reach_confirm_disconnect_modal_disconnect'     => __( 'Disconnect ', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_plugin_header'      => __( 'Plugin', 'hostinger-reach' ),
-            'hostinger_reach_plugin_entries_table_entries_header'     => __( 'Entries', 'hostinger-reach' ),
+            'hostinger_reach_plugin_entries_table_contacts_header'    => __( 'Contacts', 'hostinger-reach' ),
+            'hostinger_reach_plugin_entries_table_syncing_header'     => __( 'Syncing with Reach', 'hostinger-reach' ),
+            'hostinger_reach_plugin_entries_table_of'                 => __( 'of', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_header'      => __( 'Status', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_active'      => __( 'Active', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_inactive'    => __( 'Inactive', 'hostinger-reach' ),
@@ -145,12 +153,30 @@ class Assets {
             'hostinger_reach_forms_active'                            => __( 'Active', 'hostinger-reach' ),
             'hostinger_reach_forms_consent_notice'                    => __( 'Make sure the people you contact expect your emails and are okay with receiving them.', 'hostinger-reach' ),
             'hostinger_reach_forms_new_contact_form'                  => __( 'New contact form', 'hostinger-reach' ),
-            'hostinger_reach_forms_create_form_button'                => __( 'Create form', 'hostinger-reach' ),
-            'hostinger_reach_forms_view_supported_plugins'            => __( 'View supported plugins', 'hostinger-reach' ),
+            'hostinger_reach_forms_create_form_button'                => __( 'Add form', 'hostinger-reach' ),
+            'hostinger_reach_forms_supported_plugins'                 => __( 'Supported plugins', 'hostinger-reach' ),
+            'hostinger_reach_forms_view_more_supported_plugins'       => __( 'View more supported plugins', 'hostinger-reach' ),
             'hostinger_reach_forms_installed_plugins'                 => __( 'Installed plugins', 'hostinger-reach' ),
             'hostinger_reach_forms_install_and_connect'               => __( 'Install and connect', 'hostinger-reach' ),
             'hostinger_reach_forms_disconnect'                        => __( 'Disconnect', 'hostinger-reach' ),
             'hostinger_reach_forms_connect'                           => __( 'Connect', 'hostinger-reach' ),
+            'hostinger_reach_sync_contacts_button_text'               => __( 'Sync Contacts', 'hostinger-reach' ),
+            'hostinger_reach_contacts'                                => __( 'Contacts', 'hostinger-reach' ),
+            'hostinger_reach_contacts_modal_title'                    => __( 'Sync your contacts with Reach', 'hostinger-reach' ),
+            'hostinger_reach_contacts_modal_subtitle'                 => __( 'Some contacts you’ve collected before installing Reach aren’t yet synced. Sync them now to use them for your email campaigns.', 'hostinger-reach' ),
+            'hostinger_reach_contacts_sync'                           => __( 'Sync', 'hostinger-reach' ),
+            'hostinger_reach_contacts_contacts_to_sync'               => __( 'Contacts to Sync', 'hostinger-reach' ),
+            'hostinger_reach_contacts_contacts'                       => __( 'contacts', 'hostinger-reach' ),
+            'hostinger_reach_contacts_info'                           => __( 'are ready to sync with Reach. Any new contacts you’ll collect with these forms will sync automatically.', 'hostinger-reach' ),
+            'hostinger_reach_contacts_none_selected'                  => __( 'You have not selected any forms to sync. Select which forms you want to sync and then click on the Sync button below.', 'hostinger-reach' ),
+            'hostinger_reach_contacts_not_available'                  => __( '-', 'hostinger-reach' ),
+            'hostinger_reach_contacts_off'                            => __( 'Auto-sync off', 'hostinger-reach' ),
+            'hostinger_reach_contacts_partially_imported'             => __( 'Partially synced', 'hostinger-reach' ),
+            'hostinger_reach_contacts_imported'                       => __( 'Synced', 'hostinger-reach' ),
+            'hostinger_reach_contacts_not_imported'                   => __( 'Not synced', 'hostinger-reach' ),
+            'hostinger_reach_contacts_importing'                      => __( 'Syncing...', 'hostinger-reach' ),
+            'hostinger_reach_contacts_import_success'                 => __( 'The selected contacts are being synced to Reach.', 'hostinger-reach' ),
+            'hostinger_reach_contacts_import_error'                   => __( 'It was an error syncing your contacts to Reach.', 'hostinger-reach' ),
         );
     }
 }

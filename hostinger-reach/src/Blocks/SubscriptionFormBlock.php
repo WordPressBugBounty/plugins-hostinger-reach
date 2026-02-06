@@ -3,7 +3,7 @@
 namespace Hostinger\Reach\Blocks;
 
 
-use Hostinger\Reach\Integrations\ReachFormIntegration;
+use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
 
 if ( ! defined( 'ABSPATH' ) ) {
     die;
@@ -50,11 +50,12 @@ class SubscriptionFormBlock extends Block {
         return ob_get_clean();
     }
 
-    public static function render_block_html( array $attributes, string $plugin = null ): void {
+    public static function render_block_html( array $attributes, ?string $plugin = null ): void {
         $form_id      = $attributes['formId'] ?? '';
         $show_name    = $attributes['showName'] ?? false;
         $show_surname = $attributes['showSurname'] ?? false;
         $contact_list = $attributes['contactList'] ?? '';
+        $tags         = $attributes['tags'] ?? array();
         $layout       = $attributes['layout'] ?? 'default';
         $is_inline    = $layout === 'inline';
         $plugin       = $plugin ?? ReachFormIntegration::INTEGRATION_NAME;
@@ -64,6 +65,7 @@ class SubscriptionFormBlock extends Block {
             <form id="<?php echo esc_attr( $form_id ); ?>" class="hostinger-reach-block-subscription-form">
                 <input type="hidden" name="group" value="<?php echo esc_attr( $contact_list ); ?>">
                 <input type="hidden" name="id" value="<?php echo esc_attr( $form_id ); ?>">
+                <input type="hidden" name="tags" value="<?php echo esc_attr( implode( ',', $tags ) ); ?>">
                 <input type="hidden" name="metadata.plugin" value="<?php echo esc_attr( $plugin ); ?>">
 
                 <div

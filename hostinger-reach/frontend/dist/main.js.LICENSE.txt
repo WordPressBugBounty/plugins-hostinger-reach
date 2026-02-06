@@ -1,10 +1,4 @@
 /*!
-  * vue-router v4.5.1
-  * (c) 2025 Eduardo San Martin Morote
-  * @license MIT
-  */
-
-/*!
  * XRegExp 5.1.2
  * <xregexp.com>
  * Steven Levithan (c) 2007-present MIT License
@@ -37,6 +31,12 @@
  * @license MIT
  */
 
+/*!
+ * vue-router v4.6.4
+ * (c) 2025 Eduardo San Martin Morote
+ * @license MIT
+ */
+
 /*! #__NO_SIDE_EFFECTS__ */
 
 /*! @license DOMPurify 3.2.6 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.6/LICENSE */
@@ -50,19 +50,19 @@
   */
 
 /**
-* @vue/runtime-core v3.5.22
+* @vue/runtime-core v3.5.25
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/runtime-dom v3.5.22
+* @vue/runtime-dom v3.5.25
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/shared v3.5.22
+* @vue/shared v3.5.25
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/

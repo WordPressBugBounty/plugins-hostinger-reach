@@ -1,27 +1,35 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
 
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
 import ActionButtonsSection from '@/components/ActionButtonsSection.vue';
-import FormsSection from '@/components/FormsSection.vue';
+import Integrations from '@/components/Integrations.vue';
+import Tabs from '@/components/Tabs.vue';
 import UsageCardsSection from '@/components/UsageCardsSection.vue';
 import { useModal } from '@/composables';
 import { useOverviewData } from '@/composables/useOverviewData';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { useToast } from '@/composables/useToast';
+import { WOOCOMMERCE_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
+import { DEFAULT_OVERVIEW_TAB, OVERVIEW_TABS, TABS_KEYS } from '@/data/tabs';
 import { useIntegrationsStore } from '@/stores/integrationsStore';
 import { ModalName } from '@/types';
 import type { Form } from '@/types/models';
 import { translate } from '@/utils/translate';
 
-const { isLoading, usageCards, loadOverviewData } = useOverviewData();
+const { isLoading, usageCards, loadOverviewData, status } = useOverviewData();
 const { reachUpgradeLink, reachYourPlanLink, reachCampaignsLink, reachTemplatesLink, reachSettingsLink } =
 	useReachUrls();
 const { showError } = useToast();
 
 const { openModal } = useModal();
 const integrationsStore = useIntegrationsStore();
+
+const route = useRoute();
+
+const currentTab = computed(() => route.hash.replace('#', '') || DEFAULT_OVERVIEW_TAB);
 
 const actionButtons = computed(() => [
 	{
@@ -71,7 +79,7 @@ const handleFormToggleStatus = async (form: Form, status: boolean) => {
 		integration.forms[formIndex].isLoading = true;
 	}
 
-	const [, error] = await formsRepo.toggleFormStatus(form.formId, status);
+	const [, error] = await formsRepo.toggleFormStatus(form.formId, status, form.type);
 
 	if (formIndex !== -1) {
 		integration.forms[formIndex].isLoading = false;
@@ -116,6 +124,39 @@ const handleAddForm = (id: string) => {
 	window.open(integration.addFormUrl, '_blank');
 };
 
+const handleBannerButtonClick = () => {
+	switch (currentTab.value) {
+		case TABS_KEYS.OVERVIEW_TAB_ECOMMERCE:
+			connectAndInstallWooCommerce();
+
+			return;
+		default:
+			handleAddFormButton();
+
+			return;
+	}
+};
+
+const connectAndInstallWooCommerce = async () => {
+	await integrationsStore.toggleIntegrationStatus(WOOCOMMERCE_ID, true);
+};
+
+const handleAddFormButton = () => {
+	openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
+};
+
+const handleSyncContactsButton = () => {
+	openModal(
+		ModalName.SYNC_CONTACTS_MODAL,
+		{
+			title: translate('hostinger_reach_contacts_modal_title'),
+			subtitle: translate('hostinger_reach_contacts_modal_subtitle'),
+			data: { integrations: integrationsStore.syncableIntegrations ?? [] }
+		},
+		{ hasCloseButton: true }
+	);
+};
+
 const handleEditForm = (form: Form) => {
 	const integration = integrationsStore.integrations.find((i) => i.forms?.some((f) => f.formId === form.formId));
 
@@ -142,9 +183,23 @@ const handleEditForm = (form: Form) => {
 	window.open(editUrl, '_blank');
 };
 
+const hasFormsOrActiveIntegrations = computed(
+	() =>
+		integrationsStore?.activeIntegrations?.filter((integration) => integration.type === 'forms')?.length > 1 ||
+		integrationsStore?.hasAnyForms('forms')
+);
+
 onMounted(() => {
 	loadOverviewData();
 	integrationsStore.loadIntegrations();
+});
+
+// Refresh when there is an unauthorized error 403 to reload the show connection page again.
+// This is needed because the API Token is deleted after the initial request.
+watchEffect(() => {
+	if (status?.value === 403) {
+		window.location.reload();
+	}
 });
 </script>
 
@@ -195,14 +250,51 @@ onMounted(() => {
 				</div>
 			</div>
 
-			<FormsSection
-				@go-to-plugin="handlePluginGoTo"
-				@disconnect-plugin="handlePluginDisconnect"
-				@toggle-form-status="handleFormToggleStatus"
-				@view-form="handleViewForm"
-				@edit-form="handleEditForm"
-				@add-form="handleAddForm"
-			/>
+			<div class="overview__integrations">
+				<div class="overview__integrations-header">
+					<HText class="overview__tabs-header" as="h2" variant="heading-2">
+						{{ translate('hostinger_reach_integrations_title') }}
+					</HText>
+					<div class="overview__integrations-tabs">
+						<Tabs :tabs="OVERVIEW_TABS" :default-tab="DEFAULT_OVERVIEW_TAB" />
+						<div class="overview__integrations-buttons">
+							<HButton
+								v-if="integrationsStore.syncableIntegrations.length > 0 && integrationsStore?.hasAnyForms()"
+								variant="text"
+								color="neutral"
+								size="small"
+								icon-prepend="ic-arrows-circle-16"
+								:is-loading="integrationsStore.isLoading"
+								@click="handleSyncContactsButton"
+							>
+								{{ translate('hostinger_reach_sync_contacts_button_text') }}
+							</HButton>
+							<HButton
+								v-if="currentTab === TABS_KEYS.OVERVIEW_TAB_FORMS && hasFormsOrActiveIntegrations"
+								variant="outline"
+								color="neutral"
+								size="small"
+								icon-prepend="ic-plus-16"
+								:is-loading="integrationsStore.isLoading"
+								@click="handleAddFormButton"
+							>
+								{{ translate('hostinger_reach_forms_add_more_button_text') }}
+							</HButton>
+						</div>
+					</div>
+				</div>
+
+				<Integrations
+					:type="currentTab"
+					:on-banner-button-click="handleBannerButtonClick"
+					@go-to-plugin="handlePluginGoTo"
+					@disconnect-plugin="handlePluginDisconnect"
+					@toggle-form-status="handleFormToggleStatus"
+					@view-form="handleViewForm"
+					@edit-form="handleEditForm"
+					@add-form="handleAddForm"
+				/>
+			</div>
 		</div>
 	</div>
 </template>
@@ -269,6 +361,29 @@ onMounted(() => {
 		margin: 0 auto;
 	}
 
+	&__integrations {
+		width: 100%;
+	}
+
+	&__integrations-header {
+		width: 100%;
+		margin-bottom: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__integrations-tabs {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__integrations-buttons {
+		flex: none;
+	}
+
 	&__section {
 		display: flex;
 		flex-direction: column;
@@ -310,6 +425,10 @@ onMounted(() => {
 		align-self: stretch;
 		gap: 16px;
 	}
+
+	&__tabs-header {
+		width: 100%;
+	}
 }
 
 @media (max-width: 1023px) {
@@ -328,6 +447,10 @@ onMounted(() => {
 		&__title-buttons {
 			align-self: stretch;
 			justify-content: flex-end;
+		}
+
+		&__integrations_tabs {
+			flex-direction: column;
 		}
 	}
 }

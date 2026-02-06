@@ -41,6 +41,10 @@ registerBlockType('hostinger-reach/subscription',
 				type: 'string',
 				default: '',
 			},
+			"tags": {
+				"type": "array",
+				"default": []
+			},
 			layout: {
 				type: 'string',
 				default: 'default',

@@ -2,7 +2,6 @@
 
 namespace Hostinger\Reach\Admin\Surveys;
 
-
 use Hostinger\Surveys\SurveyManager;
 
 if ( ! defined( 'ABSPATH' ) ) {

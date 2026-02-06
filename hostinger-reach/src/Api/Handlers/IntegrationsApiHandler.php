@@ -3,9 +3,13 @@
 namespace Hostinger\Reach\Api\Handlers;
 
 use Hostinger\Reach\Functions;
+use Hostinger\Reach\Integrations\ImportManager;
+use Hostinger\Reach\Integrations\Integration;
 use Hostinger\Reach\Integrations\PluginManager;
-use Hostinger\Reach\Integrations\ReachFormIntegration;
+use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
+use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Providers\IntegrationsProvider;
+use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
 
@@ -17,16 +21,39 @@ class IntegrationsApiHandler extends ApiHandler {
     public const INTEGRATIONS_OPTION_NAME = 'hostinger_reach_integrations';
 
     public PluginManager $plugin_manager;
+    public ImportManager $import_manager;
 
-    public function __construct( Functions $functions, PluginManager $plugin_manager ) {
+    public function __construct( Functions $functions, PluginManager $plugin_manager, ImportManager $import_manager ) {
         parent::__construct( $functions );
         $this->plugin_manager = $plugin_manager;
+        $this->import_manager = $import_manager;
+    }
+
+    public static function get_integrations(): array {
+        return apply_filters( 'hostinger_reach_integrations', IntegrationsProvider::INTEGRATIONS );
+    }
+
+    public function init_hooks(): void {
+        add_action( 'init', array( $this, 'trigger_active_integrations' ) );
+    }
+
+    public function trigger_active_integrations(): void {
+        do_action( 'hostinger_reach_integrations_loaded', $this->get_integrations_data() );
     }
 
     public function is_active( string $integration_name ): bool {
         $data = $this->get_integrations_data();
 
-        return $data[ $integration_name ]['is_active'] ?? false;
+        return $data[ $integration_name ][ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
+    }
+
+    public function is_import_enabled( string $integration_name ): bool {
+        $data = $this->get_integrations_data();
+
+        $is_active      = $data[ $integration_name ][ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
+        $import_enabled = $data[ $integration_name ][ Integration::INTEGRATION_IMPORT_ENABLED ] ?? false;
+
+        return $is_active && $import_enabled;
     }
 
     public function get_integrations_handler(): WP_REST_Response {
@@ -41,17 +68,18 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     public function post_integrations_handler( WP_REST_Request $request ): WP_REST_Response {
-        $is_active     = $request->get_param( 'is_active' );
-        $integration   = $request->get_param( 'integration' );
-        $should_update = ! $is_active || $this->activate_integration( $integration );
+        $is_active         = $request->get_param( Integration::INTEGRATION_IS_ACTIVE );
+        $integration       = $request->get_param( 'integration' );
+        $integration_data  = $this->get_integration_data( $integration );
+        $current_is_active = $integration_data[ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
+        $should_update     = ! $is_active || $this->activate_integration( $integration );
 
-        $integration_data = $this->get_integration_data( $integration );
-        if ( $should_update && isset( $integration_data['is_active'] ) && $integration_data['is_active'] === $is_active ) {
+        if ( $current_is_active === $is_active ) {
             $should_update = false;
         }
 
         if ( $should_update ) {
-            $this->save_integration( $integration, array( 'is_active' => $is_active ) );
+            $this->save_integration( $integration, array( Integration::INTEGRATION_IS_ACTIVE => $is_active ) );
         }
 
         return $this->handle_response(
@@ -63,8 +91,45 @@ class IntegrationsApiHandler extends ApiHandler {
         );
     }
 
+    public function post_import_handler( WP_REST_Request $request ): WP_REST_Response {
+        $integrations = $request->get_param( 'integrations' );
+        $this->import_manager->import( $integrations );
+
+        return $this->handle_response(
+            array(
+                'response' => array(
+                    'code' => 200,
+                ),
+            )
+        );
+    }
+
+    public function get_import_handler( WP_REST_Request $request ): WP_REST_Response {
+        $integration = $request->get_param( 'integration' );
+
+        if ( ! $this->is_import_enabled( $integration ) ) {
+            return $this->handle_wp_error(
+                new WP_Error(
+                    'import_not_available',
+                    __( 'Importing is not available for this integration', 'hostinger-reach' )
+                )
+            );
+        }
+
+        $status = $this->import_manager->get_status( $integration );
+        return $this->handle_response(
+            array(
+                'response' => array(
+                    'code' => 200,
+                ),
+                'body'     => wp_json_encode( $status ),
+            )
+        );
+    }
+
+
     public function activate_integration( string $integration_name ): bool {
-        $integration_class = IntegrationsProvider::INTEGRATIONS[ $integration_name ];
+        $integration_class = self::get_integrations()[ $integration_name ];
         if ( ! isset( $integration_class ) ) {
             return false;
         }
@@ -77,6 +142,7 @@ class IntegrationsApiHandler extends ApiHandler {
         $activated = $this->plugin_manager->activate( $integration_name );
         if ( $activated ) {
             do_action( 'hostinger_reach_integration_activated', $integration_name );
+            update_option( Functions::HOSTINGER_REACH_HAS_USER_ACTION, true );
         }
 
         return $activated;
@@ -89,35 +155,38 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     public function get_integrations_data(): array {
-        $available_integrations       = IntegrationsProvider::INTEGRATIONS;
+        $available_integrations       = self::get_integrations();
         $integrations_state           = get_option( self::INTEGRATIONS_OPTION_NAME, array() );
         $available_integrations_state = array_intersect_key( $integrations_state, $available_integrations );
         $integrations                 = array();
 
         foreach ( $available_integrations as $integration_name => $integration_class ) {
+            $plugin = $this->plugin_manager->get_plugin( $integration_name );
 
-            $is_hostinger_reach = $integration_name === ReachFormIntegration::INTEGRATION_NAME;
+            if ( ! $plugin instanceof PluginData ) {
+                continue;
+            }
 
-            $plugin_data      = $this->plugin_manager->get_plugin( $integration_name );
-            $is_active        = $this->plugin_manager->is_active( $integration_name ) && ( $available_integrations_state[ $integration_name ]['is_active'] ?? false );
-            $default_icon_url = $this->get_functions()->get_frontend_url() . 'icons/' . $integration_name . '.svg';
+            $is_hostinger_reach                = $integration_name === ReachFormIntegration::INTEGRATION_NAME;
+            $integrations[ $integration_name ] = $plugin->to_array();
+            $is_active_by_default              = $integrations[ $integration_name ][ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
+            $is_plugin_active                  = $is_hostinger_reach || $this->plugin_manager->is_active( $integration_name );
+            $is_integration_active             = $available_integrations_state[ $integration_name ][ Integration::INTEGRATION_IS_ACTIVE ] ?? $is_active_by_default;
+            $is_active                         = $is_plugin_active && $is_integration_active;
+            $import_enabled                    = $integrations[ $integration_name ][ Integration::INTEGRATION_IMPORT_ENABLED ] ?? false;
 
-            $integrations[ $integration_name ] = array(
-                'id'                      => $integration_name,
-                'icon'                    => $plugin_data['icon'] ?? $default_icon_url,
-                'is_plugin_active'        => $is_hostinger_reach || $this->plugin_manager->is_active( $integration_name ),
-                'is_active'               => $is_hostinger_reach || $is_active,
-                'title'                   => $plugin_data['title'] ?? '',
-                'url'                     => $plugin_data['url'] ?? '',
-                'admin_url'               => $plugin_data['admin_url'] ?? '',
-                'edit_url'                => $plugin_data['edit_url'] ?? '',
-                'add_form_url'            => $plugin_data['add_form_url'] ?? '',
-                'can_deactivate'          => ! $is_hostinger_reach,
-                'is_go_to_plugin_visible' => ! $is_hostinger_reach,
-                'is_view_form_hidden'     => $plugin_data['is_view_form_hidden'] ?? true,
-                'is_edit_form_hidden'     => $plugin_data['is_edit_form_hidden'] ?? false,
-                'can_toggle_forms'        => $plugin_data['can_toggle_forms'] ?? true,
+            $integrations[ $integration_name ] = array_merge(
+                $integrations[ $integration_name ],
+                array(
+                    'is_plugin_active'                      => $is_plugin_active,
+                    Integration::INTEGRATION_IMPORT_ENABLED => $import_enabled,
+                    Integration::INTEGRATION_IS_ACTIVE      => $is_hostinger_reach || $is_active,
+                    'can_deactivate'                        => ! $is_hostinger_reach,
+                    'is_go_to_plugin_visible'               => ! $is_hostinger_reach,
+                    'import_status'                         => $this->import_manager->get_status( $integration_name ),
+                )
             );
+
         }
 
         return $integrations;

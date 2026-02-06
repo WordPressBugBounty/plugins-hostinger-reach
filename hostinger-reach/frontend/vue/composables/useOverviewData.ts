@@ -7,6 +7,7 @@ import { translate } from '@/utils/translate';
 export const useOverviewData = () => {
 	const isLoading = ref(true);
 	const error = ref<string | null>(null);
+	const status = ref<number | null>(null);
 	const overviewData = ref<OverviewData | null>(null);
 
 	const usageCards = computed(() => [
@@ -63,8 +64,11 @@ export const useOverviewData = () => {
 	const loadOverviewData = async () => {
 		isLoading.value = true;
 		error.value = null;
+		status.value = null;
 
-		const [data, err] = await reachRepo.getOverview();
+		const [data, err, responseStatus] = await reachRepo.getOverview();
+
+		status.value = responseStatus;
 
 		isLoading.value = false;
 
@@ -82,6 +86,7 @@ export const useOverviewData = () => {
 	return {
 		isLoading,
 		error,
+		status,
 		overviewData,
 		usageCards,
 		loadOverviewData
