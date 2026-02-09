@@ -18,6 +18,9 @@ export const useGeneralDataStore = defineStore(
 		const translations = computed(() => data.value.translations);
 		const isConnected = computed(() => data.value.isConnected);
 		const isStaging = computed(() => data.value.isStaging);
+		const domain = computed(() => data.value.domain);
+		const hasValidResourceId = computed(() => data.value.hasValidResourceId);
+		const resourceId = computed(() => data.value.resourceId);
 
 		return {
 			data,
@@ -29,7 +32,10 @@ export const useGeneralDataStore = defineStore(
 			totalFormPages,
 			isStaging,
 			pluginUrl,
-			translations
+			translations,
+			domain,
+			hasValidResourceId,
+			resourceId
 		};
 	},
 	{

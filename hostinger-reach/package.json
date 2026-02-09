@@ -9,8 +9,8 @@
     "dev:blocks": "webpack --config webpack.config.js --env target=subscription --mode development --watch",
     "build:vue-frontend": "webpack --config webpack.config.js --env target=assets --mode production",
     "build:blocks": "webpack --config webpack.config.js --env target=subscription --mode production",
-    "build:all": "npm run build:vue-frontend && npm run build:blocks",
-    "prepare": "husky",
+    "build:all": "npm run sync:cursor-skills && npm run build:vue-frontend && npm run build:blocks",
+    "prepare": "npm run sync:cursor-skills && husky",
     "lint:php": "vendor/bin/phpcs",
     "lint:php:fix": "vendor/bin/phpcbf",
     "lint:frontend": "cd frontend/vue && eslint .",
@@ -19,7 +19,8 @@
     "test:vue": "vitest --run",
     "test:vue:watch": "vitest --watch",
     "test:vue:ui": "vitest --ui",
-    "test:coverage": "vitest --run --coverage"
+    "test:coverage": "vitest --run --coverage",
+    "sync:cursor-skills": "npx @hostinger/wp-plugin-toolkit sync-cursor-skills"
   },
   "lint-staged": {
     "*.php": [
@@ -33,7 +34,7 @@
     "@rollup/rollup-linux-x64-gnu": "4.52.3"
   },
   "devDependencies": {
-    "@hostinger/wp-plugin-toolkit": "^1.0.3",
+    "@hostinger/wp-plugin-toolkit": "^1.1.0",
     "@rushstack/eslint-patch": "^1.12.0",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vitest/coverage-v8": "^4.0.8",

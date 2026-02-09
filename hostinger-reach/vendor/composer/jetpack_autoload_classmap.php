@@ -110,6 +110,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Api/Handlers/ReachApiHandler.php'
 	),
+	'Hostinger\\Reach\\Api\\ResourceIdManager' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Api/ResourceIdManager.php'
+	),
 	'Hostinger\\Reach\\Api\\Routes\\FormsRoutes' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Api/Routes/FormsRoutes.php'
@@ -661,6 +665,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Tracking\\AbandonedCartsTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/AbandonedCartsTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Unit\\Api\\ResourceIdManagerTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/ResourceIdManagerTest.php'
 	),
 	'Hostinger\\Reach\\Tracking\\AbandonedCarts' => array(
 		'version' => 'dev-main',

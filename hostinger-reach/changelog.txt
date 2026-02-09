@@ -178,3 +178,8 @@ Changelog
 - Tweak: Update settings page URLs to use path-based routing
 - Tweak: Add Auto sync off status 
 - Fix: Route permissions for tags endpoint
+
+1.3.5 (2026-02-09)
+
+- Tweak: Update Reach URL structure based on Resource ID
+- Dev: DEX Code Automation tweaks

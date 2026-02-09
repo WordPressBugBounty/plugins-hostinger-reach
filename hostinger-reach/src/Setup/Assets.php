@@ -3,6 +3,7 @@
 namespace Hostinger\Reach\Setup;
 
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
+use Hostinger\Reach\Api\ResourceIdManager;
 use Hostinger\Reach\Functions;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -54,16 +55,19 @@ class Assets {
             'hostinger-reach',
             'hostinger_reach_reach_data',
             array(
-                'site_url'          => get_site_url(),
-                'rest_base_url'     => esc_url_raw( rest_url() ),
-                'ajax_url'          => admin_url( 'admin-ajax.php' ),
-                'nonce'             => wp_create_nonce( 'wp_rest' ),
-                'plugin_url'        => HOSTINGER_REACH_PLUGIN_URL,
-                'translations'      => $this->get_translations(),
-                'is_connected'      => $this->reach_api_handler->is_connected(),
-                'is_hostinger_user' => $this->functions->is_hostinger_user(),
-                'is_staging'        => $this->functions->is_staging(),
-                'total_form_pages'  => (int) wp_count_posts( 'page' )->publish,
+                'site_url'              => get_site_url(),
+                'rest_base_url'         => esc_url_raw( rest_url() ),
+                'ajax_url'              => admin_url( 'admin-ajax.php' ),
+                'nonce'                 => wp_create_nonce( 'wp_rest' ),
+                'plugin_url'            => HOSTINGER_REACH_PLUGIN_URL,
+                'translations'          => $this->get_translations(),
+                'is_connected'          => $this->reach_api_handler->is_connected(),
+                'is_hostinger_user'     => $this->functions->is_hostinger_user(),
+                'is_staging'            => $this->functions->is_staging(),
+                'total_form_pages'      => (int) wp_count_posts( 'page' )->publish,
+                'has_valid_resource_id' => ! empty( $this->reach_api_handler->get_resource_id() ) && $this->reach_api_handler->get_resource_id() !== ResourceIdManager::NON_EXISTENT_RESOURCE_ID,
+                'resource_id'           => $this->reach_api_handler->get_resource_id(),
+                'domain'                => $this->functions->get_host_info(),
             )
         );
     }

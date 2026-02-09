@@ -27,6 +27,7 @@ return array(
     'Hostinger\\Reach\\Api\\Handlers\\FormsApiHandler' => $baseDir . '/src/Api/Handlers/FormsApiHandler.php',
     'Hostinger\\Reach\\Api\\Handlers\\IntegrationsApiHandler' => $baseDir . '/src/Api/Handlers/IntegrationsApiHandler.php',
     'Hostinger\\Reach\\Api\\Handlers\\ReachApiHandler' => $baseDir . '/src/Api/Handlers/ReachApiHandler.php',
+    'Hostinger\\Reach\\Api\\ResourceIdManager' => $baseDir . '/src/Api/ResourceIdManager.php',
     'Hostinger\\Reach\\Api\\Routes\\FormsRoutes' => $baseDir . '/src/Api/Routes/FormsRoutes.php',
     'Hostinger\\Reach\\Api\\Routes\\IntegrationsRoutes' => $baseDir . '/src/Api/Routes/IntegrationsRoutes.php',
     'Hostinger\\Reach\\Api\\Routes\\ReachRoutes' => $baseDir . '/src/Api/Routes/ReachRoutes.php',

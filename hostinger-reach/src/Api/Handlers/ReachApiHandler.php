@@ -3,6 +3,7 @@
 namespace Hostinger\Reach\Api\Handlers;
 
 use Hostinger\Reach\Api\ApiKeyManager;
+use Hostinger\Reach\Api\ResourceIdManager;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
 use WP_Error;
@@ -17,10 +18,12 @@ class ReachApiHandler extends ApiHandler {
     protected string $hostinger_auth_url;
     protected string $reach_domain;
     public ApiKeyManager $api_key_manager;
+    public ResourceIdManager $resource_id_manager;
 
-    public function __construct( Functions $functions, ApiKeyManager $api_key_manager ) {
+    public function __construct( Functions $functions, ApiKeyManager $api_key_manager, ResourceIdManager $resource_id_manager ) {
         parent::__construct( $functions );
-        $this->api_key_manager = $api_key_manager;
+        $this->api_key_manager     = $api_key_manager;
+        $this->resource_id_manager = $resource_id_manager;
         $this->set_api_base_name();
         $this->init_hooks();
     }
@@ -82,6 +85,31 @@ class ReachApiHandler extends ApiHandler {
 
     public function is_connected(): bool {
         return ! empty( $this->api_key_manager->get_token() );
+    }
+
+    public function get_resource_id(): string {
+        if ( ! $this->is_connected() ) {
+            return ResourceIdManager::NON_EXISTENT_RESOURCE_ID;
+        }
+
+        $resource_id = $this->resource_id_manager->get_resource_id();
+
+        if ( ! empty( $resource_id ) ) {
+            return $resource_id;
+        }
+
+        return $this->generate_resource_id();
+    }
+
+    public function generate_resource_id(): string {
+        $overview_data = $this->get_overview_handler()->get_data();
+        if ( isset( $overview_data['data']['resourceId'] ) ) {
+            $this->resource_id_manager->store_resource_id( $overview_data['data']['resourceId'] );
+        } else {
+            $this->resource_id_manager->store_resource_id( ResourceIdManager::NON_EXISTENT_RESOURCE_ID );
+        }
+
+        return $this->resource_id_manager->get_resource_id();
     }
 
     public function post_contact_handler( WP_REST_Request $request ): WP_REST_Response {
@@ -173,6 +201,7 @@ class ReachApiHandler extends ApiHandler {
     public function get_overview_handler(): WP_REST_Response {
         if ( ! $this->get_connection_status_handler() ) {
             $this->api_key_manager->clear_token();
+            $this->resource_id_manager->clear_resource_id();
 
             return $this->handle_wp_error( new WP_Error( $this->get_not_connected_error_message(), 'You cannot perform this action', array( 'status' => 403 ) ) );
         }

@@ -78,6 +78,7 @@ class ComposerStaticInit313e69f9685b56c2f319d1e3f6f39c52
         'Hostinger\\Reach\\Api\\Handlers\\FormsApiHandler' => __DIR__ . '/../..' . '/src/Api/Handlers/FormsApiHandler.php',
         'Hostinger\\Reach\\Api\\Handlers\\IntegrationsApiHandler' => __DIR__ . '/../..' . '/src/Api/Handlers/IntegrationsApiHandler.php',
         'Hostinger\\Reach\\Api\\Handlers\\ReachApiHandler' => __DIR__ . '/../..' . '/src/Api/Handlers/ReachApiHandler.php',
+        'Hostinger\\Reach\\Api\\ResourceIdManager' => __DIR__ . '/../..' . '/src/Api/ResourceIdManager.php',
         'Hostinger\\Reach\\Api\\Routes\\FormsRoutes' => __DIR__ . '/../..' . '/src/Api/Routes/FormsRoutes.php',
         'Hostinger\\Reach\\Api\\Routes\\IntegrationsRoutes' => __DIR__ . '/../..' . '/src/Api/Routes/IntegrationsRoutes.php',
         'Hostinger\\Reach\\Api\\Routes\\ReachRoutes' => __DIR__ . '/../..' . '/src/Api/Routes/ReachRoutes.php',
