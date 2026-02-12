@@ -35,8 +35,8 @@ class WpFormsLiteIntegration extends Integration implements IntegrationInterface
         return self::INTEGRATION_NAME;
     }
 
-    public function get_post_type(): string {
-        return 'wpforms';
+    public function get_post_type(): array {
+        return array( 'wpforms' );
     }
 
     public function active_integration_hooks(): void {

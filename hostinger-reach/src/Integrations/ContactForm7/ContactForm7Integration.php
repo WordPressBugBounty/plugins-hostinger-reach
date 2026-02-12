@@ -66,8 +66,8 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
         return null;
     }
 
-    public function get_post_type(): string {
-        return 'wpcf7_contact_form';
+    public function get_post_type(): array {
+        return array( 'wpcf7_contact_form' );
     }
 
     public static function get_name(): string {

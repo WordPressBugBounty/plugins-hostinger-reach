@@ -2,12 +2,12 @@
 
 namespace Hostinger\Reach\Api\Handlers;
 
+use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\ImportManager;
 use Hostinger\Reach\Integrations\Integration;
 use Hostinger\Reach\Integrations\PluginManager;
 use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
-use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Providers\IntegrationsProvider;
 use WP_Error;
 use WP_REST_Request;
@@ -70,9 +70,12 @@ class IntegrationsApiHandler extends ApiHandler {
     public function post_integrations_handler( WP_REST_Request $request ): WP_REST_Response {
         $is_active         = $request->get_param( Integration::INTEGRATION_IS_ACTIVE );
         $integration       = $request->get_param( 'integration' );
-        $integration_data  = $this->get_integration_data( $integration );
+        $integrations_data = $this->get_integrations_data();
+        $integration_data  = $integrations_data[ $integration ] ?? array();
+        $has_download_url  = ! empty( $integration_data['download_url'] ?? false );
+        $has_download_url  = ! empty( $integration_data['download_url'] ?? false );
         $current_is_active = $integration_data[ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
-        $should_update     = ! $is_active || $this->activate_integration( $integration );
+        $should_update     = ! $is_active || $this->activate_integration( $integration, $has_download_url );
 
         if ( $current_is_active === $is_active ) {
             $should_update = false;
@@ -117,6 +120,7 @@ class IntegrationsApiHandler extends ApiHandler {
         }
 
         $status = $this->import_manager->get_status( $integration );
+
         return $this->handle_response(
             array(
                 'response' => array(
@@ -127,16 +131,17 @@ class IntegrationsApiHandler extends ApiHandler {
         );
     }
 
-
-    public function activate_integration( string $integration_name ): bool {
+    public function activate_integration( string $integration_name, bool $can_install ): bool {
         $integration_class = self::get_integrations()[ $integration_name ];
         if ( ! isset( $integration_class ) ) {
             return false;
         }
 
-        $installed = $this->plugin_manager->install( $integration_name );
-        if ( is_wp_error( $installed ) ) {
-            return false;
+        if ( $can_install ) {
+            $installed = $this->plugin_manager->install( $integration_name );
+            if ( is_wp_error( $installed ) ) {
+                return false;
+            }
         }
 
         $activated = $this->plugin_manager->activate( $integration_name );
@@ -184,6 +189,7 @@ class IntegrationsApiHandler extends ApiHandler {
                     'can_deactivate'                        => ! $is_hostinger_reach,
                     'is_go_to_plugin_visible'               => ! $is_hostinger_reach,
                     'import_status'                         => $this->import_manager->get_status( $integration_name ),
+                    'is_installable'                        => $this->plugin_manager->is_installed( $integration_name ) || ! empty( $integrations[ $integration_name ]['download_url'] ),
                 )
             );
 

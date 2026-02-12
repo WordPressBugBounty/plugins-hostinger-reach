@@ -161,6 +161,7 @@ class Assets {
             'hostinger_reach_forms_supported_plugins'                 => __( 'Supported plugins', 'hostinger-reach' ),
             'hostinger_reach_forms_view_more_supported_plugins'       => __( 'View more supported plugins', 'hostinger-reach' ),
             'hostinger_reach_forms_installed_plugins'                 => __( 'Installed plugins', 'hostinger-reach' ),
+            'hostinger_reach_forms_install'                           => __( 'Install', 'hostinger-reach' ),
             'hostinger_reach_forms_install_and_connect'               => __( 'Install and connect', 'hostinger-reach' ),
             'hostinger_reach_forms_disconnect'                        => __( 'Disconnect', 'hostinger-reach' ),
             'hostinger_reach_forms_connect'                           => __( 'Connect', 'hostinger-reach' ),

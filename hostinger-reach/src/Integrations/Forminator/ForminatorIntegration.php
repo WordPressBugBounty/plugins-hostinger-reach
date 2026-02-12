@@ -16,8 +16,8 @@ class ForminatorIntegration extends Integration implements IntegrationInterface 
         return self::INTEGRATION_NAME;
     }
 
-    public function get_post_type(): string {
-        return 'forminator_forms';
+    public function get_post_type(): array {
+        return array( 'forminator_forms' );
     }
 
     public function get_plugin_data(): PluginData {

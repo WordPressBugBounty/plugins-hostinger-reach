@@ -54,6 +54,12 @@ const handleToggle = async (integrationId: string, connect: boolean) => {
 };
 
 const handleConnect = async (integrationId: string) => {
+	const integration = getIntegration(integrationId);
+	if (!integration?.isInstallable) {
+		window.open(integration.url, '_blank', 'noopener,noreferrer');
+
+		return;
+	}
 	await integrationsStore.toggleIntegrationStatus(integrationId, true);
 	maybeShowSyncPage(integrationId);
 };
@@ -213,7 +219,11 @@ pagesStore.loadData();
 										:is-disabled="integrationsStore.isIntegrationLoading(integration.id)"
 										@click="handleConnect(integration.id)"
 									>
-										{{ translate('hostinger_reach_forms_install_and_connect') }}
+										{{
+											integration.isInstallable
+												? translate('hostinger_reach_forms_install_and_connect')
+												: translate('hostinger_reach_forms_install')
+										}}
 									</HButton>
 								</div>
 							</div>
@@ -265,7 +275,11 @@ pagesStore.loadData();
 										:is-disabled="integrationsStore.isIntegrationLoading(integration.id)"
 										@click="handleConnect(integration.id)"
 									>
-										{{ translate('hostinger_reach_forms_install_and_connect') }}
+										{{
+											integration.isInstallable
+												? translate('hostinger_reach_forms_install_and_connect')
+												: translate('hostinger_reach_forms_install')
+										}}
 									</HButton>
 								</div>
 							</div>

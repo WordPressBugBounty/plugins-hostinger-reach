@@ -32,7 +32,7 @@ const pluginTitle = computed(
 	() => props.form.formTitle || props.form.post?.postTitle || translate('hostinger_reach_forms_no_title')
 );
 
-const supportsIntegration = computed(() => props.integration.type !== 'ecommerce' && props.integration.importEnabled);
+const supportsImport = computed(() => props.integration.type !== 'ecommerce' && props.integration.importEnabled);
 const hasActions = computed(() => !props.integration.isViewFormHidden || !props.integration.isEditFormHidden);
 </script>
 
@@ -67,11 +67,13 @@ const hasActions = computed(() => !props.integration.isViewFormHidden || !props.
 			</span>
 			<span class="form-item__status-label">
 				<SyncStatusLabel
-					:enabled="supportsIntegration"
+					:enabled="supportsImport"
 					:status="
 						!props.form.isActive
 							? IMPORT_STATUSES.OFF
-							: (props.integration.importStatus?.summary[form.formId]?.status ?? IMPORT_STATUSES.NOT_IMPORTED)
+							: props.integration.id === 'thrive-leads'
+								? props.integration.importStatus?.summary['thriveLeads']?.status
+								: (props.integration.importStatus?.summary[form.formId]?.status ?? IMPORT_STATUSES.NOT_IMPORTED)
 					"
 				/>
 			</span>
@@ -100,7 +102,7 @@ const hasActions = computed(() => !props.integration.isViewFormHidden || !props.
 						<span>{{ translate('hostinger_reach_plugin_entries_table_edit_form') }}</span>
 					</div>
 					<div
-						v-if="supportsIntegration"
+						v-if="supportsImport && props.integration.id !== 'thrive-leads'"
 						class="form-item__menu-item"
 						@click="handleSync(props.integration, props.form)"
 					>

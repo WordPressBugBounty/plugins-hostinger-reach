@@ -17,8 +17,8 @@ class SureFormsIntegration extends Integration implements IntegrationInterface {
         return self::INTEGRATION_NAME;
     }
 
-    public function get_post_type(): string {
-        return 'sureforms_form';
+    public function get_post_type(): array {
+        return array( 'sureforms_form' );
     }
 
     public function get_plugin_data(): PluginData {

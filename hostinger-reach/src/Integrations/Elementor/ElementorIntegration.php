@@ -29,7 +29,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
 
     public function init(): void {
         parent::init();
-        add_action( 'hostinger_reach_integration_activated', array( $this, 'set_elementor_onboarding' ) );
+        add_action( 'hostinger_reach_integration_activated', array( $this, 'on_integration_activated' ) );
         add_action( 'wp_insert_post', array( $this, 'flag_new_elementor_post' ), 10, 3 );
         add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
     }
@@ -41,9 +41,10 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         add_action( 'elementor_pro/forms/new_record', array( $this, 'handle_elementor_pro_new_record' ) );
     }
 
-    public function set_elementor_onboarding( string $integration_name ): void {
+    public function on_integration_activated( string $integration_name ): void {
         if ( $integration_name === self::INTEGRATION_NAME ) {
-            update_option( 'elementor_onboarded', 1 );
+            $this->set_elementor_onboarding();
+            $this->init_existing_forms();
         }
     }
 
@@ -316,8 +317,24 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         return $entries;
     }
 
+    public function init_existing_forms(): void {
+        $post_ids = $this->get_elementor_posts();
+        foreach ( $post_ids as $post_id ) {
+            $this->update_forms_from_post( $post_id );
+        }
+    }
+
+    public function set_elementor_onboarding(): void {
+        update_option( 'elementor_onboarded', 1 );
+    }
+
     private function get_widget(): Widget_Base {
         return new SubscriptionFormElementorWidget();
+    }
+
+    private function update_forms_from_post( int $post_id ): void {
+        $form_ids = $this->get_forms_from_post_id( $post_id );
+        $this->update_form_repository( $form_ids, $post_id );
     }
 
     private function set_forms( WP_Post $post ): void {
@@ -325,6 +342,10 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         $elementor_pro_forms   = $this->get_elementor_form_ids_from_actions();
         $form_ids              = array_merge( $elementor_reach_forms, $elementor_pro_forms );
 
+        $this->update_form_repository( $form_ids, $post->ID );
+    }
+
+    private function update_form_repository( array $form_ids, int $post_id ): void {
         foreach ( $form_ids as $form_id ) {
             $form = array(
                 'form_id' => $form_id,
@@ -334,7 +355,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             if ( $this->form_repository->exists( $form_id ) ) {
                 $this->form_repository->update( $form );
             } else {
-                $this->form_repository->insert( array_merge( $form, array( 'post_id' => $post->ID ) ) );
+                $this->form_repository->insert( array_merge( $form, array( 'post_id' => $post_id ) ) );
             }
         }
     }
@@ -401,5 +422,44 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         $form_id = sanitize_text_field( $_POST['form_id'] ?? '' );
 
         return Form_Snapshot_Repository::instance()->find( $post_id, $form_id );
+    }
+
+    private function get_forms_from_post_id( int $post_id ): array {
+        $form_ids           = array();
+        $elementor_metadata = get_post_meta( $post_id, '_elementor_data', true );
+        if ( ! is_string( $elementor_metadata ) || $elementor_metadata === '' ) {
+            return $form_ids;
+        }
+
+        $elementor_metadata = json_decode( $elementor_metadata, true );
+        if ( ! is_array( $elementor_metadata ) ) {
+            return $form_ids;
+        }
+
+        foreach ( $elementor_metadata as $element ) {
+            $form_ids = array_merge( $form_ids, $this->find_form_widget( $element ) );
+        }
+
+        return $form_ids;
+    }
+
+    private function get_elementor_posts(): array {
+        $args = array(
+            'post_type'      => array( 'page', 'post', 'product', 'elementor_library' ),
+            'post_status'    => 'publish',
+            'posts_per_page' => 100,
+            'fields'         => 'ids',
+            'meta_query'     => array(
+                array(
+                    'key'     => '_elementor_data',
+                    'value'   => '"widgetType":"form"',
+                    'compare' => 'LIKE',
+                ),
+            ),
+        );
+
+        $post_ids = get_posts( $args );
+
+        return $post_ids;
     }
 }

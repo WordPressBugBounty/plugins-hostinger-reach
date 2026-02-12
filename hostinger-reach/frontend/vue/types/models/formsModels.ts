@@ -103,6 +103,7 @@ export interface Integration {
 	forms?: Form[];
 	importEnabled: boolean;
 	importStatus: ImportStatus;
+	isInstallable: boolean;
 }
 
 export interface IntegrationsResponse {

@@ -45,7 +45,7 @@ abstract class Integration {
      * Otherwise, override get_forms() method.
      *
      */
-    public function get_post_type(): string|null {
+    public function get_post_type(): array|null {
         return null;
     }
 
@@ -170,7 +170,7 @@ abstract class Integration {
 
     public function on_form_activation_change( bool $repository_form_was_updated, string $form_id, bool $is_active, string $type ): bool {
         $post = get_post( $form_id );
-        if ( ! $post || $this->get_post_type() !== $post->post_type ) {
+        if ( ! $post || ! in_array( $post->post_type, $this->get_post_type() ?? array(), true ) ) {
             return $repository_form_was_updated;
         }
 

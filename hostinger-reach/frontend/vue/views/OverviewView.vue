@@ -170,6 +170,8 @@ const handleEditForm = (form: Form) => {
 		editUrl = editUrl.replace('{post_id}', form.post?.ID.toString() ?? '');
 	} else if (editUrl.includes('{form_id}')) {
 		editUrl = editUrl.replace('{form_id}', form.formId);
+	} else if (editUrl.includes('{post_name}')) {
+		editUrl = editUrl.replace('{post_name}', form.post?.postName.toString() ?? '');
 	}
 
 	if (form.formId === 'ai-theme-footer-form') {

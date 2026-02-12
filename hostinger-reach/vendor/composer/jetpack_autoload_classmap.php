@@ -182,6 +182,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Functions.php'
 	),
+	'Hostinger\\Reach\\Integrations\\Brave\\BraveIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/Brave/BraveIntegration.php'
+	),
 	'Hostinger\\Reach\\Integrations\\ContactForm7\\ContactForm7Integration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/ContactForm7/ContactForm7Integration.php'
@@ -218,6 +222,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/NinjaForms/NinjaFormsIntegration.php'
 	),
+	'Hostinger\\Reach\\Integrations\\OptInMonster\\OptInMonsterIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/OptInMonster/OptInMonsterIntegration.php'
+	),
 	'Hostinger\\Reach\\Integrations\\PluginManager' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/PluginManager.php'
@@ -229,6 +237,10 @@ return array(
 	'Hostinger\\Reach\\Integrations\\SureForms\\SureFormsIntegration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/SureForms/SureFormsIntegration.php'
+	),
+	'Hostinger\\Reach\\Integrations\\ThriveLeads\\ThriveLeadsIntegration' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/ThriveLeads/ThriveLeadsIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\WPFormsLite\\WpFormsLiteIntegration' => array(
 		'version' => 'dev-main',
@@ -518,6 +530,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/FunctionsTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\BraveIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/BraveIntegrationTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ConcreteIntegration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/IntegrationTest.php'
@@ -546,6 +562,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/NinjaFormsIntegrationTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\OptInMonsterIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/OptInMonsterIntegrationTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormIntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ReachFormIntegrationTest.php'
@@ -557,6 +577,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\SureFormsIntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SureFormsIntegrationTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ThriveLeadsIntegrationTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ThriveLeadsIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WooCommerceIntegrationTest' => array(
 		'version' => 'dev-main',
