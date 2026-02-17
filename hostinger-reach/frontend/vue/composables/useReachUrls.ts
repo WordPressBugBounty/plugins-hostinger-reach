@@ -10,7 +10,11 @@ export const useReachUrls = () => {
 	const resourceId = computed(() => (generalStore.hasValidResourceId ? generalStore.resourceId : null));
 
 	return {
-		reachUpgradeLink: computed(() => `https://${hpanelBaseDomain.value}/reach`),
+		reachUpgradeLink: computed(() =>
+			resourceId.value
+				? `https://${hpanelBaseDomain.value}/reach?resourceId=${resourceId.value}&domain=${generalStore.domain}`
+				: `https://${hpanelBaseDomain.value}/reach`
+		),
 		reachYourPlanLink: computed(() =>
 			resourceId.value
 				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=settings-your-plan`
@@ -30,6 +34,16 @@ export const useReachUrls = () => {
 			resourceId.value
 				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=settings`
 				: `https://${reachBaseDomain.value}/settings`
+		),
+		reachDashboardLink: computed(() =>
+			resourceId.value
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}`
+				: `https://${reachBaseDomain.value}`
+		),
+		reachContactsImportLink: computed(() =>
+			resourceId.value
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=contacts-import`
+				: `https://${reachBaseDomain.value}/contacts-import`
 		),
 		reachBaseDomain,
 		hpanelBaseDomain

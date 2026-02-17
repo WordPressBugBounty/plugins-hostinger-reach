@@ -132,5 +132,17 @@ export const formsRepo = {
 		});
 
 		return httpService.post<{ success: boolean }>(`${URL}/import`, { integrations }, config);
+	},
+	getImportStatus: (integrationId: string, headers?: AuthorizeRequestHeaders) => {
+		const { nonce } = useGeneralDataStore();
+
+		const config = {
+			headers: {
+				[Header.CORRELATION_ID]: headers?.[Header.CORRELATION_ID] || generateCorrelationId(),
+				[Header.WP_NONCE]: nonce
+			}
+		};
+
+		return httpService.get(`${URL}/import/${integrationId}`, config);
 	}
 };

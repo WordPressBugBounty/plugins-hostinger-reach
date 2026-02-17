@@ -3,6 +3,7 @@ declare( strict_types=1 );
 
 namespace Hostinger\Reach\Jobs;
 
+use ActionScheduler_QueueRunner;
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
 
 defined( 'ABSPATH' ) || exit;
@@ -36,6 +37,9 @@ abstract class AbstractJob implements JobInterface {
 
     public function handle_sart_hook_action( array $args = array() ): void {
         $this->schedule( $args );
+        if ( class_exists( 'ActionScheduler_QueueRunner' ) ) {
+            ActionScheduler_QueueRunner::instance()->run();
+        }
     }
 
     public function handle_process_items_action( array $args = array() ): void {

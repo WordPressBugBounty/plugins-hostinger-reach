@@ -182,6 +182,9 @@ class Assets {
             'hostinger_reach_contacts_importing'                      => __( 'Syncing...', 'hostinger-reach' ),
             'hostinger_reach_contacts_import_success'                 => __( 'The selected contacts are being synced to Reach.', 'hostinger-reach' ),
             'hostinger_reach_contacts_import_error'                   => __( 'It was an error syncing your contacts to Reach.', 'hostinger-reach' ),
+            'hostinger_reach_add_form_snackbar_title'                 => __( "Don't see your plugin?", 'hostinger-reach' ),
+            'hostinger_reach_add_form_snackbar_text'                  => __( 'It may not be supported yet. You can upload contacts as a CSV or use another plugin', 'hostinger-reach' ),
+            'hostinger_reach_add_form_snackbar_link'                  => __( 'Upload as CSV', 'hostinger-reach' ),
         );
     }
 }

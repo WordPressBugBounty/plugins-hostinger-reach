@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { HLabel } from '@hostinger/hcomponents';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 
 import BaseModal from '@/components/Modals/Base/BaseModal.vue';
 import PluginIntegrationSkeleton from '@/components/skeletons/PluginIntegrationSkeleton.vue';
 import PluginsSectionSkeleton from '@/components/skeletons/PluginsSectionSkeleton.vue';
 import { useModal } from '@/composables/useModal';
+import { useReachUrls } from '@/composables/useReachUrls';
 import { getPluginInfo } from '@/data/pluginData';
 import { useIntegrationsStore } from '@/stores/integrationsStore';
 import { usePagesStore } from '@/stores/pagesStore';
@@ -15,9 +16,9 @@ import { translate } from '@/utils/translate';
 
 const { openModal } = useModal();
 
+const { reachContactsImportLink } = useReachUrls();
 const integrationsStore = useIntegrationsStore();
 const pagesStore = usePagesStore();
-const showPlugins = ref(false);
 
 const installedIntegrations = computed(() =>
 	integrationsStore.availableIntegrations.filter((integration) => integration.isPluginActive)
@@ -34,7 +35,7 @@ const handleCreateForm = () => {
 			title: translate('hostinger_reach_forms_modal_title'),
 			data: {
 				backButtonRedirectAction: () => {
-					openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
+					openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true, isLG: true });
 				}
 			},
 			pages: pagesStore.pages
@@ -76,7 +77,7 @@ const maybeShowSyncPage = (integrationId: string) => {
 			title: translate('hostinger_reach_contacts_modal_title'),
 			data: {
 				backButtonRedirectAction: () => {
-					openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
+					openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true, isLG: true });
 				},
 				integrations: [getIntegration(integrationId)]
 			}
@@ -92,14 +93,10 @@ const handleDisconnect = (id: string) => {
 		data: {
 			integration: id,
 			backButtonRedirectAction: () => {
-				openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
+				openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true, isLG: true });
 			}
 		}
 	});
-};
-
-const togglePluginsSection = () => {
-	showPlugins.value = !showPlugins.value;
 };
 
 const getIntegration = (integrationId: string): Integration | undefined =>
@@ -188,11 +185,7 @@ pagesStore.loadData();
 						{{ translate('hostinger_reach_forms_supported_plugins') }}
 					</HText>
 					<div class="add-form-modal__plugins-list">
-						<div
-							v-for="integration in availableIntegrations.slice(0, 2)"
-							:key="integration.id"
-							class="add-form-modal__plugin-card"
-						>
+						<div v-for="integration in availableIntegrations" :key="integration.id" class="add-form-modal__plugin-card">
 							<PluginIntegrationSkeleton v-if="integrationsStore.isIntegrationLoading(integration.id)" />
 
 							<div v-else class="add-form-modal__plugin-content">
@@ -229,62 +222,29 @@ pagesStore.loadData();
 							</div>
 						</div>
 					</div>
-					<HButton
-						v-if="availableIntegrations.length > 2"
-						variant="text"
-						color="primary"
-						size="small"
-						:icon-append="showPlugins ? 'ic-chevron-up-16' : 'ic-chevron-down-16'"
-						icon-color="primary--500"
-						class="add-form-modal__plugins-toggle"
-						:aria-expanded="showPlugins"
-						@click="togglePluginsSection"
-					>
-						{{ translate('hostinger_reach_forms_view_more_supported_plugins') }}
-					</HButton>
-
-					<div v-if="showPlugins && availableIntegrations.length > 2" class="add-form-modal__plugins-list">
-						<div
-							v-for="integration in availableIntegrations.slice(2)"
-							:key="integration.id"
-							class="add-form-modal__plugin-card"
-						>
-							<PluginIntegrationSkeleton v-if="integrationsStore.isIntegrationLoading(integration.id)" />
-
-							<div v-else class="add-form-modal__plugin-content">
-								<div class="add-form-modal__plugin-info">
-									<div class="add-form-modal__plugin-icon">
-										<img
-											:src="getPluginInfo(integration).icon"
-											:alt="integration.title"
-											class="add-form-modal__plugin-image"
-											loading="lazy"
-										/>
-									</div>
-									<div class="add-form-modal__plugin-details">
-										<HText variant="body-2-bold" as="span">
-											{{ integration.title }}
-										</HText>
-									</div>
-								</div>
-								<div class="add-form-modal__plugin-actions">
-									<HButton
-										variant="outline"
-										color="neutral"
-										size="small"
-										:is-disabled="integrationsStore.isIntegrationLoading(integration.id)"
-										@click="handleConnect(integration.id)"
-									>
-										{{
-											integration.isInstallable
-												? translate('hostinger_reach_forms_install_and_connect')
-												: translate('hostinger_reach_forms_install')
-										}}
-									</HButton>
-								</div>
+					<HSnackbar variant="info" hide-icon class="more-plugins-snackbar">
+						<div class="more-plugins-snackbar__content">
+							<div class="more-plugins-snackbar__text">
+								<p>
+									<b>{{ translate('hostinger_reach_add_form_snackbar_title') }}</b>
+								</p>
+								<p>
+									{{ translate('hostinger_reach_add_form_snackbar_text') }}
+								</p>
 							</div>
+							<HButton
+								class="more-plugins-snackbar__link"
+								variant="outline"
+								target="_blank"
+								color="neutral"
+								size="small"
+								icon-append="ic-launch-16"
+								:to="reachContactsImportLink"
+							>
+								{{ translate('hostinger_reach_add_form_snackbar_link') }}
+							</HButton>
 						</div>
-					</div>
+					</HSnackbar>
 				</div>
 			</template>
 		</div>
@@ -292,6 +252,27 @@ pagesStore.loadData();
 </template>
 
 <style lang="scss" scoped>
+.more-plugins-snackbar {
+	&__content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__text {
+		max-width: 60%;
+
+		p {
+			font-size: 14px;
+		}
+	}
+
+	&__link {
+		flex-flow: nowrap;
+		display: flex;
+	}
+}
+
 .add-form-modal {
 	display: flex;
 	flex-direction: column;

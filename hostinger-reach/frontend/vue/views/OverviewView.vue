@@ -142,7 +142,7 @@ const connectAndInstallWooCommerce = async () => {
 };
 
 const handleAddFormButton = () => {
-	openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true });
+	openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true, isLG: true });
 };
 
 const handleSyncContactsButton = () => {

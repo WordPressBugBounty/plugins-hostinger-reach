@@ -6,6 +6,7 @@ import { HOSTINGER_REACH_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
 import { STORE_PERSISTENT_KEYS } from '@/types/enums';
 import type { Form, Integration } from '@/types/models';
+import { IMPORT_STATUSES } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 export const useIntegrationsStore = defineStore(
@@ -17,7 +18,7 @@ export const useIntegrationsStore = defineStore(
 		const isLoading = ref(false);
 		const error = ref<string | null>(null);
 		const loadingIntegrations = ref<Record<string, boolean>>({});
-
+		const importStatusPollers = ref<Record<string, number>>({});
 		const activeIntegrations = computed(() => integrations.value.filter((integration) => integration.isActive));
 		const syncableIntegrations = computed(() =>
 			activeIntegrations.value.filter((integration) => integration.importEnabled && integration.forms.length > 0)
@@ -67,6 +68,67 @@ export const useIntegrationsStore = defineStore(
 			isLoading.value = false;
 		};
 
+		const isImportProcessFinished = (status?: string) =>
+			status === IMPORT_STATUSES.IMPORTED ||
+			status === IMPORT_STATUSES.NOT_IMPORTED ||
+			status === IMPORT_STATUSES.PARTIALLY_IMPORTED ||
+			status === IMPORT_STATUSES.OFF;
+
+		const stopImportStatusPolling = (integrationId: string) => {
+			const timerId = importStatusPollers.value[integrationId];
+			if (!timerId) {
+				return;
+			}
+
+			window.clearTimeout(timerId);
+			delete importStatusPollers.value[integrationId];
+		};
+
+		const refreshImportStatus = async (integrationId: string) => {
+			const integration = integrations.value.find((i) => i.id === integrationId);
+			if (!integration) {
+				stopImportStatusPolling(integrationId);
+
+				return;
+			}
+
+			try {
+				const [statusData, statusError] = await formsRepo.getImportStatus(integrationId);
+				if (statusError) {
+					stopImportStatusPolling(integrationId);
+
+					return;
+				}
+
+				if (statusData) {
+					integration.importStatus = statusData as Integration['importStatus'];
+					if (isImportProcessFinished(integration.importStatus?.status)) {
+						stopImportStatusPolling(integrationId);
+					}
+				}
+			} catch {
+				stopImportStatusPolling(integrationId);
+			}
+		};
+
+		const startImportStatusPolling = (integrationId: string) => {
+			if (importStatusPollers.value[integrationId]) {
+				return;
+			}
+
+			const tick = async () => {
+				await refreshImportStatus(integrationId);
+
+				if (!importStatusPollers.value[integrationId]) {
+					return;
+				}
+
+				importStatusPollers.value[integrationId] = window.setTimeout(tick, 2000);
+			};
+
+			importStatusPollers.value[integrationId] = window.setTimeout(tick, 0);
+		};
+
 		const syncContacts = async (importRequest: Record<string, Set<string>>) => {
 			isLoading.value = true;
 
@@ -76,8 +138,11 @@ export const useIntegrationsStore = defineStore(
 			} catch (error) {
 				showError(error.message || translate('hostinger_reach_contacts_import_error'));
 			} finally {
+				const integrationIds = Object.keys(importRequest);
+				integrationIds.forEach((id) => stopImportStatusPolling(id));
 				isLoading.value = false;
 				await loadIntegrations();
+				integrationIds.forEach((id) => startImportStatusPolling(id));
 			}
 		};
 

@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -349,3 +349,9 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Feature: OptinMonster Integration
 - Feature: Brave Integration
 - Fix: Load existing Elementor PRO forms when connecting
+
+1.3.7 (2026-02-17)
+
+- Fix: Add resourceId to main reach route
+- Fix: Import auto refresh
+- Tweak: Add CSV Import link in the Add Form Modal
