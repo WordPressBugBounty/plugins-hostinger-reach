@@ -12,7 +12,7 @@ export const usePagesStore = defineStore(
 			async (page: number, perPage: number) =>
 				await pagesRepo.getPagesWithSubscriptionBlock({ page, perPage }, undefined),
 			{
-				itemsPerPage: 10,
+				itemsPerPage: 5,
 				initialPage: 1,
 				autoLoad: false
 			}

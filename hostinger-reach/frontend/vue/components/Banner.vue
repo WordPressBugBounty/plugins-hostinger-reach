@@ -48,6 +48,9 @@ withDefaults(defineProps<Props>(), {
 					>
 						{{ buttonText }}
 					</HButton>
+					<div v-if="$slots.extra" class="extra-content">
+						<slot name="extra"></slot>
+					</div>
 				</div>
 				<div
 					v-if="backgroundImage"
@@ -86,29 +89,25 @@ withDefaults(defineProps<Props>(), {
 	@media (max-width: 992px) {
 		display: flex;
 		flex-direction: column;
-		text-align: left;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
 		gap: 0;
 		min-height: auto;
-		background: linear-gradient(
-			135deg,
-			var(--neutral--0) 0%,
-			var(--neutral--50) 30%,
-			var(--primary--50) 60%,
-			var(--primary--100) 80%,
-			var(--primary--200) 100%
-		);
 	}
 
 	&__content {
 		z-index: 2;
-		padding: 24px 28px;
+		padding: 40px;
 		border-radius: 20px 0 0 20px;
 		display: flex;
 		flex-direction: column;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
 		gap: 24px;
 
 		@media (max-width: 992px) {
-			padding: 16px 24px 24px 24px;
 			width: 100%;
 			order: 2;
 			border-radius: 20px;
@@ -148,7 +147,7 @@ withDefaults(defineProps<Props>(), {
 
 .content-wrapper {
 	display: flex;
-	width: 60%;
+	width: 100%;
 	flex-direction: column;
 	gap: 8px;
 }
@@ -156,17 +155,22 @@ withDefaults(defineProps<Props>(), {
 .title-section {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 16px;
 }
 
 .description-section {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	max-width: 65%;
+	margin: 0 auto;
 	gap: 4px;
 }
 
 .banner-button {
-	align-self: flex-start;
+	align-self: center;
 	border-radius: 8px;
 
 	&:deep(.h-button-v2) {

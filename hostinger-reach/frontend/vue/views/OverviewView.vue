@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
 
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
 import ActionButtonsSection from '@/components/ActionButtonsSection.vue';
 import Integrations from '@/components/Integrations.vue';
-import Tabs from '@/components/Tabs.vue';
 import UsageCardsSection from '@/components/UsageCardsSection.vue';
 import { useModal } from '@/composables';
 import { useOverviewData } from '@/composables/useOverviewData';
@@ -13,7 +11,7 @@ import { useReachUrls } from '@/composables/useReachUrls';
 import { useToast } from '@/composables/useToast';
 import { WOOCOMMERCE_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
-import { DEFAULT_OVERVIEW_TAB, OVERVIEW_TABS, TABS_KEYS } from '@/data/tabs';
+import { TABS_KEYS } from '@/data/tabs';
 import { useIntegrationsStore } from '@/stores/integrationsStore';
 import { ModalName } from '@/types';
 import type { Form } from '@/types/models';
@@ -26,10 +24,6 @@ const { showError } = useToast();
 
 const { openModal } = useModal();
 const integrationsStore = useIntegrationsStore();
-
-const route = useRoute();
-
-const currentTab = computed(() => route.hash.replace('#', '') || DEFAULT_OVERVIEW_TAB);
 
 const actionButtons = computed(() => [
 	{
@@ -124,25 +118,16 @@ const handleAddForm = (id: string) => {
 	window.open(integration.addFormUrl, '_blank');
 };
 
-const handleBannerButtonClick = () => {
-	switch (currentTab.value) {
-		case TABS_KEYS.OVERVIEW_TAB_ECOMMERCE:
-			connectAndInstallWooCommerce();
-
-			return;
-		default:
-			handleAddFormButton();
-
-			return;
-	}
-};
-
 const connectAndInstallWooCommerce = async () => {
 	await integrationsStore.toggleIntegrationStatus(WOOCOMMERCE_ID, true);
 };
 
 const handleAddFormButton = () => {
-	openModal(ModalName.ADD_FORM_MODAL, {}, { hasCloseButton: true, isLG: true });
+	openModal(ModalName.SELECT_PAGE_MODAL, {}, { hasCloseButton: true, isLG: true });
+};
+
+const handleConnectPluginButton = () => {
+	openModal(ModalName.CONNECT_PLUGIN_MODAL, {}, { hasCloseButton: true, isLG: true });
 };
 
 const handleSyncContactsButton = () => {
@@ -255,15 +240,14 @@ watchEffect(() => {
 			<div class="overview__integrations">
 				<div class="overview__integrations-header">
 					<HText class="overview__tabs-header" as="h2" variant="heading-2">
-						{{ translate('hostinger_reach_integrations_title') }}
+						{{ translate('hostinger_reach_forms_title') }}
 					</HText>
 					<div class="overview__integrations-tabs">
-						<Tabs :tabs="OVERVIEW_TABS" :default-tab="DEFAULT_OVERVIEW_TAB" />
 						<div class="overview__integrations-buttons">
 							<HButton
 								v-if="integrationsStore.syncableIntegrations.length > 0 && integrationsStore?.hasAnyForms()"
 								variant="text"
-								color="neutral"
+								color="primary"
 								size="small"
 								icon-prepend="ic-arrows-circle-16"
 								:is-loading="integrationsStore.isLoading"
@@ -272,23 +256,48 @@ watchEffect(() => {
 								{{ translate('hostinger_reach_sync_contacts_button_text') }}
 							</HButton>
 							<HButton
-								v-if="currentTab === TABS_KEYS.OVERVIEW_TAB_FORMS && hasFormsOrActiveIntegrations"
+								style="margin-right: 8px"
 								variant="outline"
-								color="neutral"
+								color="primary"
+								size="small"
+								icon-prepend="ic-link-16"
+								:is-loading="integrationsStore.isLoading"
+								@click="handleConnectPluginButton"
+							>
+								{{ translate('hostinger_reach_connect_plugin') }}
+							</HButton>
+							<HButton
+								v-if="hasFormsOrActiveIntegrations"
+								variant="outline"
+								color="primary"
 								size="small"
 								icon-prepend="ic-plus-16"
 								:is-loading="integrationsStore.isLoading"
 								@click="handleAddFormButton"
 							>
-								{{ translate('hostinger_reach_forms_add_more_button_text') }}
+								{{ translate('hostinger_reach_add_form') }}
 							</HButton>
 						</div>
 					</div>
 				</div>
 
 				<Integrations
-					:type="currentTab"
-					:on-banner-button-click="handleBannerButtonClick"
+					:type="TABS_KEYS.OVERVIEW_TAB_FORMS"
+					:on-banner-button-click="handleAddFormButton"
+					@go-to-plugin="handlePluginGoTo"
+					@disconnect-plugin="handlePluginDisconnect"
+					@toggle-form-status="handleFormToggleStatus"
+					@view-form="handleViewForm"
+					@edit-form="handleEditForm"
+					@add-form="handleAddForm"
+				/>
+
+				<div class="overview__integrations-header">
+					<HText class="overview__tabs-header" as="h2" variant="heading-2">WooCommerce</HText>
+				</div>
+				<Integrations
+					:type="TABS_KEYS.OVERVIEW_TAB_ECOMMERCE"
+					:on-banner-button-click="connectAndInstallWooCommerce"
 					@go-to-plugin="handlePluginGoTo"
 					@disconnect-plugin="handlePluginDisconnect"
 					@toggle-form-status="handleFormToggleStatus"
@@ -371,13 +380,15 @@ watchEffect(() => {
 		width: 100%;
 		margin-bottom: 16px;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 		gap: 10px;
 	}
 
 	&__integrations-tabs {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 		align-items: center;
 		width: 100%;
 	}

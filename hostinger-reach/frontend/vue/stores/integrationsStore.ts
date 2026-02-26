@@ -4,6 +4,7 @@ import { computed, ref } from 'vue';
 import { useToast } from '@/composables/useToast';
 import { HOSTINGER_REACH_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
+import { TABS_KEYS } from '@/data/tabs';
 import { STORE_PERSISTENT_KEYS } from '@/types/enums';
 import type { Form, Integration } from '@/types/models';
 import { IMPORT_STATUSES } from '@/types/models';
@@ -25,6 +26,29 @@ export const useIntegrationsStore = defineStore(
 		);
 
 		const availableIntegrations = computed(() => integrations.value.filter(({ id }) => id !== HOSTINGER_REACH_ID));
+
+		const recommendedPlugins = computed<Integration[]>(() =>
+			availableIntegrations.value
+				.filter(
+					(integration) =>
+						integration.type === TABS_KEYS.OVERVIEW_TAB_FORMS &&
+						integration.isActive === false &&
+						integration.isInstallable === true
+				)
+				.slice()
+				.sort((a, b) => {
+					const scoreA = a.isPluginActive ? 1 : 0;
+					const scoreB = b.isPluginActive ? 1 : 0;
+
+					if (scoreA !== scoreB) return scoreB - scoreA;
+
+					const scoreAContacts = a.importStatus?.total || 0;
+					const scoreBContacts = b.importStatus?.total || 0;
+
+					return scoreBContacts - scoreAContacts;
+				})
+				.slice(0, 3)
+		);
 
 		const hasAnyForms = (type: string = 'forms') =>
 			integrations.value.some(
@@ -156,7 +180,7 @@ export const useIntegrationsStore = defineStore(
 			if (error) {
 				loadingIntegrations.value[integrationId] = false;
 
-				return;
+				return false;
 			}
 
 			const integration = integrations.value.find((i) => i.id === integrationId);
@@ -175,6 +199,8 @@ export const useIntegrationsStore = defineStore(
 						: 'hostinger_reach_forms_plugin_disconnected_success'
 				)
 			);
+
+			return true;
 		};
 
 		return {
@@ -185,6 +211,7 @@ export const useIntegrationsStore = defineStore(
 			activeIntegrations,
 			syncableIntegrations,
 			availableIntegrations,
+			recommendedPlugins,
 			hasAnyForms,
 			isIntegrationLoading,
 			loadIntegrations,

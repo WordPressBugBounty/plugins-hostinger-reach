@@ -2,13 +2,13 @@
 
 namespace Hostinger\Reach\Integrations\ContactForm7;
 
+use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Integrations\Integration;
 use Hostinger\Reach\Integrations\IntegrationInterface;
-use Hostinger\Reach\Dto\PluginData;
-use WPCF7_ContactForm;
-use WPCF7_Submission;
 use WP_Post;
+use WPCF7_ContactForm;
 use WPCF7_FormTag;
+use WPCF7_Submission;
 
 if ( ! DEFINED( 'ABSPATH' ) ) {
     exit;
@@ -29,12 +29,14 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
 
         $contact_list = $contact_form->title();
         $email        = $this->get_field_data( $contact_form, array( 'basetype' => 'email' ) );
+        $name         = $this->get_name_field( $contact_form );
         if ( $email ) {
             do_action(
                 'hostinger_reach_submit',
                 array(
                     'group'    => $contact_list,
                     'email'    => $email,
+                    'name'     => $name,
                     'metadata' => array(
                         'plugin'  => self::INTEGRATION_NAME,
                         'form_id' => $contact_form->id(),
@@ -58,12 +60,30 @@ class ContactForm7Integration extends Integration implements IntegrationInterfac
 
     public function find_field( WPCF7_ContactForm $contact_form, array $condition ): ?WPCF7_FormTag {
         $tags = $contact_form->scan_form_tags( $condition );
-
         if ( ! empty( $tags ) ) {
             return $tags[0];
         }
 
         return null;
+    }
+
+    public function get_name_field( WPCF7_ContactForm $contact_form ): string {
+        $tags     = $contact_form->scan_form_tags( array( 'basetype' => 'text' ) );
+        $name_tag = null;
+        foreach ( $tags as $tag ) {
+            if ( str_contains( $tag->name, 'name' ) ) {
+                $name_tag = $tag;
+                break;
+            }
+        }
+
+        if ( ! is_null( $name_tag ) ) {
+            $submission = WPCF7_Submission::get_instance();
+
+            return $submission->get_posted_data( $name_tag->name );
+        }
+
+        return '';
     }
 
     public function get_post_type(): array {

@@ -9,7 +9,6 @@ import type { Page, WordPressPage } from '@/types/models/pagesModels';
 import { translate } from '@/utils/translate';
 
 interface Props {
-	title?: string;
 	pages?: Page[];
 	data?: Record<string, unknown>;
 }
@@ -84,7 +83,7 @@ onMounted(async () => {
 </script>
 
 <template>
-	<BaseModal title-alignment="centered" :title="title">
+	<BaseModal title-alignment="left" :title="translate('hostinger_reach_add_form')">
 		<template v-if="data?.backButtonRedirectAction" #back-button>
 			<button class="select-page-modal__back-button" type="button" @click="handleBackClick">
 				<HIcon name="ic-chevron-left-16" color="neutral--600" />
