@@ -122,7 +122,7 @@ const connectAndInstallWooCommerce = async () => {
 	await integrationsStore.toggleIntegrationStatus(WOOCOMMERCE_ID, true);
 };
 
-const handleAddFormButton = () => {
+const showAddFormModal = () => {
 	openModal(ModalName.SELECT_PAGE_MODAL, {}, { hasCloseButton: true, isLG: true });
 };
 
@@ -176,9 +176,17 @@ const hasFormsOrActiveIntegrations = computed(
 		integrationsStore?.hasAnyForms('forms')
 );
 
+const maybeOpenAddFormModal = () => {
+	const url = new URL(window.location.href);
+	if (url.searchParams.has('addForm')) {
+		showAddFormModal();
+	}
+};
+
 onMounted(() => {
 	loadOverviewData();
 	integrationsStore.loadIntegrations();
+	maybeOpenAddFormModal();
 });
 
 // Refresh when there is an unauthorized error 403 to reload the show connection page again.
@@ -273,7 +281,7 @@ watchEffect(() => {
 								size="small"
 								icon-prepend="ic-plus-16"
 								:is-loading="integrationsStore.isLoading"
-								@click="handleAddFormButton"
+								@click="showAddFormModal"
 							>
 								{{ translate('hostinger_reach_add_form') }}
 							</HButton>
@@ -283,7 +291,7 @@ watchEffect(() => {
 
 				<Integrations
 					:type="TABS_KEYS.OVERVIEW_TAB_FORMS"
-					:on-banner-button-click="handleAddFormButton"
+					:on-banner-button-click="showAddFormModal"
 					@go-to-plugin="handlePluginGoTo"
 					@disconnect-plugin="handlePluginDisconnect"
 					@toggle-form-status="handleFormToggleStatus"

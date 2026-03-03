@@ -18,6 +18,7 @@ return array(
     'Hostinger\\Reach\\Admin\\Database\\DatabaseTable' => $baseDir . '/src/Admin/Database/DatabaseTable.php',
     'Hostinger\\Reach\\Admin\\Database\\FormsTable' => $baseDir . '/src/Admin/Database/FormsTable.php',
     'Hostinger\\Reach\\Admin\\Menus' => $baseDir . '/src/Admin/Menus.php',
+    'Hostinger\\Reach\\Admin\\Notices\\AddFormNotice' => $baseDir . '/src/Admin/Notices/AddFormNotice.php',
     'Hostinger\\Reach\\Admin\\Notices\\ConnectionNotice' => $baseDir . '/src/Admin/Notices/ConnectionNotice.php',
     'Hostinger\\Reach\\Admin\\Redirects' => $baseDir . '/src/Admin/Redirects.php',
     'Hostinger\\Reach\\Admin\\Surveys\\SatisfactionSurvey' => $baseDir . '/src/Admin/Surveys/SatisfactionSurvey.php',

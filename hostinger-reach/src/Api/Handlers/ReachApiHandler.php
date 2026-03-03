@@ -44,6 +44,30 @@ class ReachApiHandler extends ApiHandler {
             }
         );
 
+        add_filter(
+            'rest_exposed_cors_headers',
+            function ( array $exposed_headers ): array {
+                $exposed_headers[] = 'X-WP-Total';
+                $exposed_headers[] = 'X-WP-TotalPages';
+                $exposed_headers[] = 'Link';
+
+                return array_values( array_unique( $exposed_headers ) );
+            }
+        );
+
+        add_filter(
+            'rest_allowed_cors_headers',
+            function ( array $allowed_headers, WP_REST_Request $request ): array {
+                $allowed_headers[] = 'Authorization';
+                $allowed_headers[] = 'Content-Type';
+                $allowed_headers[] = 'X-WP-Nonce';
+
+                return array_values( array_unique( $allowed_headers ) );
+            },
+            10,
+            2
+        );
+
         /**
          * Submits a contact to Reach
          *

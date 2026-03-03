@@ -30,10 +30,6 @@ class Routes {
             );
         }
 
-        if ( empty( is_user_logged_in() ) ) {
-            return false;
-        }
-
         return current_user_can( 'manage_options' );
     }
 }

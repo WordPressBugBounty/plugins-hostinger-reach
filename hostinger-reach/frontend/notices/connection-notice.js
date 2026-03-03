@@ -1,4 +1,4 @@
-import './connection-notice.scss';
+import './notice.scss';
 
 (function () {
 
@@ -16,18 +16,23 @@ import './connection-notice.scss';
 			method: 'POST',
 			body: data
 		})
-			.then(response => response.json())
+			.then(response =>{
+				return response.json();
+			})
 			.then(result => {
-				if (result.success && result.data.redirect_url) {
+				if (result?.success && result.data?.redirect_url) {
 					window.location.href = result.data.redirect_url;
 				}
 
+				const notice = getNotice();
 				const closer = getNotice().querySelector('.notice-dismiss');
 				if ( closer ) {
 					closer.click();
 				}
 
-				notice.style.display = 'none';
+				if ( notice ) {
+					notice.style.display = 'none';
+				}
 			})
 	}
 

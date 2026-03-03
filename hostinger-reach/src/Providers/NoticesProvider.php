@@ -3,6 +3,7 @@
 namespace Hostinger\Reach\Providers;
 
 
+use Hostinger\Reach\Admin\Notices\AddFormNotice;
 use Hostinger\Reach\Admin\Notices\ConnectionNotice;
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
 use Hostinger\Reach\Container;
@@ -16,6 +17,7 @@ class NoticesProvider implements ProviderInterface {
 
     public const NOTICES = array(
         ConnectionNotice::class,
+        AddFormNotice::class,
     );
 
     public function register( Container $container ): void {

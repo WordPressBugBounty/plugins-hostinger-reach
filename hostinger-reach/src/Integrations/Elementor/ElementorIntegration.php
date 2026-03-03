@@ -13,6 +13,7 @@ use ElementorPro\Modules\Forms\Submissions\Database\Repositories\Form_Snapshot_R
 use Exception;
 use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Dto\ReachContact;
+use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\IntegrationInterface;
 use Hostinger\Reach\Integrations\IntegrationWithForms;
 use WP_Post;
@@ -346,6 +347,9 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     private function update_form_repository( array $form_ids, int $post_id ): void {
+        if ( empty( $form_ids ) ) {
+            update_option( Functions::HOSTINGER_REACH_HAS_FORMS, true );
+        }
         foreach ( $form_ids as $form_id ) {
             $form = array(
                 'form_id' => $form_id,

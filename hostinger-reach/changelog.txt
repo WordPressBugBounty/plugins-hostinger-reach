@@ -204,3 +204,13 @@ Changelog
 - Feature: Dependency update
 - Fix: Send CF7 name field
 - Dev: Improved automation
+
+1.3.9 (2026-03-03)
+
+- Feature: Add main menu entry in Reach
+- Fix: Limit Reach to admin users only
+- Fix: Expose missed CORS headers
+- Tweak: Update translations
+- Tweak: Update Readme
+- Tweak: Add Add Form Banner
+- Tweak: Improve UX for Connection Banner

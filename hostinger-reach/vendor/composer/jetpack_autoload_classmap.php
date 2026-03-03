@@ -70,6 +70,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Admin/Menus.php'
 	),
+	'Hostinger\\Reach\\Admin\\Notices\\AddFormNotice' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Admin/Notices/AddFormNotice.php'
+	),
 	'Hostinger\\Reach\\Admin\\Notices\\ConnectionNotice' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Admin/Notices/ConnectionNotice.php'
@@ -433,6 +437,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\MenusTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/MenusTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Notices\\AddFormNoticeTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Notices/AddFormNoticeTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Notices\\ConnectionNoticeScreenTest' => array(
 		'version' => 'dev-main',

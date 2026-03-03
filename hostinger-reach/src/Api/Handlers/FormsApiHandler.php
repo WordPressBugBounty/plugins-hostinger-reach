@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class FormsApiHandler extends ApiHandler {
 
+    public const FORMS_API_HANDLER_LAST_UPDATE = 'hostinger_reach_forms_api_handler_last_update';
+
     private ContactListRepository $contact_list_repository;
     private FormRepository $form_repository;
 
@@ -48,6 +50,9 @@ class FormsApiHandler extends ApiHandler {
 
         if ( ! empty( $forms ) ) {
             update_option( Functions::HOSTINGER_REACH_HAS_USER_ACTION, true );
+            update_option( Functions::HOSTINGER_REACH_HAS_FORMS, true );
+        } else {
+            update_option( Functions::HOSTINGER_REACH_HAS_FORMS, false );
         }
 
         return $this->handle_response(

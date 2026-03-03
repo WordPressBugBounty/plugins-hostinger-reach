@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ Reach is also fully compatible with these popular form builders and plugins:
 * **Sure Forms**
 * **Ninja Forms**
 * **Forminator**
+* **Thrive Leads**
+* **OptinMonster**
+* **Brave Popup Builder**
 
 More integrations are coming soon.
 
@@ -363,3 +366,13 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Feature: Dependency update
 - Fix: Send CF7 name field
 - Dev: Improved automation
+
+1.3.9 (2026-03-03)
+
+- Feature: Add main menu entry in Reach
+- Fix: Limit Reach to admin users only
+- Fix: Expose missed CORS headers
+- Tweak: Update translations
+- Tweak: Update Readme
+- Tweak: Add Add Form Banner
+- Tweak: Improve UX for Connection Banner

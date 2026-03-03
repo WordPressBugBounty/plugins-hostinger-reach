@@ -88,7 +88,7 @@ onMounted(() => {
 				@click="handleBackClick"
 			>
 				<HIcon name="ic-chevron-left-16" color="neutral--600" />
-				{{ translate('hostinger_reach_contacts_modal_back') }}
+				{{ translate('hostinger_reach_back') }}
 			</button>
 		</template>
 

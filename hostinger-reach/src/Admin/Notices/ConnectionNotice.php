@@ -42,6 +42,10 @@ class ConnectionNotice {
     }
 
     public function handle_ajax_action(): void {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( -1, 403 );
+        }
+
         check_ajax_referer( self::NOTICE_ACTION, 'nonce' );
         $choice = sanitize_text_field( $_POST['choice'] );
 
@@ -56,10 +60,9 @@ class ConnectionNotice {
         }
     }
 
-    private function handle_dismiss(): string {
+    private function handle_dismiss(): void {
         set_transient( self::NOTICE_DISMISS_TRANSIENT, true, WEEK_IN_SECONDS );
-
-        return '';
+        wp_send_json_success();
     }
 
     private function handle_connect(): void {
@@ -84,20 +87,13 @@ class ConnectionNotice {
 
     private function render(): void {
         ?>
-        <div id="hostinger-reach-connection-notice" class="notice notice-info is-dismissible hostinger-reach-notice">
+        <div style="background-image: url('<?php echo esc_url( $this->functions->get_asset_url( 'images/notices/notice-bg.png' ) ); ?>');" id="hostinger-reach-connection-notice" class="notice notice-info is-dismissible hostinger-reach-notice">
             <div data-action="dismiss" class="hostinger-reach-action-button hostinger-reach-notice-close"></div>
             <div class="hostinger-reach-notice-wrap">
-                <div class="hostinger-reach-notice-aside">
-                    <img
-                        alt="<?php esc_html_e( 'Hostinger Reach logo', 'hostinger-reach' ); ?>"
-                        class="hostinger-reach-notice-logo"
-                        src="<?php echo esc_url( $this->functions->get_icon_url( 'hostinger-logo' ) ); ?>"
-                    />
-                </div>
                 <div class="hostinger-reach-notice-main">
                     <div class="hostinger-reach-notice-content">
                         <h3><?php esc_html_e( 'Connect Hostinger Reach to start Email Marketing', 'hostinger-reach' ); ?></h3>
-                        <p><?php esc_html_e( 'Connect your Hostinger Reach account to start sending newsletters and managing subscribers. With Hostinger Reach, it\'s easy to grow your audience in just one click.', 'hostinger-reach' ); ?></p>
+                        <p><?php esc_html_e( 'Send newsletters with professionally designed templates, automate campaigns, and build AI-powered segments. With Hostinger Reach, growing your audience is easy.', 'hostinger-reach' ); ?></p>
                     </div>
                     <div class="hostinger-reach-notice-actions">
                         <button data-action="connect" class="hostinger-reach-button hostinger-reach-action-button button button-primary">
@@ -108,12 +104,24 @@ class ConnectionNotice {
                         </a>
                     </div>
                 </div>
+                <div class="hostinger-reach-notice-aside">
+                    <img
+                        width="255"
+                        alt="<?php esc_html_e( 'Hostinger Reach', 'hostinger-reach' ); ?>"
+                        class="hostinger-reach-notice-image"
+                        src="<?php echo esc_url( $this->functions->get_asset_url( 'images/notices/connection-notice.png' ) ); ?>"
+                    />
+                </div>
             </div>
         </div>
         <?php
     }
 
     private function should_render(): bool {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return false;
+        }
+
         $screen = get_current_screen();
 
         if ( ! $screen || ! in_array(

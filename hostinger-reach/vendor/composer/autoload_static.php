@@ -69,6 +69,7 @@ class ComposerStaticInit313e69f9685b56c2f319d1e3f6f39c52
         'Hostinger\\Reach\\Admin\\Database\\DatabaseTable' => __DIR__ . '/../..' . '/src/Admin/Database/DatabaseTable.php',
         'Hostinger\\Reach\\Admin\\Database\\FormsTable' => __DIR__ . '/../..' . '/src/Admin/Database/FormsTable.php',
         'Hostinger\\Reach\\Admin\\Menus' => __DIR__ . '/../..' . '/src/Admin/Menus.php',
+        'Hostinger\\Reach\\Admin\\Notices\\AddFormNotice' => __DIR__ . '/../..' . '/src/Admin/Notices/AddFormNotice.php',
         'Hostinger\\Reach\\Admin\\Notices\\ConnectionNotice' => __DIR__ . '/../..' . '/src/Admin/Notices/ConnectionNotice.php',
         'Hostinger\\Reach\\Admin\\Redirects' => __DIR__ . '/../..' . '/src/Admin/Redirects.php',
         'Hostinger\\Reach\\Admin\\Surveys\\SatisfactionSurvey' => __DIR__ . '/../..' . '/src/Admin/Surveys/SatisfactionSurvey.php',

@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Functions {
 
     public const HOSTINGER_REACH_HAS_USER_ACTION = 'hostinger_reach_has_user_action';
+    public const HOSTINGER_REACH_HAS_FORMS       = 'hostinger_reach_has_forms';
 
     public const ASSET_PAGES = array(
         'admin.php?page=hostinger-reach',
@@ -199,8 +200,7 @@ class Functions {
         return $parsed_blocks;
     }
 
-    public function get_icon_url( string $icon = 'hostinger-reach' ): string {
-        $icon_url = HOSTINGER_REACH_PLUGIN_URL . "frontend/dist/icons/$icon.svg";
-        return $icon_url;
+    public function get_asset_url( string $asset ): string {
+        return $this->get_frontend_url() . $asset;
     }
 }

@@ -108,6 +108,10 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
 
     private function set_forms( WP_Post $post ): void {
         $blocks = $this->functions->get_reach_subscription_blocks( $post->ID );
+        if ( ! empty( $blocks ) ) {
+            update_option( Functions::HOSTINGER_REACH_HAS_FORMS, true );
+        }
+
         foreach ( $blocks as $block ) {
             if ( empty( $block['formId'] ) ) {
                 continue;
