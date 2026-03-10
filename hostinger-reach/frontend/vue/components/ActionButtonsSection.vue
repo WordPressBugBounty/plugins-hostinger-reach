@@ -2,7 +2,7 @@
 import ActionButton from '@/components/ActionButton.vue';
 
 interface ActionButtonData {
-	icon: string;
+	icon: HIconUnion;
 	text: string;
 	url: string;
 }

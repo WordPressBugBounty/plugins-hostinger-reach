@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import FAQ from '@/components/FAQ.vue';
 import Hero from '@/components/Hero.vue';
 import { useToast } from '@/composables/useToast';
+import { connectFaqData } from '@/data/faq';
 import { reachRepo } from '@/data/repositories/reachRepo';
 import { translate } from '@/utils/translate';
 
@@ -44,7 +45,9 @@ const handleGetStarted = async () => {
 			:domain="domain"
 			:on-get-started="handleGetStarted"
 		/>
-		<FAQ />
+		<div class="faq-wrap">
+			<FAQ :faq-data="connectFaqData" />
+		</div>
 	</div>
 </template>
 
@@ -62,5 +65,10 @@ const handleGetStarted = async () => {
 	.welcome-view {
 		padding: 0 8px;
 	}
+}
+
+.faq-wrap {
+	max-width: 780px;
+	margin: 24px auto;
 }
 </style>

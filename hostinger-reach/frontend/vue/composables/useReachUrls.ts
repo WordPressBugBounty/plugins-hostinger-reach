@@ -45,6 +45,21 @@ export const useReachUrls = () => {
 				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=contacts-import`
 				: `https://${reachBaseDomain.value}/contacts-import`
 		),
+		reachContactsLink: computed(() =>
+			resourceId.value
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=contacts`
+				: `https://${reachBaseDomain.value}/contacts`
+		),
+		reachSegmentsLink: computed(() =>
+			resourceId.value
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=segments`
+				: `https://${reachBaseDomain.value}/segments`
+		),
+		reachAutomationsLink: computed(() =>
+			resourceId.value
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=automations`
+				: `https://${reachBaseDomain.value}/automations`
+		),
 		reachBaseDomain,
 		hpanelBaseDomain
 	};

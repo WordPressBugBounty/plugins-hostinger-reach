@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { faqData } from '@/data/faq';
+import type { FAQItem } from '@/data/faq';
 import { translate } from '@/utils/translate';
+
+interface Props {
+	faqData: FAQItem[];
+}
+
+const props = defineProps<Props>();
 
 const expandedFAQ = ref<string | null>(null);
 
@@ -15,44 +21,42 @@ const toggleFAQ = (id: string) => {
 	<section class="faq" aria-labelledby="faq-heading">
 		<div class="faq__container">
 			<div class="faq__list">
-				<HCard border-radius="20px" padding="16px 28px">
-					<template #header>
-						<HText id="faq-heading" as="h2" variant="heading-2">{{ translate('hostinger_reach_faq_title') }}</HText>
-					</template>
-					<div
-						v-for="faq in faqData"
-						:key="faq.id"
-						class="faq__item h-mb-8"
-						:class="{
-							'faq__item--expanded': expandedFAQ === faq.id
-						}"
+				<HText id="faq-heading" as="h2" variant="heading-2" class="faq__section-title">
+					{{ translate('hostinger_reach_faq_title') }}
+				</HText>
+				<div
+					v-for="faq in props.faqData"
+					:key="faq.id"
+					class="faq__item h-mb-8"
+					:class="{
+						'faq__item--expanded': expandedFAQ === faq.id
+					}"
+				>
+					<button
+						:id="`faq-question-${faq.id}`"
+						class="faq__question"
+						:aria-expanded="expandedFAQ === faq.id"
+						:aria-controls="`faq-answer-${faq.id}`"
+						@click="toggleFAQ(faq.id)"
 					>
-						<button
-							:id="`faq-question-${faq.id}`"
-							class="faq__question"
-							:aria-expanded="expandedFAQ === faq.id"
-							:aria-controls="`faq-answer-${faq.id}`"
-							@click="toggleFAQ(faq.id)"
-						>
-							<span class="faq__question-text">{{ faq.question }}</span>
-							<HIcon
-								:name="expandedFAQ === faq.id ? 'ic-chevron-up-24' : 'ic-chevron-down-24'"
-								size="24"
-								class="faq__icon"
-								aria-hidden="true"
-							/>
-						</button>
-						<div
-							v-show="expandedFAQ === faq.id"
-							:id="`faq-answer-${faq.id}`"
-							class="faq__answer"
-							:aria-labelledby="`faq-question-${faq.id}`"
-							role="region"
-						>
-							<div v-html="faq.answer"></div>
-						</div>
+						<span class="faq__question-text">{{ faq.question }}</span>
+						<HIcon
+							:name="expandedFAQ === faq.id ? 'ic-chevron-up-24' : 'ic-chevron-down-24'"
+							size="24"
+							class="faq__icon"
+							aria-hidden="true"
+						/>
+					</button>
+					<div
+						v-show="expandedFAQ === faq.id"
+						:id="`faq-answer-${faq.id}`"
+						class="faq__answer"
+						:aria-labelledby="`faq-question-${faq.id}`"
+						role="region"
+					>
+						<div v-html="faq.answer"></div>
 					</div>
-				</HCard>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -60,6 +64,8 @@ const toggleFAQ = (id: string) => {
 
 <style scoped lang="scss">
 .faq {
+	width: 100%;
+
 	@media (max-width: 768px) {
 		padding: 32px 16px;
 	}
@@ -68,17 +74,13 @@ const toggleFAQ = (id: string) => {
 		padding: 24px 12px;
 	}
 
+	&__section-title.h-typography {
+		margin-bottom: 16px;
+	}
+
 	&__container {
-		max-width: 780px;
+		max-width: 100%;
 		margin: 0 auto;
-
-		@media (max-width: 1024px) {
-			max-width: 90%;
-		}
-
-		@media (max-width: 768px) {
-			max-width: 100%;
-		}
 	}
 
 	&__list {

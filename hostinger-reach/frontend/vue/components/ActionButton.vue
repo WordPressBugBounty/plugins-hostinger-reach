@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import type { HIconUnion } from '@hostinger/hcomponents';
+
 import { translate } from '@/utils/translate';
 
 interface Props {
-	icon: string;
+	icon: HIconUnion;
 	text: string;
 	url?: string;
 }

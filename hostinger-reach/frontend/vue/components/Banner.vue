@@ -1,15 +1,19 @@
 <script setup lang="ts">
+import { HLabel } from '@hostinger/hcomponents';
+
 import { translate } from '@/utils/translate';
 
 interface Props {
 	title: string;
 	description: string;
-	buttonText: string;
+	buttonText?: string;
 	buttonIcon?: string;
 	backgroundImage?: string;
 	isButtonDisabled?: boolean;
 	isButtonLoading?: boolean;
 	onButtonClick?: () => void;
+	label?: string;
+	align?: string;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -23,8 +27,16 @@ withDefaults(defineProps<Props>(), {
 	<section class="banner-section" role="banner" aria-labelledby="banner-title">
 		<HCard padding="0" border-radius="20px">
 			<div class="banner">
-				<div class="banner__content">
+				<div
+					class="banner__content"
+					:class="{
+						'is-left': align === 'left'
+					}"
+				>
 					<div class="content-wrapper">
+						<div class="tag-section">
+							<HLabel v-if="label" color="primary" variant="contain">{{ label }}</HLabel>
+						</div>
 						<div class="title-section">
 							<HText id="banner-title" as="h3" variant="heading-3">
 								{{ title }}
@@ -37,6 +49,7 @@ withDefaults(defineProps<Props>(), {
 						</div>
 					</div>
 					<HButton
+						v-if="buttonText"
 						size="small"
 						color="primary"
 						:icon-prepend="buttonIcon"
@@ -112,6 +125,18 @@ withDefaults(defineProps<Props>(), {
 			order: 2;
 			border-radius: 20px;
 			gap: 20px;
+		}
+	}
+
+	&__content.is-left {
+		justify-content: flex-start;
+		align-items: flex-start;
+		text-align: left;
+
+		.title-section,
+		.description-section {
+			justify-content: flex-start;
+			margin: 0;
 		}
 	}
 

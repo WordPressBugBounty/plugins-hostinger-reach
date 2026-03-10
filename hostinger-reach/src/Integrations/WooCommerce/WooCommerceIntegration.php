@@ -120,8 +120,8 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
     }
 
     public function add_automations(): void {
-        $this->add_automation( OrderPurchased::WEBHOOK_NAME, __( 'Automation -  Purchases', 'hostinger-reach' ) );
-        $this->add_automation( CartAbandoned::WEBHOOK_NAME, __( 'Automation - Abandoned Carts', 'hostinger-reach' ) );
+        $this->add_automation( OrderPurchased::WEBHOOK_NAME, __( 'Purchases', 'hostinger-reach' ) );
+        $this->add_automation( CartAbandoned::WEBHOOK_NAME, __( 'Abandoned Carts', 'hostinger-reach' ) );
     }
 
     public function add_automation( string $automation_name, string $title ): void {

@@ -1,14 +1,19 @@
 <script setup lang="ts">
+import { HIcon, HPopover } from '@hostinger/hcomponents';
 import { computed, onMounted, watchEffect } from 'vue';
 
+import reachOverviewBannerBackground from '@/assets/images/backgrounds/reach-features-banner.png';
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
 import ActionButtonsSection from '@/components/ActionButtonsSection.vue';
+import Banner from '@/components/Banner.vue';
+import FAQ from '@/components/FAQ.vue';
 import Integrations from '@/components/Integrations.vue';
-import UsageCardsSection from '@/components/UsageCardsSection.vue';
+import WooCommerce from '@/components/WooCommerce.vue';
 import { useModal } from '@/composables';
 import { useOverviewData } from '@/composables/useOverviewData';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { useToast } from '@/composables/useToast';
+import { overviewFaqData } from '@/data/faq';
 import { WOOCOMMERCE_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
 import { TABS_KEYS } from '@/data/tabs';
@@ -17,8 +22,8 @@ import { ModalName } from '@/types';
 import type { Form } from '@/types/models';
 import { translate } from '@/utils/translate';
 
-const { isLoading, usageCards, loadOverviewData, status } = useOverviewData();
-const { reachUpgradeLink, reachYourPlanLink, reachCampaignsLink, reachTemplatesLink, reachSettingsLink } =
+const { status, loadOverviewData } = useOverviewData();
+const { reachDashboardLink, reachYourPlanLink, reachContactsLink, reachSegmentsLink, reachAutomationsLink } =
 	useReachUrls();
 const { showError } = useToast();
 
@@ -27,19 +32,24 @@ const integrationsStore = useIntegrationsStore();
 
 const actionButtons = computed(() => [
 	{
-		icon: 'ic-graph-arrow-up-16',
-		text: translate('hostinger_reach_overview_campaigns_text'),
-		url: reachCampaignsLink.value
+		icon: 'ic-user-double-16',
+		text: translate('hostinger_reach_overview_contacts_button'),
+		url: reachContactsLink.value
 	},
 	{
-		icon: 'ic-sparkles-16',
-		text: translate('hostinger_reach_overview_templates_text'),
-		url: reachTemplatesLink.value
+		icon: 'ic-user-ai-16',
+		text: translate('hostinger_reach_overview_segments_button'),
+		url: reachSegmentsLink.value
 	},
 	{
-		icon: 'ic-gear-16',
-		text: translate('hostinger_reach_overview_settings_text'),
-		url: reachSettingsLink.value
+		icon: 'ic-lightning-16',
+		text: translate('hostinger_reach_overview_your_plan_button'),
+		url: reachYourPlanLink.value
+	},
+	{
+		icon: 'ic-reach-16',
+		text: translate('hostinger_reach_header_go_to_reach_button'),
+		url: reachDashboardLink.value
 	}
 ]);
 
@@ -58,7 +68,7 @@ const handlePluginDisconnect = (id: string) => {
 	});
 };
 
-const handleFormToggleStatus = async (form: Form, status: boolean) => {
+const handleFormToggleStatus = async (form: Form, isActive: boolean) => {
 	if (form.isLoading) {
 		return;
 	}
@@ -73,7 +83,7 @@ const handleFormToggleStatus = async (form: Form, status: boolean) => {
 		integration.forms[formIndex].isLoading = true;
 	}
 
-	const [, error] = await formsRepo.toggleFormStatus(form.formId, status, form.type);
+	const [, error] = await formsRepo.toggleFormStatus(form.formId, isActive, form.type);
 
 	if (formIndex !== -1) {
 		integration.forms[formIndex].isLoading = false;
@@ -94,8 +104,12 @@ const handleFormToggleStatus = async (form: Form, status: boolean) => {
 	if (formIndex !== -1) {
 		integration.forms[formIndex] = {
 			...integration.forms[formIndex],
-			isActive: status
+			isActive
 		};
+
+		if (isActive && !isAutomation(form)) {
+			openModal(ModalName.CONFIRM_SYNC_MODAL, { integration });
+		}
 	}
 };
 
@@ -116,10 +130,6 @@ const handleAddForm = (id: string) => {
 	}
 
 	window.open(integration.addFormUrl, '_blank');
-};
-
-const connectAndInstallWooCommerce = async () => {
-	await integrationsStore.toggleIntegrationStatus(WOOCOMMERCE_ID, true);
 };
 
 const showAddFormModal = () => {
@@ -196,6 +206,12 @@ watchEffect(() => {
 		window.location.reload();
 	}
 });
+
+const wooCommerceConnected = computed(
+	() => !!integrationsStore?.activeIntegrations.find((i) => i.id === WOOCOMMERCE_ID)
+);
+
+const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? false;
 </script>
 
 <template>
@@ -210,40 +226,18 @@ watchEffect(() => {
 
 		<div class="overview__content">
 			<div class="overview__section">
-				<div class="overview__title">
-					<HText as="h1" variant="heading-1">
-						{{ translate('hostinger_reach_overview_title') }}
-					</HText>
-					<div class="overview__title-buttons">
-						<HButton
-							variant="text"
-							color="primary"
-							size="small"
-							icon-append="ic-arrow-up-right-square-16"
-							:to="reachYourPlanLink"
-							target="_blank"
-							class="overview__your-plan-button"
-						>
-							{{ translate('hostinger_reach_overview_your_plan_button') }}
-						</HButton>
-						<HButton
-							variant="outline"
-							color="primary"
-							size="small"
-							icon-prepend="ic-lightning-16"
-							:to="reachUpgradeLink"
-							target="_blank"
-							class="overview__upgrade-button"
-						>
-							{{ translate('hostinger_reach_overview_upgrade_button') }}
-						</HButton>
-					</div>
-				</div>
 				<div class="overview__section-content">
-					<UsageCardsSection :usage-cards="usageCards" :is-loading="isLoading" />
 					<ActionButtonsSection :buttons="actionButtons" />
 				</div>
 			</div>
+
+			<Banner
+				:title="translate('hostinger_reach_overview_banner_title')"
+				:description="translate('hostinger_reach_overview_banner_description')"
+				:label="translate('hostinger_reach_overview_banner_label')"
+				align="left"
+				:background-image="reachOverviewBannerBackground as unknown as string"
+			/>
 
 			<div class="overview__integrations">
 				<div class="overview__integrations-header">
@@ -264,7 +258,6 @@ watchEffect(() => {
 								{{ translate('hostinger_reach_sync_contacts_button_text') }}
 							</HButton>
 							<HButton
-								style="margin-right: 8px"
 								variant="outline"
 								color="primary"
 								size="small"
@@ -299,20 +292,54 @@ watchEffect(() => {
 					@edit-form="handleEditForm"
 					@add-form="handleAddForm"
 				/>
-
 				<div class="overview__integrations-header">
 					<HText class="overview__tabs-header" as="h2" variant="heading-2">WooCommerce</HText>
+					<div class="overview__integrations-tabs">
+						<div v-if="wooCommerceConnected" class="overview__integrations-buttons">
+							<HButton
+								variant="text"
+								color="primary"
+								size="small"
+								icon-append="ic-arrow-up-right-square-16"
+								target="_blank"
+								:to="reachAutomationsLink"
+							>
+								{{ translate('hostinger_reach_woocommerce_manage_automations') }}
+							</HButton>
+							<HPopover
+								placement="bottom-end"
+								:show-arrow="false"
+								background-color="neutral--0"
+								border-radius="12px"
+								:outside-click-enabled="true"
+							>
+								<template #trigger>
+									<HButton variant="outline" color="primary" size="small" icon-prepend="ic-gear-16">
+										{{ translate('hostinger_reach_woocommerce_manage_plugin') }}
+									</HButton>
+								</template>
+								<div class="overview__popover-menu">
+									<div class="overview__popover-menu-item" @click="handlePluginGoTo(WOOCOMMERCE_ID)">
+										<HIcon name="ic-blocks-plus-16" />
+										<span>{{ translate('hostinger_reach_plugin_entries_table_go_to_plugin') }}</span>
+										<HIcon name="ic-arrow-up-right-square-16" />
+									</div>
+									<div class="overview__popover-menu-item" @click="handlePluginDisconnect(WOOCOMMERCE_ID)">
+										<HIcon name="ic-cross-circle-16" />
+										<span>{{ translate('hostinger_reach_plugin_entries_table_disconnect_plugin') }}</span>
+									</div>
+								</div>
+							</HPopover>
+						</div>
+					</div>
 				</div>
-				<Integrations
-					:type="TABS_KEYS.OVERVIEW_TAB_ECOMMERCE"
-					:on-banner-button-click="connectAndInstallWooCommerce"
+				<WooCommerce
 					@go-to-plugin="handlePluginGoTo"
 					@disconnect-plugin="handlePluginDisconnect"
 					@toggle-form-status="handleFormToggleStatus"
-					@view-form="handleViewForm"
-					@edit-form="handleEditForm"
-					@add-form="handleAddForm"
 				/>
+
+				<FAQ :faq-data="overviewFaqData" />
 			</div>
 		</div>
 	</div>
@@ -402,7 +429,8 @@ watchEffect(() => {
 	}
 
 	&__integrations-buttons {
-		flex: none;
+		display: flex;
+		gap: 8px;
 	}
 
 	&__section {
@@ -423,6 +451,32 @@ watchEffect(() => {
 		display: flex;
 		align-items: center;
 		gap: 8px;
+	}
+
+	&__popover-menu {
+		padding: 4px;
+		min-width: 180px;
+	}
+
+	&__popover-menu-item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px;
+		cursor: pointer;
+		border-radius: 8px;
+		font-weight: 500;
+		font-size: 14px;
+		color: var(--neutral--600);
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: var(--neutral--50);
+		}
+
+		span {
+			flex: 1;
+		}
 	}
 
 	&__your-plan-button {

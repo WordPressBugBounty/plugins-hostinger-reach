@@ -164,9 +164,9 @@ export const useIntegrationsStore = defineStore(
 			} finally {
 				const integrationIds = Object.keys(importRequest);
 				integrationIds.forEach((id) => stopImportStatusPolling(id));
-				isLoading.value = false;
 				await loadIntegrations();
 				integrationIds.forEach((id) => startImportStatusPolling(id));
+				isLoading.value = false;
 			}
 		};
 

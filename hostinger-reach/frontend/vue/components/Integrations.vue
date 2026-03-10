@@ -11,7 +11,6 @@ import type { Form, Integration } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 type IntegrationsProps = {
-	type: string;
 	onBannerButtonClick?: () => void;
 };
 
@@ -31,8 +30,8 @@ const integrationsStore = useIntegrationsStore();
 
 const shouldShowTable = computed(
 	() =>
-		integrationsStore?.activeIntegrations?.filter((integration) => integration.type === props.type)?.length > 1 ||
-		integrationsStore.hasAnyForms(props.type)
+		integrationsStore?.activeIntegrations?.filter((integration) => integration.type === TABS_KEYS.OVERVIEW_TAB_FORMS)
+			?.length > 1 || integrationsStore.hasAnyForms(TABS_KEYS.OVERVIEW_TAB_FORMS)
 );
 
 const connectPlugin = async (integration: Integration) => {
@@ -57,20 +56,19 @@ const onMoreClick = async () => {
 const isBannerVisible = computed(() => !integrationsStore.isLoading && !shouldShowTable.value);
 const isTableVisible = computed(() => integrationsStore.isLoading || shouldShowTable.value);
 const recommendedPlugins = computed(() => integrationsStore.recommendedPlugins);
-console.log('integration', integrationsStore.recommendedPlugins);
 </script>
 
 <template>
 	<div class="integrations">
 		<Banner
 			v-if="isBannerVisible"
-			:title="translate(`hostinger_reach_${props.type}_banner_title`)"
-			:description="translate(`hostinger_reach_${props.type}_banner_description`)"
-			:button-text="translate(`hostinger_reach_${props.type}_banner_button_text`)"
+			:title="translate(`hostinger_reach_forms_banner_title`)"
+			:description="translate(`hostinger_reach_forms_banner_description`)"
+			:button-text="translate(`hostinger_reach_forms_banner_button_text`)"
 			:on-button-click="props.onBannerButtonClick"
 			:is-button-loading="integrationsStore.isLoading"
 		>
-			<template v-if="props.type === TABS_KEYS.OVERVIEW_TAB_FORMS" #extra>
+			<template #extra>
 				<div class="divider-text">
 					<span>{{ translate('hostinger_reach_forms_banner_connect_text') }}</span>
 				</div>
@@ -109,7 +107,7 @@ console.log('integration', integrationsStore.recommendedPlugins);
 
 		<PluginEntriesTable
 			v-if="isTableVisible"
-			:integrations="integrationsStore.fromType(props.type) as Integration[]"
+			:integrations="integrationsStore.fromType(TABS_KEYS.OVERVIEW_TAB_FORMS) as Integration[]"
 			:is-loading="integrationsStore.isLoading"
 			@go-to-plugin="emit('goToPlugin', $event)"
 			@disconnect-plugin="emit('disconnectPlugin', $event)"

@@ -7,7 +7,7 @@ export type Tab = {
 
 export const TABS_KEYS = {
 	OVERVIEW_TAB_FORMS: 'forms',
-	OVERVIEW_TAB_ECOMMERCE: 'ecommerce'
+	OVERVIEW_TAB_ECOMMERCE: 'woocommerce'
 };
 
 export const OVERVIEW_TABS: Tab[] = [

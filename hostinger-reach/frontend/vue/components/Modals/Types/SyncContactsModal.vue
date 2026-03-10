@@ -9,7 +9,8 @@ import type { ImportSummary, Integration } from '@/types';
 import { translate } from '@/utils/translate';
 
 const { closeModal } = useModal();
-const { syncContacts } = useIntegrationsStore();
+const integrationsStore = useIntegrationsStore();
+const { syncContacts } = integrationsStore;
 
 interface Props {
 	title: string;
@@ -137,7 +138,14 @@ onMounted(() => {
 				</HSnackbar>
 			</div>
 			<div class="modal__footer">
-				<HButton :is-disabled="totals === 0" variant="contain" color="primary" size="small" @click="handleSync">
+				<HButton
+					:is-loading="integrationsStore.isLoading"
+					:is-disabled="totals === 0 || integrationsStore.isLoading"
+					variant="contain"
+					color="primary"
+					size="small"
+					@click="handleSync"
+				>
 					{{ translate('hostinger_reach_contacts_sync') }}
 				</HButton>
 			</div>
