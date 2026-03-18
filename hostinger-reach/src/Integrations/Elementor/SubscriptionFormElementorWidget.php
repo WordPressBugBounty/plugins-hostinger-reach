@@ -126,7 +126,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
 
                 <button
                     type="submit"
-                    class="hostinger-reach-block-submit wp-block-button__link has-color-2-color has-color-3-background-color has-text-color has-background has-link-color has-medium-font-size wp-element-button">
+                    class="hostinger-reach-block-submit wp-block-button__link has-light-color has-color-3-background-color has-text-color has-background has-link-color has-medium-font-size wp-element-button">
                     <?php esc_html_e( 'Subscribe', 'hostinger-reach' ); ?>
                 </button>
 

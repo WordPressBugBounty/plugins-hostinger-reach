@@ -57,8 +57,8 @@ export const useReachUrls = () => {
 		),
 		reachAutomationsLink: computed(() =>
 			resourceId.value
-				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=automations`
-				: `https://${reachBaseDomain.value}/automations`
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=automation`
+				: `https://${reachBaseDomain.value}/automation`
 		),
 		reachBaseDomain,
 		hpanelBaseDomain

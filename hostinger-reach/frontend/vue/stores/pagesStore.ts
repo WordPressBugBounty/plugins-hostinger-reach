@@ -14,7 +14,7 @@ export const usePagesStore = defineStore(
 			{
 				itemsPerPage: 5,
 				initialPage: 1,
-				autoLoad: false
+				autoLoad: true
 			}
 		);
 

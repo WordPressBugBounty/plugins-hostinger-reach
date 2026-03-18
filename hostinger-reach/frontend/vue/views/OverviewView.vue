@@ -107,7 +107,7 @@ const handleFormToggleStatus = async (form: Form, isActive: boolean) => {
 			isActive
 		};
 
-		if (isActive && !isAutomation(form)) {
+		if (isActive && !isAutomation(form) && integration.importEnabled && integration.importStatus?.total > 0) {
 			openModal(ModalName.CONFIRM_SYNC_MODAL, { integration });
 		}
 	}

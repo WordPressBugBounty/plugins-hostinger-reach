@@ -95,7 +95,7 @@ class SubscriptionFormBlock extends Block {
 
                     <button
                         type="submit"
-                        class="hostinger-reach-block-submit has-color-2-color has-color-3-background-color has-text-color has-background has-link-color">
+                        class="hostinger-reach-block-submit has-light-color has-color-3-background-color has-text-color has-background has-link-color">
                         <?php esc_html_e( 'Subscribe', 'hostinger-reach' ); ?>
                     </button>
                 </div>

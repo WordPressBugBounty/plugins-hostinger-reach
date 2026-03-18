@@ -249,7 +249,15 @@ class ReachApiHandler extends ApiHandler {
         $contact    = $this->parse_contact( $data );
         $group_name = $data['group'] ? $data['group'] : HOSTINGER_REACH_DEFAULT_CONTACT_LIST;
         $tag_ids    = $this->get_tag_ids( $data['tags'] ?? '', $group_name );
-        $args       = array(
+
+        if ( empty( $tag_ids ) ) {
+            $group_tag = $this->create_tag_from_group( $group_name );
+            if ( ! empty( $group_tag ) ) {
+                $tag_ids[] = $group_tag;
+            }
+        }
+
+        $args = array(
             'tagUuids'  => $tag_ids,
             'groupName' => $group_name,
             'contacts'  => array( $contact ),
@@ -438,5 +446,26 @@ class ReachApiHandler extends ApiHandler {
         }
 
         return $tag_ids;
+    }
+
+    private function create_tag_from_group( string $group ): string {
+        if ( empty( $group ) ) {
+            return '';
+        }
+
+        $response = $this->post(
+            'tags',
+            array(
+                'names' => array( $group ),
+            )
+        );
+
+        if ( is_wp_error( $response ) ) {
+            return '';
+        }
+
+        $body = wp_remote_retrieve_body( $response );
+        $body = json_decode( $body, true );
+        return $body['data'][0]['uuid'] ?? '';
     }
 }

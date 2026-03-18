@@ -135,7 +135,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
                     'group'    => ! empty( $form ) ? $form->name : self::INTEGRATION_NAME,
                     'email'    => $email,
                     'metadata' => array(
-                        'plugin'  => self::INTEGRATION_NAME,
+                        'plugin'  => self::INTEGRATION_NAME . '-pro',
                         'form_id' => ! empty( $form ) ? $form->id : null,
                     ),
                 )
@@ -246,7 +246,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
 
             $summary[ $form_id ] = array(
                 'title'    => $form->name ?? $form_id,
-                'contacts' => (int) $counts->get( 'all', 0 ),
+                'contacts' => (int) $counts->get( 'read', 0 ) + (int) $counts->get( 'unread', 0 ),
             );
         }
 
@@ -308,7 +308,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
                 array(
                     'plugin'  => self::INTEGRATION_NAME,
                     'form_id' => $form_id,
-                    'group'   => $snapshot->name ?? self::INTEGRATION_NAME,
+                    'group'   => $form->name ?? self::INTEGRATION_NAME,
                 )
             );
 

@@ -3,6 +3,12 @@
 @import "./tooltip.scss";
 @import "./surveys.scss";
 
+
+#adminmenu .toplevel_page_hostinger-reach img {
+	margin: auto;
+}
+
+
 #hostinger-reach-app {
 	@import "./utilities.scss";
 
@@ -24,10 +30,6 @@
 	// avoids to be impacted by AI ChatBot bug overriding styles
 	.h-typography {
 		color: inherit;
-	}
-
-	#adminmenu .toplevel_page_hostinger-reach img {
-		margin: auto;
 	}
 
 	input[type=checkbox]:checked::before {

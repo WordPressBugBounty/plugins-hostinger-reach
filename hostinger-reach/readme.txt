@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.0
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -390,3 +390,18 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Tweak: Update Dependencies
 - Tweak: Tweak Links in Overview page
 - Dev: Improve Release automation
+
+1.4.1 (2026-03-13)
+
+- Tweak: Update translations
+- Fix: Sync modal appears even when import is not supported
+- Tweak: Create Tag from form groups when the tag doesn't exist yet
+- Fix: Automation route link
+- Fix: Don't show Elementor Pro deleted forms
+- Fix: Add Elementor Pro metadata when sending Elementor Pro forms
+- Fix:  Reach Menu alignment
+- Fix: Subscription form button text color
+
+1.4.2 (2026-03-18)
+
+- Fix: Autoload pages on Gutenberg sites
