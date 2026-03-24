@@ -2,11 +2,9 @@
 import { HIcon, HPopover } from '@hostinger/hcomponents';
 import { computed } from 'vue';
 
-import SyncStatusLabel from '@/components/SyncStatusLabel.vue';
 import Toggle from '@/components/Toggle.vue';
 import { useIntegrationsStore } from '@/stores';
 import type { Form, Integration } from '@/types/models';
-import { IMPORT_STATUSES } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 const { syncContacts } = useIntegrationsStore();
@@ -60,23 +58,6 @@ const hasActions = computed(() => !props.integration.isViewFormHidden || !props.
 				"
 				@toggle="(status) => emit('toggleStatus', props.form, status)"
 			/>
-		</div>
-		<div class="form-item__cell form-item__cell--status">
-			<span class="form-item__mobile-label">
-				{{ translate('hostinger_reach_plugin_entries_table_status_header') }}:
-			</span>
-			<span class="form-item__status-label">
-				<SyncStatusLabel
-					:enabled="supportsImport"
-					:status="
-						!props.form.isActive
-							? IMPORT_STATUSES.OFF
-							: props.integration.id === 'thrive-leads'
-								? props.integration.importStatus?.summary['thriveLeads']?.status
-								: (props.integration.importStatus?.summary[form.formId]?.status ?? IMPORT_STATUSES.NOT_IMPORTED)
-					"
-				/>
-			</span>
 		</div>
 		<div class="form-item__cell form-item__cell--actions">
 			<HPopover
@@ -134,15 +115,11 @@ const hasActions = computed(() => !props.integration.isViewFormHidden || !props.
 		}
 
 		&--forms {
-			width: 23%;
-		}
-
-		&--status {
-			width: 22%;
+			width: 27%;
 		}
 
 		&--actions {
-			width: 22%;
+			width: 40%;
 			display: flex;
 			justify-content: flex-end;
 		}

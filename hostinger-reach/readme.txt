@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -405,3 +405,7 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 1.4.2 (2026-03-18)
 
 - Fix: Autoload pages on Gutenberg sites
+
+1.4.3 (2026-03-24)
+
+- Tweak: Adjust copy and UI

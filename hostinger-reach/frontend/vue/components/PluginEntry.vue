@@ -3,10 +3,9 @@ import { HIcon, HPopover } from '@hostinger/hcomponents';
 import { computed, ref } from 'vue';
 
 import PluginExpansion from '@/components/PluginExpansion.vue';
-import SyncStatusLabel from '@/components/SyncStatusLabel.vue';
 import { useModal } from '@/composables';
 import { type PluginStatus } from '@/data/pluginData';
-import { IMPORT_STATUSES, ModalName } from '@/types';
+import { ModalName } from '@/types';
 import type { Form, Integration } from '@/types/models';
 import { translate } from '@/utils/translate';
 
@@ -111,15 +110,6 @@ const expandButtonAriaLabel = computed(() => {
 					<span>{{ props.integration.forms?.length }}</span>
 				</span>
 			</div>
-			<div class="plugin-entry-row__cell plugin-entry-row__cell--status">
-				<span class="plugin-entry-row__mobile-label">
-					{{ translate('hostinger_reach_plugin_entries_table_status_header') }}:
-				</span>
-				<SyncStatusLabel
-					:enabled="props.integration.importEnabled"
-					:status="activeForms.length <= 0 ? IMPORT_STATUSES.OFF : props.integration.importStatus.status"
-				/>
-			</div>
 			<div class="plugin-entry-row__cell plugin-entry-row__cell--actions">
 				<HPopover
 					v-if="showPopover"
@@ -202,16 +192,11 @@ const expandButtonAriaLabel = computed(() => {
 			order: 2;
 		}
 
-		&--status {
-			width: 20%;
-			order: 3;
-		}
-
 		&--actions {
-			width: 20%;
+			width: 40%;
 			display: flex;
 			justify-content: flex-end;
-			order: 4;
+			order: 3;
 		}
 	}
 

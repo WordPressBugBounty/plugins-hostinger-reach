@@ -66,11 +66,6 @@ const pluginEntries = computed((): PluginEntryData[] => {
 						{{ translate('hostinger_reach_plugin_entries_table_syncing_header') }}
 					</span>
 				</div>
-				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--status">
-					<span class="plugin-entries-table__column-title">
-						{{ translate('hostinger_reach_plugin_entries_table_status_header') }}
-					</span>
-				</div>
 				<div class="plugin-entries-table__header-cell plugin-entries-table__header-cell--actions"></div>
 			</div>
 

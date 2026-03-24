@@ -20,9 +20,6 @@ import { HSkeletonLoader } from '@hostinger/hcomponents';
 		<div class="plugin-entry-skeleton__cell plugin-entry-skeleton__cell--entries">
 			<HSkeletonLoader width="20px" height="16px" border-radius="sm" />
 		</div>
-		<div class="plugin-entry-skeleton__cell plugin-entry-skeleton__cell--status">
-			<HSkeletonLoader width="60px" height="24px" border-radius="lg" />
-		</div>
 		<div class="plugin-entry-skeleton__cell plugin-entry-skeleton__cell--actions">
 			<HSkeletonLoader width="32px" height="32px" border-radius="sm" />
 		</div>
@@ -48,22 +45,12 @@ import { HSkeletonLoader } from '@hostinger/hcomponents';
 			order: 2;
 		}
 
-		&--entries {
-			width: 20%;
-			order: 3;
-		}
-
-		&--status {
-			width: 20%;
-			order: 4;
-		}
-
 		&--actions {
-			width: 10%;
+			width: 40%;
 			display: flex;
 			justify-content: flex-end;
 			padding-right: 16px;
-			order: 5;
+			order: 3;
 		}
 	}
 
