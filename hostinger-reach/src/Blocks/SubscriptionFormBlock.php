@@ -100,7 +100,14 @@ class SubscriptionFormBlock extends Block {
                     </button>
                 </div>
 
-                <div class="reach-subscription-message" style="display: none;"></div>
+                <div class="reach-subscription-message" style="display: none;">
+                    <div class="reach-subscription-message__icon" style="display: none;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.0455 5.95463C21.4848 6.39397 21.4848 7.10628 21.0455 7.54562L11.5076 17.0835C10.9511 17.64 10.0489 17.64 9.49237 17.0835L5.2045 12.7956C4.76517 12.3563 4.76517 11.644 5.2045 11.2046C5.64384 10.7653 6.35616 10.7653 6.7955 11.2046L10.5 14.9091L19.4545 5.95463C19.8938 5.51529 20.6062 5.51529 21.0455 5.95463Z" fill="#18181A"/>
+                        </svg>
+                    </div>
+                    <div class="reach-subscription-message__text"></div>
+                </div>
             </form>
         </div>
         <?php

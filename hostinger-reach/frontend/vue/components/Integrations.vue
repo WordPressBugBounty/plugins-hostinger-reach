@@ -36,7 +36,8 @@ const shouldShowTable = computed(
 
 const connectPlugin = async (integration: Integration) => {
 	const connected = await integrationsStore.toggleIntegrationStatus(integration.id, true);
-	if (connected) {
+	const hasContacts = integration.importEnabled && integration.importStatus?.total > 0;
+	if (connected && hasContacts) {
 		openModal(
 			ModalName.SYNC_CONTACTS_MODAL,
 			{

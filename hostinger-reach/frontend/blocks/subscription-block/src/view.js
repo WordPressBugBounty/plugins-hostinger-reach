@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	const forms = document.querySelectorAll(formSelector);
 	forms.forEach(form => {
 		const messageEl = form.querySelector('.reach-subscription-message');
+		const iconEl = form.querySelector('.reach-subscription-message__icon');
+		const textEl = form.querySelector('.reach-subscription-message__text');
+		const fieldsEl = form.querySelector('.hostinger-reach-block-form-fields');
 		form.addEventListener('submit', function(e) {
 			e.preventDefault();
 
@@ -36,18 +39,20 @@ document.addEventListener('DOMContentLoaded', function() {
 				body: JSON.stringify(data)
 			})
 				.then(async response => {
-					messageEl.style.display = 'block';
+					messageEl.style.display = 'flex';
 					form.reset();
 
 					if (response.ok) {
-						messageEl.textContent = translations.thanks;
-						const submitBtn = form.querySelector('.hostinger-reach-block-submit');
-						submitBtn.style.display = 'none';
+						textEl.textContent = translations.thanks;
+						messageEl.classList.add('is-success');
+						fieldsEl.style.display = 'none';
+						iconEl.style.display = 'block';
 					} else {
 						const data = await response.json();
 						if ( data.errors ) {
-							messageEl.textContent = data.errors;
+							textEl.textContent = data.errors;
 							messageEl.style.display = 'block';
+							messageEl.classList.add('is-error');
 							submitBtn.disabled = false;
 						} else {
 							throw new Error();

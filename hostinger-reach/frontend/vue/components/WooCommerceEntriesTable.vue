@@ -24,14 +24,17 @@ const canToggle = computed(() => Boolean(integration.value?.canToggleForms));
 
 const formsData = {
 	woocommerce: {
+		title: translate('hostinger_reach_woocommerce_checkout_title'),
 		content: translate('hostinger_reach_woocommerce_checkout_description'),
 		learnMore: null
 	},
 	'order.purchased': {
+		title: translate('hostinger_reach_woocommerce_order_purchased_title'),
 		content: translate('hostinger_reach_woocommerce_order_purchased_description'),
 		learnMore: 'https://www.hostinger.com/support/how-to-set-up-post-purchase-email-automation-in-hostinger-reach/'
 	},
 	'cart.abandoned': {
+		title: translate('hostinger_reach_woocommerce_cart_abandoned_title'),
 		content: translate('hostinger_reach_woocommerce_cart_abandoned_description'),
 		learnMore:
 			'https://www.hostinger.com/support/how-to-set-up-abandoned-cart-email-automation-for-woocommerce-in-hostinger-reach/'
@@ -72,7 +75,7 @@ const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? fal
 							class="woocommerce-entries-table__cell woocommerce-entries-table__first-cell woocommerce-entries-table__forms-list__event"
 						>
 							<div class="woocommerce-entries-table__forms-list__event-title">
-								<strong class="woocommerce-entries-table__event-name">{{ form.formTitle }}</strong>
+								<strong class="woocommerce-entries-table__event-name">{{ formsData[form.formId]?.title }}</strong>
 								<HLabel v-if="isAutomation(form)" color="grayLight" variant="contain">
 									{{ translate('hostinger_reach_woocommerce_automation') }}
 								</HLabel>

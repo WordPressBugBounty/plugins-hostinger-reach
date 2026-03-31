@@ -21,6 +21,11 @@ export const connectFaqData: FAQItem[] = [
 		id: 'how-much-cost',
 		question: translate('hostinger_reach_faq_how_much_cost_question'),
 		answer: translate('hostinger_reach_faq_how_much_cost_answer')
+	},
+	{
+		id: 'what-is-plugin-difference',
+		question: translate('hostinger_reach_faq_what_is_plugin_difference_question'),
+		answer: translate('hostinger_reach_faq_what_is_plugin_difference_answer')
 	}
 ];
 

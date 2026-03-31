@@ -4,10 +4,9 @@
 @import "./surveys.scss";
 
 
-#adminmenu .toplevel_page_hostinger-reach img {
-	margin: auto;
+#adminmenu .toplevel_page_hostinger-reach img, #adminmenu .wp-menu-image img {
+	margin: 0 auto;
 }
-
 
 #hostinger-reach-app {
 	@import "./utilities.scss";
