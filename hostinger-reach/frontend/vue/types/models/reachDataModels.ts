@@ -9,6 +9,7 @@ export interface ReachData {
 	isHostingerUser: boolean;
 	isStaging: boolean;
 	domain: string;
+	rawDomain: string;
 	hasValidResourceId: boolean;
 	resourceId: string;
 }
@@ -25,6 +26,7 @@ export interface HstReachDataRaw {
 	is_staging: boolean;
 	total_form_pages: number;
 	domain: string;
+	raw_domain: string;
 	has_valid_resource_id: boolean;
 	resource_id: string;
 }

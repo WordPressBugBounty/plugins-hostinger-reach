@@ -64,6 +64,10 @@ class ApiKeyManager {
         delete_transient( ConnectionNotice::NOTICE_DISMISS_TRANSIENT );
     }
 
+    public function is_connected(): bool {
+        return ! empty( $this->get_token() );
+    }
+
     protected function get_order_id(): string {
         $api_token_path = $this->get_api_token_path();
         if ( file_exists( $api_token_path ) ) {

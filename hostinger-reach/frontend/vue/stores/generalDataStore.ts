@@ -19,6 +19,7 @@ export const useGeneralDataStore = defineStore(
 		const isConnected = computed(() => data.value.isConnected);
 		const isStaging = computed(() => data.value.isStaging);
 		const domain = computed(() => data.value.domain);
+		const rawDomain = computed(() => data.value.rawDomain.replace(/\s+/g, ''));
 		const hasValidResourceId = computed(() => data.value.hasValidResourceId);
 		const resourceId = computed(() => data.value.resourceId);
 
@@ -35,7 +36,8 @@ export const useGeneralDataStore = defineStore(
 			translations,
 			domain,
 			hasValidResourceId,
-			resourceId
+			resourceId,
+			rawDomain
 		};
 	},
 	{

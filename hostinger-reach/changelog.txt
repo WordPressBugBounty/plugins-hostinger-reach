@@ -256,3 +256,10 @@ Changelog
 - Tweak: Update translations
 - Fix: WooCommerce entries titles not showing for old installed Reach plugins
 - Tweak: Add new FAQ section
+
+1.4.5 (2026-04-02)
+
+- Tweak: Update translations
+- Fix: Prevent subdomains for connecting
+- Fix: Avoid render checkbox when not connected
+- Fix: Add tooltip for Toggle when is disabled (#401)

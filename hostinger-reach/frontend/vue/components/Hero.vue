@@ -14,6 +14,7 @@ const reachDashboardUrl = computed(() => `https://${reachBaseDomain.value}`);
 interface Props {
 	isConnectedToAnotherSite?: boolean;
 	isButtonLoading?: boolean;
+	isTemporary?: boolean;
 	domain: string;
 	onGetStarted: () => void;
 }
@@ -66,8 +67,13 @@ const props = withDefaults(defineProps<Props>(), {
 				<HText id="hero-description" as="p" variant="body-2 h-mb-24">
 					{{ translate('hostinger_reach_welcome_view_description') }}
 				</HText>
+
 				<HSnackbar
-					v-if="props.isConnectedToAnotherSite"
+					v-if="isTemporary"
+					variant="warning"
+					:description="translate('hostinger_reach_welcome_view_description_temporary')"
+					:show-close-icon="false"
+					:hide-icon="false"
 					class="hero__warning-snackbar"
 					icon-color="warning--700"
 					icon="ic-warning-circle-filled-24"
@@ -75,29 +81,9 @@ const props = withDefaults(defineProps<Props>(), {
 					background-color="warning--100"
 					role="alert"
 					aria-live="polite"
-				>
-					<div class="hero__banner">
-						<div class="hero__banner-content">
-							<HText as="p" variant="body-2-bold" color="warning--700">
-								{{ translate('hostinger_reach_welcome_view_connection_warning') }}
-							</HText>
-
-							<HText as="p" variant="body-2" color="warning--700">
-								{{ translate('hostinger_reach_welcome_view_connection_instruction') }}
-							</HText>
-						</div>
-						<HButton
-							color="warning"
-							icon-append="ic-launch-16"
-							size="small"
-							aria-label="Manage connection settings (opens in new window)"
-						>
-							{{ translate('hostinger_reach_welcome_view_manage_button') }}
-						</HButton>
-					</div>
-				</HSnackbar>
+				/>
 				<HButton
-					v-else
+					v-if="!props.isConnectedToAnotherSite"
 					color="primary"
 					size="small"
 					:is-loading="props.isButtonLoading"
@@ -105,7 +91,11 @@ const props = withDefaults(defineProps<Props>(), {
 					aria-label="Get started with email marketing"
 					@click="props.onGetStarted"
 				>
-					{{ translate('hostinger_reach_welcome_view_start_button') }}
+					{{
+						isTemporary
+							? translate('hostinger_reach_welcome_view_temporary_button')
+							: translate('hostinger_reach_welcome_view_start_button')
+					}}
 				</HButton>
 			</div>
 			<div class="hero__footer" role="contentinfo" aria-label="Site information">
@@ -342,6 +332,10 @@ const props = withDefaults(defineProps<Props>(), {
 	&__header-title {
 		margin: 0;
 		color: var(--neutral--700);
+	}
+
+	&__warning-snackbar {
+		margin-bottom: 24px;
 	}
 }
 

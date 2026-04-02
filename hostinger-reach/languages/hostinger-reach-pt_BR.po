@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Hostinger Reach &#8211; AI-Powered Email Marketing for WordPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-26 08:03+0000\n"
+"PO-Revision-Date: 2026-04-02 06:37+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Last-Translator: \n"
 "X-Loco-Version: 2.8.1; wp-6.9; php-8.2.29"
 
-#: src/Setup/Assets.php:175
+#: src/Setup/Assets.php:189
 msgid "(no title)"
 msgstr "(sem título)"
 
-#: src/Setup/Assets.php:198
+#: src/Setup/Assets.php:212
 msgid "-"
 msgstr "-"
 
@@ -30,21 +30,21 @@ msgstr "-"
 msgid "Abandoned Carts"
 msgstr "Carrinhos abandonados"
 
-#: src/Setup/Assets.php:218
+#: src/Setup/Assets.php:232
 #, fuzzy
 msgid "Abandoned carts"
 msgstr "Carrinhos abandonados"
 
-#: src/Setup/Assets.php:161 src/Setup/Assets.php:178
+#: src/Setup/Assets.php:175 src/Setup/Assets.php:192
 msgid "Active"
 msgstr "Ativo"
 
-#: src/Admin/Notices/AddFormNotice.php:83 src/Setup/Assets.php:118
-#: src/Setup/Assets.php:167 src/Setup/Assets.php:181
+#: src/Admin/Notices/AddFormNotice.php:83 src/Setup/Assets.php:132
+#: src/Setup/Assets.php:181 src/Setup/Assets.php:195
 msgid "Add form"
 msgstr "Adicionar formulário"
 
-#: src/Setup/Assets.php:120 src/Setup/Assets.php:147
+#: src/Setup/Assets.php:134 src/Setup/Assets.php:161
 msgid "Add form or plugin"
 msgstr "Adicionar formulário ou plugin"
 
@@ -54,7 +54,7 @@ msgid "Add form to start sending campaigns with Hostinger Reach"
 msgstr ""
 "Adicionar formulário para começar a enviar campanhas com o Hostinger Reach"
 
-#: src/Setup/Assets.php:115
+#: src/Setup/Assets.php:129
 #, fuzzy
 msgid "Add new form"
 msgstr "Adicionar novo formulário"
@@ -66,7 +66,7 @@ msgstr "Adicionar novo formulário"
 msgid "Add New Tag"
 msgstr "Adicionar nova tag"
 
-#: src/Setup/Assets.php:113
+#: src/Setup/Assets.php:127
 #, fuzzy
 msgid "Add or connect a form to start sending campaigns"
 msgstr "Adicione ou conecte um formulário para começar a enviar campanhas"
@@ -78,7 +78,7 @@ msgstr "Adicione ou conecte um formulário para começar a enviar campanhas"
 msgid "Add Tag"
 msgstr "Adicionar etiqueta"
 
-#: src/Setup/Assets.php:215
+#: src/Setup/Assets.php:229
 #, fuzzy
 msgid ""
 "Adds a marketing consent checkbox at checkout and syncs contacts to Reach."
@@ -91,7 +91,7 @@ msgid "Any ideas or feedback to help us improve Hostinger Reach?"
 msgstr ""
 "Tem alguma ideia ou sugestão para nos ajudar a melhorar a Hostinger Reach?"
 
-#: src/Setup/Assets.php:196
+#: src/Setup/Assets.php:210
 #, fuzzy
 #| msgid ""
 #| "are ready to sync with Reach. Any new contacts you’ll collect with these "
@@ -107,29 +107,29 @@ msgstr ""
 msgid "Attention:"
 msgstr "Atenção:"
 
-#: src/Setup/Assets.php:199
+#: src/Setup/Assets.php:213
 #, fuzzy
 msgid "Auto-sync off"
 msgstr "Sincronização automática desativada"
 
-#: src/Setup/Assets.php:220
+#: src/Setup/Assets.php:234
 #, fuzzy
 msgid "Automation"
 msgstr "Automação"
 
-#: src/Setup/Assets.php:99
+#: src/Setup/Assets.php:113
 msgid "Average CTOR"
 msgstr "CTOR médio"
 
-#: src/Setup/Assets.php:77
+#: src/Setup/Assets.php:89
 msgid "Back"
 msgstr "Voltar"
 
-#: src/Setup/Assets.php:143
+#: src/Setup/Assets.php:157
 msgid "Background image for"
 msgstr "Imagem de fundo para"
 
-#: src/Setup/Assets.php:142
+#: src/Setup/Assets.php:156
 msgid "Banner background image for"
 msgstr "Imagem de fundo de banner para"
 
@@ -148,22 +148,22 @@ msgstr "Formulário de Inscrição da Reach"
 msgid "Brave Popup Builder"
 msgstr "Brave Popup Builder"
 
-#: src/Setup/Assets.php:97
+#: src/Setup/Assets.php:111
 msgid "Campaigns"
 msgstr "Campanhas"
 
-#: src/Setup/Assets.php:150
+#: src/Setup/Assets.php:164
 #, fuzzy
 #| msgid "Cancel "
 msgid "Cancel"
 msgstr "Cancelar "
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:116
-#: src/Setup/Assets.php:214
+#: src/Setup/Assets.php:228
 msgid "Checkout"
 msgstr "Finalização da compra"
 
-#: src/Setup/Assets.php:145
+#: src/Setup/Assets.php:159
 msgid ""
 "Click-to-open rate tells you what percent of opens resulted in a click too. "
 "A good CTOR is 6-17%, depending on your industry."
@@ -171,11 +171,11 @@ msgstr ""
 "A taxa de cliques para abertura indica a porcentagem de aberturas que "
 "resultaram em um clique. Um bom CTOR é de 6% a 17%, dependendo do seu setor."
 
-#: src/Setup/Assets.php:173
+#: src/Setup/Assets.php:187
 msgid "Collapse {pluginName} details"
 msgstr "Ocultar detalhes do {pluginName}"
 
-#: src/Setup/Assets.php:110
+#: src/Setup/Assets.php:124
 #, fuzzy
 msgid ""
 "Collect contacts at checkout, send automated emails after purchases, and "
@@ -184,14 +184,19 @@ msgstr ""
 "Colete contatos no checkout, envie e-mails automatizados após as compras e "
 "recupere carrinhos abandonados para gerar mais vendas com o Reach"
 
-#: src/Setup/Assets.php:209
+#: src/Setup/Assets.php:223
 #, fuzzy
 msgid "Coming soon"
 msgstr "Em breve"
 
-#: src/Admin/Notices/ConnectionNotice.php:100 src/Setup/Assets.php:188
+#: src/Admin/Notices/ConnectionNotice.php:100 src/Setup/Assets.php:202
 msgid "Connect"
 msgstr "Conectar"
+
+#: src/Setup/Assets.php:98
+#, fuzzy
+msgid "Connect domain"
+msgstr "Conectar domínio"
 
 #: src/Admin/Notices/ConnectionNotice.php:95
 msgid "Connect Hostinger Reach to start Email Marketing"
@@ -205,38 +210,38 @@ msgstr ""
 msgid "Connect Now"
 msgstr "Conecte-se agora"
 
-#: src/Setup/Assets.php:119
+#: src/Setup/Assets.php:133
 #, fuzzy
 msgid "Connect plugin"
 msgstr "Conectar o plug-in"
 
-#: src/Setup/Assets.php:84
+#: src/Setup/Assets.php:97
 msgid "Connect site"
 msgstr "Conectar site"
 
-#: src/Setup/Assets.php:111
+#: src/Setup/Assets.php:125
 msgid "Connect WooCommerce"
 msgstr "Conectar WooCommerce"
 
-#: src/Setup/Assets.php:109
+#: src/Setup/Assets.php:123
 #, fuzzy
 msgid "Connect WooCommerce to boost sales with email automations"
 msgstr "Conecte o WooCommerce para aumentar as vendas com automações de e-mail"
 
 #: src/Integrations/ContactForm7/ContactForm7Integration.php:111
-#: src/Setup/Assets.php:169
+#: src/Setup/Assets.php:183
 msgid "Contact Form 7"
 msgstr "Contact Form 7"
 
-#: src/Setup/Assets.php:91 src/Setup/Assets.php:157 src/Setup/Assets.php:190
+#: src/Setup/Assets.php:105 src/Setup/Assets.php:171 src/Setup/Assets.php:204
 msgid "Contacts"
 msgstr "Contatos"
 
-#: src/Setup/Assets.php:195
+#: src/Setup/Assets.php:209
 msgid "contacts"
 msgstr "contatos"
 
-#: src/Setup/Assets.php:194
+#: src/Setup/Assets.php:208
 #, fuzzy
 msgid "Contacts to Import"
 msgstr "Contatos a serem importados"
@@ -245,7 +250,7 @@ msgstr "Contatos a serem importados"
 msgid "Could not generate auth URL"
 msgstr "Não foi possível gerar a URL de autenticação"
 
-#: src/Setup/Assets.php:114
+#: src/Setup/Assets.php:128
 #, fuzzy
 msgid ""
 "Create a new form or connect a plugin to grow your contact list and start "
@@ -254,11 +259,11 @@ msgstr ""
 "Crie um novo formulário ou conecte um plug-in para aumentar sua lista de "
 "contatos e começar a enviar campanhas com o Reach."
 
-#: src/Setup/Assets.php:104
+#: src/Setup/Assets.php:118
 msgid "Create campaign"
 msgstr "Criar campanha"
 
-#: src/Setup/Assets.php:80
+#: src/Setup/Assets.php:92
 msgid ""
 "Create email campaigns using AI-crafted templates that match your style. "
 "Instantly sync with your WordPress site and connect with your audience "
@@ -268,7 +273,7 @@ msgstr ""
 "estilo. Sincronize instantaneamente com seu site WordPress e conecte-se com "
 "seu público facilmente."
 
-#: src/Setup/Assets.php:211
+#: src/Setup/Assets.php:225
 #, fuzzy
 msgid ""
 "Create fully custom forms in Reach and easily embed them on your WordPress "
@@ -277,7 +282,7 @@ msgstr ""
 "Crie formulários totalmente personalizados no Reach e incorpore-os "
 "facilmente em seu site WordPress usando este plug-in. Fique ligado!"
 
-#: src/Setup/Assets.php:105
+#: src/Setup/Assets.php:119
 msgid "Create template"
 msgstr "Criar modelo"
 
@@ -288,23 +293,23 @@ msgstr "Criar modelo"
 msgid "Default"
 msgstr "Padrão"
 
-#: src/Setup/Assets.php:151 src/Setup/Assets.php:187
+#: src/Setup/Assets.php:165 src/Setup/Assets.php:201
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: src/Setup/Assets.php:82
+#: src/Setup/Assets.php:95
 msgid "Disconnect it to link this site instead."
 msgstr "Desconecte-o para vincular este site."
 
-#: src/Setup/Assets.php:166
+#: src/Setup/Assets.php:180
 msgid "Disconnect plugin"
 msgstr "Desconectar plugin"
 
-#: src/Setup/Assets.php:148
+#: src/Setup/Assets.php:162
 msgid "Disconnect plugin?"
 msgstr "Desconectar plugin?"
 
-#: src/Setup/Assets.php:149
+#: src/Setup/Assets.php:163
 msgid ""
 "Disconnecting will stop new contacts from being collected. You can reconnect "
 "or use a different form anytime."
@@ -312,12 +317,12 @@ msgstr ""
 "Desconectar impedirá que novos contatos sejam coletados. Você pode "
 "reconectar ou usar um formulário diferente a qualquer momento."
 
-#: src/Setup/Assets.php:206
+#: src/Setup/Assets.php:220
 #, fuzzy
 msgid "Don't see your plugin?"
 msgstr "Não está vendo seu plug-in?"
 
-#: src/Setup/Assets.php:108
+#: src/Setup/Assets.php:122
 msgid "E-Commerce"
 msgstr "Loja virtual"
 
@@ -331,12 +336,12 @@ msgstr ""
 "WooCommerce e sincronize contatos para começar a criar campanhas e expandir "
 "seus negócios."
 
-#: src/Setup/Assets.php:164
+#: src/Setup/Assets.php:178
 msgid "Edit form"
 msgstr "Editar formulário"
 
 #: src/Integrations/Elementor/ElementorIntegration.php:113
-#: src/Setup/Assets.php:171
+#: src/Setup/Assets.php:185
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -345,16 +350,16 @@ msgstr "Elementor"
 msgid "Email"
 msgstr "E-mail"
 
-#: src/Setup/Assets.php:87
+#: src/Setup/Assets.php:101
 msgid "Email marketing background with gradient design"
 msgstr "Plano de fundo de e-mail marketing com design gradiente"
 
-#: src/Setup/Assets.php:88
+#: src/Setup/Assets.php:102
 msgid ""
 "Email marketing illustration featuring envelopes and communication icons"
 msgstr "Ilustração de e-mail marketing com envelopes e ícones de comunicação"
 
-#: src/Setup/Assets.php:94
+#: src/Setup/Assets.php:108
 msgid "Emails"
 msgstr "E-mails"
 
@@ -365,11 +370,11 @@ msgstr "E-mails"
 msgid "Enter tag name and press Enter or click Add Tag"
 msgstr "Digite o nome da tag e pressione Enter ou clique em Add Tag"
 
-#: src/Setup/Assets.php:172
+#: src/Setup/Assets.php:186
 msgid "Expand {pluginName} details"
 msgstr "Expandir detalhes do {pluginName}"
 
-#: src/Setup/Assets.php:124
+#: src/Setup/Assets.php:138
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -377,7 +382,7 @@ msgstr "FAQ"
 msgid "Form"
 msgstr "Formulário"
 
-#: src/Setup/Assets.php:210
+#: src/Setup/Assets.php:224
 #, fuzzy
 msgid "Form Builder"
 msgstr "Criador de formulários"
@@ -393,15 +398,20 @@ msgstr "ID do formulário"
 msgid "Forminator"
 msgstr "Forminator"
 
-#: src/Setup/Assets.php:112
+#: src/Setup/Assets.php:126
 msgid "Forms"
 msgstr "Formulários"
 
-#: src/Setup/Assets.php:165
+#: src/Setup/Assets.php:172
+#, fuzzy
+msgid "Forms syncing with Reach"
+msgstr "Sincronização de formulários com o Reach"
+
+#: src/Setup/Assets.php:179
 msgid "Go to plugin"
 msgstr "Ir para o plugin"
 
-#: src/Setup/Assets.php:85
+#: src/Setup/Assets.php:99
 #: frontend/blocks/subscription-block/src/Components/Dialog.js:42
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:87
@@ -418,12 +428,12 @@ msgstr "Hostinger"
 #: src/Admin/Notices/AddFormNotice.php:90
 #: src/Admin/Notices/ConnectionNotice.php:110
 #: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:20
-#: src/Integrations/Reach/ReachFormIntegration.php:71 src/Setup/Assets.php:86
-#: src/Setup/Assets.php:168
+#: src/Integrations/Reach/ReachFormIntegration.php:71 src/Setup/Assets.php:100
+#: src/Setup/Assets.php:182
 msgid "Hostinger Reach"
 msgstr "Hostinger Reach"
 
-#: src/Setup/Assets.php:132
+#: src/Setup/Assets.php:146
 #, fuzzy
 msgid ""
 "Hostinger Reach is a Hostinger service that helps you create and send "
@@ -436,7 +446,7 @@ msgstr ""
 "O Hostinger Reach WordPress Plugin permite que você conecte e sincronize "
 "contatos de seus plugins favoritos do WordPress no Reach."
 
-#: src/Setup/Assets.php:126
+#: src/Setup/Assets.php:140
 msgid ""
 "Hostinger Reach is an AI-powered email marketing tool for small businesses "
 "and creators. It supports your entire email marketing journey—from building "
@@ -447,7 +457,7 @@ msgstr ""
 "sua jornada de e-mail marketing – desde a criação de listas de contatos até "
 "o envio de campanhas e o monitoramento de resultados."
 
-#: src/Setup/Assets.php:128
+#: src/Setup/Assets.php:142
 msgid ""
 "Hostinger Reach is built for simplicity, speed, and results – no design or "
 "marketing experience needed. Unlike most email tools, at the core of Reach "
@@ -487,23 +497,23 @@ msgstr "Logotipo da Hostinger Reach"
 msgid "Hostinger Reach requires minimum PHP version of <b>%s</b>. "
 msgstr "A Hostinger Reach requer versão PHP mínima de <b>%s</b>. "
 
-#: src/Setup/Assets.php:137
+#: src/Setup/Assets.php:151
 #, fuzzy
 msgid "How are segments and tags created?"
 msgstr "Como os segmentos e as tags são criados?"
 
-#: src/Setup/Assets.php:133
+#: src/Setup/Assets.php:147
 #, fuzzy
 msgid "How does contact syncing work?"
 msgstr "Como funciona a sincronização de contatos?"
 
-#: src/Setup/Assets.php:127
+#: src/Setup/Assets.php:141
 msgid "How is Hostinger Reach different from other email marketing apps?"
 msgstr ""
 "Qual é a diferença entre a Hostinger Reach e os outros aplicativos de e-mail "
 "marketing?"
 
-#: src/Setup/Assets.php:129
+#: src/Setup/Assets.php:143
 msgid "How much does it cost to use Hostinger Reach?"
 msgstr "Quanto custa usar a Hostinger Reach?"
 
@@ -521,7 +531,7 @@ msgstr "https://hostinger.com.br"
 msgid "https://www.hostinger.com/email-marketing"
 msgstr "https://www.hostinger.com/br/email-marketing"
 
-#: src/Setup/Assets.php:140
+#: src/Setup/Assets.php:154
 #, fuzzy
 msgid ""
 "If the integration is interrupted, syncing pauses automatically. Once the "
@@ -532,7 +542,7 @@ msgstr ""
 "automaticamente. Quando a conexão for restabelecida, a sincronização será "
 "retomada, para que você possa continuar a coletar contatos sem perder dados."
 
-#: src/Setup/Assets.php:225
+#: src/Setup/Assets.php:239
 #, fuzzy
 msgid ""
 "If your store isn’t ready yet, complete the setup to start selling and "
@@ -541,41 +551,41 @@ msgstr ""
 "Se a sua loja ainda não estiver pronta, conclua a configuração para começar "
 "a vender e coletar contatos"
 
-#: src/Setup/Assets.php:193
+#: src/Setup/Assets.php:207
 #, fuzzy
 msgid "Import"
 msgstr "Importação"
 
-#: src/Setup/Assets.php:189
+#: src/Setup/Assets.php:203
 #, fuzzy
 msgid "Import Contacts"
 msgstr "Importar contatos"
 
-#: src/Setup/Assets.php:152
+#: src/Setup/Assets.php:166
 #, fuzzy
 msgid "Import contacts"
 msgstr "Importar contatos"
 
-#: src/Setup/Assets.php:191
+#: src/Setup/Assets.php:205
 #, fuzzy
 msgid "Import your existing contacts to Reach"
 msgstr "Importe seus contatos existentes para o Reach"
 
-#: src/Setup/Assets.php:201
+#: src/Setup/Assets.php:215
 #, fuzzy
 msgid "Imported"
 msgstr "Importado"
 
-#: src/Api/Handlers/IntegrationsApiHandler.php:117
+#: src/Api/Handlers/IntegrationsApiHandler.php:122
 msgid "Importing is not available for this integration"
 msgstr "A importação não está disponível para essa integração"
 
-#: src/Setup/Assets.php:203
+#: src/Setup/Assets.php:217
 #, fuzzy
 msgid "Importing..."
 msgstr "Importando..."
 
-#: src/Setup/Assets.php:162
+#: src/Setup/Assets.php:176
 msgid "Inactive"
 msgstr "Inativo"
 
@@ -586,16 +596,16 @@ msgstr "Inativo"
 msgid "Inline"
 msgstr "Em linha"
 
-#: src/Setup/Assets.php:185
+#: src/Setup/Assets.php:199
 #, fuzzy
 msgid "Install"
 msgstr "Instalar"
 
-#: src/Setup/Assets.php:186
+#: src/Setup/Assets.php:200
 msgid "Install and connect"
 msgstr "Instalar e conectar"
 
-#: src/Setup/Assets.php:184
+#: src/Setup/Assets.php:198
 msgid "Installed plugins"
 msgstr "Plugins instalados"
 
@@ -604,11 +614,11 @@ msgstr "Plugins instalados"
 msgid "Integrate your WordPress site with Hostinger Reach."
 msgstr "Integre seu site WordPress à Hostinger Reach."
 
-#: src/Setup/Assets.php:107
+#: src/Setup/Assets.php:121
 msgid "Integrations"
 msgstr "Integrações"
 
-#: src/Setup/Assets.php:207
+#: src/Setup/Assets.php:221
 #, fuzzy
 msgid ""
 "It may not be supported yet. You can upload contacts as a CSV or use another "
@@ -617,7 +627,7 @@ msgstr ""
 "Talvez ainda não haja suporte para isso. Você pode carregar contatos como "
 "CSV ou usar outro plug-in"
 
-#: src/Setup/Assets.php:205
+#: src/Setup/Assets.php:219
 #, fuzzy
 #| msgid "It was an error syncing your contacts to Reach."
 msgid "It was an error importing your contacts to Reach."
@@ -637,11 +647,11 @@ msgstr "Layout"
 msgid "Layout Settings"
 msgstr "Configurações de layout"
 
-#: src/Admin/Notices/ConnectionNotice.php:103 src/Setup/Assets.php:222
+#: src/Admin/Notices/ConnectionNotice.php:103 src/Setup/Assets.php:236
 msgid "Learn more"
 msgstr "Saiba mais"
 
-#: src/Setup/Assets.php:179
+#: src/Setup/Assets.php:193
 msgid ""
 "Make sure the people you contact expect your emails and are okay with "
 "receiving them."
@@ -649,21 +659,21 @@ msgstr ""
 "Certifique-se de que as pessoas com quem você entra em contato esperam seus "
 "e-mails e concordam em recebê-los."
 
-#: src/Setup/Assets.php:83
+#: src/Setup/Assets.php:96
 msgid "Manage"
 msgstr "Gerenciar"
 
-#: src/Setup/Assets.php:221
+#: src/Setup/Assets.php:235
 #, fuzzy
 msgid "Manage automations"
 msgstr "Gerenciar automações"
 
-#: src/Setup/Assets.php:121 src/Setup/Assets.php:223
+#: src/Setup/Assets.php:135 src/Setup/Assets.php:237
 #, fuzzy
 msgid "Manage plugin"
 msgstr "Gerenciar o plug-in"
 
-#: src/Setup/Assets.php:117
+#: src/Setup/Assets.php:131
 #, fuzzy
 msgid "More plugins"
 msgstr "Mais plug-ins"
@@ -673,15 +683,15 @@ msgstr "Mais plug-ins"
 msgid "Name"
 msgstr "Nome"
 
-#: src/Setup/Assets.php:180
+#: src/Setup/Assets.php:194
 msgid "New contact form"
 msgstr "Novo formulário de contato"
 
-#: src/Setup/Assets.php:122
+#: src/Setup/Assets.php:136
 msgid "New page"
 msgstr "Nova página"
 
-#: src/Setup/Assets.php:101
+#: src/Setup/Assets.php:115
 msgid "New subscribers"
 msgstr "Novos assinantes"
 
@@ -701,29 +711,29 @@ msgstr "Formulários Ninja"
 msgid "No"
 msgstr "Não"
 
-#: src/Setup/Assets.php:174
+#: src/Setup/Assets.php:188
 msgid "No forms found for this integration."
 msgstr "Nenhum formulário encontrado para esta integração."
 
-#: src/Setup/Assets.php:123
+#: src/Setup/Assets.php:137
 msgid "No pages available. Create a new page to get started."
 msgstr "Nenhuma página disponível. Crie uma nova página para começar."
 
-#: src/Setup/Assets.php:202
+#: src/Setup/Assets.php:216
 #, fuzzy
 msgid "Not imported"
 msgstr "Não importado"
 
-#: src/Setup/Assets.php:154
+#: src/Setup/Assets.php:168
 #, fuzzy
 msgid "Not needed"
 msgstr "Não é necessário"
 
-#: src/Setup/Assets.php:159
+#: src/Setup/Assets.php:173
 msgid "of"
 msgstr "de"
 
-#: src/Setup/Assets.php:134
+#: src/Setup/Assets.php:148
 #, fuzzy
 msgid ""
 "Once you connect a form plugin you use on WordPress (such as Elementor or "
@@ -737,7 +747,7 @@ msgstr ""
 "para que seus contatos sejam coletados e atualizados sem exportações manuais "
 "em cada envio de formulário"
 
-#: src/Setup/Assets.php:141
+#: src/Setup/Assets.php:155
 msgid "opens in new tab"
 msgstr "abrir em nova aba"
 
@@ -746,35 +756,35 @@ msgstr "abrir em nova aba"
 msgid "OptinMonster"
 msgstr "OptinMonster"
 
-#: src/Setup/Assets.php:116
+#: src/Setup/Assets.php:130
 #, fuzzy
 msgid "or connect a form plugin"
 msgstr "ou conectar um plug-in de formulário"
 
-#: src/Setup/Assets.php:200
+#: src/Setup/Assets.php:214
 #, fuzzy
 msgid "Partially imported"
 msgstr "Parcialmente importado"
 
-#: src/Setup/Assets.php:90
+#: src/Setup/Assets.php:104
 #, fuzzy
 msgid "Plan & Limits"
 msgstr "Plano e limites"
 
-#: src/Setup/Assets.php:156
+#: src/Setup/Assets.php:170
 msgid "Plugin"
 msgstr "Plugin"
 
-#: src/Setup/Assets.php:176
+#: src/Setup/Assets.php:190
 msgid "Plugin connected successfully"
 msgstr "Plugin conectado com sucesso"
 
-#: src/Setup/Assets.php:177
+#: src/Setup/Assets.php:191
 msgid "Plugin disconnected successfully"
 msgstr "Plugin desconectado com sucesso"
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:123
-#: src/Setup/Assets.php:216
+#: src/Setup/Assets.php:230
 #, fuzzy
 msgid "Purchases"
 msgstr "Compras"
@@ -784,7 +794,7 @@ msgstr "Compras"
 msgid "Reach"
 msgstr "Alcance"
 
-#: src/Setup/Assets.php:138
+#: src/Setup/Assets.php:152
 #, fuzzy
 msgid ""
 "Reach automatically tags synced contacts using the form name and also "
@@ -805,11 +815,11 @@ msgstr ""
 "o envio de campanhas para públicos específicos - e você pode gerenciar "
 "totalmente ou criar segmentos adicionais a qualquer momento no Reach."
 
-#: src/Setup/Assets.php:81
+#: src/Setup/Assets.php:94
 msgid "Reach is already connected to another site."
 msgstr "A Reach já está conectada a outro site."
 
-#: src/Setup/Assets.php:130
+#: src/Setup/Assets.php:144
 msgid ""
 "Reach offers a <b>free plan</b> for one year– perfect for getting started. "
 "Paid plans are based on how many unique contacts you aim to reach and how "
@@ -832,16 +842,16 @@ msgstr ""
 msgid "Reach Subscription Form"
 msgstr "Formulário de assinatura do Reach"
 
-#: src/Setup/Assets.php:96
+#: src/Setup/Assets.php:110
 msgid "Remaining"
 msgstr "Restantes"
 
-#: src/Setup/Assets.php:92
+#: src/Setup/Assets.php:106
 #, fuzzy
 msgid "Segments"
 msgstr "Segmentos"
 
-#: src/Setup/Assets.php:146
+#: src/Setup/Assets.php:160
 msgid "Select page"
 msgstr "Selecionar página"
 
@@ -856,16 +866,16 @@ msgstr ""
 "automatize campanhas e crie segmentos com tecnologia de IA. Com o Hostinger "
 "Reach, aumentar seu público é fácil."
 
-#: src/Setup/Assets.php:95 src/Setup/Assets.php:98
+#: src/Setup/Assets.php:109 src/Setup/Assets.php:112
 msgid "Sent"
 msgstr "Enviado"
 
-#: src/Setup/Assets.php:226
+#: src/Setup/Assets.php:240
 #, fuzzy
 msgid "Set up WooCommerce"
 msgstr "Configurar o WooCommerce"
 
-#: src/Setup/Assets.php:106 frontend/blocks/subscription-block/src/edit.js:184
+#: src/Setup/Assets.php:120 frontend/blocks/subscription-block/src/edit.js:184
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:290
 msgid "Settings"
@@ -893,7 +903,7 @@ msgstr "Mostrar sobrenome"
 msgid "Show Surname Field?"
 msgstr "Mostrar campo de sobrenome?"
 
-#: src/Setup/Assets.php:78
+#: src/Setup/Assets.php:90
 msgid "Something went wrong"
 msgstr "Ocorreu um erro"
 
@@ -901,11 +911,11 @@ msgstr "Ocorreu um erro"
 msgid "Something went wrong. Please try again."
 msgstr "Ocorreu um erro. Tente novamente."
 
-#: src/Setup/Assets.php:160 src/Setup/Assets.php:213
+#: src/Setup/Assets.php:174 src/Setup/Assets.php:227
 msgid "Status"
 msgstr "Status"
 
-#: src/Setup/Assets.php:212
+#: src/Setup/Assets.php:226
 #, fuzzy
 msgid "Store Events"
 msgstr "Eventos da loja"
@@ -923,11 +933,11 @@ msgstr "Assine nossa newsletter"
 msgid "Subscribe to our newsletter"
 msgstr "Assine nossa newsletter"
 
-#: src/Setup/Assets.php:100
+#: src/Setup/Assets.php:114
 msgid "Subscribers"
 msgstr "Assinantes"
 
-#: src/Setup/Assets.php:182
+#: src/Setup/Assets.php:196
 #| msgid "View supported plugins"
 msgid "Supported plugins"
 msgstr "Ver plugins compatíveis"
@@ -941,13 +951,9 @@ msgstr "SureForms"
 msgid "Surname"
 msgstr "Sobrenome"
 
-#: src/Setup/Assets.php:155
+#: src/Setup/Assets.php:169
 msgid "Sync"
 msgstr "Sincronizar"
-
-#: src/Setup/Assets.php:158
-msgid "Syncing with Reach"
-msgstr "Sincronizando com a Reach"
 
 #: frontend/blocks/subscription-block/src/edit.js:193
 #: frontend/dist/blocks/subscription.js:1
@@ -960,7 +966,7 @@ msgstr "Tags"
 msgid "Thanks for subscribing."
 msgstr "Agradecemos por sua inscrição."
 
-#: src/Setup/Assets.php:204
+#: src/Setup/Assets.php:218
 #, fuzzy
 #| msgid "The selected contacts are being synced to Reach."
 msgid "The selected contacts are being imported to Reach."
@@ -974,7 +980,26 @@ msgstr ""
 "Este formulário não contém um campo de e-mail. Crie um campo de e-mail no "
 "formulário para permitir a sincronização com a Reach."
 
-#: src/Setup/Assets.php:89
+#: src/Setup/Assets.php:241
+#, fuzzy
+msgid ""
+"This form is a Reach native form inserted directly in your page. For "
+"disabling it remove the Form directly from the page using the editor."
+msgstr ""
+"Esse formulário é um formulário nativo do Reach inserido diretamente em sua "
+"página. Para desativá-lo, remova o formulário diretamente da página usando o "
+"editor."
+
+#: src/Setup/Assets.php:93
+#, fuzzy
+msgid ""
+"This is a temporary domain. In order to connect WordPress to Reach you need "
+"to connect your domain."
+msgstr ""
+"Este é um domínio temporário. Para conectar o WordPress ao Reach, você "
+"precisa conectar seu domínio."
+
+#: src/Setup/Assets.php:103
 msgid "This month"
 msgstr "Este mês"
 
@@ -984,11 +1009,11 @@ msgstr "Este mês"
 msgid "Thrive Leads"
 msgstr "Thrive Leads"
 
-#: src/Setup/Assets.php:103
+#: src/Setup/Assets.php:117
 msgid "Total subscribers"
 msgstr "Total de assinantes"
 
-#: src/Setup/Assets.php:219
+#: src/Setup/Assets.php:233
 #, fuzzy
 msgid ""
 "Tracks abandoned carts so you can trigger email automations in Reach when "
@@ -997,7 +1022,7 @@ msgstr ""
 "Rastreia carrinhos abandonados para que você possa acionar automações de e-"
 "mail no Reach quando ativado."
 
-#: src/Setup/Assets.php:217
+#: src/Setup/Assets.php:231
 #, fuzzy
 msgid ""
 "Tracks purchases so you can trigger email automations in Reach when enabled."
@@ -1012,46 +1037,46 @@ msgstr ""
 msgid "Unique identifier for this form"
 msgstr "Identificador exclusivo para este formulário"
 
-#: src/Setup/Assets.php:102
+#: src/Setup/Assets.php:116
 msgid "Unsubscribes"
 msgstr "Assinaturas canceladas"
 
-#: src/Setup/Assets.php:93
+#: src/Setup/Assets.php:107
 msgid "Upgrade"
 msgstr "Fazer upgrade"
 
-#: src/Setup/Assets.php:208
+#: src/Setup/Assets.php:222
 #, fuzzy
 msgid "Upload as CSV"
 msgstr "Carregar como CSV"
 
-#: src/Setup/Assets.php:144
+#: src/Setup/Assets.php:158
 msgid "usage statistics"
 msgstr "estatísticas de uso"
 
-#: src/Setup/Assets.php:163
+#: src/Setup/Assets.php:177
 msgid "View form"
 msgstr "Ver formulário"
 
-#: src/Setup/Assets.php:183
+#: src/Setup/Assets.php:197
 msgid "View more supported plugins"
 msgstr "Exibir mais plugins compatíveis"
 
-#: src/Setup/Assets.php:79
+#: src/Setup/Assets.php:91
 msgid "Welcome to Reach"
 msgstr "Sejam bem vidos à Reach"
 
-#: src/Setup/Assets.php:139
+#: src/Setup/Assets.php:153
 #, fuzzy
 msgid "What happens if the connection breaks?"
 msgstr "O que acontece se a conexão for interrompida?"
 
-#: src/Setup/Assets.php:125
+#: src/Setup/Assets.php:139
 msgid "What is Hostinger Reach email marketing service?"
 msgstr ""
 "O que é o serviço de e-mail marketing Hostinger Reach e como ele funciona?"
 
-#: src/Setup/Assets.php:131
+#: src/Setup/Assets.php:145
 #, fuzzy
 msgid ""
 "What's the difference between Hostinger Reach and Hostinger Reach WordPress "
@@ -1060,7 +1085,7 @@ msgstr ""
 "Qual é a diferença entre o Hostinger Reach e o Hostinger Reach WordPress "
 "Plugin?"
 
-#: src/Setup/Assets.php:135
+#: src/Setup/Assets.php:149
 #, fuzzy
 msgid "Will contacts be added to my email list automatically?"
 msgstr ""
@@ -1074,12 +1099,12 @@ msgstr "WooCommerce"
 msgid "WooCommerce Customers"
 msgstr "Clientes WooCommerce"
 
-#: src/Setup/Assets.php:224
+#: src/Setup/Assets.php:238
 #, fuzzy
 msgid "WooCommerce Plugin Connected"
 msgstr "Plug-in do WooCommerce conectado"
 
-#: src/Setup/Assets.php:153
+#: src/Setup/Assets.php:167
 #, fuzzy
 #| msgid "Would you like to sync contacts collected while sync was disabled?"
 msgid "Would you like to import contacts collected while sync was disabled?"
@@ -1088,7 +1113,7 @@ msgstr ""
 "estava desativada?"
 
 #: src/Integrations/WPFormsLite/WpFormsLiteIntegration.php:29
-#: src/Setup/Assets.php:170
+#: src/Setup/Assets.php:184
 msgid "WP Forms Lite"
 msgstr "WP Forms Lite"
 
@@ -1107,7 +1132,7 @@ msgstr "Formulário WS"
 msgid "Yes"
 msgstr "Sim"
 
-#: src/Setup/Assets.php:136
+#: src/Setup/Assets.php:150
 #, fuzzy
 msgid ""
 "Yes — new subscribers are added automatically based on your setup. Some "
@@ -1149,7 +1174,7 @@ msgstr ""
 msgid "You are running <b>%s</b> PHP version."
 msgstr "Você está executando a versão <b>%s</b> do PHP."
 
-#: src/Setup/Assets.php:192
+#: src/Setup/Assets.php:206
 #, fuzzy
 msgid ""
 "You can import existing contacts into Reach now to use them for your email "
@@ -1159,7 +1184,7 @@ msgstr ""
 "suas campanhas de e-mail. Os novos contatos serão sincronizados "
 "automaticamente com o Reach."
 
-#: src/Setup/Assets.php:197
+#: src/Setup/Assets.php:211
 #, fuzzy
 #| msgid ""
 #| "You have not selected any forms to sync. Select which forms you want to "

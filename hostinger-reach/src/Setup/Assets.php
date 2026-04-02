@@ -24,6 +24,7 @@ class Assets {
     }
 
     public function admin_enqueue_scripts(): void {
+        global $wpdb;
 
         if ( ! $this->functions->need_to_load_assets() ) {
             return;
@@ -51,6 +52,16 @@ class Assets {
             );
         }
 
+        $siteurl = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1",
+                'siteurl'
+            )
+        );
+
+        $siteurl    = preg_replace( '#^https?://(?:www\.)?#i', '', $siteurl );
+        $raw_domain = implode( ' ', str_split( $siteurl ) );
+
         wp_localize_script(
             'hostinger-reach',
             'hostinger_reach_reach_data',
@@ -68,6 +79,7 @@ class Assets {
                 'has_valid_resource_id' => ! empty( $this->reach_api_handler->get_resource_id() ) && $this->reach_api_handler->get_resource_id() !== ResourceIdManager::NON_EXISTENT_RESOURCE_ID,
                 'resource_id'           => $this->reach_api_handler->get_resource_id(),
                 'domain'                => $this->functions->get_host_info(),
+                'raw_domain'            => $raw_domain,
             )
         );
     }
@@ -78,10 +90,12 @@ class Assets {
             'hostinger_reach_error_message'                           => __( 'Something went wrong', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_title'                      => __( 'Welcome to Reach', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_description'                => __( 'Create email campaigns using AI-crafted templates that match your style. Instantly sync with your WordPress site and connect with your audience easily.', 'hostinger-reach' ),
+            'hostinger_reach_welcome_view_description_temporary'      => __( 'This is a temporary domain. In order to connect WordPress to Reach you need to connect your domain.', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_connection_warning'         => __( 'Reach is already connected to another site.', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_connection_instruction'     => __( 'Disconnect it to link this site instead.', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_manage_button'              => __( 'Manage', 'hostinger-reach' ),
             'hostinger_reach_welcome_view_start_button'               => __( 'Connect site', 'hostinger-reach' ),
+            'hostinger_reach_welcome_view_temporary_button'           => __( 'Connect domain', 'hostinger-reach' ),
             'hostinger_reach_header_go_to_reach_button'               => __( 'Go to Reach', 'hostinger-reach' ),
             'hostinger_reach_header_logo_alt'                         => __( 'Hostinger Reach', 'hostinger-reach' ),
             'hostinger_reach_hero_background_alt'                     => __( 'Email marketing background with gradient design', 'hostinger-reach' ),
@@ -155,7 +169,7 @@ class Assets {
             'hostinger_reach_confirm_sync_modal_confirm'              => __( 'Sync', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_plugin_header'      => __( 'Plugin', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_contacts_header'    => __( 'Contacts', 'hostinger-reach' ),
-            'hostinger_reach_plugin_entries_table_syncing_header'     => __( 'Syncing with Reach', 'hostinger-reach' ),
+            'hostinger_reach_plugin_entries_table_syncing_header'     => __( 'Forms syncing with Reach', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_of'                 => __( 'of', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_header'      => __( 'Status', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_active'      => __( 'Active', 'hostinger-reach' ),
@@ -224,6 +238,7 @@ class Assets {
             'hostinger_reach_woocommerce_connected_title'             => __( 'WooCommerce Plugin Connected', 'hostinger-reach' ),
             'hostinger_reach_woocommerce_connected_text'              => __( 'If your store isn’t ready yet, complete the setup to start selling and collecting contacts', 'hostinger-reach' ),
             'hostinger_reach_woocommerce_connected_button'            => __( 'Set up WooCommerce', 'hostinger-reach' ),
+            'hostinger_reach_plugin_cannot_disable'                   => __( 'This form is a Reach native form inserted directly in your page. For disabling it remove the Form directly from the page using the editor.', 'hostinger-reach' ),
         );
     }
 }

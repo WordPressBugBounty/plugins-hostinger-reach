@@ -2,6 +2,7 @@
 
 namespace Hostinger\Reach\Api\Handlers;
 
+use Hostinger\Reach\Api\ApiKeyManager;
 use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\ImportManager;
@@ -22,11 +23,13 @@ class IntegrationsApiHandler extends ApiHandler {
 
     public PluginManager $plugin_manager;
     public ImportManager $import_manager;
+    public ApiKeyManager $api_key_manager;
 
-    public function __construct( Functions $functions, PluginManager $plugin_manager, ImportManager $import_manager ) {
+    public function __construct( Functions $functions, PluginManager $plugin_manager, ImportManager $import_manager, ApiKeyManager $api_key_manager ) {
         parent::__construct( $functions );
-        $this->plugin_manager = $plugin_manager;
-        $this->import_manager = $import_manager;
+        $this->plugin_manager  = $plugin_manager;
+        $this->import_manager  = $import_manager;
+        $this->api_key_manager = $api_key_manager;
     }
 
     public static function get_integrations(): array {
@@ -34,6 +37,9 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     public function init_hooks(): void {
+        if ( ! $this->api_key_manager->is_connected() ) {
+            return;
+        }
         add_action( 'init', array( $this, 'trigger_active_integrations' ) );
     }
 
@@ -72,7 +78,6 @@ class IntegrationsApiHandler extends ApiHandler {
         $integration       = $request->get_param( 'integration' );
         $integrations_data = $this->get_integrations_data();
         $integration_data  = $integrations_data[ $integration ] ?? array();
-        $has_download_url  = ! empty( $integration_data['download_url'] ?? false );
         $has_download_url  = ! empty( $integration_data['download_url'] ?? false );
         $current_is_active = $integration_data[ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
         $should_update     = ! $is_active || $this->activate_integration( $integration, $has_download_url );

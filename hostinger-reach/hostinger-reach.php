@@ -3,7 +3,7 @@
  * Plugin Name:       Hostinger Reach
  * Plugin URI:        https://hostinger.com
  * Description:       Integrate your WordPress site with Hostinger Reach.
- * Version:           1.4.4
+ * Version:           1.4.5
  * Author:            Hostinger
  * Requires PHP:      8.1
  * Requires at least: 6.0

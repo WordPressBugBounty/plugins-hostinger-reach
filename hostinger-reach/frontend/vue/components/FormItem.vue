@@ -32,6 +32,11 @@ const pluginTitle = computed(
 
 const supportsImport = computed(() => props.integration.type !== 'ecommerce' && props.integration.importEnabled);
 const hasActions = computed(() => !props.integration.isViewFormHidden || !props.integration.isEditFormHidden);
+const shouldHideToggle = computed(
+	() =>
+		!props.integration.canToggleForms ||
+		(props.integration.id === 'elementor' && !props.form.formId?.startsWith('elementor-hostinger-reach-form'))
+);
 </script>
 
 <template>
@@ -50,12 +55,19 @@ const hasActions = computed(() => !props.integration.isViewFormHidden || !props.
 				{{ translate('hostinger_reach_plugin_entries_table_syncing_header') }}:
 			</span>
 			<Toggle
+				v-if="shouldHideToggle"
+				v-tooltip="{
+					content: translate('hostinger_reach_plugin_cannot_disable'),
+					placement: 'top'
+				}"
 				:value="props.form.isActive"
-				:is-disabled="
-					!props.integration.canToggleForms ||
-					form.isLoading ||
-					form.formId?.startsWith('elementor-hostinger-reach-form')
-				"
+				:is-disabled="true"
+				@toggle="(status) => emit('toggleStatus', props.form, status)"
+			/>
+			<Toggle
+				v-else
+				:value="props.form.isActive"
+				:is-disabled="form.isLoading"
 				@toggle="(status) => emit('toggleStatus', props.form, status)"
 			/>
 		</div>
