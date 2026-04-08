@@ -106,7 +106,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 		border-radius: 20px;
 		padding: 24px;
 		border: 1px solid var(--neutral--200);
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	&__header {

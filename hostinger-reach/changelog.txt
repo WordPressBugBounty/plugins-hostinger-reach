@@ -263,3 +263,8 @@ Changelog
 - Fix: Prevent subdomains for connecting
 - Fix: Avoid render checkbox when not connected
 - Fix: Add tooltip for Toggle when is disabled (#401)
+
+1.4.6 (2026-04-08)
+
+- Fix: UX mobile Overview
+- Fix: Hidden overflow cutting the toggle tooltip

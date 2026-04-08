@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -425,3 +425,8 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Prevent subdomains for connecting
 - Fix: Avoid render checkbox when not connected
 - Fix: Add tooltip for Toggle when is disabled (#401)
+
+1.4.6 (2026-04-08)
+
+- Fix: UX mobile Overview
+- Fix: Hidden overflow cutting the toggle tooltip

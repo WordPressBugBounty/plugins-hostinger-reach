@@ -419,6 +419,11 @@ const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? fal
 		justify-content: space-between;
 		align-items: center;
 		gap: 10px;
+		flex-wrap: wrap;
+
+		@media (max-width: 992px) {
+			justify-content: start;
+		}
 	}
 
 	&__integrations-tabs {
@@ -426,11 +431,25 @@ const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? fal
 		justify-content: flex-end;
 		align-items: center;
 		width: 100%;
+
+		@media (max-width: 992px) {
+			flex-wrap: wrap;
+			justify-content: start;
+		}
 	}
 
 	&__integrations-buttons {
 		display: flex;
 		gap: 8px;
+
+		@media (max-width: 992px) {
+			flex-wrap: wrap;
+			width: 100%;
+
+			> div {
+				width: 100%;
+			}
+		}
 	}
 
 	&__section {
