@@ -18,6 +18,7 @@ import { WOOCOMMERCE_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
 import { TABS_KEYS } from '@/data/tabs';
 import { useIntegrationsStore } from '@/stores/integrationsStore';
+import type { Integration } from '@/types';
 import { ModalName } from '@/types';
 import type { Form } from '@/types/models';
 import { translate } from '@/utils/translate';
@@ -107,7 +108,7 @@ const handleFormToggleStatus = async (form: Form, isActive: boolean) => {
 			isActive
 		};
 
-		if (isActive && !isAutomation(form) && integration.importEnabled && integration.importStatus?.total > 0) {
+		if (isActive && !isAutomation(form) && hasContactsToImport(integration)) {
 			openModal(ModalName.CONFIRM_SYNC_MODAL, { integration });
 		}
 	}
@@ -140,13 +141,20 @@ const handleConnectPluginButton = () => {
 	openModal(ModalName.CONNECT_PLUGIN_MODAL, {}, { hasCloseButton: true, isLG: true });
 };
 
+const hasContactsToImport = (integration: Integration): boolean =>
+	integration.importEnabled && integration.importStatus?.total > 0;
+
 const handleSyncContactsButton = () => {
+	if (!integrationsStore.importAvailableIntegrations.length) {
+		return;
+	}
+
 	openModal(
 		ModalName.SYNC_CONTACTS_MODAL,
 		{
 			title: translate('hostinger_reach_contacts_modal_title'),
 			subtitle: translate('hostinger_reach_contacts_modal_subtitle'),
-			data: { integrations: integrationsStore.syncableIntegrations ?? [] }
+			data: { integrations: integrationsStore.importAvailableIntegrations ?? [] }
 		},
 		{ hasCloseButton: true }
 	);
@@ -212,6 +220,12 @@ const wooCommerceConnected = computed(
 );
 
 const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? false;
+
+const shouldShowConnect = computed(
+	() =>
+		integrationsStore?.activeIntegrations?.filter((integration) => integration.type === TABS_KEYS.OVERVIEW_TAB_FORMS)
+			?.length > 1 || integrationsStore.hasAnyForms(TABS_KEYS.OVERVIEW_TAB_FORMS)
+);
 </script>
 
 <template>
@@ -247,7 +261,7 @@ const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? fal
 					<div class="overview__integrations-tabs">
 						<div class="overview__integrations-buttons">
 							<HButton
-								v-if="integrationsStore.syncableIntegrations.length > 0 && integrationsStore?.hasAnyForms()"
+								v-if="integrationsStore.importAvailableIntegrations.length > 0"
 								variant="text"
 								color="primary"
 								size="small"
@@ -258,6 +272,7 @@ const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? fal
 								{{ translate('hostinger_reach_sync_contacts_button_text') }}
 							</HButton>
 							<HButton
+								v-if="shouldShowConnect"
 								variant="outline"
 								color="primary"
 								size="small"

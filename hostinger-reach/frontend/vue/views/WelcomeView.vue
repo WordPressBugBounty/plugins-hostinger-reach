@@ -35,13 +35,13 @@ const handleGetStarted = async () => {
 	}
 
 	if (PREVIEW_DOMAINS.test(domain)) {
-		window.location.href = `https://hpanel.hostinger.com/websites/${encodeURIComponent(rawDomain)}`;
+		window.open(`https://hpanel.hostinger.com/websites/${encodeURIComponent(rawDomain)}`, '_blank');
 
 		return;
 	}
 
 	if (data.authUrl && TRUSTED_AUTH_DOMAINS.test(data.authUrl)) {
-		window.location.href = data.authUrl;
+		window.open(data.authUrl, '_blank');
 	} else {
 		showError(translate('hostinger_reach_error_message'));
 	}

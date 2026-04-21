@@ -33,10 +33,10 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         add_action( 'hostinger_reach_integration_activated', array( $this, 'on_integration_activated' ) );
         add_action( 'wp_insert_post', array( $this, 'flag_new_elementor_post' ), 10, 3 );
         add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
+        add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
     }
 
     public function active_integration_hooks(): void {
-        add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
         add_action( 'transition_post_status', array( $this, 'handle_transition_post_status' ), 10, 3 );
         add_filter( 'hostinger_reach_get_group', array( $this, 'filter_hostinger_reach_get_group' ), 10, 2 );
         add_action( 'elementor_pro/forms/new_record', array( $this, 'handle_elementor_pro_new_record' ) );

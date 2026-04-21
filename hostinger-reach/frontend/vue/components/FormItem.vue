@@ -33,9 +33,7 @@ const pluginTitle = computed(
 const supportsImport = computed(() => props.integration.type !== 'ecommerce' && props.integration.importEnabled);
 const hasActions = computed(() => !props.integration.isViewFormHidden || !props.integration.isEditFormHidden);
 const shouldHideToggle = computed(
-	() =>
-		!props.integration.canToggleForms ||
-		(props.integration.id === 'elementor' && !props.form.formId?.startsWith('elementor-hostinger-reach-form'))
+	() => !props.integration.canToggleForms || props.form.formId?.startsWith('elementor-hostinger-reach-form')
 );
 </script>
 
@@ -51,7 +49,10 @@ const shouldHideToggle = computed(
 			</div>
 		</div>
 		<div class="form-item__cell form-item__cell--forms">
-			<span class="form-item__mobile-label">
+			<span
+				v-tooltip.top="translate('hostinger_reach_plugin_entries_table_syncing_tooltip')"
+				class="form-item__mobile-label"
+			>
 				{{ translate('hostinger_reach_plugin_entries_table_syncing_header') }}:
 			</span>
 			<Toggle
@@ -165,6 +166,8 @@ const shouldHideToggle = computed(
 		color: var(--neutral--600);
 		margin-right: 8px;
 		display: none;
+		align-items: center;
+		cursor: help;
 	}
 
 	&__action-button {
@@ -242,7 +245,7 @@ const shouldHideToggle = computed(
 		}
 
 		&__mobile-label {
-			display: inline-block;
+			display: inline-flex;
 		}
 	}
 }

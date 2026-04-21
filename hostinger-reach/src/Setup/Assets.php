@@ -170,6 +170,7 @@ class Assets {
             'hostinger_reach_plugin_entries_table_plugin_header'      => __( 'Plugin', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_contacts_header'    => __( 'Contacts', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_syncing_header'     => __( 'Forms syncing with Reach', 'hostinger-reach' ),
+            'hostinger_reach_plugin_entries_table_syncing_tooltip'    => __( 'When syncing is off, collected Contacts will not be sent to Reach.', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_of'                 => __( 'of', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_header'      => __( 'Status', 'hostinger-reach' ),
             'hostinger_reach_plugin_entries_table_status_active'      => __( 'Active', 'hostinger-reach' ),

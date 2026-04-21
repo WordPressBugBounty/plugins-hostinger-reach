@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -430,3 +430,19 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 
 - Fix: UX mobile Overview
 - Fix: Hidden overflow cutting the toggle tooltip
+
+1.4.7 (2026-04-21)
+
+- Feature: Add latest translations
+- Feature: Added redirect from plugins install page
+- Fix: Not visible hostinger logo in menu
+- Fix: Redundant menu if only reach active
+- Fix: Hide Connect button when showing Add form table
+- Fix: Prevent toggle in native Reach Widget Elementor
+- Feature: Add tooltip to "Forms syncing with Reach" toggle (#423)
+- Tweak: Hide Form Id from Elementor Reach Widget
+- Fix: Prevent Import when zero contacts
+- Fix: Workflows
+- Fix: Update dependencies
+- Fix: Bump HOSTINGER_REACH_PLUGIN_VERSION (#419)
+- Fix: Render Elementor Reach Widget even if Reach is not connected

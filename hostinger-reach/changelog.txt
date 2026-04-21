@@ -19,7 +19,7 @@ Changelog
 - Fix: Subscription form not being auto-loaded sometimes
 - Fix: Change Menu load priority
 - Tweak: Toasts UI
-- Tweak:  Add scrollbar to select page modal
+- Tweak: Add scrollbar to select page modal
 - Tweak: Add header to overview page
 
 1.0.3 (2025-08-21)
@@ -85,7 +85,7 @@ Changelog
 1.0.11 (2025-09-30)
 
 - Tweak: Add Pagination in Add form pages list
-- Tweak:  Include platform metadata in contact submission
+- Tweak: Include platform metadata in contact submission
 - Tweak: Bump dependencies
 
 1.0.12 (2025-10-07)
@@ -237,7 +237,7 @@ Changelog
 - Fix: Automation route link
 - Fix: Don't show Elementor Pro deleted forms
 - Fix: Add Elementor Pro metadata when sending Elementor Pro forms
-- Fix:  Reach Menu alignment
+- Fix: Reach Menu alignment
 - Fix: Subscription form button text color
 
 1.4.2 (2026-03-18)
@@ -251,8 +251,8 @@ Changelog
 1.4.4 (2026-03-31)
 
 - Fix: Update dependencies
-- Tweak:  Adjust contact form submission message
-- Fix:  Import contacts opening when no contacts
+- Tweak: Adjust contact form submission message
+- Fix: Import contacts opening when no contacts
 - Tweak: Update translations
 - Fix: WooCommerce entries titles not showing for old installed Reach plugins
 - Tweak: Add new FAQ section
@@ -268,3 +268,19 @@ Changelog
 
 - Fix: UX mobile Overview
 - Fix: Hidden overflow cutting the toggle tooltip
+
+1.4.7 (2026-04-21)
+
+- Feature: Add latest translations
+- Feature: Added redirect from plugins install page
+- Fix: Not visible hostinger logo in menu
+- Fix: Redundant menu if only reach active
+- Fix: Hide Connect button when showing Add form table
+- Fix: Prevent toggle in native Reach Widget Elementor
+- Feature: Add tooltip to "Forms syncing with Reach" toggle (#423)
+- Tweak: Hide Form Id from Elementor Reach Widget
+- Fix: Prevent Import when zero contacts
+- Fix: Workflows
+- Fix: Update dependencies
+- Fix: Bump HOSTINGER_REACH_PLUGIN_VERSION (#419)
+- Fix: Render Elementor Reach Widget even if Reach is not connected

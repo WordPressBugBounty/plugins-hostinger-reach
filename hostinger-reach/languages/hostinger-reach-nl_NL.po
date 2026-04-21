@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Hostinger Reach &#8211; AI-Powered Email Marketing for WordPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-04-02 06:37+0000\n"
+"PO-Revision-Date: 2026-04-16 14:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -174,7 +174,6 @@ msgid "Connect"
 msgstr "Verbinden"
 
 #: src/Setup/Assets.php:98
-#, fuzzy
 msgid "Connect domain"
 msgstr "Domein verbinden"
 
@@ -377,7 +376,6 @@ msgid "Forms"
 msgstr "Formulieren"
 
 #: src/Setup/Assets.php:172
-#, fuzzy
 msgid "Forms syncing with Reach"
 msgstr "Formulieren synchroniseren met Reach"
 
@@ -919,17 +917,15 @@ msgstr ""
 "zodat het gesynchroniseerd kan worden met Reach"
 
 #: src/Setup/Assets.php:241
-#, fuzzy
 msgid ""
 "This form is a Reach native form inserted directly in your page. For "
 "disabling it remove the Form directly from the page using the editor."
 msgstr ""
-"Dit formulier is een Reach native formulier dat direct in je pagina wordt "
-"ingevoegd. Als je het formulier wilt uitschakelen, kun je het rechtstreeks "
-"uit de pagina verwijderen met behulp van de editor."
+"Dit formulier is een Reach native formulier dat rechtstreeks op je pagina "
+"wordt ingevoegd. Om het uit te schakelen verwijder je het formulier direct "
+"van de pagina met behulp van de editor."
 
 #: src/Setup/Assets.php:93
-#, fuzzy
 msgid ""
 "This is a temporary domain. In order to connect WordPress to Reach you need "
 "to connect your domain."
