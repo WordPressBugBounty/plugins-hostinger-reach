@@ -284,3 +284,8 @@ Changelog
 - Fix: Update dependencies
 - Fix: Bump HOSTINGER_REACH_PLUGIN_VERSION (#419)
 - Fix: Render Elementor Reach Widget even if Reach is not connected
+
+1.4.8 (2026-04-23)
+
+- Tweak: Disable submit button if Reach is not connected
+- Fix: Prevent Auth URL opening in new tab

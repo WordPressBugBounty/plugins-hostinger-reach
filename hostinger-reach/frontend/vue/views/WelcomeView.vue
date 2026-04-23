@@ -41,7 +41,7 @@ const handleGetStarted = async () => {
 	}
 
 	if (data.authUrl && TRUSTED_AUTH_DOMAINS.test(data.authUrl)) {
-		window.open(data.authUrl, '_blank');
+		window.location.href = data.authUrl;
 	} else {
 		showError(translate('hostinger_reach_error_message'));
 	}

@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.7
+Stable tag: 1.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -446,3 +446,8 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Update dependencies
 - Fix: Bump HOSTINGER_REACH_PLUGIN_VERSION (#419)
 - Fix: Render Elementor Reach Widget even if Reach is not connected
+
+1.4.8 (2026-04-23)
+
+- Tweak: Disable submit button if Reach is not connected
+- Fix: Prevent Auth URL opening in new tab
