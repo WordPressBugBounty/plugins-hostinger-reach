@@ -289,3 +289,10 @@ Changelog
 
 - Tweak: Disable submit button if Reach is not connected
 - Fix: Prevent Auth URL opening in new tab
+
+1.4.9 (2026-05-05)
+
+- Feature: Check Domain status in Connection page
+- Feature: Amplitude events integrtation
+- Tweak: Update Reach Forms coming soon banner
+- Fix: Missing Forms heading column in import modal

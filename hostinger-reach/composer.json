@@ -2,15 +2,23 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-menu-manager.git"
+            "url": "git@github.com:hostinger/hostinger-wp-menu-manager.git",
+            "no-api": true
         },
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-helper.git"
+            "url": "git@github.com:hostinger/hostinger-wp-helper.git",
+            "no-api": true
         },
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-surveys.git"
+            "url": "git@github.com:hostinger/hostinger-wp-surveys.git",
+            "no-api": true
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:hostinger/hostinger-wp-amplitude.git",
+            "no-api": true
         }
     ],
     "name": "hostinger/hostinger-reach",
@@ -36,7 +44,12 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "automattic/jetpack-autoloader": true
-        }
+        },
+        "preferred-install": {
+            "hostinger/*": "source",
+            "*": "dist"
+        },
+        "github-protocols": ["ssh"]
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
@@ -58,7 +71,8 @@
         "psr/container": "^2.0@dev",
         "hostinger/hostinger-wp-surveys": "^1.0",
         "hostinger/hostinger-wp-helper": "^1.0",
-        "woocommerce/action-scheduler": "^3.9"
+        "woocommerce/action-scheduler": "^3.9",
+        "hostinger/hostinger-wp-amplitude": "^1.0"
     },
     "minimum-stability": "dev"
 }

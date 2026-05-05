@@ -12,5 +12,6 @@ return array(
     'Hostinger\\Tests\\' => array($vendorDir . '/hostinger/hostinger-wp-helper/tests/phpunit'),
     'Hostinger\\Surveys\\' => array($vendorDir . '/hostinger/hostinger-wp-surveys/src'),
     'Hostinger\\Reach\\' => array($baseDir . '/src'),
+    'Hostinger\\Amplitude\\' => array($vendorDir . '/hostinger/hostinger-wp-amplitude/src'),
     'Automattic\\Jetpack\\Autoloader\\' => array($vendorDir . '/automattic/jetpack-autoloader/src'),
 );

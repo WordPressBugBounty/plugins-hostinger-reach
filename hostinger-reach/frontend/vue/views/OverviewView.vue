@@ -24,8 +24,14 @@ import type { Form } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 const { status, loadOverviewData } = useOverviewData();
-const { reachDashboardLink, reachYourPlanLink, reachContactsLink, reachSegmentsLink, reachAutomationsLink } =
-	useReachUrls();
+const {
+	reachDashboardLink,
+	reachYourPlanLink,
+	reachContactsLink,
+	reachSegmentsLink,
+	reachAutomationsLink,
+	reachFormsLink
+} = useReachUrls();
 const { showError } = useToast();
 
 const { openModal } = useModal();
@@ -221,6 +227,10 @@ const wooCommerceConnected = computed(
 
 const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? false;
 
+const handleTryFormBuilderClick = () => {
+	window.open(reachFormsLink.value, '_blank');
+};
+
 const shouldShowConnect = computed(
 	() =>
 		integrationsStore?.activeIntegrations?.filter((integration) => integration.type === TABS_KEYS.OVERVIEW_TAB_FORMS)
@@ -248,7 +258,8 @@ const shouldShowConnect = computed(
 			<Banner
 				:title="translate('hostinger_reach_overview_banner_title')"
 				:description="translate('hostinger_reach_overview_banner_description')"
-				:label="translate('hostinger_reach_overview_banner_label')"
+				:button-text="translate('hostinger_reach_overview_banner_button_text')"
+				:on-button-click="handleTryFormBuilderClick"
 				align="left"
 				:background-image="reachOverviewBannerBackground as unknown as string"
 			/>

@@ -46,6 +46,22 @@ return array(
 		'version' => '5.0.15',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-hook-manager.php'
 	),
+	'Hostinger\\Amplitude\\ActionDispatcher' => array(
+		'version' => '1.0.17.0',
+		'path'    => $vendorDir . '/hostinger/hostinger-wp-amplitude/src/ActionDispatcher.php'
+	),
+	'Hostinger\\Amplitude\\AmplitudeLoader' => array(
+		'version' => '1.0.17.0',
+		'path'    => $vendorDir . '/hostinger/hostinger-wp-amplitude/src/AmplitudeLoader.php'
+	),
+	'Hostinger\\Amplitude\\AmplitudeManager' => array(
+		'version' => '1.0.17.0',
+		'path'    => $vendorDir . '/hostinger/hostinger-wp-amplitude/src/AmplitudeManager.php'
+	),
+	'Hostinger\\Amplitude\\Rest' => array(
+		'version' => '1.0.17.0',
+		'path'    => $vendorDir . '/hostinger/hostinger-wp-amplitude/src/Rest.php'
+	),
 	'Hostinger\\Reach\\Admin\\Database\\CartsTable' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Admin/Database/CartsTable.php'
@@ -94,6 +110,14 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/RedirectsTest.php'
 	),
+	'Hostinger\\Reach\\Amplitude\\Amplitude' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Amplitude/Amplitude.php'
+	),
+	'Hostinger\\Reach\\Amplitude\\Events' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Amplitude/Events.php'
+	),
 	'Hostinger\\Reach\\Api\\ApiKeyManager' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Api/ApiKeyManager.php'
@@ -105,6 +129,10 @@ return array(
 	'Hostinger\\Reach\\Api\\Handlers\\FormsApiHandler' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Api/Handlers/FormsApiHandler.php'
+	),
+	'Hostinger\\Reach\\Api\\Handlers\\HostingApiHandler' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Api/Handlers/HostingApiHandler.php'
 	),
 	'Hostinger\\Reach\\Api\\Handlers\\IntegrationsApiHandler' => array(
 		'version' => 'dev-main',
@@ -121,6 +149,10 @@ return array(
 	'Hostinger\\Reach\\Api\\Routes\\FormsRoutes' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Api/Routes/FormsRoutes.php'
+	),
+	'Hostinger\\Reach\\Api\\Routes\\HostingRoutes' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Api/Routes/HostingRoutes.php'
 	),
 	'Hostinger\\Reach\\Api\\Routes\\IntegrationsRoutes' => array(
 		'version' => 'dev-main',
@@ -310,6 +342,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Models/PluginData.php'
 	),
+	'Hostinger\\Reach\\Providers\\AmplitudeProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/AmplitudeProvider.php'
+	),
 	'Hostinger\\Reach\\Providers\\AssetsProvider' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/AssetsProvider.php'
@@ -318,6 +354,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/BlocksProvider.php'
 	),
+	'Hostinger\\Reach\\Providers\\ClientProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/ClientProvider.php'
+	),
 	'Hostinger\\Reach\\Providers\\ContainerProvider' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/ContainerProvider.php'
@@ -325,6 +365,10 @@ return array(
 	'Hostinger\\Reach\\Providers\\DatabaseProvider' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Providers/DatabaseProvider.php'
+	),
+	'Hostinger\\Reach\\Providers\\HostingRoutesProvider' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Providers/HostingRoutesProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\IntegrationsProvider' => array(
 		'version' => 'dev-main',
@@ -466,6 +510,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/FormsApiHandlerTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\HostingApiHandlerTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/HostingApiHandlerTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\IntegrationsApiHandlerTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/IntegrationsApiHandlerTest.php'
@@ -481,6 +529,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\FormsRoutesTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/FormsRoutesTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\HostingRoutesTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/HostingRoutesTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\IntegrationsRoutesTest' => array(
 		'version' => 'dev-main',
@@ -630,6 +682,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/PluginManagerTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\AmplitudeProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/AmplitudeProviderTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\AssetsProviderTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/AssetsProviderTest.php'
@@ -638,9 +694,17 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/BlocksProviderTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\ClientProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/ClientProviderTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\DatabaseProviderTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/DatabaseProviderTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Providers\\HostingRoutesProviderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/HostingRoutesProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\IntegrationsProviderTest' => array(
 		'version' => 'dev-main',

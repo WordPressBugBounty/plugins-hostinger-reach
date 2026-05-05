@@ -138,6 +138,10 @@ withDefaults(defineProps<Props>(), {
 			justify-content: flex-start;
 			margin: 0;
 		}
+
+		.banner-button {
+			align-self: flex-start;
+		}
 	}
 
 	&__image {

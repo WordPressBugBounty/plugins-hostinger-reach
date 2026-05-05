@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -451,3 +451,10 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 
 - Tweak: Disable submit button if Reach is not connected
 - Fix: Prevent Auth URL opening in new tab
+
+1.4.9 (2026-05-05)
+
+- Feature: Check Domain status in Connection page
+- Feature: Amplitude events integrtation
+- Tweak: Update Reach Forms coming soon banner
+- Fix: Missing Forms heading column in import modal

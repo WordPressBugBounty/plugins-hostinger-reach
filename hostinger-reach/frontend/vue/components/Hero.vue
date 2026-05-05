@@ -15,13 +15,27 @@ interface Props {
 	isConnectedToAnotherSite?: boolean;
 	isButtonLoading?: boolean;
 	isTemporary?: boolean;
+	isNotActive?: boolean;
 	domain: string;
 	onGetStarted: () => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	isConnectedToAnotherSite: false,
-	isButtonLoading: false
+	isButtonLoading: false,
+	isNotActive: false
+});
+
+const connectButtonText = computed(() => {
+	if (props.isTemporary) {
+		return translate('hostinger_reach_welcome_view_temporary_button');
+	}
+
+	if (props.isNotActive) {
+		return translate('hostinger_reach_welcome_view_not_active_button');
+	}
+
+	return translate('hostinger_reach_welcome_view_start_button');
 });
 </script>
 
@@ -69,9 +83,13 @@ const props = withDefaults(defineProps<Props>(), {
 				</HText>
 
 				<HSnackbar
-					v-if="isTemporary"
+					v-if="!isButtonLoading && (isTemporary || isNotActive)"
 					variant="warning"
-					:description="translate('hostinger_reach_welcome_view_description_temporary')"
+					:description="
+						isTemporary
+							? translate('hostinger_reach_welcome_view_description_temporary')
+							: translate('hostinger_reach_welcome_view_description_not_active')
+					"
 					:show-close-icon="false"
 					:hide-icon="false"
 					class="hero__warning-snackbar"
@@ -83,25 +101,21 @@ const props = withDefaults(defineProps<Props>(), {
 					aria-live="polite"
 				/>
 				<HButton
-					v-if="!props.isConnectedToAnotherSite"
+					v-if="!isConnectedToAnotherSite"
 					color="primary"
 					size="small"
-					:is-loading="props.isButtonLoading"
+					:is-loading="isButtonLoading"
 					aria-describedby="hero-description"
 					aria-label="Get started with email marketing"
-					@click="props.onGetStarted"
+					@click="onGetStarted"
 				>
-					{{
-						isTemporary
-							? translate('hostinger_reach_welcome_view_temporary_button')
-							: translate('hostinger_reach_welcome_view_start_button')
-					}}
+					{{ connectButtonText }}
 				</HButton>
 			</div>
 			<div class="hero__footer" role="contentinfo" aria-label="Site information">
 				<HIcon class="h-mr-8" name="ic-globe-16" color="neutral--300" aria-hidden="true" />
 				<HText as="p" variant="body-2-bold" color="neutral--500">
-					{{ props.domain }}
+					{{ domain }}
 				</HText>
 			</div>
 		</HCard>

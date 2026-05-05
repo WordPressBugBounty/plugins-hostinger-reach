@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import FAQ from '@/components/FAQ.vue';
 import Hero from '@/components/Hero.vue';
+import { useHostingData } from '@/composables/useHostingData';
 import { useToast } from '@/composables/useToast';
 import { connectFaqData } from '@/data/faq';
 import { reachRepo } from '@/data/repositories/reachRepo';
@@ -15,11 +16,14 @@ const PREVIEW_DOMAINS = /hostingersite\.com/i;
 const { showError } = useToast();
 
 const generalDataStore = useGeneralDataStore();
+const { domainDetails, loadDomainDetails, isLoading } = useHostingData();
 
 const isConnectedToAnotherSite = ref(false);
 const isButtonLoading = ref(false);
 const domain = window.location.hostname;
 const rawDomain = generalDataStore.rawDomain;
+
+const isDomainActive = computed(() => !generalDataStore.isHostingerUser || domainDetails?.value?.status === 'active');
 
 const handleGetStarted = async () => {
 	isButtonLoading.value = true;
@@ -34,7 +38,7 @@ const handleGetStarted = async () => {
 		return;
 	}
 
-	if (PREVIEW_DOMAINS.test(domain)) {
+	if (PREVIEW_DOMAINS.test(domain) || !isDomainActive.value) {
 		window.open(`https://hpanel.hostinger.com/websites/${encodeURIComponent(rawDomain)}`, '_blank');
 
 		return;
@@ -46,15 +50,24 @@ const handleGetStarted = async () => {
 		showError(translate('hostinger_reach_error_message'));
 	}
 };
+
+onMounted(() => {
+	if (!generalDataStore.isHostingerUser) {
+		return;
+	}
+
+	loadDomainDetails();
+});
 </script>
 
 <template>
 	<div class="welcome-view">
 		<Hero
 			:is-connected-to-another-site="isConnectedToAnotherSite"
-			:is-button-loading="isButtonLoading"
+			:is-button-loading="isButtonLoading || isLoading"
 			:domain="domain"
 			:is-temporary="PREVIEW_DOMAINS.test(domain)"
+			:is-not-active="!isDomainActive"
 			:on-get-started="handleGetStarted"
 		/>
 		<div class="faq-wrap">
