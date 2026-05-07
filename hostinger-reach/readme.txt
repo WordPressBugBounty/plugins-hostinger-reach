@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.9
+Stable tag: 1.4.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -458,3 +458,7 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Feature: Amplitude events integrtation
 - Tweak: Update Reach Forms coming soon banner
 - Fix: Missing Forms heading column in import modal
+
+1.4.10 (2026-05-07)
+
+- Fix: Consolidate Hostinger Reach as the plugin name everywhere

@@ -7,43 +7,43 @@ $baseDir   = dirname($vendorDir);
 
 return array(
 	'Autoloader' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader.php'
 	),
 	'Autoloader_Handler' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-handler.php'
 	),
 	'Autoloader_Locator' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-autoloader-locator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadFileWriter' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadFileWriter.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\AutoloadProcessor' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadProcessor.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\CustomAutoloaderPlugin' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/CustomAutoloaderPlugin.php'
 	),
 	'Automattic\\Jetpack\\Autoloader\\ManifestGenerator' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/ManifestGenerator.php'
 	),
 	'Container' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-container.php'
 	),
 	'Hook_Manager' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-hook-manager.php'
 	),
 	'Hostinger\\Amplitude\\ActionDispatcher' => array(
@@ -771,43 +771,43 @@ return array(
 		'path'    => $baseDir . '/src/Tracking/AbandonedCarts.php'
 	),
 	'Hostinger\\Surveys\\Ajax' => array(
-		'version' => '1.1.17.0',
+		'version' => '1.1.20.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Ajax.php'
 	),
 	'Hostinger\\Surveys\\Assets' => array(
-		'version' => '1.1.17.0',
+		'version' => '1.1.20.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Assets.php'
 	),
 	'Hostinger\\Surveys\\Loader' => array(
-		'version' => '1.1.17.0',
+		'version' => '1.1.20.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Loader.php'
 	),
 	'Hostinger\\Surveys\\Rest' => array(
-		'version' => '1.1.17.0',
+		'version' => '1.1.20.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Rest.php'
 	),
 	'Hostinger\\Surveys\\SurveyLoader' => array(
-		'version' => '1.1.17.0',
+		'version' => '1.1.20.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/SurveyLoader.php'
 	),
 	'Hostinger\\Surveys\\SurveyManager' => array(
-		'version' => '1.1.17.0',
+		'version' => '1.1.20.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-surveys/src/SurveyManager.php'
 	),
 	'Hostinger\\WpHelper\\Config' => array(
-		'version' => '1.0.12.0',
+		'version' => '1.0.14.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-helper/src/Config.php'
 	),
 	'Hostinger\\WpHelper\\Constants' => array(
-		'version' => '1.0.12.0',
+		'version' => '1.0.14.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-helper/src/Constants.php'
 	),
 	'Hostinger\\WpHelper\\Requests\\Client' => array(
-		'version' => '1.0.12.0',
+		'version' => '1.0.14.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-helper/src/Requests/Client.php'
 	),
 	'Hostinger\\WpHelper\\Utils' => array(
-		'version' => '1.0.12.0',
+		'version' => '1.0.14.0',
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-helper/src/Utils.php'
 	),
 	'Hostinger\\WpMenuManager\\Assets' => array(
@@ -823,27 +823,27 @@ return array(
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-menu-manager/src/Menus.php'
 	),
 	'Latest_Autoloader_Guard' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-latest-autoloader-guard.php'
 	),
 	'Manifest_Reader' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-manifest-reader.php'
 	),
 	'PHP_Autoloader' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-php-autoloader.php'
 	),
 	'Path_Processor' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-path-processor.php'
 	),
 	'Plugin_Locator' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-plugin-locator.php'
 	),
 	'Plugins_Handler' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-plugins-handler.php'
 	),
 	'Psr\\Container\\ContainerExceptionInterface' => array(
@@ -859,15 +859,15 @@ return array(
 		'path'    => $vendorDir . '/psr/container/src/NotFoundExceptionInterface.php'
 	),
 	'Shutdown_Handler' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-shutdown-handler.php'
 	),
 	'Version_Loader' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-version-loader.php'
 	),
 	'Version_Selector' => array(
-		'version' => '5.0.15',
+		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-version-selector.php'
 	),
 );

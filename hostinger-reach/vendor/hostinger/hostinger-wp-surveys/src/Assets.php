@@ -26,6 +26,10 @@ class Assets
             $jsVersion = filemtime( $jsScriptPath ) ?: $defaultVersion;
         }
 
+        if ( empty( $pluginInfo ) ) {
+            $pluginInfo = get_stylesheet_directory_uri();
+        }
+
         wp_enqueue_script( 'hostinger_surveys_scripts', $pluginInfo . $this->assetsPath .'/js/hostinger-surveys.min.js', [ 'jquery' ], $jsVersion, [ 'strategy' => 'defer' ] );
 
         wp_localize_script( 'hostinger_surveys_scripts', 'hostingerContainer', [

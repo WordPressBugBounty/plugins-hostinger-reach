@@ -50,6 +50,7 @@ class Ajax
         $survey_results  = isset($_POST['survey_results']) ? sanitize_text_field($_POST['survey_results']) : '';
         $survey_location = isset($_POST['survey_location']) ? sanitize_text_field($_POST['survey_location']) : '';
         $survey_id = isset($_POST['survey_id']) ? sanitize_text_field($_POST['survey_id']) : '';
+        $is_mobile = isset($_POST['is_mobile']) ? (int) $_POST['is_mobile'] : 0;
         $surveys         = new HostingerSurveys($this->helper, $this->configHandler, $this->surveysRest);
 
         $security_check = $this->requestSecurityCheck($nonce);
@@ -59,7 +60,7 @@ class Ajax
         }
 
         $decoded_json = json_decode(stripslashes($survey_results), true);
-        $surveys->submitSurveyAnswers($decoded_json, $survey_id, $survey_location);
+        $surveys->submitSurveyAnswers($decoded_json, $survey_id, $survey_location, $is_mobile);
     }
 
     public function hideSurvey(): void

@@ -296,3 +296,7 @@ Changelog
 - Feature: Amplitude events integrtation
 - Tweak: Update Reach Forms coming soon banner
 - Fix: Missing Forms heading column in import modal
+
+1.4.10 (2026-05-07)
+
+- Fix: Consolidate Hostinger Reach as the plugin name everywhere

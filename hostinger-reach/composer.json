@@ -63,7 +63,9 @@
     },
     "scripts": {
         "phpunit": "phpunit",
-        "phpcs": "./vendor/bin/phpcs"
+        "phpcs": "./vendor/bin/phpcs",
+        "post-install-cmd": "bash bin/cleanup-hostinger-vendor.sh",
+        "post-update-cmd": "bash bin/cleanup-hostinger-vendor.sh"
     },
     "require": {
         "automattic/jetpack-autoloader": "^5.0",

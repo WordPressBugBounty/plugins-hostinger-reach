@@ -149,10 +149,11 @@ class SurveyManager
         }
     }
 
-    public function submitSurveyAnswers(array $answers, string $surveyId, string $surveyLocation): void
+    public function submitSurveyAnswers(array $answers, string $surveyId, string $surveyLocation, int $is_mobile = 0): void
     {
         $data = [
             'identifier' => self::CLIENT_SURVEY_IDENTIFIER,
+            'is_mobile'  => $is_mobile,
             'answers'    => [
                 [
                     'question_slug' => self::LOCATION_SLUG,

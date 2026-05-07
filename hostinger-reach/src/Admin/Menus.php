@@ -47,7 +47,7 @@ class Menus {
     public function add_sub_menu_page( array $submenus ): array {
         $submenus[] = array(
             'page_title' => $this->get_title(),
-            'menu_title' => __( 'Reach', 'hostinger-reach' ),
+            'menu_title' => __( 'Hostinger Reach', 'hostinger-reach' ),
             'capability' => 'manage_options',
             'menu_slug'  => 'hostinger-reach',
             'callback'   => array( $this, 'render_plugin_content' ),
