@@ -392,11 +392,11 @@ class ReachApiHandler extends ApiHandler {
         );
 
         if ( ! empty( $data['name'] ) ) {
-            $contact['name'] = $data['name'];
+            $contact['name'] = $this->ensure_utf8( (string) $data['name'] );
         }
 
         if ( ! empty( $data['surname'] ) ) {
-            $contact['surname'] = $data['surname'];
+            $contact['surname'] = $this->ensure_utf8( (string) $data['surname'] );
         }
 
         $metadata = $data['metadata'] ?? array();
@@ -414,6 +414,17 @@ class ReachApiHandler extends ApiHandler {
         $contact['metadata'] = $metadata;
 
         return $contact;
+    }
+
+    private function ensure_utf8( string $value ): string {
+        if ( $value === '' || ! function_exists( 'mb_check_encoding' ) || mb_check_encoding( $value, 'UTF-8' ) ) {
+            return $value;
+        }
+
+        $detected  = mb_detect_encoding( $value, array( 'UTF-8', 'Windows-1252', 'ISO-8859-1' ), true );
+        $converted = mb_convert_encoding( $value, 'UTF-8', $detected !== false ? $detected : 'ISO-8859-1' );
+
+        return is_string( $converted ) ? $converted : $value;
     }
 
     private function set_api_base_name(): void {

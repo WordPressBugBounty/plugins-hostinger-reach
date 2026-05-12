@@ -24,16 +24,38 @@ if ( ! DEFINED( 'ABSPATH' ) ) {
 
 class ElementorIntegration extends IntegrationWithForms implements IntegrationInterface {
 
-    public const INTEGRATION_NAME  = 'elementor';
-    public const AUTOLOAD_META_KEY = 'hostinger_reach_add_elementor_widget';
+    public const INTEGRATION_NAME            = 'elementor';
+    public const AUTOLOAD_META_KEY           = 'hostinger_reach_add_elementor_widget';
+    public const ADD_BLOCK_QUERY_ARG         = 'hostinger_reach_add_block';
+    public const ADD_BLOCK_NONCE             = 'hostinger_reach_add_block';
+    public const EDITOR_SCROLL_SCRIPT_HANDLE = 'hostinger-reach-elementor-editor-scroll';
+    public const EDITOR_SCROLL_SCRIPT_FILE   = 'elementor-editor-scroll.js';
+
     protected SubscriptionFormElementorWidget $widget;
 
     public function init(): void {
         parent::init();
         add_action( 'hostinger_reach_integration_activated', array( $this, 'on_integration_activated' ) );
         add_action( 'wp_insert_post', array( $this, 'flag_new_elementor_post' ), 10, 3 );
+        add_action( 'admin_init', array( $this, 'flag_existing_elementor_post' ) );
         add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
+        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scroll_script' ) );
         add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
+    }
+
+    public function enqueue_editor_scroll_script(): void {
+        $script_path = HOSTINGER_REACH_PLUGIN_DIR . 'frontend/dist/' . self::EDITOR_SCROLL_SCRIPT_FILE;
+        if ( ! file_exists( $script_path ) ) {
+            return;
+        }
+
+        wp_enqueue_script(
+            self::EDITOR_SCROLL_SCRIPT_HANDLE,
+            Functions::get_frontend_url() . self::EDITOR_SCROLL_SCRIPT_FILE,
+            array(),
+            filemtime( $script_path ),
+            true
+        );
     }
 
     public function active_integration_hooks(): void {
@@ -92,7 +114,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         if ( class_exists( 'Elementor\Core\Documents_Manager' ) ) {
             $add_form_url = add_query_arg(
                 array(
-                    self::AUTOLOAD_META_KEY => '1',
+                    self::ADD_BLOCK_QUERY_ARG => '1',
                 ),
                 Documents_Manager::get_create_new_post_url()
             );
@@ -107,7 +129,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
                 'file'                => 'elementor.php',
                 'admin_url'           => 'admin.php?page=elementor',
                 'add_form_url'        => $add_form_url,
-                'edit_url'            => 'post.php?post={post_id}&action=elementor',
+                'edit_url'            => 'post.php?post={post_id}&action=elementor#elementor-element-{form_id}',
                 'url'                 => 'https://wordpress.org/plugins/elementor/',
                 'download_url'        => 'https://downloads.wordpress.org/plugin/elementor.zip',
                 'title'               => __( 'Elementor', 'hostinger-reach' ),
@@ -148,11 +170,56 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             return;
         }
 
-        if ( empty( $_GET[ self::AUTOLOAD_META_KEY ] ) ) {
+        if ( empty( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) && empty( $_GET[ self::AUTOLOAD_META_KEY ] ) ) {
+            return;
+        }
+
+        $nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+        if ( ! wp_verify_nonce( $nonce, 'elementor_action_new_post' ) ) {
+            return;
+        }
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
             return;
         }
 
         update_post_meta( $post_id, self::AUTOLOAD_META_KEY, '1' );
+    }
+
+    public function flag_existing_elementor_post(): void {
+        if ( empty( $_GET['action'] ) || $_GET['action'] !== 'elementor' ) {
+            return;
+        }
+
+        if ( empty( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) ) {
+            return;
+        }
+
+        $post_id = isset( $_GET['post'] ) ? (int) $_GET['post'] : 0;
+        if ( ! $post_id ) {
+            return;
+        }
+
+        $nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+        if ( ! wp_verify_nonce( $nonce, self::ADD_BLOCK_NONCE ) ) {
+            return;
+        }
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+
+        if ( ! $this->is_elementor_post( $post_id ) ) {
+            return;
+        }
+
+        update_post_meta( $post_id, self::AUTOLOAD_META_KEY, '1' );
+    }
+
+    public function is_elementor_post( int $post_id ): bool {
+        $edit_mode = get_post_meta( $post_id, '_elementor_edit_mode', true );
+
+        return $edit_mode === 'builder';
     }
 
     public function maybe_insert_reach_widget(): void {
@@ -165,7 +232,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             return;
         }
 
-        $should_add_widget = get_post_meta( $post_id, self::AUTOLOAD_META_KEY, true ) === '1' || ! empty( $_GET['hostinger_reach_add_block'] );
+        $should_add_widget = get_post_meta( $post_id, self::AUTOLOAD_META_KEY, true ) === '1';
         if ( ! $should_add_widget ) {
             return;
         }
@@ -176,9 +243,6 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         }
 
         $elements = $document->get_elements_data();
-        if ( ! empty( $elements ) ) {
-            return;
-        }
 
         $widget_data = array(
             array(
@@ -209,7 +273,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             ),
         );
 
-        $document->save( array( 'elements' => $widget_data ) );
+        $document->save( array( 'elements' => array_merge( $elements, $widget_data ) ) );
         delete_post_meta( $post_id, self::AUTOLOAD_META_KEY );
     }
 

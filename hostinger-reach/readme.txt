@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.10
+Stable tag: 1.4.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -462,3 +462,10 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 1.4.10 (2026-05-07)
 
 - Fix: Consolidate Hostinger Reach as the plugin name everywhere
+
+1.4.11 (2026-05-12)
+
+- Fix: Add Elementor Reach Form automatically
+- Tweak: Change UI for Hero in Connection page
+- Tweak: Make Elementor always connected
+- Fix: Update Forminator logo

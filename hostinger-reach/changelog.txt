@@ -300,3 +300,10 @@ Changelog
 1.4.10 (2026-05-07)
 
 - Fix: Consolidate Hostinger Reach as the plugin name everywhere
+
+1.4.11 (2026-05-12)
+
+- Fix: Add Elementor Reach Form automatically
+- Tweak: Change UI for Hero in Connection page
+- Tweak: Make Elementor always connected
+- Fix: Update Forminator logo

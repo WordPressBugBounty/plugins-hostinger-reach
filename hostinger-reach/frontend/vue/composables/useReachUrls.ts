@@ -60,11 +60,6 @@ export const useReachUrls = () => {
 				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=automation`
 				: `https://${reachBaseDomain.value}/automation`
 		),
-		reachFormsLink: computed(() =>
-			resourceId.value
-				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=forms`
-				: `https://${reachBaseDomain.value}/forms`
-		),
 		reachBaseDomain,
 		hpanelBaseDomain
 	};

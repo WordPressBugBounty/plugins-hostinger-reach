@@ -24,14 +24,8 @@ import type { Form } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 const { status, loadOverviewData } = useOverviewData();
-const {
-	reachDashboardLink,
-	reachYourPlanLink,
-	reachContactsLink,
-	reachSegmentsLink,
-	reachAutomationsLink,
-	reachFormsLink
-} = useReachUrls();
+const { reachDashboardLink, reachYourPlanLink, reachContactsLink, reachSegmentsLink, reachAutomationsLink } =
+	useReachUrls();
 const { showError } = useToast();
 
 const { openModal } = useModal();
@@ -175,12 +169,16 @@ const handleEditForm = (form: Form) => {
 
 	let editUrl = integration.editUrl;
 
-	if (editUrl.includes('{post_id}')) {
-		editUrl = editUrl.replace('{post_id}', form.post?.ID.toString() ?? '');
-	} else if (editUrl.includes('{form_id}')) {
-		editUrl = editUrl.replace('{form_id}', form.formId);
-	} else if (editUrl.includes('{post_name}')) {
-		editUrl = editUrl.replace('{post_name}', form.post?.postName.toString() ?? '');
+	const placeholders: Record<string, string> = {
+		'{post_id}': form.post?.ID.toString() ?? '',
+		'{form_id}': form.formId,
+		'{post_name}': form.post?.postName.toString() ?? ''
+	};
+
+	for (const [token, value] of Object.entries(placeholders)) {
+		if (editUrl.includes(token)) {
+			editUrl = editUrl.replaceAll(token, value);
+		}
 	}
 
 	if (form.formId === 'ai-theme-footer-form') {
@@ -227,10 +225,6 @@ const wooCommerceConnected = computed(
 
 const isAutomation = (form: Form): boolean => form?.formId?.includes('.') ?? false;
 
-const handleTryFormBuilderClick = () => {
-	window.open(reachFormsLink.value, '_blank');
-};
-
 const shouldShowConnect = computed(
 	() =>
 		integrationsStore?.activeIntegrations?.filter((integration) => integration.type === TABS_KEYS.OVERVIEW_TAB_FORMS)
@@ -258,8 +252,7 @@ const shouldShowConnect = computed(
 			<Banner
 				:title="translate('hostinger_reach_overview_banner_title')"
 				:description="translate('hostinger_reach_overview_banner_description')"
-				:button-text="translate('hostinger_reach_overview_banner_button_text')"
-				:on-button-click="handleTryFormBuilderClick"
+				:label="translate('hostinger_reach_overview_banner_label')"
 				align="left"
 				:background-image="reachOverviewBannerBackground as unknown as string"
 			/>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { HNotificationRow } from '@hostinger/hcomponents';
 import { computed } from 'vue';
 
-import reachBackgroundImage from '@/assets/images/backgrounds/email-reach-background.svg';
-import reachBackgroundImageOverlay from '@/assets/images/backgrounds/email-reach-background-image.png';
+import reachBackgroundImage from '@/assets/images/backgrounds/reach-welcome-background.png';
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { translate } from '@/utils/translate';
@@ -24,18 +24,6 @@ const props = withDefaults(defineProps<Props>(), {
 	isConnectedToAnotherSite: false,
 	isButtonLoading: false,
 	isNotActive: false
-});
-
-const connectButtonText = computed(() => {
-	if (props.isTemporary) {
-		return translate('hostinger_reach_welcome_view_temporary_button');
-	}
-
-	if (props.isNotActive) {
-		return translate('hostinger_reach_welcome_view_not_active_button');
-	}
-
-	return translate('hostinger_reach_welcome_view_start_button');
 });
 </script>
 
@@ -67,50 +55,48 @@ const connectButtonText = computed(() => {
 					class="hero__background"
 					role="img"
 				/>
-				<img
-					:src="reachBackgroundImageOverlay"
-					:alt="translate('hostinger_reach_hero_overlay_alt')"
-					class="hero__overlay"
-					role="img"
-				/>
 			</div>
-			<div class="hero__content">
-				<HText id="hero-heading" as="h1" variant="heading-1">
-					{{ translate('hostinger_reach_welcome_view_title') }}
-				</HText>
-				<HText id="hero-description" as="p" variant="body-2 h-mb-24">
-					{{ translate('hostinger_reach_welcome_view_description') }}
-				</HText>
-
-				<HSnackbar
-					v-if="!isButtonLoading && (isTemporary || isNotActive)"
+			<div
+				style="
+					background-image: url('/wp-content/plugins/hostinger-reach/frontend/dist/assets/reach-welcome-background.png');
+				"
+				class="hero__content"
+			>
+				<div class="hero__content-wrapper">
+					<HText id="hero-heading" as="h1" variant="heading-1">
+						{{ translate('hostinger_reach_welcome_view_title') }}
+					</HText>
+					<HText id="hero-description" as="p" variant="body-2 h-mb-24">
+						{{ translate('hostinger_reach_welcome_view_description') }}
+					</HText>
+					<HButton
+						v-if="!isConnectedToAnotherSite && !isTemporary && !isNotActive"
+						color="primary"
+						size="small"
+						:is-loading="props.isButtonLoading"
+						aria-describedby="hero-description"
+						aria-label="Get started with email marketing"
+						@click="onGetStarted"
+					>
+						{{ translate('hostinger_reach_welcome_view_start_button') }}
+					</HButton>
+				</div>
+			</div>
+			<div v-if="!isButtonLoading && (isTemporary || isNotActive)" class="hero__info">
+				<HNotificationRow
 					variant="warning"
 					:description="
 						isTemporary
 							? translate('hostinger_reach_welcome_view_description_temporary')
 							: translate('hostinger_reach_welcome_view_description_not_active')
 					"
-					:show-close-icon="false"
-					:hide-icon="false"
-					class="hero__warning-snackbar"
-					icon-color="warning--700"
-					icon="ic-warning-circle-filled-24"
-					border-color="warning--500"
-					background-color="warning--100"
-					role="alert"
-					aria-live="polite"
+					:primary-action-text="
+						isTemporary
+							? translate('hostinger_reach_welcome_view_temporary_button')
+							: translate('hostinger_reach_welcome_view_not_active_button')
+					"
+					@primary-action-click="onGetStarted"
 				/>
-				<HButton
-					v-if="!isConnectedToAnotherSite"
-					color="primary"
-					size="small"
-					:is-loading="isButtonLoading"
-					aria-describedby="hero-description"
-					aria-label="Get started with email marketing"
-					@click="onGetStarted"
-				>
-					{{ connectButtonText }}
-				</HButton>
 			</div>
 			<div class="hero__footer" role="contentinfo" aria-label="Site information">
 				<HIcon class="h-mr-8" name="ic-globe-16" color="neutral--300" aria-hidden="true" />
@@ -137,7 +123,7 @@ const connectButtonText = computed(() => {
 
 	@media (max-width: 768px) {
 		flex-direction: column;
-		text-align: center;
+		text-align: left;
 		padding: 24px 16px;
 		gap: 32px;
 		margin: 20px auto 16px auto;
@@ -179,15 +165,17 @@ const connectButtonText = computed(() => {
 
 	&__content {
 		flex: 1;
-		padding: 24px 28px 0px 28px;
+		padding: 28px;
 		width: 100%;
+		border-radius: 20px;
+		background-size: cover;
+		background-position: right;
+		background-repeat: no-repeat;
 
 		@media (max-width: 768px) {
-			padding: 20px 20px 0px 20px;
-		}
-
-		@media (max-width: 480px) {
-			padding: 16px 16px 0px 16px;
+			padding: 20px;
+			background: none;
+			border-radius: 0;
 		}
 	}
 
@@ -197,13 +185,11 @@ const connectButtonText = computed(() => {
 		justify-content: center;
 		position: relative;
 		overflow: hidden;
+		margin-bottom: 20px;
+		border-bottom: 1px solid var(--neutral--50);
 
-		@media (max-width: 768px) {
-			margin-bottom: 20px;
-		}
-
-		@media (max-width: 480px) {
-			margin-bottom: 16px;
+		@media (min-width: 768px) {
+			display: none;
 		}
 	}
 
@@ -214,51 +200,25 @@ const connectButtonText = computed(() => {
 		border-top-left-radius: 20px;
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
+	}
 
-		@media (max-width: 768px) {
-			border-top-right-radius: 20px;
-			border-top-left-radius: 20px;
-		}
+	&__content-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 
-		@media (max-width: 480px) {
-			border-top-right-radius: 20px;
-			border-top-left-radius: 20px;
+		@media (min-width: 768px) {
+			width: 50%;
 		}
 	}
 
-	&__overlay {
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		height: auto;
-		border-radius: 16px;
-		z-index: 1;
-		max-width: 90%;
-		max-height: 100%;
-		object-fit: contain;
-
-		@media (max-width: 768px) {
-			border-radius: 12px;
-			max-width: 85%;
-			max-height: 95%;
-		}
-
-		@media (max-width: 480px) {
-			border-radius: 8px;
-			max-width: 80%;
-			max-height: 90%;
-		}
-
-		@media (max-width: 320px) {
-			max-width: 75%;
-			max-height: 85%;
-		}
+	&__info {
+		padding: 24px;
+		border-top: 1px solid var(--neutral--50);
 	}
 
 	&__footer {
 		width: 100%;
-		margin-top: 24px;
 		display: flex;
 		align-items: center;
 		padding: 16px 24px 20px 24px;
@@ -267,13 +227,7 @@ const connectButtonText = computed(() => {
 		border-bottom-right-radius: 20px;
 
 		@media (max-width: 768px) {
-			padding: 12px 16px 16px 16px;
-			margin-top: 16px;
-		}
-
-		@media (max-width: 480px) {
-			padding: 10px 12px 14px 12px;
-			margin-top: 12px;
+			padding: 16px;
 		}
 	}
 
@@ -344,7 +298,7 @@ const connectButtonText = computed(() => {
 	}
 
 	&__header-title {
-		margin: 0;
+		margin-bottom: 12px;
 		color: var(--neutral--700);
 	}
 
