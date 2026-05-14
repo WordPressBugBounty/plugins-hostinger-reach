@@ -307,3 +307,8 @@ Changelog
 - Tweak: Change UI for Hero in Connection page
 - Tweak: Make Elementor always connected
 - Fix: Update Forminator logo
+
+1.4.12 (2026-05-14)
+
+- Fix: Avoid Domain status check if no status is received
+- Fix: Fatal when Elementor is not installed

@@ -23,7 +23,9 @@ const isButtonLoading = ref(false);
 const domain = window.location.hostname;
 const rawDomain = generalDataStore.rawDomain;
 
-const isDomainActive = computed(() => !generalDataStore.isHostingerUser || domainDetails?.value?.status === 'active');
+const isDomainActive = computed(
+	() => (!generalDataStore.isHostingerUser && domainDetails?.value?.status) || domainDetails?.value?.status === 'active'
+);
 
 const handleGetStarted = async () => {
 	isButtonLoading.value = true;

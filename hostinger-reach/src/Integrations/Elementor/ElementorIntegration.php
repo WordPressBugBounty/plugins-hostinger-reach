@@ -36,11 +36,6 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     public function init(): void {
         parent::init();
         add_action( 'hostinger_reach_integration_activated', array( $this, 'on_integration_activated' ) );
-        add_action( 'wp_insert_post', array( $this, 'flag_new_elementor_post' ), 10, 3 );
-        add_action( 'admin_init', array( $this, 'flag_existing_elementor_post' ) );
-        add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
-        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scroll_script' ) );
-        add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
     }
 
     public function enqueue_editor_scroll_script(): void {
@@ -62,6 +57,11 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         add_action( 'transition_post_status', array( $this, 'handle_transition_post_status' ), 10, 3 );
         add_filter( 'hostinger_reach_get_group', array( $this, 'filter_hostinger_reach_get_group' ), 10, 2 );
         add_action( 'elementor_pro/forms/new_record', array( $this, 'handle_elementor_pro_new_record' ) );
+        add_action( 'wp_insert_post', array( $this, 'flag_new_elementor_post' ), 10, 3 );
+        add_action( 'admin_init', array( $this, 'flag_existing_elementor_post' ) );
+        add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
+        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scroll_script' ) );
+        add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
     }
 
     public function on_integration_activated( string $integration_name ): void {
@@ -81,6 +81,9 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     public function register_new_widgets(): void {
+        if ( ! class_exists( 'Elementor\Plugin' ) ) {
+            return;
+        }
         ElementorPlugin::instance()->widgets_manager->register( $this->get_widget() );
     }
 
@@ -223,7 +226,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     public function maybe_insert_reach_widget(): void {
-        if ( ! class_exists( 'Elementor\Utils' ) || ! class_exists( 'Elementor\Plugin' ) ) {
+        if ( ! $this->is_elementor_installed() ) {
             return;
         }
 
@@ -393,7 +396,10 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         update_option( 'elementor_onboarded', 1 );
     }
 
-    private function get_widget(): Widget_Base {
+    private function get_widget(): ?Widget_Base {
+        if ( ! $this->is_elementor_installed() ) {
+            return null;
+        }
         return new SubscriptionFormElementorWidget();
     }
 
@@ -429,6 +435,9 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     private function get_elementor_form_ids_from_content( string $content ): array {
+        if ( ! $this->is_elementor_installed() ) {
+            return array();
+        }
         $form_ids = array();
         $pattern  = '/<form id="' . SubscriptionFormElementorWidget::FORM_ID_PREFIX . '(\d+)"/';
         preg_match_all( $pattern, $content, $matches );
@@ -471,6 +480,9 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     private function is_elementor_form_id( string $form_id ): bool {
+        if ( ! $this->is_elementor_installed() ) {
+            return false;
+        }
         return str_starts_with( $form_id, SubscriptionFormElementorWidget::FORM_ID_PREFIX );
     }
 
@@ -529,5 +541,9 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         $post_ids = get_posts( $args );
 
         return $post_ids;
+    }
+
+    private function is_elementor_installed(): bool {
+        return class_exists( 'Elementor\Plugin' ) && class_exists( 'Elementor\Widget_Base' ) && class_exists( 'Elementor\Utils' );
     }
 }
