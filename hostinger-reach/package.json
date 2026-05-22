@@ -31,7 +31,7 @@
     ]
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.52.3"
+    "@rollup/rollup-linux-x64-gnu": "4.60.3"
   },
   "devDependencies": {
     "@hostinger/wp-plugin-toolkit": "^1.1.0",
@@ -40,9 +40,9 @@
     "@vitest/coverage-v8": "^4.0.8",
     "@vue/test-utils": "^2.4.6",
     "@wordpress/babel-preset-default": "^8.34.0",
-    "@wordpress/scripts": "^31.6.0",
-    "copy-webpack-plugin": "^13.0.1",
-    "css-minimizer-webpack-plugin": "^5.0.1",
+    "@wordpress/scripts": "^32.1.0",
+    "copy-webpack-plugin": "^14.0.0",
+    "css-minimizer-webpack-plugin": "^8.0.0",
     "eslint": "^9.32.0",
     "husky": "^9.1.7",
     "jsdom": "^25.0.1",
@@ -52,12 +52,12 @@
     "sass-loader": "^16.0.5",
     "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "^9.5.2",
-    "tsx": "^4.20.3",
+    "tsx": "^4.22.0",
     "typescript": "^5.8.3",
     "vite": "^7.3.2",
     "vitest": "^4.0.8",
     "vue": "^3.5.17",
-    "vue-loader": "^16.8.3",
+    "vue-loader": "^17.4.2",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1"
   },
@@ -80,8 +80,8 @@
     "@wordpress/block-editor": "^15.7.0",
     "@wordpress/blocks": "^15.7.0",
     "@wordpress/components": "^33.0.0",
-    "@wordpress/jest-console": "^8.34.0",
-    "@wordpress/server-side-render": "^6.10.0",
+    "@wordpress/jest-console": "^8.46.0",
+    "@wordpress/server-side-render": "^6.22.0",
     "esbuild": "^0.28.0",
     "html-entities": "^2.6.0",
     "pinia": "^2.2.6",

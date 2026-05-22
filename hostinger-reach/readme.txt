@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.4.12
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -474,3 +474,8 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 
 - Fix: Avoid Domain status check if no status is received
 - Fix: Fatal when Elementor is not installed
+
+1.5.0 (2026-05-21)
+
+- Tweak: Improve UI for Mobile version
+- Feature: Support for manually entering API Key

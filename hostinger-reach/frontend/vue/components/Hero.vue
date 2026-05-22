@@ -69,17 +69,20 @@ const props = withDefaults(defineProps<Props>(), {
 					<HText id="hero-description" as="p" variant="body-2 h-mb-24">
 						{{ translate('hostinger_reach_welcome_view_description') }}
 					</HText>
-					<HButton
-						v-if="!isConnectedToAnotherSite && !isTemporary && !isNotActive"
-						color="primary"
-						size="small"
-						:is-loading="props.isButtonLoading"
-						aria-describedby="hero-description"
-						aria-label="Get started with email marketing"
-						@click="onGetStarted"
-					>
-						{{ translate('hostinger_reach_welcome_view_start_button') }}
-					</HButton>
+					<template v-if="!isConnectedToAnotherSite && !isTemporary && !isNotActive">
+						<div class="hero__actions">
+							<HButton
+								color="primary"
+								size="small"
+								:is-loading="props.isButtonLoading"
+								aria-describedby="hero-description"
+								:aria-label="translate('hostinger_reach_welcome_view_start_button')"
+								@click="onGetStarted"
+							>
+								{{ translate('hostinger_reach_welcome_view_start_button') }}
+							</HButton>
+						</div>
+					</template>
 				</div>
 			</div>
 			<div v-if="!isButtonLoading && (isTemporary || isNotActive)" class="hero__info">
@@ -173,7 +176,7 @@ const props = withDefaults(defineProps<Props>(), {
 		background-repeat: no-repeat;
 
 		@media (max-width: 768px) {
-			padding: 20px;
+			padding: 24px 24px 0;
 			background: none;
 			border-radius: 0;
 		}
@@ -185,7 +188,7 @@ const props = withDefaults(defineProps<Props>(), {
 		justify-content: center;
 		position: relative;
 		overflow: hidden;
-		margin-bottom: 20px;
+		margin-bottom: 0;
 		border-bottom: 1px solid var(--neutral--50);
 
 		@media (min-width: 768px) {
@@ -209,12 +212,60 @@ const props = withDefaults(defineProps<Props>(), {
 
 		@media (min-width: 768px) {
 			width: 50%;
+			max-width: 345px;
 		}
 	}
 
 	&__info {
 		padding: 24px;
 		border-top: 1px solid var(--neutral--50);
+
+		@media (max-width: 768px) {
+			padding-top: 0;
+			padding-bottom: 24px;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	&__manual-link {
+		appearance: none;
+		background: transparent;
+		border: 0;
+		color: var(--primary--500);
+		cursor: pointer;
+		font: inherit;
+		text-decoration: underline;
+	}
+
+	&__api-key-box {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		max-width: 420px;
+	}
+
+	&__api-key-label {
+		color: var(--neutral--700);
+		font-weight: 600;
+	}
+
+	&__api-key-input {
+		width: 100%;
+		border: 1px solid var(--neutral--200);
+		border-radius: 8px;
+		padding: 8px 12px;
+		font-size: 14px;
+	}
+
+	&__api-actions {
+		display: flex;
+		gap: 12px;
+		align-items: center;
 	}
 
 	&__footer {
@@ -307,13 +358,15 @@ const props = withDefaults(defineProps<Props>(), {
 	}
 }
 
-:deep(.hero .h-card) {
-	background: var(--neutral--0);
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	padding: 0;
+:deep(.h-card) {
 	width: 100%;
+}
+
+:deep(.h-notification-row) {
+	border: 1px solid #ffd28c;
+	@media (max-width: 768px) {
+		padding: 0;
+	}
 }
 
 @media (max-width: 320px) {

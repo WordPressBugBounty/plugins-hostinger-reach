@@ -312,3 +312,8 @@ Changelog
 
 - Fix: Avoid Domain status check if no status is received
 - Fix: Fatal when Elementor is not installed
+
+1.5.0 (2026-05-21)
+
+- Tweak: Improve UI for Mobile version
+- Feature: Support for manually entering API Key

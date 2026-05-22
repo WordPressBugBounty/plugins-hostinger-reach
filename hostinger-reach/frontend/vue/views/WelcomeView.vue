@@ -4,10 +4,12 @@ import { computed, onMounted, ref } from 'vue';
 import FAQ from '@/components/FAQ.vue';
 import Hero from '@/components/Hero.vue';
 import { useHostingData } from '@/composables/useHostingData';
+import { useModal } from '@/composables/useModal';
 import { useToast } from '@/composables/useToast';
 import { connectFaqData } from '@/data/faq';
 import { reachRepo } from '@/data/repositories/reachRepo';
 import { useGeneralDataStore } from '@/stores';
+import { ModalName } from '@/types/enums/modalEnum';
 import { translate } from '@/utils/translate';
 
 const TRUSTED_AUTH_DOMAINS = /^https:\/\/auth\.hostinger\.(dev|com)/;
@@ -20,11 +22,15 @@ const { domainDetails, loadDomainDetails, isLoading } = useHostingData();
 
 const isConnectedToAnotherSite = ref(false);
 const isButtonLoading = ref(false);
+const { openModal } = useModal();
 const domain = window.location.hostname;
 const rawDomain = generalDataStore.rawDomain;
 
 const isDomainActive = computed(
-	() => (!generalDataStore.isHostingerUser && domainDetails?.value?.status) || domainDetails?.value?.status === 'active'
+	() =>
+		(!generalDataStore.isHostingerUser && domainDetails?.value?.status) ||
+		domainDetails?.value?.status === 'active' ||
+		domainDetails?.value?.status === 'error'
 );
 
 const handleGetStarted = async () => {
@@ -54,11 +60,17 @@ const handleGetStarted = async () => {
 };
 
 onMounted(() => {
-	if (!generalDataStore.isHostingerUser) {
-		return;
+	if (generalDataStore.isHostingerUser) {
+		loadDomainDetails();
 	}
 
-	loadDomainDetails();
+	const params = new URLSearchParams(window.location.search);
+	const key = params.get('api_key');
+	const csrf = params.get('csrf_field');
+
+	if (key) {
+		openModal(ModalName.REACH_API_KEY_MODAL, { apiKey: key, csrf }, { hasCloseButton: true });
+	}
 });
 </script>
 
