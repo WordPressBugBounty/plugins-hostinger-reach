@@ -3,6 +3,7 @@ import { HNotificationRow } from '@hostinger/hcomponents';
 import { computed } from 'vue';
 
 import reachBackgroundImage from '@/assets/images/backgrounds/reach-welcome-background.png';
+import reachBackgroundImageMobile from '@/assets/images/backgrounds/reach-welcome-background-mobile.png';
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { translate } from '@/utils/translate';
@@ -51,6 +52,12 @@ const props = withDefaults(defineProps<Props>(), {
 			<div class="hero__image">
 				<img
 					:src="reachBackgroundImage"
+					:alt="translate('hostinger_reach_hero_background_alt')"
+					role="img"
+					style="display: none"
+				/>
+				<img
+					:src="reachBackgroundImageMobile"
 					:alt="translate('hostinger_reach_hero_background_alt')"
 					class="hero__background"
 					role="img"

@@ -28,7 +28,8 @@ const rawDomain = generalDataStore.rawDomain;
 
 const isDomainActive = computed(
 	() =>
-		(!generalDataStore.isHostingerUser && domainDetails?.value?.status) ||
+		!generalDataStore.isHostingerUser ||
+		!domainDetails?.value?.status ||
 		domainDetails?.value?.status === 'active' ||
 		domainDetails?.value?.status === 'error'
 );

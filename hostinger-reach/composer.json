@@ -2,23 +2,19 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-menu-manager.git",
-            "no-api": true
+            "url": "git@github.com:hostinger/hostinger-wp-helper.git"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-helper.git",
-            "no-api": true
+            "url": "git@github.com:hostinger/hostinger-wp-menu-manager.git"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-surveys.git",
-            "no-api": true
+            "url": "git@github.com:hostinger/hostinger-wp-surveys.git"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:hostinger/hostinger-wp-amplitude.git",
-            "no-api": true
+            "url": "git@github.com:hostinger/hostinger-wp-amplitude.git"
         }
     ],
     "name": "hostinger/hostinger-reach",
@@ -44,12 +40,7 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "automattic/jetpack-autoloader": true
-        },
-        "preferred-install": {
-            "hostinger/*": "source",
-            "*": "dist"
-        },
-        "github-protocols": ["ssh"]
+        }
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

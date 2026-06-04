@@ -317,3 +317,8 @@ Changelog
 
 - Tweak: Improve UI for Mobile version
 - Feature: Support for manually entering API Key
+
+1.5.1 (2026-06-04)
+
+- Tweak: Replace Mobile image in Welcome page
+- Fix: Incorrect domain status for agencies
