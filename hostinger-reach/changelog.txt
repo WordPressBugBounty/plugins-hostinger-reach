@@ -322,3 +322,7 @@ Changelog
 
 - Tweak: Replace Mobile image in Welcome page
 - Fix: Incorrect domain status for agencies
+
+1.5.2 (2026-06-16)
+
+- Fix: Security dependencies
