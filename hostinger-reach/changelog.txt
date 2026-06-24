@@ -326,3 +326,7 @@ Changelog
 1.5.2 (2026-06-16)
 
 - Fix: Security dependencies
+
+1.5.3 (2026-06-24)
+
+- Tweak: Update dependencies

@@ -30,9 +30,6 @@
       "npm run lint:frontend"
     ]
   },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.60.3"
-  },
   "devDependencies": {
     "@hostinger/wp-plugin-toolkit": "^1.1.0",
     "@rushstack/eslint-patch": "^1.12.0",
@@ -59,7 +56,7 @@
     "vue": "^3.5.17",
     "vue-loader": "^17.4.2",
     "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^7.0.3"
   },
   "engines": {
     "node": ">=20.17.0",
@@ -82,7 +79,7 @@
     "@wordpress/components": "^33.0.0",
     "@wordpress/jest-console": "^8.46.0",
     "@wordpress/server-side-render": "^6.22.0",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "html-entities": "^2.6.0",
     "pinia": "^2.2.6",
     "pinia-plugin-persistedstate": "^3.2.1",
@@ -101,6 +98,12 @@
     "basic-ftp": "^5.2.2",
     "lodash": "^4.18.1",
     "uuid": "^14.0.0",
-    "shell-quote": "^1.8.4"
+    "shell-quote": "^1.8.4",
+    "ws": "^8.21.0",
+    "markdown-it": "^14.2.0",
+    "@opentelemetry/core": "^2.8.0",
+    "js-yaml": "^4.2.0",
+    "@babel/core": "^7.29.6",
+    "esbuild": "^0.28.1"
   }
 }
