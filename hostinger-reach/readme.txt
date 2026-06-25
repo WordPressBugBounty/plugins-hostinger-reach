@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -490,5 +490,9 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Security dependencies
 
 1.5.3 (2026-06-24)
+
+- Tweak: Update dependencies
+
+1.5.4 (2026-06-25)
 
 - Tweak: Update dependencies

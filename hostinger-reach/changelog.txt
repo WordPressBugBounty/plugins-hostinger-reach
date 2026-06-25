@@ -330,3 +330,7 @@ Changelog
 1.5.3 (2026-06-24)
 
 - Tweak: Update dependencies
+
+1.5.4 (2026-06-25)
+
+- Tweak: Update dependencies
