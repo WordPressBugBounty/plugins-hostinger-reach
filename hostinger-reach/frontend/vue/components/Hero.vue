@@ -19,12 +19,14 @@ interface Props {
 	isNotActive?: boolean;
 	domain: string;
 	onGetStarted: () => void;
+	onManualApiKeyClick?: () => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	isConnectedToAnotherSite: false,
 	isButtonLoading: false,
-	isNotActive: false
+	isNotActive: false,
+	onManualApiKeyClick: () => {}
 });
 </script>
 
@@ -87,6 +89,9 @@ const props = withDefaults(defineProps<Props>(), {
 								@click="onGetStarted"
 							>
 								{{ translate('hostinger_reach_welcome_view_start_button') }}
+							</HButton>
+							<HButton variant="text" color="neutral" size="small" @click="onManualApiKeyClick">
+								{{ translate('hostinger_reach_api_key_modal_link') }}
 							</HButton>
 						</div>
 					</template>

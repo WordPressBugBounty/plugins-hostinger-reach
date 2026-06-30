@@ -10,42 +10,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
-"PO-Revision-Date: 2026-05-12 07:31+0000\n"
+"PO-Revision-Date: 2026-06-30 07:00+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: hostinger-reach\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.27"
 
-#: src/Setup/Assets.php:194
+#: src/Setup/Assets.php:208
 msgid "(no title)"
 msgstr "(无标题）"
 
-#: src/Setup/Assets.php:217
+#: src/Setup/Assets.php:231
 #, fuzzy
 msgid "-"
 msgstr "-"
+
+#: src/Setup/Assets.php:108
+msgid ""
+"<strong>Copy</strong> your new API token and <strong>paste it below</strong>"
+msgstr ""
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:124
 #, fuzzy
 msgid "Abandoned Carts"
 msgstr "被遗弃的购物车"
 
-#: src/Setup/Assets.php:237
+#: src/Setup/Assets.php:251
 #, fuzzy
 msgid "Abandoned carts"
 msgstr "废弃的购物车"
 
-#: src/Setup/Assets.php:180 src/Setup/Assets.php:197
+#: src/Setup/Assets.php:194 src/Setup/Assets.php:211
 msgid "Active"
 msgstr "已激活"
 
-#: src/Admin/Notices/AddFormNotice.php:83 src/Setup/Assets.php:136
-#: src/Setup/Assets.php:186 src/Setup/Assets.php:200
+#: src/Admin/Notices/AddFormNotice.php:83 src/Setup/Assets.php:150
+#: src/Setup/Assets.php:200 src/Setup/Assets.php:214
 msgid "Add form"
 msgstr "添加表单"
 
-#: src/Setup/Assets.php:138 src/Setup/Assets.php:165
+#: src/Setup/Assets.php:152 src/Setup/Assets.php:179
 #, fuzzy
 msgid "Add form or plugin"
 msgstr "添加表格或插件"
@@ -55,7 +60,7 @@ msgstr "添加表格或插件"
 msgid "Add form to start sending campaigns with Hostinger Reach"
 msgstr "添加表单，开始使用Hostinger Reach发送广告活动"
 
-#: src/Setup/Assets.php:133
+#: src/Setup/Assets.php:147
 #, fuzzy
 msgid "Add new form"
 msgstr "添加新表格"
@@ -67,7 +72,7 @@ msgstr "添加新表格"
 msgid "Add New Tag"
 msgstr "添加新标签"
 
-#: src/Setup/Assets.php:131
+#: src/Setup/Assets.php:145
 #, fuzzy
 msgid "Add or connect a form to start sending campaigns"
 msgstr "添加或连接表单以开始发送活动"
@@ -79,7 +84,7 @@ msgstr "添加或连接表单以开始发送活动"
 msgid "Add Tag"
 msgstr "添加标签"
 
-#: src/Setup/Assets.php:234
+#: src/Setup/Assets.php:248
 #, fuzzy
 msgid ""
 "Adds a marketing consent checkbox at checkout and syncs contacts to Reach."
@@ -90,7 +95,11 @@ msgstr "在结账时添加营销同意复选框，并将联系人同步到 Reach
 msgid "Any ideas or feedback to help us improve Hostinger Reach?"
 msgstr "您有任何意见或反馈来帮助我们改进Hostinger Reach吗？"
 
-#: src/Setup/Assets.php:215
+#: src/Setup/Assets.php:112
+msgid "API Token field is required"
+msgstr ""
+
+#: src/Setup/Assets.php:229
 #, fuzzy
 #| msgid ""
 #| "are ready to sync with Reach. Any new contacts you’ll collect with these "
@@ -104,17 +113,17 @@ msgstr "已准备好与 Reach 同步。您通过这些表单收集的任何新�
 msgid "Attention:"
 msgstr "请注意："
 
-#: src/Setup/Assets.php:218
+#: src/Setup/Assets.php:232
 #, fuzzy
 msgid "Auto-sync off"
 msgstr "自动同步关闭"
 
-#: src/Setup/Assets.php:239
+#: src/Setup/Assets.php:253
 #, fuzzy
 msgid "Automation"
 msgstr "自动化"
 
-#: src/Setup/Assets.php:117
+#: src/Setup/Assets.php:131
 msgid "Average CTOR"
 msgstr "平均 CTOR"
 
@@ -123,11 +132,11 @@ msgstr "平均 CTOR"
 msgid "Back"
 msgstr "返回"
 
-#: src/Setup/Assets.php:161
+#: src/Setup/Assets.php:175
 msgid "Background image for"
 msgstr "背景图片"
 
-#: src/Setup/Assets.php:160
+#: src/Setup/Assets.php:174
 msgid "Banner background image for"
 msgstr "横幅背景图片"
 
@@ -146,49 +155,54 @@ msgstr "订阅表单"
 msgid "Brave Popup Builder"
 msgstr "勇敢的弹出窗口生成器"
 
-#: src/Setup/Assets.php:115
+#: src/Setup/Assets.php:129
 msgid "Campaigns"
 msgstr "营销活动"
 
-#: src/Setup/Assets.php:168
+#: src/Setup/Assets.php:114 src/Setup/Assets.php:182
 #, fuzzy
 #| msgid "Cancel "
 msgid "Cancel"
 msgstr "取消"
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:116
-#: src/Setup/Assets.php:233
+#: src/Setup/Assets.php:247
 #, fuzzy
 msgid "Checkout"
 msgstr "结账"
 
-#: src/Setup/Assets.php:163
+#: src/Setup/Assets.php:106
+msgid "Click <strong>Generate API Token</strong>"
+msgstr ""
+
+#: src/Setup/Assets.php:177
 msgid ""
 "Click-to-open rate tells you what percent of opens resulted in a click too. "
 "A good CTOR is 6-17%, depending on your industry."
 msgstr "点击打开率告诉您有多少百分比的打开也会带来点击。良好的点击打开率为 6-17%，具体取决于您所在的行业。"
 
-#: src/Setup/Assets.php:192
+#: src/Setup/Assets.php:206
 msgid "Collapse {pluginName} details"
 msgstr "折叠 {pluginName} 详情"
 
-#: src/Setup/Assets.php:128
+#: src/Setup/Assets.php:142
 #, fuzzy
 msgid ""
 "Collect contacts at checkout, send automated emails after purchases, and "
 "recover abandoned carts to drive more sales with Reach"
 msgstr "通过 Reach 在结账时收集联系人信息、在购买后自动发送电子邮件以及恢复放弃的购物车，从而提高销售额"
 
-#: src/Setup/Assets.php:228
+#: src/Setup/Assets.php:242
 #, fuzzy
 msgid "Coming soon"
 msgstr "即将推出"
 
-#: src/Admin/Notices/ConnectionNotice.php:100 src/Setup/Assets.php:207
+#: src/Admin/Notices/ConnectionNotice.php:100 src/Setup/Assets.php:113
+#: src/Setup/Assets.php:221
 msgid "Connect"
 msgstr "连接"
 
-#: src/Setup/Assets.php:101
+#: src/Setup/Assets.php:115
 #, fuzzy
 msgid "Connect domain"
 msgstr "连接域"
@@ -205,7 +219,7 @@ msgstr "连接Hostinger Reach，开始电子邮件营销"
 msgid "Connect Now"
 msgstr "立即连接"
 
-#: src/Setup/Assets.php:137
+#: src/Setup/Assets.php:151
 #, fuzzy
 msgid "Connect plugin"
 msgstr "连接插件"
@@ -214,32 +228,46 @@ msgstr "连接插件"
 msgid "Connect site"
 msgstr "连接网站"
 
-#: src/Setup/Assets.php:129
+#: src/Setup/Assets.php:101
+msgid "Connect with API token"
+msgstr ""
+
+#: src/Setup/Assets.php:143
 #, fuzzy
 msgid "Connect WooCommerce"
 msgstr "连接 WooCommerce"
 
-#: src/Setup/Assets.php:127
+#: src/Setup/Assets.php:141
 #, fuzzy
 msgid "Connect WooCommerce to boost sales with email automations"
 msgstr "连接 WooCommerce，利用电子邮件自动化提高销售额"
 
+#: src/Setup/Assets.php:102
+msgid "Connect your website to Hostinger Reach"
+msgstr ""
+
+#: src/Setup/Assets.php:111
+msgid ""
+"Connection failed. Check if your API Token is correct or contact Hostinger "
+"Reach support."
+msgstr ""
+
 #: src/Integrations/ContactForm7/ContactForm7Integration.php:111
-#: src/Setup/Assets.php:188
+#: src/Setup/Assets.php:202
 msgid "Contact Form 7"
 msgstr "联系表单 7"
 
-#: src/Setup/Assets.php:109 src/Setup/Assets.php:175 src/Setup/Assets.php:209
+#: src/Setup/Assets.php:123 src/Setup/Assets.php:189 src/Setup/Assets.php:223
 #, fuzzy
 msgid "Contacts"
 msgstr "联系方式"
 
-#: src/Setup/Assets.php:214
+#: src/Setup/Assets.php:228
 #, fuzzy
 msgid "contacts"
 msgstr "联系人"
 
-#: src/Setup/Assets.php:213
+#: src/Setup/Assets.php:227
 #, fuzzy
 msgid "Contacts to Import"
 msgstr "要导入的联系人"
@@ -249,25 +277,25 @@ msgstr "要导入的联系人"
 msgid "Could not generate auth URL"
 msgstr "无法生成验证 URL"
 
-#: src/Setup/Assets.php:132
+#: src/Setup/Assets.php:146
 #, fuzzy
 msgid ""
 "Create a new form or connect a plugin to grow your contact list and start "
 "sending campaigns with Reach."
 msgstr "创建一个新表单或连接一个插件来增加联系人列表，并开始使用 Reach 发送营销活动。"
 
-#: src/Setup/Assets.php:122
+#: src/Setup/Assets.php:136
 msgid "Create campaign"
 msgstr "创建活动"
 
-#: src/Setup/Assets.php:230
+#: src/Setup/Assets.php:244
 #, fuzzy
 msgid ""
 "Create fully custom forms in Reach and easily embed them on your WordPress "
 "site using this plugin. Stay tuned!"
 msgstr "使用此插件在 Reach 中创建完全自定义的表单，并轻松将其嵌入到 WordPress 网站中。敬请期待！"
 
-#: src/Setup/Assets.php:123
+#: src/Setup/Assets.php:137
 msgid "Create template"
 msgstr "创建模板"
 
@@ -278,7 +306,7 @@ msgstr "创建模板"
 msgid "Default"
 msgstr "默认值"
 
-#: src/Setup/Assets.php:169 src/Setup/Assets.php:206
+#: src/Setup/Assets.php:183 src/Setup/Assets.php:220
 msgid "Disconnect"
 msgstr "断开"
 
@@ -286,26 +314,26 @@ msgstr "断开"
 msgid "Disconnect it to link this site instead."
 msgstr "断开连接，转而链接本网站。"
 
-#: src/Setup/Assets.php:185
+#: src/Setup/Assets.php:199
 msgid "Disconnect plugin"
 msgstr "断开插件"
 
-#: src/Setup/Assets.php:166
+#: src/Setup/Assets.php:180
 msgid "Disconnect plugin?"
 msgstr "是否断开插件？"
 
-#: src/Setup/Assets.php:167
+#: src/Setup/Assets.php:181
 msgid ""
 "Disconnecting will stop new contacts from being collected. You can reconnect "
 "or use a different form anytime."
 msgstr "断开连接将停止收集新的联系人。您可以随时重新连接或使用其他表单。"
 
-#: src/Setup/Assets.php:225
+#: src/Setup/Assets.php:239
 #, fuzzy
 msgid "Don't see your plugin?"
 msgstr "没有看到您的插件？"
 
-#: src/Setup/Assets.php:126
+#: src/Setup/Assets.php:140
 #, fuzzy
 msgid "E-Commerce"
 msgstr "电子商务"
@@ -317,12 +345,12 @@ msgid ""
 "contacts to start building campaigns and grow your business."
 msgstr "轻松添加或连接现有表单、自动执行 WooCommerce 和同步联系人，即可开始建立营销活动并发展业务。"
 
-#: src/Setup/Assets.php:183
+#: src/Setup/Assets.php:197
 msgid "Edit form"
 msgstr "编辑表单"
 
-#: src/Integrations/Elementor/ElementorIntegration.php:135
-#: src/Setup/Assets.php:190
+#: src/Integrations/Elementor/ElementorIntegration.php:138
+#: src/Setup/Assets.php:204
 #, fuzzy
 msgid "Elementor"
 msgstr "元素"
@@ -332,11 +360,11 @@ msgstr "元素"
 msgid "Email"
 msgstr "电子邮件"
 
-#: src/Setup/Assets.php:105
+#: src/Setup/Assets.php:119
 msgid "Email marketing background with gradient design"
 msgstr "具有渐变设计的电子邮件营销背景"
 
-#: src/Setup/Assets.php:106
+#: src/Setup/Assets.php:120
 msgid ""
 "Email marketing illustration featuring envelopes and communication icons"
 msgstr "以信封和通信图标为特色的电子邮件营销插图"
@@ -349,7 +377,7 @@ msgid ""
 "no complexity."
 msgstr "无需专家的电子邮件营销：让人工智能来撰写、设计和发送您的营销活动--自动应用您的品牌、颜色。无需编码，没有复杂性。"
 
-#: src/Setup/Assets.php:112
+#: src/Setup/Assets.php:126
 msgid "Emails"
 msgstr "电子邮件"
 
@@ -360,11 +388,11 @@ msgstr "电子邮件"
 msgid "Enter tag name and press Enter or click Add Tag"
 msgstr "输入标签名称并按 Enter 或点击添加标签"
 
-#: src/Setup/Assets.php:191
+#: src/Setup/Assets.php:205
 msgid "Expand {pluginName} details"
 msgstr "展开 {pluginName} 的详细信息"
 
-#: src/Setup/Assets.php:142
+#: src/Setup/Assets.php:156
 msgid "FAQ"
 msgstr "常见问题"
 
@@ -373,7 +401,7 @@ msgstr "常见问题"
 msgid "Form"
 msgstr "形式"
 
-#: src/Setup/Assets.php:229
+#: src/Setup/Assets.php:243
 #, fuzzy
 msgid "Form Builder"
 msgstr "表格生成器"
@@ -390,20 +418,28 @@ msgstr "表单 ID"
 msgid "Forminator"
 msgstr "Forminator"
 
-#: src/Setup/Assets.php:130
+#: src/Setup/Assets.php:144
 msgid "Forms"
 msgstr "表单"
 
-#: src/Setup/Assets.php:176
+#: src/Setup/Assets.php:190
 #, fuzzy
 msgid "Forms syncing with Reach"
 msgstr "与 Reach 同步表单"
 
-#: src/Setup/Assets.php:184
+#: src/Setup/Assets.php:103
+msgid "Generate an API token"
+msgstr ""
+
+#: src/Setup/Assets.php:104
+msgid "Go to"
+msgstr ""
+
+#: src/Setup/Assets.php:198
 msgid "Go to plugin"
 msgstr "转到插件"
 
-#: src/Setup/Assets.php:103
+#: src/Setup/Assets.php:117
 #: frontend/blocks/subscription-block/src/Components/Dialog.js:42
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:87
@@ -420,12 +456,16 @@ msgstr "Hostinger"
 #: src/Admin/Notices/AddFormNotice.php:90
 #: src/Admin/Notices/ConnectionNotice.php:110
 #: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:20
-#: src/Integrations/Reach/ReachFormIntegration.php:71 src/Setup/Assets.php:104
-#: src/Setup/Assets.php:187
+#: src/Integrations/Reach/ReachFormIntegration.php:71 src/Setup/Assets.php:118
+#: src/Setup/Assets.php:201
 msgid "Hostinger Reach"
 msgstr "Hostinger Reach"
 
-#: src/Setup/Assets.php:150
+#: src/Setup/Assets.php:105
+msgid "Hostinger Reach Integrations → API Tokens"
+msgstr ""
+
+#: src/Setup/Assets.php:164
 #, fuzzy
 msgid ""
 "Hostinger Reach is a Hostinger service that helps you create and send "
@@ -436,7 +476,7 @@ msgstr ""
 "Hostinger Reach是Hostinger的一项服务，利用智能人工智能工具帮助您在几分钟内创建和发送品牌电子邮件。Hostinger Reach "
 "WordPress插件允许您将最喜欢的WordPress插件中的联系人连接并同步到Reach中。"
 
-#: src/Setup/Assets.php:144
+#: src/Setup/Assets.php:158
 msgid ""
 "Hostinger Reach is an AI-powered email marketing tool for small businesses "
 "and creators. It supports your entire email marketing journey—from building "
@@ -445,7 +485,7 @@ msgstr ""
 "Hostinger Reach是一款面向小型企业和创作者的人工智能电子邮件营销工具。它支持整个电子邮件营销过程--"
 "从建立联系人列表到发送营销活动和跟踪结果。"
 
-#: src/Setup/Assets.php:146
+#: src/Setup/Assets.php:160
 msgid ""
 "Hostinger Reach is built for simplicity, speed, and results – no design or "
 "marketing experience needed. Unlike most email tools, at the core of Reach "
@@ -477,21 +517,21 @@ msgstr "霍斯廷格-里奇标志"
 msgid "Hostinger Reach requires minimum PHP version of <b>%s</b>. "
 msgstr "Hostinger Reach要求最低PHP版本<b>%s</b>。"
 
-#: src/Setup/Assets.php:155
+#: src/Setup/Assets.php:169
 #, fuzzy
 msgid "How are segments and tags created?"
 msgstr "如何创建分段和标记？"
 
-#: src/Setup/Assets.php:151
+#: src/Setup/Assets.php:165
 #, fuzzy
 msgid "How does contact syncing work?"
 msgstr "如何同步联系人？"
 
-#: src/Setup/Assets.php:145
+#: src/Setup/Assets.php:159
 msgid "How is Hostinger Reach different from other email marketing apps?"
 msgstr "Hostinger Reach与其他电子邮件营销应用程序有何不同？"
 
-#: src/Setup/Assets.php:147
+#: src/Setup/Assets.php:161
 msgid "How much does it cost to use Hostinger Reach?"
 msgstr "使用Hostinger Reach的费用是多少？"
 
@@ -510,7 +550,7 @@ msgstr "https://hostinger.com"
 msgid "https://www.hostinger.com/email-marketing"
 msgstr "https://www.hostinger.com/email-marketing"
 
-#: src/Setup/Assets.php:158
+#: src/Setup/Assets.php:172
 #, fuzzy
 msgid ""
 "If the integration is interrupted, syncing pauses automatically. Once the "
@@ -518,34 +558,34 @@ msgid ""
 "contacts without losing data."
 msgstr "如果整合中断，同步会自动暂停。一旦恢复连接，同步就会恢复，这样你就可以继续收集联系人，而不会丢失数据。"
 
-#: src/Setup/Assets.php:244
+#: src/Setup/Assets.php:258
 #, fuzzy
 msgid ""
 "If your store isn’t ready yet, complete the setup to start selling and "
 "collecting contacts"
 msgstr "如果您的商店尚未准备就绪，请完成设置以开始销售和收集联系人信息"
 
-#: src/Setup/Assets.php:212
+#: src/Setup/Assets.php:226
 #, fuzzy
 msgid "Import"
 msgstr "进口"
 
-#: src/Setup/Assets.php:208
+#: src/Setup/Assets.php:222
 #, fuzzy
 msgid "Import Contacts"
 msgstr "导入联系人"
 
-#: src/Setup/Assets.php:170
+#: src/Setup/Assets.php:184
 #, fuzzy
 msgid "Import contacts"
 msgstr "导入联系人"
 
-#: src/Setup/Assets.php:210
+#: src/Setup/Assets.php:224
 #, fuzzy
 msgid "Import your existing contacts to Reach"
 msgstr "将现有联系人导入 Reach"
 
-#: src/Setup/Assets.php:220
+#: src/Setup/Assets.php:234
 #, fuzzy
 msgid "Imported"
 msgstr "进口"
@@ -555,12 +595,12 @@ msgstr "进口"
 msgid "Importing is not available for this integration"
 msgstr "此集成不提供导入功能"
 
-#: src/Setup/Assets.php:222
+#: src/Setup/Assets.php:236
 #, fuzzy
 msgid "Importing..."
 msgstr "导入..."
 
-#: src/Setup/Assets.php:181
+#: src/Setup/Assets.php:195
 msgid "Inactive"
 msgstr "未激活"
 
@@ -571,16 +611,16 @@ msgstr "未激活"
 msgid "Inline"
 msgstr "内联"
 
-#: src/Setup/Assets.php:204
+#: src/Setup/Assets.php:218
 #, fuzzy
 msgid "Install"
 msgstr "安装"
 
-#: src/Setup/Assets.php:205
+#: src/Setup/Assets.php:219
 msgid "Install and connect"
 msgstr "安装和连接"
 
-#: src/Setup/Assets.php:203
+#: src/Setup/Assets.php:217
 msgid "Installed plugins"
 msgstr "已安装的插件"
 
@@ -589,19 +629,19 @@ msgstr "已安装的插件"
 msgid "Integrate your WordPress site with Hostinger Reach."
 msgstr "将您的WordPress网站与Hostinger Reach整合。"
 
-#: src/Setup/Assets.php:125
+#: src/Setup/Assets.php:139
 #, fuzzy
 msgid "Integrations"
 msgstr "集成"
 
-#: src/Setup/Assets.php:226
+#: src/Setup/Assets.php:240
 #, fuzzy
 msgid ""
 "It may not be supported yet. You can upload contacts as a CSV or use another "
 "plugin"
 msgstr "可能还不支持。您可以以 CSV 格式上传联系人信息，或使用其他插件"
 
-#: src/Setup/Assets.php:224
+#: src/Setup/Assets.php:238
 #, fuzzy
 #| msgid "It was an error syncing your contacts to Reach."
 msgid "It was an error importing your contacts to Reach."
@@ -621,12 +661,12 @@ msgstr "布局"
 msgid "Layout Settings"
 msgstr "布局设置"
 
-#: src/Admin/Notices/ConnectionNotice.php:103 src/Setup/Assets.php:241
+#: src/Admin/Notices/ConnectionNotice.php:103 src/Setup/Assets.php:255
 #, fuzzy
 msgid "Learn more"
 msgstr "了解更多"
 
-#: src/Setup/Assets.php:198
+#: src/Setup/Assets.php:212
 msgid ""
 "Make sure the people you contact expect your emails and are okay with "
 "receiving them."
@@ -636,17 +676,17 @@ msgstr "确保联系人希望收到您的电子邮件，并同意接收。"
 msgid "Manage"
 msgstr "管理"
 
-#: src/Setup/Assets.php:240
+#: src/Setup/Assets.php:254
 #, fuzzy
 msgid "Manage automations"
 msgstr "管理自动化"
 
-#: src/Setup/Assets.php:139 src/Setup/Assets.php:242
+#: src/Setup/Assets.php:153 src/Setup/Assets.php:256
 #, fuzzy
 msgid "Manage plugin"
 msgstr "管理插件"
 
-#: src/Setup/Assets.php:135
+#: src/Setup/Assets.php:149
 #, fuzzy
 msgid "More plugins"
 msgstr "更多插件"
@@ -656,15 +696,19 @@ msgstr "更多插件"
 msgid "Name"
 msgstr "名称"
 
-#: src/Setup/Assets.php:199
+#: src/Setup/Assets.php:107
+msgid "Name your token, then click <strong>Generate token</strong>"
+msgstr ""
+
+#: src/Setup/Assets.php:213
 msgid "New contact form"
 msgstr "新的联系表单"
 
-#: src/Setup/Assets.php:140
+#: src/Setup/Assets.php:154
 msgid "New page"
 msgstr "新页面"
 
-#: src/Setup/Assets.php:119
+#: src/Setup/Assets.php:133
 msgid "New subscribers"
 msgstr "新用户"
 
@@ -686,30 +730,30 @@ msgstr "忍者表格"
 msgid "No"
 msgstr "没有"
 
-#: src/Setup/Assets.php:193
+#: src/Setup/Assets.php:207
 msgid "No forms found for this integration."
 msgstr "未找到该整合的表格。"
 
-#: src/Setup/Assets.php:141
+#: src/Setup/Assets.php:155
 msgid "No pages available. Create a new page to get started."
 msgstr "没有可用页面。创建新页面。"
 
-#: src/Setup/Assets.php:221
+#: src/Setup/Assets.php:235
 #, fuzzy
 msgid "Not imported"
 msgstr "未进口"
 
-#: src/Setup/Assets.php:172
+#: src/Setup/Assets.php:186
 #, fuzzy
 msgid "Not needed"
 msgstr "不需要"
 
-#: src/Setup/Assets.php:178
+#: src/Setup/Assets.php:192
 #, fuzzy
 msgid "of"
 msgstr "的"
 
-#: src/Setup/Assets.php:152
+#: src/Setup/Assets.php:166
 #, fuzzy
 msgid ""
 "Once you connect a form plugin you use on WordPress (such as Elementor or "
@@ -720,7 +764,7 @@ msgstr ""
 "一旦您连接了 WordPress 上使用的表单插件（如 Elementor 或 Contact Form "
 "7），该插件就会自动将所有新提交的表单和订阅者数据转发到您的 Reach 账户，这样您就可以收集和更新联系人信息，而无需在每次提交表单时手动导出。"
 
-#: src/Setup/Assets.php:159
+#: src/Setup/Assets.php:173
 msgid "opens in new tab"
 msgstr "在新标签页打开"
 
@@ -729,40 +773,44 @@ msgstr "在新标签页打开"
 msgid "OptinMonster"
 msgstr "OptinMonster"
 
-#: src/Setup/Assets.php:134
+#: src/Setup/Assets.php:148
 #, fuzzy
 msgid "or connect a form plugin"
 msgstr "或连接表单插件"
 
-#: src/Setup/Assets.php:219
+#: src/Setup/Assets.php:233
 #, fuzzy
 msgid "Partially imported"
 msgstr "部分进口"
 
-#: src/Setup/Assets.php:108
+#: src/Setup/Assets.php:110
+msgid "Paste your API token here"
+msgstr ""
+
+#: src/Setup/Assets.php:122
 #, fuzzy
 msgid "Plan & Limits"
 msgstr "计划与限制"
 
-#: src/Setup/Assets.php:174
+#: src/Setup/Assets.php:188
 msgid "Plugin"
 msgstr "插件"
 
-#: src/Setup/Assets.php:195
+#: src/Setup/Assets.php:209
 msgid "Plugin connected successfully"
 msgstr "插件连接成功"
 
-#: src/Setup/Assets.php:196
+#: src/Setup/Assets.php:210
 msgid "Plugin disconnected successfully"
 msgstr "插件成功断开连接"
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:123
-#: src/Setup/Assets.php:235
+#: src/Setup/Assets.php:249
 #, fuzzy
 msgid "Purchases"
 msgstr "采购"
 
-#: src/Setup/Assets.php:156
+#: src/Setup/Assets.php:170
 #, fuzzy
 msgid ""
 "Reach automatically tags synced contacts using the form name and also "
@@ -783,7 +831,7 @@ msgstr ""
 msgid "Reach is already connected to another site."
 msgstr "Reach 已连接到另一个站点。"
 
-#: src/Setup/Assets.php:148
+#: src/Setup/Assets.php:162
 #| msgid ""
 #| "Reach offers a free plan for one year– perfect for getting started. Paid "
 #| "plans are based on how many unique contacts you aim to reach and how many "
@@ -809,21 +857,21 @@ msgstr ""
 msgid "Reach Subscription Form"
 msgstr "订阅表格"
 
-#: src/Setup/Assets.php:114
+#: src/Setup/Assets.php:128
 msgid "Remaining"
 msgstr "剩余"
 
-#: src/Setup/Assets.php:102
+#: src/Setup/Assets.php:116
 #, fuzzy
 msgid "Review domain"
 msgstr "审查领域"
 
-#: src/Setup/Assets.php:110
+#: src/Setup/Assets.php:124
 #, fuzzy
 msgid "Segments"
 msgstr "分段"
 
-#: src/Setup/Assets.php:164
+#: src/Setup/Assets.php:178
 msgid "Select page"
 msgstr "选择页面"
 
@@ -835,16 +883,16 @@ msgid ""
 "is easy."
 msgstr "使用专业设计的模板发送新闻邮件，自动开展营销活动，并建立人工智能支持的细分市场。有了Hostinger Reach，增加受众变得轻而易举。"
 
-#: src/Setup/Assets.php:113 src/Setup/Assets.php:116
+#: src/Setup/Assets.php:127 src/Setup/Assets.php:130
 msgid "Sent"
 msgstr "已发送"
 
-#: src/Setup/Assets.php:245
+#: src/Setup/Assets.php:259
 #, fuzzy
 msgid "Set up WooCommerce"
 msgstr "设置 WooCommerce"
 
-#: src/Setup/Assets.php:124 frontend/blocks/subscription-block/src/edit.js:184
+#: src/Setup/Assets.php:138 frontend/blocks/subscription-block/src/edit.js:184
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:290
 msgid "Settings"
@@ -882,11 +930,11 @@ msgstr "出错了"
 msgid "Something went wrong. Please try again."
 msgstr "出错了。请重试。"
 
-#: src/Setup/Assets.php:179 src/Setup/Assets.php:232
+#: src/Setup/Assets.php:193 src/Setup/Assets.php:246
 msgid "Status"
 msgstr "状态"
 
-#: src/Setup/Assets.php:231
+#: src/Setup/Assets.php:245
 #, fuzzy
 msgid "Store Events"
 msgstr "商店活动"
@@ -906,7 +954,7 @@ msgstr "订阅我们的时事通讯"
 msgid "Subscribe to our newsletter"
 msgstr "订阅我们的通讯"
 
-#: src/Setup/Assets.php:118
+#: src/Setup/Assets.php:132
 msgid "Subscribers"
 msgstr "订阅者"
 
@@ -915,7 +963,7 @@ msgstr "订阅者"
 msgid "Subscription form is not available at the moment"
 msgstr "暂时没有订阅表格"
 
-#: src/Setup/Assets.php:201
+#: src/Setup/Assets.php:215
 #, fuzzy
 #| msgid "View supported plugins"
 msgid "Supported plugins"
@@ -931,7 +979,7 @@ msgstr "确定表格"
 msgid "Surname"
 msgstr "姓氏"
 
-#: src/Setup/Assets.php:173
+#: src/Setup/Assets.php:187
 #, fuzzy
 msgid "Sync"
 msgstr "同步"
@@ -947,7 +995,7 @@ msgstr "标签"
 msgid "Thanks for subscribing."
 msgstr "感谢您的订阅。"
 
-#: src/Setup/Assets.php:223
+#: src/Setup/Assets.php:237
 #, fuzzy
 #| msgid "The selected contacts are being synced to Reach."
 msgid "The selected contacts are being imported to Reach."
@@ -960,7 +1008,7 @@ msgid ""
 "it to be synced with Reach"
 msgstr "此表单没有电子邮件字段。请在表单中创建电子邮件字段，以便与 Reach 同步。"
 
-#: src/Setup/Assets.php:246
+#: src/Setup/Assets.php:260
 #, fuzzy
 msgid ""
 "This form is a Reach native form inserted directly in your page. For "
@@ -974,7 +1022,7 @@ msgid ""
 "to connect your domain."
 msgstr "这是一个临时域名。要将 WordPress 连接到 Reach，您需要连接您的域名。"
 
-#: src/Setup/Assets.php:107
+#: src/Setup/Assets.php:121
 msgid "This month"
 msgstr "本月"
 
@@ -984,18 +1032,18 @@ msgstr "本月"
 msgid "Thrive Leads"
 msgstr "茁壮成长"
 
-#: src/Setup/Assets.php:121
+#: src/Setup/Assets.php:135
 msgid "Total subscribers"
 msgstr "订阅总数"
 
-#: src/Setup/Assets.php:238
+#: src/Setup/Assets.php:252
 #, fuzzy
 msgid ""
 "Tracks abandoned carts so you can trigger email automations in Reach when "
 "enabled."
 msgstr "跟踪放弃的购物车，启用后可在 Reach 中触发电子邮件自动化。"
 
-#: src/Setup/Assets.php:236
+#: src/Setup/Assets.php:250
 #, fuzzy
 msgid ""
 "Tracks purchases so you can trigger email automations in Reach when enabled."
@@ -1008,28 +1056,28 @@ msgstr "跟踪购买情况，启用后可在 Reach 中触发电子邮件自动�
 msgid "Unique identifier for this form"
 msgstr "该表格的唯一标识符"
 
-#: src/Setup/Assets.php:120
+#: src/Setup/Assets.php:134
 msgid "Unsubscribes"
 msgstr "退订"
 
-#: src/Setup/Assets.php:111
+#: src/Setup/Assets.php:125
 msgid "Upgrade"
 msgstr "升级"
 
-#: src/Setup/Assets.php:227
+#: src/Setup/Assets.php:241
 #, fuzzy
 msgid "Upload as CSV"
 msgstr "以 CSV 格式上传"
 
-#: src/Setup/Assets.php:162
+#: src/Setup/Assets.php:176
 msgid "usage statistics"
 msgstr "使用统计"
 
-#: src/Setup/Assets.php:182
+#: src/Setup/Assets.php:196
 msgid "View form"
 msgstr "查看表单"
 
-#: src/Setup/Assets.php:202
+#: src/Setup/Assets.php:216
 #, fuzzy
 msgid "View more supported plugins"
 msgstr "查看更多支持的插件"
@@ -1038,28 +1086,28 @@ msgstr "查看更多支持的插件"
 msgid "Welcome to Reach"
 msgstr "欢迎来到Reach"
 
-#: src/Setup/Assets.php:157
+#: src/Setup/Assets.php:171
 #, fuzzy
 msgid "What happens if the connection breaks?"
 msgstr "如果连接中断会发生什么？"
 
-#: src/Setup/Assets.php:143
+#: src/Setup/Assets.php:157
 msgid "What is Hostinger Reach email marketing service?"
 msgstr "什么是Hostinger Reach电子邮件营销服务？"
 
-#: src/Setup/Assets.php:149
+#: src/Setup/Assets.php:163
 #, fuzzy
 msgid ""
 "What's the difference between Hostinger Reach and Hostinger Reach WordPress "
 "Plugin?"
 msgstr "Hostinger Reach和Hostinger Reach WordPress插件有什么区别？"
 
-#: src/Setup/Assets.php:177
+#: src/Setup/Assets.php:191
 #, fuzzy
 msgid "When syncing is off, collected Contacts will not be sent to Reach."
 msgstr "同步关闭时，收集的通讯录不会发送到 Reach。"
 
-#: src/Setup/Assets.php:153
+#: src/Setup/Assets.php:167
 #, fuzzy
 msgid "Will contacts be added to my email list automatically?"
 msgstr "联系人会自动添加到我的电子邮件列表中吗？"
@@ -1074,19 +1122,19 @@ msgstr "WooCommerce"
 msgid "WooCommerce Customers"
 msgstr "WooCommerce 客户"
 
-#: src/Setup/Assets.php:243
+#: src/Setup/Assets.php:257
 #, fuzzy
 msgid "WooCommerce Plugin Connected"
 msgstr "已连接 WooCommerce 插件"
 
-#: src/Setup/Assets.php:171
+#: src/Setup/Assets.php:185
 #, fuzzy
 #| msgid "Would you like to sync contacts collected while sync was disabled?"
 msgid "Would you like to import contacts collected while sync was disabled?"
 msgstr "您想同步在同步禁用时收集的联系人吗？"
 
 #: src/Integrations/WPFormsLite/WpFormsLiteIntegration.php:29
-#: src/Setup/Assets.php:189
+#: src/Setup/Assets.php:203
 msgid "WP Forms Lite"
 msgstr "WP 表单精简版"
 
@@ -1107,7 +1155,7 @@ msgstr "WS 表格"
 msgid "Yes"
 msgstr "是"
 
-#: src/Setup/Assets.php:154
+#: src/Setup/Assets.php:168
 #, fuzzy
 msgid ""
 "Yes — new subscribers are added automatically based on your setup. Some "
@@ -1142,14 +1190,14 @@ msgstr "您还没有连接到Hostinger Reach。您需要连接您的Hostinger Re
 msgid "You are running <b>%s</b> PHP version."
 msgstr "您运行的是 <b>%s</b> PHP 版本。"
 
-#: src/Setup/Assets.php:211
+#: src/Setup/Assets.php:225
 #, fuzzy
 msgid ""
 "You can import existing contacts into Reach now to use them for your email "
 "campaigns. New contacts will be synced automatically to Reach."
 msgstr "您可以立即将现有联系人导入 Reach，用于电子邮件营销活动。新联系人将自动同步到 Reach。"
 
-#: src/Setup/Assets.php:216
+#: src/Setup/Assets.php:230
 #, fuzzy
 #| msgid ""
 #| "You have not selected any forms to sync. Select which forms you want to "
@@ -1158,6 +1206,10 @@ msgid ""
 "You have not selected any forms to import. Select which forms you want to "
 "import and then click on the Import button below."
 msgstr "您尚未选择任何要同步的表单。选择要同步的表格，然后单击下面的同步按钮。"
+
+#: src/Setup/Assets.php:109
+msgid "Your API token"
+msgstr ""
 
 #: src/Setup/Assets.php:96
 #, fuzzy

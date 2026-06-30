@@ -60,6 +60,10 @@ const handleGetStarted = async () => {
 	}
 };
 
+const openApiKeyModal = (apiKey: string = '') => {
+	openModal(ModalName.REACH_API_KEY_MODAL, { apiKey }, { hasCloseButton: true, isXL: true });
+};
+
 onMounted(() => {
 	if (generalDataStore.isHostingerUser) {
 		loadDomainDetails();
@@ -67,10 +71,9 @@ onMounted(() => {
 
 	const params = new URLSearchParams(window.location.search);
 	const key = params.get('api_key');
-	const csrf = params.get('csrf_field');
 
-	if (key) {
-		openModal(ModalName.REACH_API_KEY_MODAL, { apiKey: key, csrf }, { hasCloseButton: true });
+	if (key !== null) {
+		openApiKeyModal();
 	}
 });
 </script>
@@ -84,6 +87,7 @@ onMounted(() => {
 			:is-temporary="PREVIEW_DOMAINS.test(domain)"
 			:is-not-active="!isDomainActive"
 			:on-get-started="handleGetStarted"
+			:on-manual-api-key-click="() => openApiKeyModal()"
 		/>
 		<div class="faq-wrap">
 			<FAQ :faq-data="connectFaqData" />

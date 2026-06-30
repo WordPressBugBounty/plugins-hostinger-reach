@@ -219,6 +219,11 @@ class ReachApiHandler extends ApiHandler {
         $this->api_key_manager->store_token( $token );
         $this->api_key_manager->clear_csrf();
 
+        if ( ! $this->get_connection_status_handler() ) {
+            $this->api_key_manager->clear_token();
+            return new WP_REST_Response( array( 'success' => false ) );
+        }
+
         return new WP_REST_Response( array( 'success' => true ) );
     }
 

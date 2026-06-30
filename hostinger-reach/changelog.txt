@@ -334,3 +334,7 @@ Changelog
 1.5.4 (2026-06-25)
 
 - Tweak: Update dependencies
+
+1.5.5 (2026-06-30)
+
+- Feature: Support for entering Reach API Key manually

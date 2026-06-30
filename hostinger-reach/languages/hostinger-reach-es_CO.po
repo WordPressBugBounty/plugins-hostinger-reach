@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
-"PO-Revision-Date: 2026-05-12 07:52+0000\n"
+"PO-Revision-Date: 2026-06-30 07:02+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: hostinger-reach\n"
 "Language: es_CO\n"
@@ -63,7 +63,6 @@ msgstr "Añadir nuevo formulario"
 #: frontend/blocks/subscription-block/src/edit.js:215
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:321
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Add New Tag"
 msgstr "Añadir nueva etiqueta"
 
@@ -75,7 +74,6 @@ msgstr "Añadir o conectar un formulario para empezar a enviar campañas"
 #: frontend/blocks/subscription-block/src/edit.js:235
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:341
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Add Tag"
 msgstr "Añadir etiqueta"
 
@@ -205,7 +203,6 @@ msgstr ""
 #: frontend/blocks/subscription-block/src/Components/Connect.js:16
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:39
-#: frontend/blocks/subscription-block/src/Components/Connect.js:1
 msgid "Connect Now"
 msgstr "Conectar ya"
 
@@ -280,7 +277,6 @@ msgstr "Crear plantilla"
 #: frontend/blocks/subscription-block/src/edit.js:33
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:139
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Default"
 msgstr "Por defecto"
 
@@ -367,7 +363,6 @@ msgstr "Correos electrónicos"
 #: frontend/blocks/subscription-block/src/edit.js:226
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:332
-#: frontend/blocks/subscription-block/src/edit.js:1
 #, fuzzy
 msgid "Enter tag name and press Enter or click Add Tag"
 msgstr ""
@@ -494,7 +489,6 @@ msgstr ""
 #: frontend/blocks/subscription-block/src/Components/Dialog.js:38
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:83
-#: frontend/blocks/subscription-block/src/Components/Dialog.js:1
 msgid "Hostinger Reach Logo"
 msgstr "Logotipo de Hostinger Reach"
 
@@ -598,7 +592,6 @@ msgstr "Inactivo"
 #: frontend/blocks/subscription-block/src/edit.js:34
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:140
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Inline"
 msgstr "Integrado"
 
@@ -641,14 +634,12 @@ msgstr "Se ha producido un error al sincronizar tus contactos con Reach."
 #: frontend/blocks/subscription-block/src/edit.js:258
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:364
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Layout"
 msgstr "Diseño"
 
 #: frontend/blocks/subscription-block/src/edit.js:256
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:362
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Layout Settings"
 msgstr "Ajustes del diseño"
 
@@ -703,7 +694,6 @@ msgstr "Nuevos suscriptores"
 #: frontend/blocks/subscription-block/src/edit.js:220
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:326
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "New Tag Name"
 msgstr "Nuevo nombre de etiqueta"
 
@@ -845,7 +835,6 @@ msgstr ""
 #: frontend/blocks/subscription-block/src/index.js:9
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:590
-#: frontend/blocks/subscription-block/src/index.js:1
 msgid "Reach Subscription Form"
 msgstr "Formulario de suscripción a Reach"
 
@@ -901,7 +890,6 @@ msgstr "Mostrar el nombre"
 #: frontend/blocks/subscription-block/src/edit.js:240
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:346
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Show Name Field?"
 msgstr "¿Mostrar campo de nombre?"
 
@@ -912,7 +900,6 @@ msgstr "Mostrar apellido"
 #: frontend/blocks/subscription-block/src/edit.js:248
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:354
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Show Surname Field?"
 msgstr "¿Mostrar campo de apellido?"
 
@@ -975,7 +962,6 @@ msgstr "Sincronizar"
 #: frontend/blocks/subscription-block/src/edit.js:193
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:299
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -1050,7 +1036,6 @@ msgstr ""
 #: frontend/blocks/subscription-block/src/edit.js:190
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:296
-#: frontend/blocks/subscription-block/src/edit.js:1
 msgid "Unique identifier for this form"
 msgstr "Identificador único para este formulario"
 
@@ -1177,14 +1162,12 @@ msgstr ""
 #: frontend/blocks/subscription-block/src/Components/Connect.js:7
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:30
-#: frontend/blocks/subscription-block/src/Components/Connect.js:1
 msgid "You are not connected to Hostinger Reach"
 msgstr "No estás conectado a Hostinger Reach"
 
 #: frontend/blocks/subscription-block/src/Components/Connect.js:10
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:33
-#: frontend/blocks/subscription-block/src/Components/Connect.js:1
 msgid ""
 "You are not connected to Hostinger Reach. To gain full access to this block, "
 "you need to connect your Hostinger Reach account."
@@ -1232,7 +1215,6 @@ msgstr ""
 #: frontend/blocks/subscription-block/src/Components/Dialog.js:40
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:85
-#: frontend/blocks/subscription-block/src/Components/Dialog.js:1
 msgid "Your form is ready. Go to Reach to complete setup and create templates."
 msgstr ""
 "Tu formulario está listo. Ve a «Reach» para completar la configuración y "
