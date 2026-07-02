@@ -26,46 +26,52 @@ class ActionDispatcher
         $this->configHandler = $configHandler;
         $this->client        = $client;
 
-        add_action( 'hostinger_autologin_user_logged_in', [ $this, 'userAlreadyLoggedIn' ] );
-        add_action( 'hostinger_autologin', [ $this, 'handleAutoLogin' ] );
-        add_action( 'wp_logout', [ $this, 'clearLoginData' ] );
+        add_action('hostinger_autologin_user_logged_in', [ $this, 'userAlreadyLoggedIn' ]);
+        add_action('hostinger_autologin', [ $this, 'handleAutoLogin' ]);
+        add_action('wp_logout', [ $this, 'clearLoginData' ]);
     }
 
-    public function handleAutoLogin( array $data ) : void {
-        $this->processLoginData( $data );
-        $this->loginEvent( $this->helper, $this->configHandler, $this->client, 'new_login' );
+    public function handleAutoLogin(array $data): void
+    {
+        $this->processLoginData($data);
+        $this->loginEvent($this->helper, $this->configHandler, $this->client, 'new_login');
     }
 
-    public function userAlreadyLoggedIn( array $data ) : void {
-        $this->processLoginData( $data );
-        $this->loginEvent( $this->helper, $this->configHandler, $this->client, 'logged_in' );
+    public function userAlreadyLoggedIn(array $data): void
+    {
+        $this->processLoginData($data);
+        $this->loginEvent($this->helper, $this->configHandler, $this->client, 'logged_in');
     }
 
 
-    public function processLoginData( array $data ) : void {
-        $sanitized_data = $this->sanitizeLoginData( $data );
-        set_transient( self::TRANSIENT_KEY, $sanitized_data, self::EXPIRATION_TIME_SECONDS );
+    public function processLoginData(array $data): void
+    {
+        $sanitized_data = $this->sanitizeLoginData($data);
+        set_transient(self::TRANSIENT_KEY, $sanitized_data, self::EXPIRATION_TIME_SECONDS);
     }
 
-    public function loginEvent( Helper $helper, Config $config, Client $client, string $status ) : void {
-        $amplitudeManager = new AmplitudeManager( $helper, $config, $client );
+    public function loginEvent(Helper $helper, Config $config, Client $client, string $status): void
+    {
+        $amplitudeManager = new AmplitudeManager($helper, $config, $client);
         $params           = [
             'action' => self::AMPLITUDE_LOGIN_ACTION,
             'status' => $status,
         ];
 
-        $amplitudeManager->sendRequest( $amplitudeManager::AMPLITUDE_ENDPOINT, $params );
+        $amplitudeManager->sendRequest($amplitudeManager::AMPLITUDE_ENDPOINT, $params);
     }
 
-    private function sanitizeLoginData( array $data ) : array {
-        if ( ! is_array( $data ) ) {
+    private function sanitizeLoginData(array $data): array
+    {
+        if (! is_array($data)) {
             return [];
         }
 
-        return array_map( 'sanitize_text_field', $data );
+        return array_map('sanitize_text_field', $data);
     }
 
-    public function clearLoginData() : void {
-        delete_transient( self::TRANSIENT_KEY );
+    public function clearLoginData(): void
+    {
+        delete_transient(self::TRANSIENT_KEY);
     }
 }

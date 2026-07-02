@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,273 +163,63 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 
 == Changelog ==
 
-1.0.0 (2025-08-06)
+1.5.6 (2026-07-02)
 
-- Initial release
+- Version bump: PATCH
 
-1.0.1 (2025-08-06)
+1.5.5 (2026-06-30)
 
-- Bump version logic
+- Feature: Support for entering Reach API Key manually
 
-1.0.2 (2025-08-12)
+1.5.4 (2026-06-25)
 
-- Update translations
-- Fix: loader in select page redirection
-- Fix: Apostrophe is not displayed correctly in page name on Select page modal
-- Fix: Link Go to Reach in welcome screen should open in new tab
-- Fix: Buttons are not aligned in Forms
-- Fix: Subscription form not being auto-loaded sometimes
-- Fix: Change Menu load priority
-- Tweak: Toasts UI
-- Tweak:  Add scrollbar to select page modal
-- Tweak: Add header to overview page
+- Tweak: Update dependencies
 
-1.0.3 (2025-08-21)
+1.5.3 (2026-06-24)
 
-- Fix: Replace Connect Hero image
-- Fix: Reach plugin content not visible when no other Hostinger plugin is installed
-- Feat: Implement ServerSideRendering component in the Gutenberg Block
+- Tweak: Update dependencies
 
-1.0.4 (2025-08-25)
+1.5.2 (2026-06-16)
 
-- Fix: Lock background scroll if a modal is open
-- Fix: Remove Warnings when running FE linter
-- Fix: Footer and View form links
-- Feat: Add satisfaction survey
+- Fix: Security dependencies
 
-1.0.5 (2025-08-26)
+1.5.1 (2026-06-04)
 
-- Fix: Assets compiler flag
+- Tweak: Replace Mobile image in Welcome page
+- Fix: Incorrect domain status for agencies
 
-1.0.6 (2025-09-01)
+1.5.0 (2026-05-21)
 
-- Feature: Elementor integration
-- Tweak: Load plugin entries if any 3rd party plugin is active
-- Tweak: Update translations
-- Tweak: Remove Bootstrap dependencies
-- Fix: update Reach URLs to use new route structure
+- Tweak: Improve UI for Mobile version
+- Feature: Support for manually entering API Key
 
-1.0.7 (2025-09-08)
+1.4.12 (2026-05-14)
 
-- Feature: Add Dialog when a post is published with Reach Block
-- Fix: Add/edit forms for elementor pages doesn't open Elementor
-- Fix: Elementor pages with Reach forms not recognized
-- Fix: Submit button style overrides theme styles
-- Fix: Prevent Toggle On/Off an invalid form
-- Dev: Update PR templates
-- Dev: Add staging support for Reach API
-- Dev: Fix Lint workflow
-- Dev: Implement JavaScript unit test coverage
+- Fix: Avoid Domain status check if no status is received
+- Fix: Fatal when Elementor is not installed
 
-1.0.8 (2025-09-11)
+1.4.11 (2026-05-12)
 
-- Feature: Integration with WooCommerce Checkout
-- Tweak: Include Add Form entry in the Integrations menu
-- Fix: Routes not working with simple Permalinks
+- Fix: Add Elementor Reach Form automatically
+- Tweak: Change UI for Hero in Connection page
+- Tweak: Make Elementor always connected
+- Fix: Update Forminator logo
 
-1.0.9 (2025-09-15)
+1.4.10 (2026-05-07)
 
-- Feature: Send metadata with contacts
-- Feature: Readme update
-- Feature: Dependency update
+- Fix: Consolidate Hostinger Reach as the plugin name everywhere
 
-1.0.10 (2025-09-25)
+1.4.9 (2026-05-05)
 
-- Fix: Context menu dropdown
-- Fix: Change elementor logo
-- Tweak: Refactor FE Integration logic
-- tweak: Integrate Review plugin step in CSAT
-- Dev: Implement Coderabbit
-- Dev: Add automated Jira integration for release workflow
-- Dev: Fix Release Updater errors
-- Dev: Bump dependencies
+- Feature: Check Domain status in Connection page
+- Feature: Amplitude events integrtation
+- Tweak: Update Reach Forms coming soon banner
+- Fix: Missing Forms heading column in import modal
 
-1.0.11 (2025-09-30)
+1.4.8 (2026-04-23)
 
-- Tweak: Add Pagination in Add form pages list
-- Tweak:  Include platform metadata in contact submission
-- Tweak: Bump dependencies
-
-1.0.12 (2025-10-07)
-
-- Fix: Broken links in pagination
-
-1.0.13 (2025-10-09)
-
-- Dev: Workflow optimisation
-- Fix: Prevent sending non existent contact list
-
-1.0.14 (2025-10-14)
-
-- Fix: Dialog style (z-index, link color, hide after 10s)
-
-1.1.0 (2025-10-21)
-
-- Feature: Allow 3rd party integrations
-
-1.1.1 (2025-10-21)
-
-- Fix: Fatal error on plugin installation
-- Tweak: Update translations
-- Dev: Remove unused workflows
-
-1.2.0 (2025-10-28)
-
-- Feature: Tracking for Abandoned carts
-- Feature: Tracking for Purchases
-- Feature: Add WordPress Admin Notice for Connecting Reach
-- Tweak: Updated Translations
-
-1.2.1 (2025-11-05)
-
-- Feature: Support for Guest Abandoned Carts Automation
-- Feature: New E-Commerce Tab in Overview page
-- Tweak: Refactor Connection logic
-- Tweak: Add encryption for Guests automation
-
-1.2.2 (2025-11-06)
-
-- Feature: Auto-enable WooCommerce integration
-- Fix: Refresh Overview Page when Reach connection is lost
-- Tweak: Refactor to connection logic to use new Reach Connection endpoint
-
-1.2.3 (2025-11-13)
-
-- Feature: Integration with Ninja forms
-- Feature: Integration with WS Forms
-- Feature: Integration with Sure Forms
-- Feature: Integration with Forminator
-- Tweak: Security fixes
-- Tweak: Trigger CSAT Survey when user Adds a form or Integration
-
-1.2.4 (2025-11-26)
-
-- Tweak: Implement Cart cleanup action
-- Tweak: Bump WP Tested Up to flag
-- Fix: Readme typo
-- Fix: Prevent creation of infinite Batched Actions for Abandoned Carts
-
-1.3.0 (2025-12-11)
-
-- Feature: Import Contacts into Reach
-- Tweak: Bump dependencies
-- Tweak: UI changes
-- Fix: Add missing title in WooCommerce Checkout Form
-- Fix: Tweak title in Forminator forms
-
-1.3.1 (2025-12-12)
-
-- Fix: Fatal error when installing the plugin on WP < 6.8 + PHP < 8.4
-
-1.3.2 (2025-12-18)
-
-- Tweak: Bump dependencies
-- Tweak: Remove Select all Forms checkbox from Sync Modal
-- Dev: Add PHP 8.1 Compat rules
-
-1.3.3 (2026-01-20)
-
-- Feature: Implement tags
-- Fix: Improve error messages
-- Fix: Remove contact column
-- Feature: Autoload elementor form widget
-
-1.3.4 (2026-01-27)
-
-- Feature: Elementor Pro Integration
-- Tweak: Update settings page URLs to use path-based routing
-- Tweak: Add Auto sync off status
-- Fix: Route permissions for tags endpoint
-
-1.3.5 (2026-02-09)
-
-- Tweak: Update Reach URL structure based on Resource ID
-- Dev: DEX Code Automation tweaks
-
-1.3.6 (2026-02-12)
-
-- Feature: Thrive Leads Integration
-- Feature: OptinMonster Integration
-- Feature: Brave Integration
-- Fix: Load existing Elementor PRO forms when connecting
-
-1.3.7 (2026-02-17)
-
-- Fix: Add resourceId to main reach route
-- Fix: Import auto refresh
-- Tweak: Add CSV Import link in the Add Form Modal
-
-1.3.8 (2026-02-26)
-
-- Feature: Tweak connection banners
-- Feature: Separate Add form and Connect plugin buttons
-- Feature: Dependency update
-- Fix: Send CF7 name field
-- Dev: Improved automation
-
-1.3.9 (2026-03-03)
-
-- Feature: Add main menu entry in Reach
-- Fix: Limit Reach to admin users only
-- Fix: Expose missed CORS headers
-- Tweak: Update translations
-- Tweak: Update Readme
-- Tweak: Add Add Form Banner
-- Tweak: Improve UX for Connection Banner
-
-1.4.0 (2026-03-10)
-
-- Feature: Improve WooCommerce table UI
-- Feature: Add Coming Soon Banner in Overview page
-- Feature: Add FAQ in Overview Page
-- Fix: Secrets
-- Fix: not aligned admin menu icon
-- Fix: Release automation secrets
-- Fix: Subscription form button border radius
-- Fix: Subscription form button background color
-- Tweak: Update Dependencies
-- Tweak: Tweak Links in Overview page
-- Dev: Improve Release automation
-
-1.4.1 (2026-03-13)
-
-- Tweak: Update translations
-- Fix: Sync modal appears even when import is not supported
-- Tweak: Create Tag from form groups when the tag doesn't exist yet
-- Fix: Automation route link
-- Fix: Don't show Elementor Pro deleted forms
-- Fix: Add Elementor Pro metadata when sending Elementor Pro forms
-- Fix:  Reach Menu alignment
-- Fix: Subscription form button text color
-
-1.4.2 (2026-03-18)
-
-- Fix: Autoload pages on Gutenberg sites
-
-1.4.3 (2026-03-24)
-
-- Tweak: Adjust copy and UI
-
-1.4.4 (2026-03-31)
-
-- Fix: Update dependencies
-- Tweak:  Adjust contact form submission message
-- Fix:  Import contacts opening when no contacts
-- Tweak: Update translations
-- Fix: WooCommerce entries titles not showing for old installed Reach plugins
-- Tweak: Add new FAQ section
-
-1.4.5 (2026-04-02)
-
-- Tweak: Update translations
-- Fix: Prevent subdomains for connecting
-- Fix: Avoid render checkbox when not connected
-- Fix: Add tooltip for Toggle when is disabled (#401)
-
-1.4.6 (2026-04-08)
-
-- Fix: UX mobile Overview
-- Fix: Hidden overflow cutting the toggle tooltip
+- Tweak: Disable submit button if Reach is not connected
+- Fix: Prevent Auth URL opening in new tab
 
 1.4.7 (2026-04-21)
 
@@ -447,56 +237,270 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 - Fix: Bump HOSTINGER_REACH_PLUGIN_VERSION (#419)
 - Fix: Render Elementor Reach Widget even if Reach is not connected
 
-1.4.8 (2026-04-23)
+1.4.6 (2026-04-08)
 
-- Tweak: Disable submit button if Reach is not connected
-- Fix: Prevent Auth URL opening in new tab
+- Fix: UX mobile Overview
+- Fix: Hidden overflow cutting the toggle tooltip
 
-1.4.9 (2026-05-05)
+1.4.5 (2026-04-02)
 
-- Feature: Check Domain status in Connection page
-- Feature: Amplitude events integrtation
-- Tweak: Update Reach Forms coming soon banner
-- Fix: Missing Forms heading column in import modal
+- Tweak: Update translations
+- Fix: Prevent subdomains for connecting
+- Fix: Avoid render checkbox when not connected
+- Fix: Add tooltip for Toggle when is disabled (#401)
 
-1.4.10 (2026-05-07)
+1.4.4 (2026-03-31)
 
-- Fix: Consolidate Hostinger Reach as the plugin name everywhere
+- Fix: Update dependencies
+- Tweak:  Adjust contact form submission message
+- Fix:  Import contacts opening when no contacts
+- Tweak: Update translations
+- Fix: WooCommerce entries titles not showing for old installed Reach plugins
+- Tweak: Add new FAQ section
 
-1.4.11 (2026-05-12)
+1.4.3 (2026-03-24)
 
-- Fix: Add Elementor Reach Form automatically
-- Tweak: Change UI for Hero in Connection page
-- Tweak: Make Elementor always connected
-- Fix: Update Forminator logo
+- Tweak: Adjust copy and UI
 
-1.4.12 (2026-05-14)
+1.4.2 (2026-03-18)
 
-- Fix: Avoid Domain status check if no status is received
-- Fix: Fatal when Elementor is not installed
+- Fix: Autoload pages on Gutenberg sites
 
-1.5.0 (2026-05-21)
+1.4.1 (2026-03-13)
 
-- Tweak: Improve UI for Mobile version
-- Feature: Support for manually entering API Key
+- Tweak: Update translations
+- Fix: Sync modal appears even when import is not supported
+- Tweak: Create Tag from form groups when the tag doesn't exist yet
+- Fix: Automation route link
+- Fix: Don't show Elementor Pro deleted forms
+- Fix: Add Elementor Pro metadata when sending Elementor Pro forms
+- Fix:  Reach Menu alignment
+- Fix: Subscription form button text color
 
-1.5.1 (2026-06-04)
+1.4.0 (2026-03-10)
 
-- Tweak: Replace Mobile image in Welcome page
-- Fix: Incorrect domain status for agencies
+- Feature: Improve WooCommerce table UI
+- Feature: Add Coming Soon Banner in Overview page
+- Feature: Add FAQ in Overview Page
+- Fix: Secrets
+- Fix: not aligned admin menu icon
+- Fix: Release automation secrets
+- Fix: Subscription form button border radius
+- Fix: Subscription form button background color
+- Tweak: Update Dependencies
+- Tweak: Tweak Links in Overview page
+- Dev: Improve Release automation
 
-1.5.2 (2026-06-16)
+1.3.9 (2026-03-03)
 
-- Fix: Security dependencies
+- Feature: Add main menu entry in Reach
+- Fix: Limit Reach to admin users only
+- Fix: Expose missed CORS headers
+- Tweak: Update translations
+- Tweak: Update Readme
+- Tweak: Add Add Form Banner
+- Tweak: Improve UX for Connection Banner
 
-1.5.3 (2026-06-24)
+1.3.8 (2026-02-26)
 
-- Tweak: Update dependencies
+- Feature: Tweak connection banners
+- Feature: Separate Add form and Connect plugin buttons
+- Feature: Dependency update
+- Fix: Send CF7 name field
+- Dev: Improved automation
 
-1.5.4 (2026-06-25)
+1.3.7 (2026-02-17)
 
-- Tweak: Update dependencies
+- Fix: Add resourceId to main reach route
+- Fix: Import auto refresh
+- Tweak: Add CSV Import link in the Add Form Modal
 
-1.5.5 (2026-06-30)
+1.3.6 (2026-02-12)
 
-- Feature: Support for entering Reach API Key manually
+- Feature: Thrive Leads Integration
+- Feature: OptinMonster Integration
+- Feature: Brave Integration
+- Fix: Load existing Elementor PRO forms when connecting
+
+1.3.5 (2026-02-09)
+
+- Tweak: Update Reach URL structure based on Resource ID
+- Dev: DEX Code Automation tweaks
+
+1.3.4 (2026-01-27)
+
+- Feature: Elementor Pro Integration
+- Tweak: Update settings page URLs to use path-based routing
+- Tweak: Add Auto sync off status
+- Fix: Route permissions for tags endpoint
+
+1.3.3 (2026-01-20)
+
+- Feature: Implement tags
+- Fix: Improve error messages
+- Fix: Remove contact column
+- Feature: Autoload elementor form widget
+
+1.3.2 (2025-12-18)
+
+- Tweak: Bump dependencies
+- Tweak: Remove Select all Forms checkbox from Sync Modal
+- Dev: Add PHP 8.1 Compat rules
+
+1.3.1 (2025-12-12)
+
+- Fix: Fatal error when installing the plugin on WP < 6.8 + PHP < 8.4
+
+1.3.0 (2025-12-11)
+
+- Feature: Import Contacts into Reach
+- Tweak: Bump dependencies
+- Tweak: UI changes
+- Fix: Add missing title in WooCommerce Checkout Form
+- Fix: Tweak title in Forminator forms
+
+1.2.4 (2025-11-26)
+
+- Tweak: Implement Cart cleanup action
+- Tweak: Bump WP Tested Up to flag
+- Fix: Readme typo
+- Fix: Prevent creation of infinite Batched Actions for Abandoned Carts
+
+1.2.3 (2025-11-13)
+
+- Feature: Integration with Ninja forms
+- Feature: Integration with WS Forms
+- Feature: Integration with Sure Forms
+- Feature: Integration with Forminator
+- Tweak: Security fixes
+- Tweak: Trigger CSAT Survey when user Adds a form or Integration
+
+1.2.2 (2025-11-06)
+
+- Feature: Auto-enable WooCommerce integration
+- Fix: Refresh Overview Page when Reach connection is lost
+- Tweak: Refactor to connection logic to use new Reach Connection endpoint
+
+1.2.1 (2025-11-05)
+
+- Feature: Support for Guest Abandoned Carts Automation
+- Feature: New E-Commerce Tab in Overview page
+- Tweak: Refactor Connection logic
+- Tweak: Add encryption for Guests automation
+
+1.2.0 (2025-10-28)
+
+- Feature: Tracking for Abandoned carts
+- Feature: Tracking for Purchases
+- Feature: Add WordPress Admin Notice for Connecting Reach
+- Tweak: Updated Translations
+
+1.1.1 (2025-10-21)
+
+- Fix: Fatal error on plugin installation
+- Tweak: Update translations
+- Dev: Remove unused workflows
+
+1.1.0 (2025-10-21)
+
+- Feature: Allow 3rd party integrations
+
+1.0.14 (2025-10-14)
+
+- Fix: Dialog style (z-index, link color, hide after 10s)
+
+1.0.13 (2025-10-09)
+
+- Dev: Workflow optimisation
+- Fix: Prevent sending non existent contact list
+
+1.0.12 (2025-10-07)
+
+- Fix: Broken links in pagination
+
+1.0.11 (2025-09-30)
+
+- Tweak: Add Pagination in Add form pages list
+- Tweak:  Include platform metadata in contact submission
+- Tweak: Bump dependencies
+
+1.0.10 (2025-09-25)
+
+- Fix: Context menu dropdown
+- Fix: Change elementor logo
+- Tweak: Refactor FE Integration logic
+- tweak: Integrate Review plugin step in CSAT
+- Dev: Implement Coderabbit
+- Dev: Add automated Jira integration for release workflow
+- Dev: Fix Release Updater errors
+- Dev: Bump dependencies
+
+1.0.9 (2025-09-15)
+
+- Feature: Send metadata with contacts
+- Feature: Readme update
+- Feature: Dependency update
+
+1.0.8 (2025-09-11)
+
+- Feature: Integration with WooCommerce Checkout
+- Tweak: Include Add Form entry in the Integrations menu
+- Fix: Routes not working with simple Permalinks
+
+1.0.7 (2025-09-08)
+
+- Feature: Add Dialog when a post is published with Reach Block
+- Fix: Add/edit forms for elementor pages doesn't open Elementor
+- Fix: Elementor pages with Reach forms not recognized
+- Fix: Submit button style overrides theme styles
+- Fix: Prevent Toggle On/Off an invalid form
+- Dev: Update PR templates
+- Dev: Add staging support for Reach API
+- Dev: Fix Lint workflow
+- Dev: Implement JavaScript unit test coverage
+
+1.0.6 (2025-09-01)
+
+- Feature: Elementor integration
+- Tweak: Load plugin entries if any 3rd party plugin is active
+- Tweak: Update translations
+- Tweak: Remove Bootstrap dependencies
+- Fix: update Reach URLs to use new route structure
+
+1.0.5 (2025-08-26)
+
+- Fix: Assets compiler flag
+
+1.0.4 (2025-08-25)
+
+- Fix: Lock background scroll if a modal is open
+- Fix: Remove Warnings when running FE linter
+- Fix: Footer and View form links
+- Feat: Add satisfaction survey
+
+1.0.3 (2025-08-21)
+
+- Fix: Replace Connect Hero image
+- Fix: Reach plugin content not visible when no other Hostinger plugin is installed
+- Feat: Implement ServerSideRendering component in the Gutenberg Block
+
+1.0.2 (2025-08-12)
+
+- Update translations
+- Fix: loader in select page redirection
+- Fix: Apostrophe is not displayed correctly in page name on Select page modal
+- Fix: Link Go to Reach in welcome screen should open in new tab
+- Fix: Buttons are not aligned in Forms
+- Fix: Subscription form not being auto-loaded sometimes
+- Fix: Change Menu load priority
+- Tweak: Toasts UI
+- Tweak:  Add scrollbar to select page modal
+- Tweak: Add header to overview page
+
+1.0.1 (2025-08-06)
+
+- Bump version logic
+
+1.0.0 (2025-08-06)
+
+- Initial release

@@ -24,8 +24,9 @@ class AmplitudeLoader
      *
      * @return self
      */
-    public static function getInstance() : self {
-        if ( null === self::$instance ) {
+    public static function getInstance(): self
+    {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -35,7 +36,8 @@ class AmplitudeLoader
     /**
      * @return void
      */
-    public function boot() : bool {
+    public function boot(): bool
+    {
         $this->registerModules();
 
         return true;
@@ -44,18 +46,20 @@ class AmplitudeLoader
     /**
      * @return void
      */
-    public function registerModules() : void {
+    public function registerModules(): void
+    {
         // Action Dispatcher.
         $helper = new Helper();
         $config = new Config();
         $client = new Client(
-            $config->getConfigValue( 'base_rest_uri', Constants::HOSTINGER_REST_URI ), [
+            $config->getConfigValue('base_rest_uri', Constants::HOSTINGER_REST_URI),
+            [
                 Config::TOKEN_HEADER  => $helper->getApiToken(),
                 Config::DOMAIN_HEADER => $helper->getHostInfo(),
             ]
         );
 
-        $this->objects['action_dispatcher'] = new ActionDispatcher( $helper, $config, $client );
+        $this->objects['action_dispatcher'] = new ActionDispatcher($helper, $config, $client);
 
         // Amplitude Manager.
         $this->objects['amplitude_rest'] = new Rest();
@@ -67,14 +71,15 @@ class AmplitudeLoader
     /**
      * @return bool
      */
-    public function addContainer() : bool {
-        if ( empty( $this->objects ) ) {
+    public function addContainer(): bool
+    {
+        if (empty($this->objects)) {
             return false;
         }
 
-        foreach ( $this->objects as $object ) {
-            if ( property_exists( $object, 'amplitude' ) ) {
-                $object->setAmplitude( $this );
+        foreach ($this->objects as $object) {
+            if (property_exists($object, 'amplitude')) {
+                $object->setAmplitude($this);
             }
         }
 
@@ -84,15 +89,16 @@ class AmplitudeLoader
     /**
      * @return string
      */
-    public function getPluginInfo() : string {
+    public function getPluginInfo(): string
+    {
         $plugin_url = '';
 
         $plugins = get_plugins();
-        foreach ( $plugins as $plugin_path => $plugin_info ) {
-            if ( str_contains( __FILE__, 'plugins/' . dirname( $plugin_path ) . '/' ) ) {
-                $plugin_dir = dirname( $plugin_path );
+        foreach ($plugins as $plugin_path => $plugin_info) {
+            if (str_contains(__FILE__, 'plugins/' . dirname($plugin_path) . '/')) {
+                $plugin_dir = dirname($plugin_path);
 
-                return plugins_url( $plugin_dir );
+                return plugins_url($plugin_dir);
             }
         }
 

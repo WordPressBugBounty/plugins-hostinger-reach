@@ -170,8 +170,8 @@ class SurveyManager
 
         if ($success) {
             delete_transient(self::IS_CLIENT_ELIGIBLE_TRANSIENT_RESPONSE);
-	        $settingKey = $surveyId . '_survey_completed';
-	        update_option('hostinger_' . $settingKey, true);
+            $settingKey = $surveyId . '_survey_completed';
+            update_option('hostinger_' . $settingKey, true);
         }
 
         wp_send_json('Survey completed');
@@ -258,17 +258,17 @@ class SurveyManager
                 <span id="hts-currentQuestion">1</span>
                 <?php
                 echo esc_html(
-                        __(
-                                'Question',
-                                'hostinger-wp-surveys'
-                        )
+                    __(
+                        'Question',
+                        'hostinger-wp-surveys'
+                    )
                 );
                 ?>
                 <?php echo esc_html(__('of ', 'hostinger-wp-surveys')); ?>
                 <span id="hts-allQuestions"></span>
             </div>
         </div>
-        <?php if ( isset($activeSurvey['review_url']) ) { ?>
+        <?php if (isset($activeSurvey['review_url'])) { ?>
             <div id="hts-survey-review"
                  class="hts-survey-wrapper"
                  data-review-min-required-score="<?php echo esc_attr($activeSurvey['review_min_required_score']) ?>">
@@ -279,7 +279,7 @@ class SurveyManager
                 </div>
                 <div class="hostinger-feedback-survey">
                     <div class="sd-question__header">
-                        <h5><?php echo esc_html(__( 'Rate this plugin on WordPress.org', 'hostinger-wp-surveys' ) ); ?></h5>
+                        <h5><?php echo esc_html(__('Rate this plugin on WordPress.org', 'hostinger-wp-surveys')); ?></h5>
                     </div>
                     <div class="hts-survey-stars">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -314,7 +314,7 @@ class SurveyManager
                         </svg>
                     </div>
                     <div class="hts-survey-footer">
-                        <a href="<?php echo esc_url($activeSurvey['review_url']); ?>" target="_blank" class="hts-submit-review sd-btn"><?php echo esc_html(__( 'Add review', 'hostinger-wp-surveys' ) ); ?></a>
+                        <a href="<?php echo esc_url($activeSurvey['review_url']); ?>" target="_blank" class="hts-submit-review sd-btn"><?php echo esc_html(__('Add review', 'hostinger-wp-surveys')); ?></a>
                     </div>
                 </div>
             </div>
@@ -387,7 +387,7 @@ class SurveyManager
      * @param int $review_min_required_score The minimum rating in the score step to show the Review step
      * @return array
      */
-    public static function addSurvey(string $surveyId, string $scoreQuestion, string $commentQuestion, string $location, int $priority, string $review_url = null, int $review_min_required_score = 7 ): array
+    public static function addSurvey(string $surveyId, string $scoreQuestion, string $commentQuestion, string $location, int $priority, string $review_url = null, int $review_min_required_score = 7): array
     {
         $surveyData = [
             'id'        => $surveyId,
