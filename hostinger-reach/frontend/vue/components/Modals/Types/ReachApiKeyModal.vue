@@ -51,14 +51,24 @@ const tryConnect = async (csrf: string, token: string) => {
 	errorMessage.value = '';
 
 	const [data, error] = await reachRepo.postToken(csrf, token);
-	isLoading.value = false;
 
 	if (error || !data?.success) {
+		isLoading.value = false;
 		errorMessage.value = error?.message || translate('hostinger_reach_error_connection_failed');
 
 		return;
 	}
 
+	const [connectData, connectError] = await reachRepo.postConnect();
+
+	if (connectError || !connectData?.success) {
+		isLoading.value = false;
+		errorMessage.value = connectError?.message || translate('hostinger_reach_error_connection_failed');
+
+		return;
+	}
+
+	isLoading.value = false;
 	hostinger_reach_reach_data.is_connected = true;
 	closeModal();
 	router.push({ name: Route.Base.OVERVIEW });

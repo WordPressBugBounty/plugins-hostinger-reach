@@ -221,7 +221,49 @@ class ReachApiHandler extends ApiHandler {
 
         if ( ! $this->get_connection_status_handler() ) {
             $this->api_key_manager->clear_token();
+
             return new WP_REST_Response( array( 'success' => false ) );
+        }
+
+        return new WP_REST_Response( array( 'success' => true ) );
+    }
+
+    public function post_connect_handler(): WP_REST_Response {
+        if ( ! $this->get_connection_status_handler() ) {
+            return new WP_REST_Response( array( 'success' => false ), 400 );
+        }
+
+        $domain = apply_filters( 'hostinger_reach_domain', parse_url( get_option( 'siteurl' ), PHP_URL_HOST ) );
+
+        $this->delete(
+            'websites/connect',
+            array(
+                'domain' => $domain,
+            )
+        );
+
+        $response = $this->post(
+            'websites/connect',
+            array(
+                'domain' => $domain,
+                'type'   => 'wordpress',
+            )
+        );
+
+        if ( is_wp_error( $response ) ) {
+            $this->api_key_manager->clear_token();
+            return $this->handle_wp_error( $response );
+        }
+
+        if ( ! isset( $response['response']['code'] ) || $response['response']['code'] >= 300 ) {
+            $this->api_key_manager->clear_token();
+            return new WP_REST_Response(
+                array(
+                    'success' => false,
+                    'data'    => $response['response']['message'] ?? __( 'Error connecting your site', 'hostinger-reach' ),
+                ),
+                $response['response']['code'] ?? 400,
+            );
         }
 
         return new WP_REST_Response( array( 'success' => true ) );

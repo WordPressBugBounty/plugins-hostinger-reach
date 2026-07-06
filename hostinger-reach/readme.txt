@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.5.6
+Stable tag: 1.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,9 +163,14 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 
 == Changelog ==
 
+1.5.7 (2026-07-06)
+
+- Fix: Connect WordPress domain when enterin API token manually
+- Tweak: Update dependencies
+
 1.5.6 (2026-07-02)
 
-- Version bump: PATCH
+- Tweak: Update dependencies
 
 1.5.5 (2026-06-30)
 
