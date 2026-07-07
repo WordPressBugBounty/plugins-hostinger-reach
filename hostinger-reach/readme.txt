@@ -3,8 +3,8 @@ Tags: email marketing, marketing, newsletter, subscription, lead generation
 Contributors: hostinger
 Requires at least: 6.0
 Requires PHP: 8.0
-Tested up to: 6.9
-Stable tag: 1.5.7
+Tested up to: 7.0
+Stable tag: 1.5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,10 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.5.8 (2026-07-07)
+
+- Tweak: Bump tested up to WordPress 7.0
 
 1.5.7 (2026-07-06)
 

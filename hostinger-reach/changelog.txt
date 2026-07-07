@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.5.8 (2026-07-07)
+
+- Tweak: Bump tested up to WordPress 7.0
+
 1.5.7 (2026-07-06)
 
 - Fix: Connect WordPress domain when enterin API token manually

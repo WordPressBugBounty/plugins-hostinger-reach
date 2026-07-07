@@ -3,11 +3,11 @@
  * Plugin Name:       Hostinger Reach
  * Plugin URI:        https://hostinger.com
  * Description:       Integrate your WordPress site with Hostinger Reach.
- * Version:           1.5.7
+ * Version:           1.5.8
  * Author:            Hostinger
  * Requires PHP:      8.1
  * Requires at least: 6.0
- * Tested up to:      6.9
+ * Tested up to:      7.0
  * Author URI:        https://www.hostinger.com/email-marketing
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
 
-define( 'HOSTINGER_REACH_PLUGIN_VERSION', '1.5.7' );
+define( 'HOSTINGER_REACH_PLUGIN_VERSION', '1.5.8' );
 define( 'HOSTINGER_REACH_DB_VERSION', '1.2.1' );
 define( 'HOSTINGER_REACH_MINIMUM_PHP_VERSION', '8.0' );
 define( 'HOSTINGER_REACH_PLUGIN_FILE', __FILE__ );
