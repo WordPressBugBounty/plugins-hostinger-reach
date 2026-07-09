@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.5.9 (2026-07-09)
+
+- Fix: Styles when error happen in submitting Reach
+- Fix: Don't disable submit button even when Reach is not connected
+- Fix: Jetpack autoloader
+
 1.5.8 (2026-07-07)
 
 - Tweak: Bump tested up to WordPress 7.0
