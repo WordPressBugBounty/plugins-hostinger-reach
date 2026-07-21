@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.6.0 (2026-07-21)
+
+- Fix: Security dependencies
+- Feature: Enable Hostinger temporary domains connection
+
 1.5.9 (2026-07-09)
 
 - Fix: Styles when error happen in submitting Reach

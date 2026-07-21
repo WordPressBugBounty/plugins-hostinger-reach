@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { HNotificationRow } from '@hostinger/hcomponents';
 import { computed } from 'vue';
 
 import reachBackgroundImage from '@/assets/images/backgrounds/reach-welcome-background.png';
@@ -15,8 +14,6 @@ const reachDashboardUrl = computed(() => `https://${reachBaseDomain.value}`);
 interface Props {
 	isConnectedToAnotherSite?: boolean;
 	isButtonLoading?: boolean;
-	isTemporary?: boolean;
-	isNotActive?: boolean;
 	domain: string;
 	onGetStarted: () => void;
 	onManualApiKeyClick?: () => void;
@@ -25,7 +22,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	isConnectedToAnotherSite: false,
 	isButtonLoading: false,
-	isNotActive: false,
 	onManualApiKeyClick: () => {}
 });
 </script>
@@ -78,7 +74,7 @@ const props = withDefaults(defineProps<Props>(), {
 					<HText id="hero-description" as="p" variant="body-2 h-mb-24">
 						{{ translate('hostinger_reach_welcome_view_description') }}
 					</HText>
-					<template v-if="!isConnectedToAnotherSite && !isTemporary && !isNotActive">
+					<template v-if="!isConnectedToAnotherSite">
 						<div class="hero__actions">
 							<HButton
 								color="primary"
@@ -96,22 +92,6 @@ const props = withDefaults(defineProps<Props>(), {
 						</div>
 					</template>
 				</div>
-			</div>
-			<div v-if="!isButtonLoading && (isTemporary || isNotActive)" class="hero__info">
-				<HNotificationRow
-					variant="warning"
-					:description="
-						isTemporary
-							? translate('hostinger_reach_welcome_view_description_temporary')
-							: translate('hostinger_reach_welcome_view_description_not_active')
-					"
-					:primary-action-text="
-						isTemporary
-							? translate('hostinger_reach_welcome_view_temporary_button')
-							: translate('hostinger_reach_welcome_view_not_active_button')
-					"
-					@primary-action-click="onGetStarted"
-				/>
 			</div>
 			<div class="hero__footer" role="contentinfo" aria-label="Site information">
 				<HIcon class="h-mr-8" name="ic-globe-16" color="neutral--300" aria-hidden="true" />
@@ -225,16 +205,6 @@ const props = withDefaults(defineProps<Props>(), {
 		@media (min-width: 768px) {
 			width: 50%;
 			max-width: 345px;
-		}
-	}
-
-	&__info {
-		padding: 24px;
-		border-top: 1px solid var(--neutral--50);
-
-		@media (max-width: 768px) {
-			padding-top: 0;
-			padding-bottom: 24px;
 		}
 	}
 
