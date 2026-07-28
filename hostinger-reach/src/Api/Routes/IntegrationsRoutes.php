@@ -24,6 +24,16 @@ class IntegrationsRoutes extends Routes {
             array(
                 'methods'             => 'GET',
                 'callback'            => array( $this->handler, 'get_integrations_handler' ),
+                'permission_callback' => array( $this, 'permission_check' ),
+            )
+        );
+
+        register_rest_route(
+            HOSTINGER_REACH_PLUGIN_REST_API_BASE,
+            'status',
+            array(
+                'methods'             => 'GET',
+                'callback'            => array( $this->handler, 'get_status_handler' ),
                 'permission_callback' => '__return_true',
             )
         );

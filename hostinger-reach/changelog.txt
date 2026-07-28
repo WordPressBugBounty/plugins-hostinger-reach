@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.7.0 (2026-07-28)
+
+- Fix: Make integrations endpoint private
+- Feature: Restore Cart Link support
+
 1.6.0 (2026-07-21)
 
 - Fix: Security dependencies

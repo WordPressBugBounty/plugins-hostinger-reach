@@ -7,6 +7,7 @@ use Hostinger\Reach\Container;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Repositories\CartRepository;
 use Hostinger\Reach\Tracking\AbandonedCarts;
+use Hostinger\Reach\Tracking\RestoreCart;
 
 if ( ! defined( 'ABSPATH' ) ) {
     die;
@@ -25,7 +26,19 @@ class TrackingProvider implements ProviderInterface {
             }
         );
 
+        $container->set(
+            RestoreCart::class,
+            function () use ( $container ) {
+                return new RestoreCart(
+                    $container->get( CartRepository::class )
+                );
+            }
+        );
+
         $abandoned_carts = $container->get( AbandonedCarts::class );
         $abandoned_carts->init();
+
+        $restore_cart = $container->get( RestoreCart::class );
+        $restore_cart->init();
     }
 }

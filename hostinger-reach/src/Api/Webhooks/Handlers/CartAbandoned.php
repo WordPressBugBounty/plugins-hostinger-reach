@@ -8,6 +8,7 @@ use Hostinger\Reach\Models\Cart;
 use Hostinger\Reach\Dto\Cart as CartDto;
 use Hostinger\Reach\Repositories\CartRepository;
 use Hostinger\Reach\Repositories\FormRepository;
+use Hostinger\Reach\Tracking\RestoreCart;
 use WC_Customer;
 use Exception;
 
@@ -32,7 +33,10 @@ class CartAbandoned extends WebhookHandler {
             return array();
         }
 
-        return $data->to_array();
+        $metadata                = $data->to_array();
+        $metadata['restore_url'] = RestoreCart::get_restore_url( $data->get_hash() );
+
+        return $metadata;
     }
 
     public function send( string $cart_hash ): void {

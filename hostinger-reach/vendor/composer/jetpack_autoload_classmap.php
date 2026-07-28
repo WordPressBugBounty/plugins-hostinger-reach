@@ -762,6 +762,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/AbandonedCartsTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Tracking\\RestoreCartTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/RestoreCartTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Unit\\Api\\ResourceIdManagerTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/ResourceIdManagerTest.php'
@@ -769,6 +773,10 @@ return array(
 	'Hostinger\\Reach\\Tracking\\AbandonedCarts' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Tracking/AbandonedCarts.php'
+	),
+	'Hostinger\\Reach\\Tracking\\RestoreCart' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Tracking/RestoreCart.php'
 	),
 	'Hostinger\\Surveys\\Ajax' => array(
 		'version' => '1.1.23.0',

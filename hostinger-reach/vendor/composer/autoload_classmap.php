@@ -114,6 +114,7 @@ return array(
     'Hostinger\\Reach\\Setup\\Database' => $baseDir . '/src/Setup/Database.php',
     'Hostinger\\Reach\\Setup\\Encrypt' => $baseDir . '/src/Setup/Encrypt.php',
     'Hostinger\\Reach\\Tracking\\AbandonedCarts' => $baseDir . '/src/Tracking/AbandonedCarts.php',
+    'Hostinger\\Reach\\Tracking\\RestoreCart' => $baseDir . '/src/Tracking/RestoreCart.php',
     'Hostinger\\Surveys\\Ajax' => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Ajax.php',
     'Hostinger\\Surveys\\Assets' => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Assets.php',
     'Hostinger\\Surveys\\Loader' => $vendorDir . '/hostinger/hostinger-wp-surveys/src/Loader.php',

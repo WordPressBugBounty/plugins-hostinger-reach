@@ -170,6 +170,7 @@ class ComposerStaticInit03822c9d88cd8a52d0edb715f5cdf665
         'Hostinger\\Reach\\Setup\\Database' => __DIR__ . '/../..' . '/src/Setup/Database.php',
         'Hostinger\\Reach\\Setup\\Encrypt' => __DIR__ . '/../..' . '/src/Setup/Encrypt.php',
         'Hostinger\\Reach\\Tracking\\AbandonedCarts' => __DIR__ . '/../..' . '/src/Tracking/AbandonedCarts.php',
+        'Hostinger\\Reach\\Tracking\\RestoreCart' => __DIR__ . '/../..' . '/src/Tracking/RestoreCart.php',
         'Hostinger\\Surveys\\Ajax' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Ajax.php',
         'Hostinger\\Surveys\\Assets' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Assets.php',
         'Hostinger\\Surveys\\Loader' => __DIR__ . '/..' . '/hostinger/hostinger-wp-surveys/src/Loader.php',
