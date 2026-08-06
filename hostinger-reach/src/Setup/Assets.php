@@ -255,6 +255,8 @@ class Assets {
             'hostinger_reach_woocommerce_connected_text'              => __( 'If your store isn’t ready yet, complete the setup to start selling and collecting contacts', 'hostinger-reach' ),
             'hostinger_reach_woocommerce_connected_button'            => __( 'Set up WooCommerce', 'hostinger-reach' ),
             'hostinger_reach_plugin_cannot_disable'                   => __( 'This form is a Reach native form inserted directly in your page. For disabling it remove the Form directly from the page using the editor.', 'hostinger-reach' ),
+            'hostinger_reach_woocommerce_subscribed_contacts_description' => __( 'Only subscribed contacts can receive automated emails. Customers must opt in to marketing and be synced to Reach before store automations can email them.', 'hostinger-reach' ),
+            'hostinger_reach_woocommerce_view_contacts_link'              => __( 'View contacts', 'hostinger-reach' ),
         );
     }
 }

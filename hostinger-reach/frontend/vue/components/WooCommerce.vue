@@ -3,6 +3,7 @@ import { HNotificationRow } from '@hostinger/hcomponents';
 import { computed } from 'vue';
 
 import Banner from '@/components/Banner.vue';
+import ReachContactsSummary from '@/components/ReachContactsSummary.vue';
 import WooCommerceEntriesTable from '@/components/WooCommerceEntriesTable.vue';
 import { useModal } from '@/composables';
 import { WOOCOMMERCE_ID } from '@/data/pluginData';
@@ -61,6 +62,8 @@ const connectAndInstallWooCommerce = async () => {
 			:on-button-click="connectAndInstallWooCommerce"
 			:is-button-loading="integrationsStore.isLoading"
 		/>
+
+		<ReachContactsSummary v-if="isTableVisible" />
 
 		<WooCommerceEntriesTable
 			v-if="isTableVisible"

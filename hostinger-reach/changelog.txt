@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.7.1 (2026-08-06)
+
+- Feature: Add subscribed contacts banner to WooCommerce section
+
 1.7.0 (2026-07-28)
 
 - Fix: Make integrations endpoint private
