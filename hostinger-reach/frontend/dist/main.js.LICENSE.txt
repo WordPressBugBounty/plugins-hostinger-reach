@@ -26,8 +26,8 @@
  */
 
 /*!
- * pinia v2.3.1
- * (c) 2025 Eduardo San Martin Morote
+ * pinia v4.0.2
+ * (c) 2026 Eduardo San Martin Morote
  * @license MIT
  */
 
@@ -50,31 +50,33 @@
   */
 
 /**
-* @vue/compiler-core v3.5.39
+* @vue/compiler-core v3.5.41
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/compiler-dom v3.5.39
+* @vue/compiler-dom v3.5.41
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/runtime-core v3.5.39
+* @vue/runtime-core v3.5.41
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/runtime-dom v3.5.39
+* @vue/runtime-dom v3.5.41
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
 
 /**
-* @vue/shared v3.5.39
+* @vue/shared v3.5.41
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
+
+// v8 ignore if -- @preserve
