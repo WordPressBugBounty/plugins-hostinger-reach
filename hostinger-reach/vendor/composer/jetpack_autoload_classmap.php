@@ -266,6 +266,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/PluginManager.php'
 	),
+	'Hostinger\\Reach\\Integrations\\Reach\\ReachFormBuilder' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Integrations/Reach/ReachFormBuilder.php'
+	),
 	'Hostinger\\Reach\\Integrations\\Reach\\ReachFormIntegration' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Integrations/Reach/ReachFormIntegration.php'
@@ -625,6 +629,10 @@ return array(
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\OptInMonsterIntegrationTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/OptInMonsterIntegrationTest.php'
+	),
+	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormBuilderTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ReachFormBuilderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormIntegrationTest' => array(
 		'version' => 'dev-main',

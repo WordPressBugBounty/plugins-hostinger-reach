@@ -33,6 +33,9 @@ export interface HstReachDataRaw {
 	raw_domain: string;
 	has_valid_resource_id: boolean;
 	resource_id: string;
+	is_elementor_active: boolean;
+	elementor_new_page_url: string;
+	embed_script_url: string;
 }
 
 export interface OverviewData {

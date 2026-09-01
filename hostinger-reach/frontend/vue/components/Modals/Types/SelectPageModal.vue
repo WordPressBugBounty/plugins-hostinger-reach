@@ -4,6 +4,8 @@ import { computed, onMounted, ref } from 'vue';
 
 import BaseModal from '@/components/Modals/Base/BaseModal.vue';
 import Pagination from '@/components/Pagination.vue';
+import { useModal } from '@/composables';
+import type { BuilderForm } from '@/data/repositories/reachRepo';
 import { usePagesStore } from '@/stores/pagesStore';
 import type { Page, WordPressPage } from '@/types/models/pagesModels';
 import { translate } from '@/utils/translate';
@@ -15,15 +17,34 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const { closeModal } = useModal();
+
+const selectedForm = computed(() => props.data?.selectedForm as BuilderForm | undefined);
+const formPreviewUrl = computed(() => props.data?.formPreviewUrl as string | undefined);
+const hasPreviewFailed = ref(false);
+
 const pagesStore = usePagesStore();
 
 const reachData = hostinger_reach_reach_data;
 const adminUrl = (reachData?.admin_url || '/wp-admin/').replace(/\/?$/, '/');
 const addBlockNonce = reachData?.add_block_nonce || '';
+const isElementorActive = reachData?.is_elementor_active ?? false;
+const elementorNewPageUrl = reachData?.elementor_new_page_url || '';
 
-const NEW_FORM_BUTTON_LINK = `${adminUrl}post-new.php?post_type=page&hostinger_reach_add_block=1&_wpnonce=${encodeURIComponent(addBlockNonce)}`;
+const addBlockValue = computed(() => selectedForm.value?.uuid ?? '1');
+
+const newPageLink = computed(() => {
+	if (isElementorActive && elementorNewPageUrl) {
+		const separator = elementorNewPageUrl.includes('?') ? '&' : '?';
+
+		return `${elementorNewPageUrl}${separator}hostinger_reach_add_block=${encodeURIComponent(addBlockValue.value)}`;
+	}
+
+	return `${adminUrl}post-new.php?post_type=page&hostinger_reach_add_block=${encodeURIComponent(addBlockValue.value)}&_wpnonce=${encodeURIComponent(addBlockNonce)}`;
+});
 
 const loadingPageId = ref<string | null>(null);
+const selectedPageId = ref<string | null>(null);
 const isNewFormButtonLoading = ref(false);
 
 const currentPages = computed(() => {
@@ -44,7 +65,7 @@ const getPageDisplayName = (page: Page | WordPressPage): string => {
 	return translate('hostinger_reach_forms_no_title');
 };
 
-const isPageAdded = (page: Page | WordPressPage): boolean => ('isAdded' in page ? page.isAdded || false : false);
+const isPageSelected = (page: Page | WordPressPage): boolean => selectedPageId.value === String(page.id);
 
 const isLoading = computed(() => pagesStore.isLoading);
 const currentPage = computed(() => pagesStore.currentPage);
@@ -52,7 +73,14 @@ const totalItems = computed(() => pagesStore.totalItems);
 const itemsPerPage = computed(() => pagesStore.itemsPerPage);
 
 const handlePageChange = async (page: number) => {
+	selectedPageId.value = null;
 	await pagesStore.goToPage(page);
+};
+
+const handlePageSelect = (page: Page | WordPressPage) => {
+	if (loadingPageId.value) return;
+
+	selectedPageId.value = String(page.id);
 };
 
 const handlePageClick = (page: Page | WordPressPage) => {
@@ -61,8 +89,17 @@ const handlePageClick = (page: Page | WordPressPage) => {
 	loadingPageId.value = String(page.id);
 
 	if (page.link) {
-		const pageUrl = `${page.link}&hostinger_reach_add_block=1&_wpnonce=${encodeURIComponent(addBlockNonce)}`;
+		const pageUrl = `${page.link}&hostinger_reach_add_block=${encodeURIComponent(addBlockValue.value)}&_wpnonce=${encodeURIComponent(addBlockNonce)}`;
 		window.location.href = pageUrl;
+	}
+};
+
+const handleConfirm = () => {
+	if (!selectedPageId.value) return;
+
+	const page = currentPages.value.find((item) => String(item.id) === selectedPageId.value);
+	if (page) {
+		handlePageClick(page);
 	}
 };
 
@@ -71,7 +108,7 @@ const handleNewFormClick = () => {
 
 	isNewFormButtonLoading.value = true;
 
-	window.location.href = NEW_FORM_BUTTON_LINK;
+	window.location.href = newPageLink.value;
 };
 
 const handleBackClick = () => {
@@ -87,11 +124,41 @@ onMounted(async () => {
 </script>
 
 <template>
-	<BaseModal title-alignment="left" :title="translate('hostinger_reach_add_form')">
-		<template v-if="data?.backButtonRedirectAction" #back-button>
+	<BaseModal title-alignment="left" :title="translate('hostinger_reach_select_page_modal_title')">
+		<template v-if="data?.backButtonRedirectAction && !selectedForm" #back-button>
 			<button class="select-page-modal__back-button" type="button" @click="handleBackClick">
 				<HIcon name="ic-chevron-left-16" color="neutral--600" />
 			</button>
+		</template>
+
+		<template v-if="selectedForm" #header-content>
+			<div class="select-page-modal__selected-form">
+				<div class="select-page-modal__selected-form-info">
+					<img
+						v-if="formPreviewUrl && !hasPreviewFailed"
+						class="select-page-modal__selected-form-image"
+						:src="formPreviewUrl"
+						:alt="selectedForm.name"
+						@error="hasPreviewFailed = true"
+					/>
+					<div v-else class="select-page-modal__selected-form-image select-page-modal__selected-form-image--fallback">
+						<HIcon name="ic-image-24" color="neutral--400" />
+					</div>
+
+					<div class="select-page-modal__selected-form-text">
+						<HText variant="body-1-bold" as="span" class="select-page-modal__selected-form-name">
+							{{ selectedForm.name }}
+						</HText>
+						<HText variant="body-2-medium" as="span" class="select-page-modal__selected-form-hint">
+							{{ translate('hostinger_reach_select_page_modal_selected_form_hint') }}
+						</HText>
+					</div>
+				</div>
+
+				<HButton variant="text" color="primary" size="small" @click="handleBackClick">
+					{{ translate('hostinger_reach_select_page_modal_change_selection') }}
+				</HButton>
+			</div>
 		</template>
 
 		<div class="select-page-modal">
@@ -115,10 +182,10 @@ onMounted(async () => {
 							:key="page.id"
 							class="select-page-modal__page-item"
 							:class="{
-								'select-page-modal__page-item--selected': isPageAdded(page),
+								'select-page-modal__page-item--selected': isPageSelected(page),
 								'select-page-modal__page-item--loading': loadingPageId === String(page.id)
 							}"
-							@click="handlePageClick(page)"
+							@click="handlePageSelect(page)"
 						>
 							<div v-if="loadingPageId === String(page.id)" class="select-page-modal__page-loading">
 								<HSkeletonLoader width="60%" height="20px" border-radius="sm" />
@@ -132,8 +199,8 @@ onMounted(async () => {
 
 								<div>
 									<HIcon
-										:name="isPageAdded(page) ? 'ic-checkmark-circle-filled-24' : 'ic-circle-empty-24'"
-										:color="isPageAdded(page) ? 'primary--500' : 'neutral--200'"
+										:name="isPageSelected(page) ? 'ic-checkmark-circle-filled-24' : 'ic-circle-empty-24'"
+										:color="isPageSelected(page) ? 'primary--500' : 'neutral--200'"
 									/>
 								</div>
 							</template>
@@ -171,17 +238,30 @@ onMounted(async () => {
 					:is-loading="isNewFormButtonLoading"
 					@click="handleNewFormClick"
 				>
-					{{ translate('hostinger_reach_forms_new_page_text') }}
+					{{ translate('hostinger_reach_select_page_modal_create_new_page') }}
 				</HButton>
+
+				<div class="select-page-modal__footer-actions">
+					<HButton variant="text" color="neutral" size="small" @click="closeModal">
+						{{ translate('hostinger_reach_select_page_modal_cancel') }}
+					</HButton>
+					<HButton color="primary" size="small" :is-disabled="!selectedPageId" @click="handleConfirm">
+						{{ translate('hostinger_reach_select_page_modal_confirm') }}
+					</HButton>
+				</div>
 			</div>
 		</div>
 	</BaseModal>
 </template>
 
 <style lang="scss" scoped>
-.select-page-modal {
-	margin-top: 24px;
+:deep(.base-modal__header) {
+	margin: 0;
+	padding: 24px;
+	border-bottom: 1px solid var(--neutral--200);
+}
 
+.select-page-modal {
 	&__back-button {
 		position: absolute;
 		top: 0;
@@ -211,7 +291,60 @@ onMounted(async () => {
 		flex-direction: column;
 		gap: 20px;
 		align-items: center;
-		margin-bottom: 24px;
+		padding: 24px 24px 0;
+	}
+
+	&__selected-form {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		width: 100%;
+		margin-top: 16px;
+		padding: 12px;
+		border: 2px solid transparent;
+		border-radius: var(--h-border-radius-lg);
+		background:
+			linear-gradient(var(--neutral--0), var(--neutral--0)) padding-box,
+			linear-gradient(90deg, rgba(58, 176, 255, 1), rgba(103, 61, 230, 1), rgba(229, 54, 219, 1)) border-box;
+	}
+
+	&__selected-form-info {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		min-width: 0;
+	}
+
+	&__selected-form-image {
+		height: 44px;
+		width: auto;
+		max-width: 72px;
+		flex-shrink: 0;
+		object-fit: cover;
+		border-radius: var(--h-border-radius-sm);
+
+		&--fallback {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 44px;
+			background: var(--neutral--100);
+		}
+	}
+
+	&__selected-form-text {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	&__selected-form-name {
+		color: var(--neutral--800);
+	}
+
+	&__selected-form-hint {
+		color: var(--neutral--500);
 	}
 
 	&__pages {
@@ -304,13 +437,21 @@ onMounted(async () => {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 16px 0;
-		margin-bottom: 8px;
+		padding: 16px 24px;
 	}
 
 	&__footer {
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
+		align-items: center;
+		gap: 8px;
+		padding: 16px 24px;
+		border-top: 1px solid var(--neutral--200);
+	}
+
+	&__footer-actions {
+		display: flex;
+		align-items: center;
 		gap: 8px;
 	}
 

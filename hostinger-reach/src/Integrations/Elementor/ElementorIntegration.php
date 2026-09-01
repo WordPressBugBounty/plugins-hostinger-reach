@@ -11,11 +11,14 @@ use ElementorPro\Modules\Forms\Submissions\Database\Entities\Form_Snapshot;
 use ElementorPro\Modules\Forms\Submissions\Database\Query;
 use ElementorPro\Modules\Forms\Submissions\Database\Repositories\Form_Snapshot_Repository;
 use Exception;
+use Hostinger\Reach\Api\Handlers\ReachApiHandler;
+use Hostinger\Reach\Api\ResourceIdManager;
 use Hostinger\Reach\Dto\PluginData;
 use Hostinger\Reach\Dto\ReachContact;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\IntegrationInterface;
 use Hostinger\Reach\Integrations\IntegrationWithForms;
+use Hostinger\Reach\Repositories\FormRepository;
 use WP_Post;
 
 if ( ! DEFINED( 'ABSPATH' ) ) {
@@ -26,12 +29,22 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
 
     public const INTEGRATION_NAME            = 'elementor';
     public const AUTOLOAD_META_KEY           = 'hostinger_reach_add_elementor_widget';
+    public const AUTOLOAD_FORM_BUILDER_ID    = 'hostinger_reach_add_elementor_widget_form_builder_id';
     public const ADD_BLOCK_QUERY_ARG         = 'hostinger_reach_add_block';
     public const ADD_BLOCK_NONCE             = 'hostinger_reach_add_block';
     public const EDITOR_SCROLL_SCRIPT_HANDLE = 'hostinger-reach-elementor-editor-scroll';
     public const EDITOR_SCROLL_SCRIPT_FILE   = 'elementor-editor-scroll.js';
+    public const EDITOR_FORM_SCRIPT_HANDLE   = 'hostinger-reach-elementor-form-selector';
+    public const EDITOR_FORM_SCRIPT_FILE     = 'elementor-reach-form.js';
+    public const EDITOR_FORM_STYLE_FILE      = 'elementor-reach-form.css';
 
     protected SubscriptionFormElementorWidget $widget;
+    private ReachApiHandler $reach_api_handler;
+
+    public function __construct( FormRepository $form_repository, ReachApiHandler $reach_api_handler ) {
+        parent::__construct( $form_repository );
+        $this->reach_api_handler = $reach_api_handler;
+    }
 
     public function init(): void {
         parent::init();
@@ -53,6 +66,78 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         );
     }
 
+    public function enqueue_editor_form_selector(): void {
+        $script_path = HOSTINGER_REACH_PLUGIN_DIR . 'frontend/dist/' . self::EDITOR_FORM_SCRIPT_FILE;
+        if ( ! file_exists( $script_path ) ) {
+            return;
+        }
+
+        wp_enqueue_script(
+            self::EDITOR_FORM_SCRIPT_HANDLE,
+            Functions::get_frontend_url() . self::EDITOR_FORM_SCRIPT_FILE,
+            array(),
+            filemtime( $script_path ),
+            true
+        );
+
+        $style_path = HOSTINGER_REACH_PLUGIN_DIR . 'frontend/dist/' . self::EDITOR_FORM_STYLE_FILE;
+        if ( file_exists( $style_path ) ) {
+            wp_enqueue_style(
+                self::EDITOR_FORM_SCRIPT_HANDLE,
+                Functions::get_frontend_url() . self::EDITOR_FORM_STYLE_FILE,
+                array(),
+                filemtime( $style_path )
+            );
+        }
+
+        $resource_id = $this->reach_api_handler->get_resource_id();
+        if ( $resource_id === ResourceIdManager::NON_EXISTENT_RESOURCE_ID ) {
+            $resource_id = '';
+        }
+
+        wp_localize_script(
+            self::EDITOR_FORM_SCRIPT_HANDLE,
+            'hostinger_reach_elementor_data',
+            array(
+                'restUrl'     => esc_url_raw( rest_url() ),
+                'nonce'       => wp_create_nonce( 'wp_rest' ),
+                'resourceId'  => $resource_id,
+                'reachDomain' => $this->reach_api_handler->get_reach_domain(),
+                'domain'      => $this->reach_api_handler->get_functions()->get_host_info(),
+                'widgetName'  => SubscriptionFormElementorWidget::WIDGET_NAME,
+                'embedScript' => HOSTINGER_REACH_EMBED_SCRIPT_URL,
+                'i18n'        => array(
+                    'useTemplate'     => __( 'Use Form builder template', 'hostinger-reach' ),
+                    'useClassic'      => __( 'Use classic Reach block', 'hostinger-reach' ),
+                    'changeSelection' => __( 'Change the selection', 'hostinger-reach' ),
+                    'editInReach'     => __( 'Edit in Reach', 'hostinger-reach' ),
+                    'selectForm'      => __( 'Select a form', 'hostinger-reach' ),
+                    'createForm'      => __( 'Create a new form', 'hostinger-reach' ),
+                    'refresh'         => __( 'Refresh forms', 'hostinger-reach' ),
+                    'cancel'          => __( 'Cancel', 'hostinger-reach' ),
+                    'continue'        => __( 'Continue', 'hostinger-reach' ),
+                    'noForms'         => __( 'No forms yet. Create your first form in Hostinger Reach.', 'hostinger-reach' ),
+                    'loading'         => __( 'Loading…', 'hostinger-reach' ),
+                ),
+            )
+        );
+    }
+
+    public function enqueue_preview_styles(): void {
+        $handle = self::EDITOR_FORM_SCRIPT_HANDLE . '-preview';
+
+        wp_register_style( $handle, false, array(), HOSTINGER_REACH_PLUGIN_VERSION );
+        wp_enqueue_style( $handle );
+
+        $widget_selector = '.elementor-widget-' . SubscriptionFormElementorWidget::WIDGET_NAME;
+        $css             = sprintf(
+            '%1$s .hostinger-reach-block-subscription-form-wrapper,%1$s [data-reach-form]{pointer-events:none;}',
+            $widget_selector
+        );
+
+        wp_add_inline_style( $handle, $css );
+    }
+
     public function active_integration_hooks(): void {
         add_action( 'transition_post_status', array( $this, 'handle_transition_post_status' ), 10, 3 );
         add_filter( 'hostinger_reach_get_group', array( $this, 'filter_hostinger_reach_get_group' ), 10, 2 );
@@ -61,6 +146,8 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         add_action( 'admin_init', array( $this, 'flag_existing_elementor_post' ) );
         add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
         add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scroll_script' ) );
+        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_form_selector' ) );
+        add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_preview_styles' ) );
         add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
     }
 
@@ -109,8 +196,27 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         return self::INTEGRATION_NAME;
     }
 
+    public static function is_active(): bool {
+        return class_exists( 'Elementor\Plugin' );
+    }
+
+    public static function get_new_page_url(): string {
+        if ( ! class_exists( 'Elementor\Core\Documents_Manager' ) ) {
+            return '';
+        }
+
+        return Documents_Manager::get_create_new_post_url( 'page' );
+    }
+
     public function get_form_ids( WP_Post $post ): array {
-        return array_merge( $this->get_elementor_form_ids_from_content( $post->post_content ), $this->get_elementor_form_ids_from_actions() );
+        return array_values(
+            array_unique(
+                array_merge(
+                    $this->get_reach_form_ids( $post ),
+                    $this->get_elementor_form_ids_from_actions()
+                )
+            )
+        );
     }
 
     public function get_plugin_data(): PluginData {
@@ -186,7 +292,15 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             return;
         }
 
+        $form_builder_id = isset( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) ) : '';
+
+        // '1' is the legacy marker for "add the default form" and does not reference a Form Builder template.
+        if ( $form_builder_id === '1' ) {
+            $form_builder_id = '';
+        }
+
         update_post_meta( $post_id, self::AUTOLOAD_META_KEY, '1' );
+        update_post_meta( $post_id, self::AUTOLOAD_FORM_BUILDER_ID, $form_builder_id );
     }
 
     public function flag_existing_elementor_post(): void {
@@ -216,7 +330,15 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             return;
         }
 
+        $form_builder_id = sanitize_text_field( wp_unslash( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) );
+
+        // '1' is the legacy marker for "add the default form" and does not reference a Form Builder template.
+        if ( $form_builder_id === '1' ) {
+            $form_builder_id = '';
+        }
+
         update_post_meta( $post_id, self::AUTOLOAD_META_KEY, '1' );
+        update_post_meta( $post_id, self::AUTOLOAD_FORM_BUILDER_ID, $form_builder_id );
     }
 
     public function is_elementor_post( int $post_id ): bool {
@@ -245,6 +367,8 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             return;
         }
 
+        $form_builder_id = (string) get_post_meta( $post_id, self::AUTOLOAD_FORM_BUILDER_ID, true );
+
         $elements = $document->get_elements_data();
 
         $widget_data = array(
@@ -265,9 +389,10 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
                                 'elType'     => 'widget',
                                 'widgetType' => SubscriptionFormElementorWidget::WIDGET_NAME,
                                 'settings'   => array(
-                                    'formId'      => SubscriptionFormElementorWidget::FORM_ID_PREFIX . random_int( 1, PHP_INT_MAX ),
-                                    'showName'    => 0,
-                                    'showSurname' => 0,
+                                    'formId'        => SubscriptionFormElementorWidget::FORM_ID_PREFIX . random_int( 1, PHP_INT_MAX ),
+                                    'formBuilderId' => $form_builder_id,
+                                    'showName'      => 0,
+                                    'showSurname'   => 0,
                                 ),
                             ),
                         ),
@@ -278,6 +403,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
 
         $document->save( array( 'elements' => array_merge( $elements, $widget_data ) ) );
         delete_post_meta( $post_id, self::AUTOLOAD_META_KEY );
+        delete_post_meta( $post_id, self::AUTOLOAD_FORM_BUILDER_ID );
     }
 
     public function is_import_supported(): bool {
@@ -409,11 +535,77 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     private function set_forms( WP_Post $post ): void {
-        $elementor_reach_forms = $this->get_elementor_form_ids_from_content( $post->post_content );
+        $elementor_reach_forms = $this->get_reach_form_ids( $post );
         $elementor_pro_forms   = $this->get_elementor_form_ids_from_actions();
-        $form_ids              = array_merge( $elementor_reach_forms, $elementor_pro_forms );
+        $form_ids              = array_values( array_unique( array_merge( $elementor_reach_forms, $elementor_pro_forms ) ) );
 
         $this->update_form_repository( $form_ids, $post->ID );
+    }
+
+    private function get_reach_form_ids( WP_Post $post ): array {
+        return array_values(
+            array_unique(
+                array_merge(
+                    $this->get_elementor_form_ids_from_content( $post->post_content ),
+                    $this->get_reach_form_ids_from_post_id( $post->ID ),
+                    $this->get_reach_form_ids_from_actions()
+                )
+            )
+        );
+    }
+
+    private function get_reach_form_ids_from_post_id( int $post_id ): array {
+        $form_ids = array();
+
+        $elementor_metadata = get_post_meta( $post_id, '_elementor_data', true );
+        if ( ! is_string( $elementor_metadata ) || $elementor_metadata === '' ) {
+            return $form_ids;
+        }
+
+        $elementor_metadata = json_decode( $elementor_metadata, true );
+        if ( ! is_array( $elementor_metadata ) ) {
+            return $form_ids;
+        }
+
+        foreach ( $elementor_metadata as $element ) {
+            $form_ids = array_merge( $form_ids, $this->find_reach_form_widget( $element ) );
+        }
+
+        return $form_ids;
+    }
+
+    private function get_reach_form_ids_from_actions(): array {
+        $form_ids = array();
+        $actions  = json_decode( wp_unslash( $_POST['actions'] ?? '' ), true );
+        $status   = $actions['save_builder']['data']['status'] ?? 'draft';
+        $elements = $actions['save_builder']['data']['elements'] ?? array();
+
+        if ( ! empty( $elements ) && $status === 'publish' ) {
+            foreach ( $elements as $element ) {
+                $form_ids = array_merge( $form_ids, $this->find_reach_form_widget( $element ) );
+            }
+        }
+
+        return $form_ids;
+    }
+
+    private function find_reach_form_widget( array $element ): array {
+        $form_ids = array();
+
+        $is_reach_widget = ( $element['widgetType'] ?? '' ) === SubscriptionFormElementorWidget::WIDGET_NAME;
+        $form_id         = $element['settings']['formId'] ?? '';
+
+        if ( $is_reach_widget && ! empty( $form_id ) ) {
+            $form_ids[] = $form_id;
+        }
+
+        if ( isset( $element['elements'] ) && is_array( $element['elements'] ) ) {
+            foreach ( $element['elements'] as $nested_element ) {
+                $form_ids = array_merge( $form_ids, $this->find_reach_form_widget( $nested_element ) );
+            }
+        }
+
+        return $form_ids;
     }
 
     private function update_form_repository( array $form_ids, int $post_id ): void {
@@ -505,7 +697,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     private function get_forms_from_post_id( int $post_id ): array {
-        $form_ids           = array();
+        $form_ids           = $this->get_reach_form_ids_from_post_id( $post_id );
         $elementor_metadata = get_post_meta( $post_id, '_elementor_data', true );
         if ( ! is_string( $elementor_metadata ) || $elementor_metadata === '' ) {
             return $form_ids;
@@ -520,7 +712,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             $form_ids = array_merge( $form_ids, $this->find_form_widget( $element ) );
         }
 
-        return $form_ids;
+        return array_values( array_unique( $form_ids ) );
     }
 
     private function get_elementor_posts(): array {
@@ -530,9 +722,15 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             'posts_per_page' => 100,
             'fields'         => 'ids',
             'meta_query'     => array(
+                'relation' => 'OR',
                 array(
                     'key'     => '_elementor_data',
                     'value'   => '"widgetType":"form"',
+                    'compare' => 'LIKE',
+                ),
+                array(
+                    'key'     => '_elementor_data',
+                    'value'   => '"widgetType":"' . SubscriptionFormElementorWidget::WIDGET_NAME . '"',
                     'compare' => 'LIKE',
                 ),
             ),

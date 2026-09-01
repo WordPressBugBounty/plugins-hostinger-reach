@@ -118,6 +118,7 @@ const expandButtonAriaLabel = computed(() => {
 					background-color="neutral--0"
 					border-radius="12px"
 					:outside-click-enabled="true"
+					:close-other-popovers-on-open="true"
 				>
 					<template #trigger>
 						<button class="plugin-entry-row__action-button">

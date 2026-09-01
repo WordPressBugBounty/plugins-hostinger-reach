@@ -8,6 +8,8 @@ interface Props {
 	description: string;
 	buttonText?: string;
 	buttonIcon?: string;
+	buttonTo?: string;
+	buttonTarget?: string;
 	backgroundImage?: string;
 	isButtonDisabled?: boolean;
 	isButtonLoading?: boolean;
@@ -18,6 +20,8 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
 	buttonIcon: 'ic-plus-16',
+	buttonTo: undefined,
+	buttonTarget: '_self',
 	backgroundImage: '',
 	onButtonClick: () => {}
 });
@@ -54,6 +58,8 @@ withDefaults(defineProps<Props>(), {
 						color="primary"
 						:icon-prepend="buttonIcon"
 						class="banner-button"
+						:to="buttonTo"
+						:target="buttonTarget"
 						:is-disabled="isButtonDisabled"
 						:is-loading="isButtonLoading"
 						:aria-label="`${buttonText} - ${title}`"
@@ -137,6 +143,10 @@ withDefaults(defineProps<Props>(), {
 		.description-section {
 			justify-content: flex-start;
 			margin: 0;
+		}
+
+		.banner-button {
+			align-self: flex-start;
 		}
 	}
 

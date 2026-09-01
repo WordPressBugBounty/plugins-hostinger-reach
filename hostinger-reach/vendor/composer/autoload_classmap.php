@@ -66,6 +66,7 @@ return array(
     'Hostinger\\Reach\\Integrations\\NinjaForms\\NinjaFormsIntegration' => $baseDir . '/src/Integrations/NinjaForms/NinjaFormsIntegration.php',
     'Hostinger\\Reach\\Integrations\\OptInMonster\\OptInMonsterIntegration' => $baseDir . '/src/Integrations/OptInMonster/OptInMonsterIntegration.php',
     'Hostinger\\Reach\\Integrations\\PluginManager' => $baseDir . '/src/Integrations/PluginManager.php',
+    'Hostinger\\Reach\\Integrations\\Reach\\ReachFormBuilder' => $baseDir . '/src/Integrations/Reach/ReachFormBuilder.php',
     'Hostinger\\Reach\\Integrations\\Reach\\ReachFormIntegration' => $baseDir . '/src/Integrations/Reach/ReachFormIntegration.php',
     'Hostinger\\Reach\\Integrations\\SureForms\\SureFormsIntegration' => $baseDir . '/src/Integrations/SureForms/SureFormsIntegration.php',
     'Hostinger\\Reach\\Integrations\\ThriveLeads\\ThriveLeadsIntegration' => $baseDir . '/src/Integrations/ThriveLeads/ThriveLeadsIntegration.php',

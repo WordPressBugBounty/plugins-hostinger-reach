@@ -3,6 +3,7 @@
 namespace Hostinger\Reach\Providers;
 
 use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
+use Hostinger\Reach\Api\Handlers\ReachApiHandler;
 use Hostinger\Reach\Container;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\Brave\BraveIntegration;
@@ -10,6 +11,7 @@ use Hostinger\Reach\Integrations\ContactForm7\ContactForm7Integration;
 use Hostinger\Reach\Integrations\Elementor\ElementorIntegration;
 use Hostinger\Reach\Integrations\Forminator\ForminatorIntegration;
 use Hostinger\Reach\Integrations\NinjaForms\NinjaFormsIntegration;
+use Hostinger\Reach\Integrations\Reach\ReachFormBuilder;
 use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
 use Hostinger\Reach\Integrations\SureForms\SureFormsIntegration;
 use Hostinger\Reach\Integrations\ThriveLeads\ThriveLeadsIntegration;
@@ -48,11 +50,13 @@ class IntegrationsProvider implements ProviderInterface {
                 $container->get( FormRepository::class ),
                 $container->get( ContactListRepository::class ),
                 $container->get( Functions::class ),
+                $container->get( ReachFormBuilder::class ),
             ),
             ContactForm7Integration::class => array(),
             WpFormsLiteIntegration::class  => array(),
             ElementorIntegration::class    => array(
                 $container->get( FormRepository::class ),
+                $container->get( ReachApiHandler::class ),
             ),
             WooCommerceIntegration::class  => array(
                 $container->get( FormRepository::class ),

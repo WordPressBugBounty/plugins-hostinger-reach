@@ -20,16 +20,19 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
 
     protected ContactListRepository $contact_list_repository;
     protected Functions $functions;
+    protected ReachFormBuilder $form_builder;
 
-    public function __construct( FormRepository $form_repository, ContactListRepository $contact_list_repository, Functions $functions ) {
+    public function __construct( FormRepository $form_repository, ContactListRepository $contact_list_repository, Functions $functions, ReachFormBuilder $form_builder ) {
         parent::__construct( $form_repository );
         $this->contact_list_repository = $contact_list_repository;
         $this->functions               = $functions;
+        $this->form_builder            = $form_builder;
     }
 
     public function init(): void {
         parent::init();
         $this->init_default_forms();
+        $this->form_builder->init();
     }
 
     public function active_integration_hooks(): void {

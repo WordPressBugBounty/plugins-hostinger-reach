@@ -3,7 +3,7 @@ import { computed } from 'vue';
 
 import PluginEntry from '@/components/PluginEntry.vue';
 import PluginEntrySkeleton from '@/components/skeletons/PluginEntrySkeleton.vue';
-import { PLUGIN_STATUSES, type PluginStatus, WOOCOMMERCE_ID } from '@/data/pluginData';
+import { PLUGIN_STATUSES, type PluginStatus } from '@/data/pluginData';
 import type { Form, Integration } from '@/types/models';
 import { translate } from '@/utils/translate';
 
@@ -80,7 +80,7 @@ const pluginEntries = computed((): PluginEntryData[] => {
 				<PluginEntry
 					v-for="(pluginEntry, index) in pluginEntries"
 					:key="pluginEntry.integration.id"
-					:initially-expanded="pluginEntry.integration.id === WOOCOMMERCE_ID"
+					:initially-expanded="true"
 					:integration="pluginEntry.integration"
 					:plugin-status="pluginEntry.status"
 					:forms="pluginEntry.forms"

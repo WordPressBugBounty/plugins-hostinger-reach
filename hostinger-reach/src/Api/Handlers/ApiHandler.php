@@ -96,4 +96,16 @@ class ApiHandler {
         $wp_response->set_data( json_decode( $body ? $body : '', true ) );
         return $wp_response;
     }
+
+    public function handle_image_response( array $response ): WP_REST_Response {
+        $body         = wp_remote_retrieve_body( $response );
+        $content_type = wp_remote_retrieve_header( $response, 'content-type' );
+
+        if ( ! empty( $content_type ) && ! headers_sent() ) {
+            header( 'Content-Type: ' . $content_type );
+        }
+
+        echo $body; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Raw binary image passthrough; cannot be escaped.
+        exit;
+    }
 }

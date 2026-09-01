@@ -1,3 +1,4 @@
+export * from './builderFormsStore';
 export * from './generalDataStore';
 export * from './integrationsStore';
 export * from './modalStore';

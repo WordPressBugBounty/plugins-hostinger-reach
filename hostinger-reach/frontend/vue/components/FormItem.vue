@@ -112,6 +112,7 @@ const handleTitleClick = () => {
 				background-color="neutral--0"
 				border-radius="12px"
 				:outside-click-enabled="true"
+				:close-other-popovers-on-open="true"
 			>
 				<template #trigger>
 					<button class="form-item__action-button">

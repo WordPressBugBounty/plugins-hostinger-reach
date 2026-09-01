@@ -53,10 +53,6 @@ export const pagesRepo = {
 				data?.map((page) => {
 					let pageUrl = `/wp-admin/post.php?post=${page.id}`;
 
-					if (!page.HostingerReachPluginHasSubscriptionBlock) {
-						pageUrl = `${pageUrl}&hostinger_reach_add_block=1`;
-					}
-
 					if (page.HostingerReachPluginIsElementor) {
 						pageUrl = `${pageUrl}&action=elementor`;
 					} else {

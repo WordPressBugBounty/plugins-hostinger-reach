@@ -14,11 +14,21 @@ import type { Integration } from '@/types';
 import { ModalName } from '@/types/enums';
 import { translate } from '@/utils/translate';
 
+interface Props {
+	data?: { backButtonRedirectAction?: () => void };
+}
+
+const props = defineProps<Props>();
+
 const { openModal } = useModal();
 
 const { reachContactsImportLink } = useReachUrls();
 const integrationsStore = useIntegrationsStore();
 const pagesStore = usePagesStore();
+
+const handleBackClick = () => {
+	props.data?.backButtonRedirectAction?.();
+};
 
 const installedIntegrations = computed(() =>
 	integrationsStore.availableIntegrations.filter((integration) => integration.isPluginActive)
@@ -89,6 +99,18 @@ pagesStore.loadData();
 
 <template>
 	<BaseModal title-alignment="left" :title="translate('hostinger_reach_connect_plugin')">
+		<template v-if="data?.backButtonRedirectAction" #back-button>
+			<button
+				:aria-label="translate('hostinger_reach_back')"
+				class="add-form-modal__back-button"
+				type="button"
+				@click="handleBackClick"
+			>
+				<HIcon name="ic-chevron-left-16" color="neutral--600" />
+				{{ translate('hostinger_reach_back') }}
+			</button>
+		</template>
+
 		<div class="add-form-modal">
 			<PluginsSectionSkeleton v-if="integrationsStore.isLoading" />
 
@@ -243,6 +265,28 @@ pagesStore.loadData();
 	flex-direction: column;
 	gap: 20px;
 	margin-top: 24px;
+
+	&__back-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		padding: 4px 8px 4px 4px;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		border-radius: 8px;
+		color: var(--neutral--600);
+		font-size: 14px;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: var(--neutral--100);
+		}
+
+		&:active {
+			background-color: var(--neutral--200);
+		}
+	}
 
 	&__main-card {
 		display: flex;

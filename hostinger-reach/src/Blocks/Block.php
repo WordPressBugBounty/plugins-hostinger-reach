@@ -17,6 +17,7 @@ abstract class Block {
     public function __construct( Assets $assets, Functions $functions ) {
         $this->assets    = $assets;
         $this->functions = $functions;
+        add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_style' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
     }
 
@@ -26,7 +27,6 @@ abstract class Block {
     }
 
     public function enqueue_scripts(): void {
-        $this->enqueue_block_style();
         $this->enqueue_block_script();
     }
 
@@ -55,7 +55,21 @@ abstract class Block {
         $this->enqueue_block_style();
         wp_set_script_translations( $this->get_block_name(), 'hostinger-reach', HOSTINGER_REACH_PLUGIN_DIR . 'languages' );
 
+        wp_localize_script(
+            $this->get_block_name() . '-editor',
+            'hostinger_reach_block_editor_data',
+            $this->get_block_editor_data()
+        );
+
         $this->autoloader();
+    }
+
+    protected function get_block_editor_data(): array {
+        return array(
+            'rest_url'         => esc_url_raw( rest_url() ),
+            'embed_script_url' => HOSTINGER_REACH_EMBED_SCRIPT_URL,
+            'nonce'            => wp_create_nonce( 'wp_rest' ),
+        );
     }
 
     public function enqueue_block_style(): void {

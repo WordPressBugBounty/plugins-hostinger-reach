@@ -62,6 +62,87 @@ class SubscriptionFormElementorWidget extends Widget_Base {
             )
         );
 
+        $form_builder_description = sprintf(
+            /* translators: %s: "Learn more" link. */
+            esc_html__( 'Choose a Reach Form Builder template to embed instead. The Reach script loads it automatically. %s', 'hostinger-reach' ),
+            '<a href="https://www.hostinger.com/support/hostinger-reach-form-builder-overview-setup-guide/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Learn more', 'hostinger-reach' ) . '</a>'
+        );
+
+        $this->add_control(
+            'formBuilderSelector',
+            array(
+                'type' => Controls_Manager::RAW_HTML,
+                'raw'  => '<div class="hostinger-reach-elementor-selector"></div>',
+            )
+        );
+
+        $this->add_control(
+            'formBuilderId',
+            array(
+                'label'   => esc_html__( 'Form Builder Template', 'hostinger-reach' ),
+                'type'    => Controls_Manager::HIDDEN,
+                'default' => '',
+            )
+        );
+
+        $builder_mode_conditions = array(
+            'relation' => 'or',
+            'terms'    => array(
+                array(
+                    'name'     => 'formBuilderManual',
+                    'operator' => '===',
+                    'value'    => 'yes',
+                ),
+                array(
+                    'name'     => 'formBuilderId',
+                    'operator' => '!==',
+                    'value'    => '',
+                ),
+            ),
+        );
+
+        $this->add_control(
+            'formBuilderManual',
+            array(
+                'label'        => esc_html__( 'Enter template ID manually', 'hostinger-reach' ),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__( 'Yes', 'hostinger-reach' ),
+                'label_off'    => esc_html__( 'No', 'hostinger-reach' ),
+                'return_value' => 'yes',
+                'default'      => '',
+                'conditions'   => $builder_mode_conditions,
+            )
+        );
+
+        $this->add_control(
+            'formBuilderIdManual',
+            array(
+                'label'       => esc_html__( 'Form Builder Template ID', 'hostinger-reach' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => '',
+                'description' => $form_builder_description,
+                'condition'   => array(
+                    'formBuilderManual' => 'yes',
+                ),
+            )
+        );
+
+        $no_template_conditions = array(
+            'relation' => 'and',
+            'terms'    => array(
+                array(
+                    'name'     => 'formBuilderManual',
+                    'operator' => '!==',
+                    'value'    => 'yes',
+                ),
+                array(
+                    'name'     => 'formBuilderId',
+                    'operator' => '===',
+                    'value'    => '',
+                ),
+            ),
+        );
+
         $this->add_control(
             'showName',
             array(
@@ -71,6 +152,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
                 'label_off'    => esc_html__( 'No', 'hostinger-reach' ),
                 'return_value' => 1,
                 'default'      => 0,
+                'conditions'   => $no_template_conditions,
             )
         );
 
@@ -83,6 +165,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
                 'label_off'    => esc_html__( 'No', 'hostinger-reach' ),
                 'return_value' => 1,
                 'default'      => 0,
+                'conditions'   => $no_template_conditions,
             )
         );
 
@@ -91,11 +174,21 @@ class SubscriptionFormElementorWidget extends Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
+
+        if ( ( $settings['formBuilderManual'] ?? '' ) === 'yes' && ! empty( $settings['formBuilderIdManual'] ) ) {
+            $settings['formBuilderId'] = $settings['formBuilderIdManual'];
+        }
+
         SubscriptionFormBlock::render_block_html( $settings, ElementorIntegration::INTEGRATION_NAME );
     }
 
     protected function content_template(): void {
         ?>
+        <# var reachFormBuilderId = 'yes' === settings.formBuilderManual ? settings.formBuilderIdManual : settings.formBuilderId; #>
+        <# reachFormBuilderId = reachFormBuilderId && /^[a-zA-Z0-9-]+$/.test( reachFormBuilderId ) ? reachFormBuilderId : ''; #>
+        <# if ( reachFormBuilderId ) { #>
+            <div data-reach-form="{{ reachFormBuilderId }}"></div>
+        <# } else { #>
         <div class="hostinger-reach-block-subscription-form-wrapper">
             <form id="{{{ settings.formId }}}" class="hostinger-reach-block-subscription-form">
                 <input type="hidden" name="id" value="{{{ settings.formId }}}">
@@ -133,6 +226,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
                 <div class="reach-subscription-message" style="display: none;"></div>
             </form>
         </div>
+        <# } #>
         <?php
     }
 }

@@ -43,6 +43,7 @@ onUnmounted(() => {
 				<slot name="title-icon"></slot>
 				<h2 v-if="title" class="base-modal__title">{{ title }}</h2>
 			</span>
+			<slot name="header-content"></slot>
 		</div>
 		<p
 			v-if="subtitle"

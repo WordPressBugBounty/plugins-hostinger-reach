@@ -122,6 +122,7 @@ class ComposerStaticInitc2faf6c24f5323a75899b1c424d7e7cc
         'Hostinger\\Reach\\Integrations\\NinjaForms\\NinjaFormsIntegration' => __DIR__ . '/../..' . '/src/Integrations/NinjaForms/NinjaFormsIntegration.php',
         'Hostinger\\Reach\\Integrations\\OptInMonster\\OptInMonsterIntegration' => __DIR__ . '/../..' . '/src/Integrations/OptInMonster/OptInMonsterIntegration.php',
         'Hostinger\\Reach\\Integrations\\PluginManager' => __DIR__ . '/../..' . '/src/Integrations/PluginManager.php',
+        'Hostinger\\Reach\\Integrations\\Reach\\ReachFormBuilder' => __DIR__ . '/../..' . '/src/Integrations/Reach/ReachFormBuilder.php',
         'Hostinger\\Reach\\Integrations\\Reach\\ReachFormIntegration' => __DIR__ . '/../..' . '/src/Integrations/Reach/ReachFormIntegration.php',
         'Hostinger\\Reach\\Integrations\\SureForms\\SureFormsIntegration' => __DIR__ . '/../..' . '/src/Integrations/SureForms/SureFormsIntegration.php',
         'Hostinger\\Reach\\Integrations\\ThriveLeads\\ThriveLeadsIntegration' => __DIR__ . '/../..' . '/src/Integrations/ThriveLeads/ThriveLeadsIntegration.php',

@@ -4,6 +4,7 @@ namespace Hostinger\Reach\Blocks;
 
 
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
+use Hostinger\Reach\Api\ResourceIdManager;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
 use Hostinger\Reach\Setup\Assets;
@@ -13,12 +14,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class SubscriptionFormBlock extends Block {
+    public const ADD_BLOCK_QUERY_ARG = 'hostinger_reach_add_block';
+    public const ADD_BLOCK_NONCE     = 'hostinger_reach_add_block';
+
     public string $name = 'subscription';
     private ReachApiHandler $reach_api_handler;
 
     public function __construct( Assets $assets, Functions $functions, ReachApiHandler $reach_api_handler ) {
         parent::__construct( $assets, $functions );
         $this->reach_api_handler = $reach_api_handler;
+    }
+
+    protected function get_block_editor_data(): array {
+        $resource_id = $this->reach_api_handler->get_resource_id();
+
+        if ( $resource_id === ResourceIdManager::NON_EXISTENT_RESOURCE_ID ) {
+            $resource_id = '';
+        }
+
+        return array_merge(
+            parent::get_block_editor_data(),
+            array(
+                'resource_id'  => $resource_id,
+                'reach_domain' => $this->reach_api_handler->get_reach_domain(),
+                'domain'       => $this->functions->get_host_info(),
+            )
+        );
     }
 
     public function data(): array {
@@ -33,12 +54,23 @@ class SubscriptionFormBlock extends Block {
     }
 
     public function autoloader(): void {
-        if ( ! is_admin() || empty( $_GET['hostinger_reach_add_block'] ) ) {
+        if ( ! is_admin() || ! isset( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) ) {
+            return;
+        }
+
+        $nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+        if ( ! wp_verify_nonce( $nonce, self::ADD_BLOCK_NONCE ) ) {
             return;
         }
 
         if ( $this->functions->block_file_exists( "$this->name-autoloader.js" ) === false ) {
             return;
+        }
+
+        $form_builder_id = sanitize_text_field( wp_unslash( $_GET[ self::ADD_BLOCK_QUERY_ARG ] ) );
+
+        if ( $form_builder_id === '1' ) {
+            $form_builder_id = '';
         }
 
         $handler = parent::get_block_name() . '-autoloader';
@@ -49,6 +81,14 @@ class SubscriptionFormBlock extends Block {
             array( parent::get_block_name() . '-editor' ),
             filemtime( $this->functions->get_block_file_name( "$this->name-autoloader.js" ) ),
             array( 'in_footer' => true )
+        );
+
+        wp_localize_script(
+            $handler,
+            'hostinger_reach_autoloader_data',
+            array(
+                'formBuilderId' => $form_builder_id,
+            )
         );
     }
 
@@ -61,6 +101,13 @@ class SubscriptionFormBlock extends Block {
     }
 
     public static function render_block_html( array $attributes, ?string $plugin = null, bool $is_connected = true ): void {
+        $form_builder_id = $attributes['formBuilderId'] ?? '';
+        if ( ! empty( $form_builder_id ) ) {
+            printf( '<div data-reach-form="%s"></div>', esc_attr( $form_builder_id ) );
+
+            return;
+        }
+
         $form_id      = $attributes['formId'] ?? '';
         $show_name    = $attributes['showName'] ?? false;
         $show_surname = $attributes['showSurname'] ?? false;

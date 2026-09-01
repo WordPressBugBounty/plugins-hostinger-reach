@@ -23,6 +23,18 @@ class Routes {
     }
 
     public function permission_check(): bool {
+        $this->disable_cache();
+
+        return current_user_can( 'manage_options' );
+    }
+
+    public function public_permission_check(): bool {
+        $this->disable_cache();
+
+        return true;
+    }
+
+    protected function disable_cache(): void {
         if ( has_action( 'litespeed_control_set_nocache' ) ) {
             do_action(
                 'litespeed_control_set_nocache',
@@ -30,6 +42,6 @@ class Routes {
             );
         }
 
-        return current_user_can( 'manage_options' );
+        nocache_headers();
     }
 }

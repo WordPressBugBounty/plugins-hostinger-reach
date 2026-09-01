@@ -52,7 +52,7 @@ class OptInMonsterIntegration extends Integration implements IntegrationInterfac
                 'add_form_url'   => 'admin.php?page=optin-monster-templates&type=popup',
                 'edit_url'       => 'admin.php?page=optin-monster-campaigns&campaignId={post_name}',
                 'url'            => 'https://optinmonster.com/',
-                'download_url'   => 'https://wordpress.org/plugins/optinmonster',
+                'download_url'   => 'https://downloads.wordpress.org/plugin/optinmonster.zip',
                 'icon'           => 'https://ps.w.org/optinmonster/assets/icon-256x256.png',
                 'import_enabled' => true,
             )

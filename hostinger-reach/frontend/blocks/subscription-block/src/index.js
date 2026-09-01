@@ -29,6 +29,10 @@ registerBlockType('hostinger-reach/subscription',
 				type: 'string',
 				default: '',
 			},
+			formBuilderId: {
+				type: 'string',
+				default: '',
+			},
 			showName: {
 				type: 'boolean',
 				default: false,

@@ -14,9 +14,11 @@ import { useOverviewData } from '@/composables/useOverviewData';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { useToast } from '@/composables/useToast';
 import { overviewFaqData } from '@/data/faq';
-import { WOOCOMMERCE_ID } from '@/data/pluginData';
+import { ELEMENTOR_ID, HOSTINGER_REACH_ID, WOOCOMMERCE_ID } from '@/data/pluginData';
 import { formsRepo } from '@/data/repositories/formsRepo';
+import { reachRepo } from '@/data/repositories/reachRepo';
 import { TABS_KEYS } from '@/data/tabs';
+import { useBuilderFormsStore } from '@/stores/builderFormsStore';
 import { useIntegrationsStore } from '@/stores/integrationsStore';
 import type { Integration } from '@/types';
 import { ModalName } from '@/types';
@@ -24,12 +26,19 @@ import type { Form } from '@/types/models';
 import { translate } from '@/utils/translate';
 
 const { status, loadOverviewData } = useOverviewData();
-const { reachDashboardLink, reachYourPlanLink, reachContactsLink, reachSegmentsLink, reachAutomationsLink } =
-	useReachUrls();
+const {
+	reachDashboardLink,
+	reachYourPlanLink,
+	reachContactsLink,
+	reachSegmentsLink,
+	reachAutomationsLink,
+	reachFormsLink
+} = useReachUrls();
 const { showError } = useToast();
 
 const { openModal } = useModal();
 const integrationsStore = useIntegrationsStore();
+const builderFormsStore = useBuilderFormsStore();
 
 const actionButtons = computed(() => [
 	{
@@ -124,17 +133,52 @@ const handleViewForm = (form: Form) => {
 	}
 };
 
+const FORM_BUILDER_INTEGRATION_IDS = [ELEMENTOR_ID, HOSTINGER_REACH_ID];
+
 const handleAddForm = (id: string) => {
 	const integration = integrationsStore.integrations.find((i) => i.id === id);
 	if (!integration?.addFormUrl) {
 		return;
 	}
 
-	window.open(integration.addFormUrl, '_blank');
+	if (!FORM_BUILDER_INTEGRATION_IDS.includes(integration.id)) {
+		window.open(integration.addFormUrl, '_blank');
+
+		return;
+	}
+
+	openModal(
+		ModalName.SELECT_FORM_MODAL,
+		{
+			data: {
+				onContinue: (formBuilderId: string) => addFormToIntegrationPage(integration, formBuilderId)
+			}
+		},
+		{ hasCloseButton: true, isXXL: true, noContentPadding: true }
+	);
+};
+
+const addFormToIntegrationPage = (integration: Integration, formBuilderId: string) => {
+	if (!integration.addFormUrl) {
+		return;
+	}
+
+	const addBlockValue = formBuilderId || '1';
+	let url = integration.addFormUrl.replace(
+		'hostinger_reach_add_block=1',
+		`hostinger_reach_add_block=${encodeURIComponent(addBlockValue)}`
+	);
+
+	if (integration.id !== ELEMENTOR_ID) {
+		const addBlockNonce = hostinger_reach_reach_data?.add_block_nonce || '';
+		url += `&_wpnonce=${encodeURIComponent(addBlockNonce)}`;
+	}
+
+	window.open(url, '_blank');
 };
 
 const showAddFormModal = () => {
-	openModal(ModalName.SELECT_PAGE_MODAL, {}, { hasCloseButton: true, isLG: true });
+	openModal(ModalName.SELECT_FORM_MODAL, {}, { hasCloseButton: true, isXXL: true, noContentPadding: true });
 };
 
 const handleConnectPluginButton = () => {
@@ -205,14 +249,22 @@ const maybeOpenAddFormModal = () => {
 	}
 };
 
+const maybeShowConnectionSuccessModal = async () => {
+	const [data] = await reachRepo.getConnectionSuccess();
+
+	if (data?.success) {
+		openModal(ModalName.CONNECTION_SUCCESS_MODAL, {}, { hasCloseButton: true, isXL: true, noContentPadding: true });
+	}
+};
+
 onMounted(() => {
 	loadOverviewData();
 	integrationsStore.loadIntegrations();
+	builderFormsStore.loadForms();
 	maybeOpenAddFormModal();
+	maybeShowConnectionSuccessModal();
 });
 
-// Refresh when there is an unauthorized error 403 to reload the show connection page again.
-// This is needed because the API Token is deleted after the initial request.
 watchEffect(() => {
 	if (status?.value === 403) {
 		window.location.reload();
@@ -253,6 +305,9 @@ const shouldShowConnect = computed(
 				:title="translate('hostinger_reach_overview_banner_title')"
 				:description="translate('hostinger_reach_overview_banner_description')"
 				:label="translate('hostinger_reach_overview_banner_label')"
+				:button-text="translate('hostinger_reach_overview_banner_button_text')"
+				:button-to="reachFormsLink"
+				button-target="_blank"
 				align="left"
 				:background-image="reachOverviewBannerBackground as unknown as string"
 			/>
@@ -331,6 +386,7 @@ const shouldShowConnect = computed(
 								background-color="neutral--0"
 								border-radius="12px"
 								:outside-click-enabled="true"
+								:close-other-popovers-on-open="true"
 							>
 								<template #trigger>
 									<HButton variant="outline" color="primary" size="small" icon-prepend="ic-gear-16">

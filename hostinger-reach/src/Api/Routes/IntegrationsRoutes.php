@@ -34,7 +34,7 @@ class IntegrationsRoutes extends Routes {
             array(
                 'methods'             => 'GET',
                 'callback'            => array( $this->handler, 'get_status_handler' ),
-                'permission_callback' => '__return_true',
+                'permission_callback' => array( $this, 'public_permission_check' ),
             )
         );
 

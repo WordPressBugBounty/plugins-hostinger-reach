@@ -1,10 +1,10 @@
 === Hostinger Reach - AI-Powered Email Marketing for WordPress ===
 Tags: email marketing, marketing, newsletter, subscription, lead generation
 Contributors: hostinger
-Requires at least: 6.0
+Requires at least: 6.3
 Requires PHP: 8.0
 Tested up to: 7.1
-Stable tag: 1.7.2
+Stable tag: 1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,14 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.0 (2026-09-01)
+
+- Fix: Optinmonster installation
+- Feature: New Connect Success modal
+- Fix: Only one popover can be opened
+- Feature: Form Builder Support
+- Tweak: Expand Integrations by default on the Overview tab
 
 1.7.2 (2026-08-20)
 

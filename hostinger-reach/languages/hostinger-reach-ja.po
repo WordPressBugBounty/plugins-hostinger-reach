@@ -10,46 +10,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-07-31T11:19:40+03:00\n"
-"PO-Revision-Date: 2026-06-30 07:01+0000\n"
+"PO-Revision-Date: 2026-09-01 10:13+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: hostinger-reach\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Loco-Version: 2.8.1; wp-6.9; php-8.2.29"
 
-#: src/Setup/Assets.php:208
+#: src/Setup/Assets.php:224
 msgid "(no title)"
 msgstr "（タイトルなし）"
 
-#: src/Setup/Assets.php:231
+#: src/Setup/Assets.php:247
 msgid "-"
 msgstr "-"
 
-#: src/Setup/Assets.php:108
+#: src/Setup/Assets.php:110
+#, fuzzy
 msgid ""
 "<strong>Copy</strong> your new API token and <strong>paste it below</strong>"
 msgstr ""
+"<strong>新しいAPIトークンを</strong>コピーし、<strong>以下に</strong>貼り付けてください</strong>"
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:124
 #, fuzzy
 msgid "Abandoned Carts"
 msgstr "放置されたカート"
 
-#: src/Setup/Assets.php:251
+#: src/Setup/Assets.php:268
 #, fuzzy
 msgid "Abandoned carts"
 msgstr "放置されたカート"
 
-#: src/Setup/Assets.php:194 src/Setup/Assets.php:211
+#: src/Setup/Assets.php:210 src/Setup/Assets.php:227
 msgid "Active"
 msgstr "アクティブ"
 
-#: src/Admin/Notices/AddFormNotice.php:83 src/Setup/Assets.php:150
-#: src/Setup/Assets.php:200 src/Setup/Assets.php:214
+#: src/Admin/Notices/AddFormNotice.php:83 src/Setup/Assets.php:151
+#: src/Setup/Assets.php:216 src/Setup/Assets.php:230
 msgid "Add form"
 msgstr "フォームを追加"
 
-#: src/Setup/Assets.php:152 src/Setup/Assets.php:179
+#: src/Setup/Assets.php:153 src/Setup/Assets.php:195
 msgid "Add form or plugin"
 msgstr "フォームまたはプラグインを追加"
 
@@ -58,31 +60,36 @@ msgstr "フォームまたはプラグインを追加"
 msgid "Add form to start sending campaigns with Hostinger Reach"
 msgstr "Hostinger Reachでキャンペーン送信を開始するためのフォームを追加する"
 
-#: src/Setup/Assets.php:147
+#: src/Setup/Assets.php:148
 #, fuzzy
 msgid "Add new form"
 msgstr "新しいフォームを追加する"
 
-#: frontend/blocks/subscription-block/src/edit.js:215
+#: frontend/blocks/subscription-block/src/edit.js:355
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:321
+#: frontend/dist/blocks/subscription.js:606
 #, fuzzy
 msgid "Add New Tag"
 msgstr "新しいタグを追加"
 
-#: src/Setup/Assets.php:145
+#: src/Setup/Assets.php:146
 #, fuzzy
 msgid "Add or connect a form to start sending campaigns"
 msgstr "キャンペーンの送信を開始するためのフォームを追加または接続する"
 
-#: frontend/blocks/subscription-block/src/edit.js:235
+#: src/Setup/Assets.php:282
+#, fuzzy
+msgid "Add Reach form"
+msgstr "「リーチ」フォームを追加"
+
+#: frontend/blocks/subscription-block/src/edit.js:375
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:341
+#: frontend/dist/blocks/subscription.js:626
 #, fuzzy
 msgid "Add Tag"
 msgstr "タグを追加"
 
-#: src/Setup/Assets.php:248
+#: src/Setup/Assets.php:265
 #, fuzzy
 msgid ""
 "Adds a marketing consent checkbox at checkout and syncs contacts to Reach."
@@ -92,11 +99,12 @@ msgstr "チェックアウト時にマーケティング同意チェックボッ
 msgid "Any ideas or feedback to help us improve Hostinger Reach?"
 msgstr "Hostinger Reachを改善するためのアイデアやご意見はありますか？"
 
-#: src/Setup/Assets.php:112
+#: src/Setup/Assets.php:114
+#, fuzzy
 msgid "API Token field is required"
-msgstr ""
+msgstr "「APIトークン」フィールドは必須です"
 
-#: src/Setup/Assets.php:229
+#: src/Setup/Assets.php:245
 #, fuzzy
 #| msgid ""
 #| "are ready to sync with Reach. Any new contacts you’ll collect with these "
@@ -106,33 +114,33 @@ msgid ""
 "forms will sync automatically."
 msgstr "はReachと同期する準備ができています。今後フォームから取得した連絡先は自動的に同期されます。"
 
-#: hostinger-reach.php:52
+#: hostinger-reach.php:53
 msgid "Attention:"
 msgstr "注意："
 
-#: src/Setup/Assets.php:232
+#: src/Setup/Assets.php:248
 #, fuzzy
 msgid "Auto-sync off"
 msgstr "自動同期オフ"
 
-#: src/Setup/Assets.php:253
+#: src/Setup/Assets.php:270
 #, fuzzy
 msgid "Automation"
 msgstr "オートメーション"
 
-#: src/Setup/Assets.php:131
+#: src/Setup/Assets.php:132
 msgid "Average CTOR"
 msgstr "平均CTOR"
 
-#: src/Setup/Assets.php:91
+#: src/Setup/Assets.php:95
 msgid "Back"
 msgstr "戻る"
 
-#: src/Setup/Assets.php:175
+#: src/Setup/Assets.php:176
 msgid "Background image for"
 msgstr "背景画像の対象："
 
-#: src/Setup/Assets.php:174
+#: src/Setup/Assets.php:175
 msgid "Banner background image for"
 msgstr "バナー背景画像の対象："
 
@@ -151,37 +159,65 @@ msgstr "Reachメルマガ登録フォーム"
 msgid "Brave Popup Builder"
 msgstr "ブレイブポップアップビルダー"
 
-#: src/Setup/Assets.php:129
+#: src/Setup/Assets.php:187
+#, fuzzy
+msgid ""
+"Build your first form in Hostinger Reach and add it to any page on your site."
+msgstr "Hostinger Reachで最初のフォームを作成し、サイトの任意のページに追加しましょう。"
+
+#: src/Setup/Assets.php:130
 msgid "Campaigns"
 msgstr "キャンペーン"
 
-#: src/Setup/Assets.php:114 src/Setup/Assets.php:182
+#: src/Integrations/Elementor/ElementorIntegration.php:117
+#: src/Setup/Assets.php:116 src/Setup/Assets.php:184 src/Setup/Assets.php:193
+#: src/Setup/Assets.php:198
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:133
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:239
 #, fuzzy
 #| msgid "Cancel "
 msgid "Cancel"
 msgstr "キャンセル"
 
+#: src/Integrations/Elementor/ElementorIntegration.php:112
+#: src/Setup/Assets.php:191 frontend/blocks/subscription-block/src/edit.js:294
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:545
+#, fuzzy
+msgid "Change the selection"
+msgstr "選択内容を変更する"
+
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:116
-#: src/Setup/Assets.php:247
+#: src/Setup/Assets.php:264
 msgid "Checkout"
 msgstr "購入手続き"
 
-#: src/Setup/Assets.php:106
-msgid "Click <strong>Generate API Token</strong>"
-msgstr ""
+#. translators: %s: "Learn more" link.
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:67
+#, fuzzy, php-format
+msgid ""
+"Choose a Reach Form Builder template to embed instead. The Reach script "
+"loads it automatically. %s"
+msgstr "代わりに、Reach Form Builderのテンプレートを選択して埋め込んでください。Reachスクリプトが自動的に読み込みます。%s"
 
-#: src/Setup/Assets.php:177
+#: src/Setup/Assets.php:108
+#, fuzzy
+msgid "Click <strong>Generate API Token</strong>"
+msgstr "<strong>APIトークンの生成</strong>をクリックしてください"
+
+#: src/Setup/Assets.php:178
 msgid ""
 "Click-to-open rate tells you what percent of opens resulted in a click too. "
 "A good CTOR is 6-17%, depending on your industry."
 msgstr ""
 "クリック率（CTOR）は、開封されたメールのうち何パーセントがクリックにつながったかを示します。業種にもよりますが、良好なCTORは6～17％とされています。"
 
-#: src/Setup/Assets.php:206
+#: src/Setup/Assets.php:222
 msgid "Collapse {pluginName} details"
 msgstr "{pluginName}の詳細を非表示にする"
 
-#: src/Setup/Assets.php:142
+#: src/Setup/Assets.php:143
 #, fuzzy
 msgid ""
 "Collect contacts at checkout, send automated emails after purchases, and "
@@ -189,20 +225,15 @@ msgid ""
 msgstr ""
 "Reachでより多くの販売を促進するために、チェックアウト時に連絡先を収集し、購入後に自動化された電子メールを送信し、放棄されたカートを回復します。"
 
-#: src/Setup/Assets.php:242
+#: src/Setup/Assets.php:194
 #, fuzzy
-msgid "Coming soon"
-msgstr "近日公開"
+msgid "Confirm"
+msgstr "確認"
 
-#: src/Admin/Notices/ConnectionNotice.php:100 src/Setup/Assets.php:113
-#: src/Setup/Assets.php:221
+#: src/Admin/Notices/ConnectionNotice.php:100 src/Setup/Assets.php:115
+#: src/Setup/Assets.php:237
 msgid "Connect"
 msgstr "接続"
-
-#: src/Setup/Assets.php:115
-#, fuzzy
-msgid "Connect domain"
-msgstr "接続ドメイン"
 
 #: src/Admin/Notices/ConnectionNotice.php:95
 msgid "Connect Hostinger Reach to start Email Marketing"
@@ -215,117 +246,156 @@ msgstr "Hostinger Reachを連携してメルマガ配信を開始"
 msgid "Connect Now"
 msgstr "今すぐ接続"
 
-#: src/Setup/Assets.php:151
+#: src/Setup/Assets.php:152
 #, fuzzy
 msgid "Connect plugin"
 msgstr "接続プラグイン"
 
-#: src/Setup/Assets.php:100
+#: src/Setup/Assets.php:102
 msgid "Connect site"
 msgstr "サイトを紐づける"
 
-#: src/Setup/Assets.php:101
+#: src/Setup/Assets.php:103
+#, fuzzy
 msgid "Connect with API token"
-msgstr ""
+msgstr "APIトークンで接続する"
 
-#: src/Setup/Assets.php:143
+#: src/Setup/Assets.php:144
 msgid "Connect WooCommerce"
 msgstr "WooCommerceを連携"
 
-#: src/Setup/Assets.php:141
+#: src/Setup/Assets.php:142
 #, fuzzy
 msgid "Connect WooCommerce to boost sales with email automations"
 msgstr "WooCommerceと連携してEメール自動送信で売上アップ"
 
-#: src/Setup/Assets.php:102
+#: src/Setup/Assets.php:104
+#, fuzzy
 msgid "Connect your website to Hostinger Reach"
-msgstr ""
+msgstr "ウェブサイトをHostinger Reachに連携する"
 
-#: src/Setup/Assets.php:111
+#: src/Setup/Assets.php:113
+#, fuzzy
 msgid ""
 "Connection failed. Check if your API Token is correct or contact Hostinger "
 "Reach support."
-msgstr ""
+msgstr "接続に失敗しました。APIトークンが正しいか確認するか、Hostinger Reachのサポートまでお問い合わせください。"
 
 #: src/Integrations/ContactForm7/ContactForm7Integration.php:111
-#: src/Setup/Assets.php:202
+#: src/Setup/Assets.php:218
 msgid "Contact Form 7"
 msgstr "お問い合わせフォーム7"
 
-#: src/Setup/Assets.php:123 src/Setup/Assets.php:189 src/Setup/Assets.php:223
+#: src/Setup/Assets.php:124 src/Setup/Assets.php:205 src/Setup/Assets.php:239
 msgid "Contacts"
 msgstr "連絡先"
 
-#: src/Setup/Assets.php:228
+#: src/Setup/Assets.php:244
 msgid "contacts"
 msgstr "件の連絡先"
 
-#: src/Setup/Assets.php:227
+#: src/Setup/Assets.php:243
 #, fuzzy
 msgid "Contacts to Import"
 msgstr "インポートする連絡先"
+
+#: src/Integrations/Elementor/ElementorIntegration.php:118
+#: src/Setup/Assets.php:185
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:136
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:242
+#, fuzzy
+msgid "Continue"
+msgstr "続きを読む"
 
 #: src/Admin/Notices/ConnectionNotice.php:76
 msgid "Could not generate auth URL"
 msgstr "認証URLを生成できませんでした"
 
-#: src/Setup/Assets.php:146
+#: src/Setup/Assets.php:261
+#, fuzzy
+msgid "Create a Form"
+msgstr "フォームを作成する"
+
+#: src/Setup/Assets.php:188
+#, fuzzy
+msgid "Create a form in Reach"
+msgstr "Reachでフォームを作成する"
+
+#: src/Integrations/Elementor/ElementorIntegration.php:115
+#: src/Setup/Assets.php:182
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:115
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:221
+#, fuzzy
+msgid "Create a new form"
+msgstr "新しいフォームを作成する"
+
+#: src/Setup/Assets.php:147
 #, fuzzy
 msgid ""
 "Create a new form or connect a plugin to grow your contact list and start "
 "sending campaigns with Reach."
 msgstr "新しいフォームを作成するか、プラグインを接続して連絡先リストを増やし、Reachでキャンペーンを開始しましょう。"
 
-#: src/Setup/Assets.php:136
+#: src/Setup/Assets.php:192
+#, fuzzy
+msgid "Create a new page"
+msgstr "新しいページを作成する"
+
+#: src/Setup/Assets.php:137
 msgid "Create campaign"
 msgstr "キャンペーン作成"
 
-#: src/Setup/Assets.php:244
+#: src/Setup/Assets.php:260
 #, fuzzy
+#| msgid ""
+#| "Create fully custom forms in Reach and easily embed them on your "
+#| "WordPress site using this plugin. Stay tuned!"
 msgid ""
 "Create fully custom forms in Reach and easily embed them on your WordPress "
-"site using this plugin. Stay tuned!"
+"site using this plugin."
 msgstr "Reachで完全カスタムフォームを作成し、このプラグインを使ってWordPressサイトに簡単に埋め込むことができます。ご期待ください！"
 
-#: src/Setup/Assets.php:137
+#: src/Setup/Assets.php:138
 msgid "Create template"
 msgstr "テンプレートを作成"
 
-#: frontend/blocks/subscription-block/src/edit.js:33
+#: frontend/blocks/subscription-block/src/edit.js:78
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:139
+#: frontend/dist/blocks/subscription.js:329
 #, fuzzy
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/Setup/Assets.php:183 src/Setup/Assets.php:220
+#: src/Setup/Assets.php:199 src/Setup/Assets.php:236
 msgid "Disconnect"
 msgstr "切断"
 
-#: src/Setup/Assets.php:98
+#: src/Setup/Assets.php:100
 msgid "Disconnect it to link this site instead."
 msgstr "このサイトを紐づけるために、現在の設定を解除します。"
 
-#: src/Setup/Assets.php:199
+#: src/Setup/Assets.php:215
 msgid "Disconnect plugin"
 msgstr "プラグインを切断"
 
-#: src/Setup/Assets.php:180
+#: src/Setup/Assets.php:196
 msgid "Disconnect plugin?"
 msgstr "プラグインを切断しますか？"
 
-#: src/Setup/Assets.php:181
+#: src/Setup/Assets.php:197
 msgid ""
 "Disconnecting will stop new contacts from being collected. You can reconnect "
 "or use a different form anytime."
 msgstr "接続を解除すると、新規の顧客情報が収集されなくなります。いつでも再接続または別のフォームを使用できます。"
 
-#: src/Setup/Assets.php:239
+#: src/Setup/Assets.php:255
 #, fuzzy
 msgid "Don't see your plugin?"
 msgstr "プラグインが見当たらない？"
 
-#: src/Setup/Assets.php:140
+#: src/Setup/Assets.php:141
 msgid "E-Commerce"
 msgstr "eコマース"
 
@@ -336,30 +406,38 @@ msgid ""
 "contacts to start building campaigns and grow your business."
 msgstr "既存のフォームを簡単に追加または接続し、WooCommerceを自動化し、連絡先を同期してキャンペーンを開始し、ビジネスを成長させましょう。"
 
-#: src/Setup/Assets.php:197
+#: src/Setup/Assets.php:213
 msgid "Edit form"
 msgstr "フォームを編集"
 
-#: src/Integrations/Elementor/ElementorIntegration.php:138
-#: src/Setup/Assets.php:204
+#: src/Integrations/Elementor/ElementorIntegration.php:113
+#: frontend/blocks/subscription-block/src/edit.js:305
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:556
+#, fuzzy
+msgid "Edit in Reach"
+msgstr "Reachでの編集"
+
+#: src/Integrations/Elementor/ElementorIntegration.php:244
+#: src/Setup/Assets.php:220
 msgid "Elementor"
 msgstr "Elementor"
 
-#: src/Blocks/SubscriptionFormBlock.php:85
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:106
+#: src/Blocks/SubscriptionFormBlock.php:132
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:199
 msgid "Email"
 msgstr "メール"
 
-#: src/Setup/Assets.php:119
+#: src/Setup/Assets.php:120
 msgid "Email marketing background with gradient design"
 msgstr "グラデーションデザインの背景を用いたメールマーケティング"
 
-#: src/Setup/Assets.php:120
+#: src/Setup/Assets.php:121
 msgid ""
 "Email marketing illustration featuring envelopes and communication icons"
 msgstr "封筒とコミュニケーションのアイコンをフィーチャーしたメールマーケティングのイラスト"
 
-#: src/Setup/Assets.php:94
+#: src/Setup/Assets.php:98
 #, fuzzy
 msgid ""
 "Email marketing that doesn't need an expert: Let AI write, design, and send "
@@ -367,22 +445,32 @@ msgid ""
 "no complexity."
 msgstr "専門家不要のメールマーケティング：AIがキャンペーンを作成、デザイン、送信します。コーディングも複雑さも必要ありません。"
 
-#: src/Setup/Assets.php:126
+#: src/Setup/Assets.php:127
 msgid "Emails"
 msgstr "メール"
 
-#: frontend/blocks/subscription-block/src/edit.js:226
+#: frontend/blocks/subscription-block/src/edit.js:366
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:332
+#: frontend/dist/blocks/subscription.js:617
 #, fuzzy
 msgid "Enter tag name and press Enter or click Add Tag"
 msgstr "タグ名を入力してEnterキーを押すか、タグの追加をクリックします。"
 
-#: src/Setup/Assets.php:205
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:107
+#, fuzzy
+msgid "Enter template ID manually"
+msgstr "テンプレートIDを手動で入力してください"
+
+#: src/Api/Handlers/ReachApiHandler.php:274
+#, fuzzy
+msgid "Error connecting your site"
+msgstr "サイトへの接続に失敗しました"
+
+#: src/Setup/Assets.php:221
 msgid "Expand {pluginName} details"
 msgstr "{pluginName}の詳細を表示"
 
-#: src/Setup/Assets.php:156
+#: src/Setup/Assets.php:157
 msgid "FAQ"
 msgstr "よくある質問"
 
@@ -390,15 +478,22 @@ msgstr "よくある質問"
 msgid "Form"
 msgstr "フォーム"
 
-#: src/Setup/Assets.php:243
+#: src/Setup/Assets.php:259
 #, fuzzy
 msgid "Form Builder"
 msgstr "フォームビルダー"
 
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:82
+#, fuzzy
+msgid "Form Builder Template"
+msgstr "フォーム作成テンプレート"
+
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:120
+#, fuzzy
+msgid "Form Builder Template ID"
+msgstr "フォームビルダーのテンプレートID"
+
 #: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:58
-#: frontend/blocks/subscription-block/src/edit.js:188
-#: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:294
 msgid "Form ID"
 msgstr "フォームID"
 
@@ -406,28 +501,30 @@ msgstr "フォームID"
 msgid "Forminator"
 msgstr "Forminator"
 
-#: src/Setup/Assets.php:144
+#: src/Setup/Assets.php:145
 msgid "Forms"
 msgstr "フォーム"
 
-#: src/Setup/Assets.php:190
+#: src/Setup/Assets.php:206
 #, fuzzy
 msgid "Forms syncing with Reach"
 msgstr "Reachとのフォーム同期"
 
-#: src/Setup/Assets.php:103
+#: src/Setup/Assets.php:105
+#, fuzzy
 msgid "Generate an API token"
-msgstr ""
+msgstr "APIトークンを生成する"
 
-#: src/Setup/Assets.php:104
+#: src/Setup/Assets.php:106
+#, fuzzy
 msgid "Go to"
-msgstr ""
+msgstr "[移動]"
 
-#: src/Setup/Assets.php:198
+#: src/Setup/Assets.php:214
 msgid "Go to plugin"
 msgstr "プラグインへ移動"
 
-#: src/Setup/Assets.php:117
+#: src/Setup/Assets.php:118
 #: frontend/blocks/subscription-block/src/Components/Dialog.js:42
 #: frontend/dist/blocks/subscription.js:1
 #: frontend/dist/blocks/subscription.js:87
@@ -440,20 +537,20 @@ msgid "Hostinger"
 msgstr "Hostinger"
 
 #. Plugin Name of the plugin
-#: hostinger-reach.php src/Admin/Menus.php:50 src/Admin/Menus.php:106
-#: src/Admin/Notices/AddFormNotice.php:90
+#: hostinger-reach.php src/Admin/Notices/AddFormNotice.php:90
 #: src/Admin/Notices/ConnectionNotice.php:110
 #: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:20
-#: src/Integrations/Reach/ReachFormIntegration.php:71 src/Setup/Assets.php:118
-#: src/Setup/Assets.php:201
+#: src/Integrations/Reach/ReachFormIntegration.php:74 src/Setup/Assets.php:119
+#: src/Setup/Assets.php:217
 msgid "Hostinger Reach"
 msgstr "Hostinger Reach"
 
-#: src/Setup/Assets.php:105
+#: src/Setup/Assets.php:107
+#, fuzzy
 msgid "Hostinger Reach Integrations → API Tokens"
-msgstr ""
+msgstr "Hostinger の「Reach」の「統合」→「API トークン」"
 
-#: src/Setup/Assets.php:164
+#: src/Setup/Assets.php:165
 #, fuzzy
 msgid ""
 "Hostinger Reach is a Hostinger service that helps you create and send "
@@ -465,7 +562,7 @@ msgstr ""
 "ReachはHostingerのサービスであり、スマートなAIツールを使ってブランド化されたEメールキャンペーンを数分で作成・送信することができます。Hostinger"
 " Reach WordPressプラグインを使用すると、お気に入りのWordPressプラグインからReachに連絡先を接続して同期することができます。"
 
-#: src/Setup/Assets.php:158
+#: src/Setup/Assets.php:159
 msgid ""
 "Hostinger Reach is an AI-powered email marketing tool for small businesses "
 "and creators. It supports your entire email marketing journey—from building "
@@ -474,7 +571,7 @@ msgstr ""
 "Hostinger "
 "Reachは、中小企業やクリエイターのために設計されたAI搭載型メールマーケティングツールです。顧客リストの作成からキャンペーンの送信、結果のトラッキングまで、メールマーケティング全体をサポートします。"
 
-#: src/Setup/Assets.php:160
+#: src/Setup/Assets.php:161
 msgid ""
 "Hostinger Reach is built for simplicity, speed, and results – no design or "
 "marketing experience needed. Unlike most email tools, at the core of Reach "
@@ -501,26 +598,26 @@ msgid "Hostinger Reach Logo"
 msgstr "Hostinger Reachのロゴ"
 
 #. translators: %s: PHP version
-#: hostinger-reach.php:54
+#: hostinger-reach.php:55
 #, php-format
 msgid "Hostinger Reach requires minimum PHP version of <b>%s</b>. "
 msgstr "Hostinger Reachを利用するには、PHPバージョン<b>%s</b>以上が必要です。"
 
-#: src/Setup/Assets.php:169
+#: src/Setup/Assets.php:170
 #, fuzzy
 msgid "How are segments and tags created?"
 msgstr "セグメントやタグはどのように作成されるのですか？"
 
-#: src/Setup/Assets.php:165
+#: src/Setup/Assets.php:166
 #, fuzzy
 msgid "How does contact syncing work?"
 msgstr "連絡先の同期はどのように行われるのですか？"
 
-#: src/Setup/Assets.php:159
+#: src/Setup/Assets.php:160
 msgid "How is Hostinger Reach different from other email marketing apps?"
 msgstr "Hostinger Reachは他のメールマーケティングアプリとどう違うのですか？"
 
-#: src/Setup/Assets.php:161
+#: src/Setup/Assets.php:162
 msgid "How much does it cost to use Hostinger Reach?"
 msgstr "Hostinger Reachの利用料金はいくらですか？"
 
@@ -538,7 +635,7 @@ msgstr "https://hostinger.jp"
 msgid "https://www.hostinger.com/email-marketing"
 msgstr "https://www.hostinger.com/jp/email-marketing"
 
-#: src/Setup/Assets.php:172
+#: src/Setup/Assets.php:173
 #, fuzzy
 msgid ""
 "If the integration is interrupted, syncing pauses automatically. Once the "
@@ -547,68 +644,68 @@ msgid ""
 msgstr ""
 "統合が中断されると、同期は自動的に一時停止します。接続が回復すると同期が再開されるので、データを失うことなく連絡先の収集を続けることができます。"
 
-#: src/Setup/Assets.php:258
+#: src/Setup/Assets.php:275
 #, fuzzy
 msgid ""
 "If your store isn’t ready yet, complete the setup to start selling and "
 "collecting contacts"
 msgstr "ストアの準備がまだできていない場合は、セットアップを完了し、販売と連絡先の収集を開始します。"
 
-#: src/Setup/Assets.php:226
+#: src/Setup/Assets.php:242
 #, fuzzy
 msgid "Import"
 msgstr "輸入"
 
-#: src/Setup/Assets.php:222
+#: src/Setup/Assets.php:238
 #, fuzzy
 msgid "Import Contacts"
 msgstr "コンタクトのインポート"
 
-#: src/Setup/Assets.php:184
+#: src/Setup/Assets.php:200
 #, fuzzy
 msgid "Import contacts"
 msgstr "連絡先のインポート"
 
-#: src/Setup/Assets.php:224
+#: src/Setup/Assets.php:240
 #, fuzzy
 msgid "Import your existing contacts to Reach"
 msgstr "既存の連絡先をReachにインポート"
 
-#: src/Setup/Assets.php:234
+#: src/Setup/Assets.php:250
 #, fuzzy
 msgid "Imported"
 msgstr "輸入"
 
-#: src/Api/Handlers/IntegrationsApiHandler.php:123
+#: src/Api/Handlers/IntegrationsApiHandler.php:145
 msgid "Importing is not available for this integration"
 msgstr "この連携ではインポート機能は利用できません"
 
-#: src/Setup/Assets.php:236
+#: src/Setup/Assets.php:252
 #, fuzzy
 msgid "Importing..."
 msgstr "インポート..."
 
-#: src/Setup/Assets.php:195
+#: src/Setup/Assets.php:211
 msgid "Inactive"
 msgstr "非アクティブ"
 
-#: frontend/blocks/subscription-block/src/edit.js:34
+#: frontend/blocks/subscription-block/src/edit.js:79
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:140
+#: frontend/dist/blocks/subscription.js:330
 #, fuzzy
 msgid "Inline"
 msgstr "インライン"
 
-#: src/Setup/Assets.php:218
+#: src/Setup/Assets.php:234
 #, fuzzy
 msgid "Install"
 msgstr "インストール"
 
-#: src/Setup/Assets.php:219
+#: src/Setup/Assets.php:235
 msgid "Install and connect"
 msgstr "インストールと接続"
 
-#: src/Setup/Assets.php:217
+#: src/Setup/Assets.php:233
 msgid "Installed plugins"
 msgstr "インストールされているプラグイン"
 
@@ -617,90 +714,108 @@ msgstr "インストールされているプラグイン"
 msgid "Integrate your WordPress site with Hostinger Reach."
 msgstr "WordPressサイトをHostinger Reachに連携しましょう。"
 
-#: src/Setup/Assets.php:139
+#: src/Setup/Assets.php:140
 msgid "Integrations"
 msgstr "連携"
 
-#: src/Setup/Assets.php:240
+#: src/Setup/Assets.php:280
+#, fuzzy
+msgid "is connected!"
+msgstr "接続されました！"
+
+#: src/Setup/Assets.php:256
 #, fuzzy
 msgid ""
 "It may not be supported yet. You can upload contacts as a CSV or use another "
 "plugin"
 msgstr "まだサポートされていないかもしれません。連絡先をCSVでアップロードするか、他のプラグインをご利用ください。"
 
-#: src/Setup/Assets.php:238
+#: src/Setup/Assets.php:254
 #, fuzzy
 #| msgid "It was an error syncing your contacts to Reach."
 msgid "It was an error importing your contacts to Reach."
 msgstr "連絡先をReachに同期する際にエラーが発生しました。"
 
-#: frontend/blocks/subscription-block/src/edit.js:258
+#: frontend/blocks/subscription-block/src/edit.js:401
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:364
+#: frontend/dist/blocks/subscription.js:652
 #, fuzzy
 msgid "Layout"
 msgstr "レイアウト"
 
-#: frontend/blocks/subscription-block/src/edit.js:256
+#: frontend/blocks/subscription-block/src/edit.js:399
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:362
+#: frontend/dist/blocks/subscription.js:650
 #, fuzzy
 msgid "Layout Settings"
 msgstr "レイアウト設定"
 
-#: src/Admin/Notices/ConnectionNotice.php:103 src/Setup/Assets.php:255
+#: src/Admin/Notices/ConnectionNotice.php:103
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:68
+#: src/Setup/Assets.php:272
 msgid "Learn more"
 msgstr "詳細を見る"
 
-#: src/Setup/Assets.php:212
+#: src/Integrations/Elementor/ElementorIntegration.php:120
+#, fuzzy
+msgid "Loading…"
+msgstr "読み込み中…"
+
+#: src/Setup/Assets.php:228
 msgid ""
 "Make sure the people you contact expect your emails and are okay with "
 "receiving them."
 msgstr "配信メールの宛先が、受信することを承諾するかを必ず確認しましょう。"
 
-#: src/Setup/Assets.php:99
+#: src/Setup/Assets.php:101
 msgid "Manage"
 msgstr "管理"
 
-#: src/Setup/Assets.php:254
+#: src/Setup/Assets.php:271
 #, fuzzy
 msgid "Manage automations"
 msgstr "オートメーションの管理"
 
-#: src/Setup/Assets.php:153 src/Setup/Assets.php:256
+#: src/Setup/Assets.php:154 src/Setup/Assets.php:273
 #, fuzzy
 msgid "Manage plugin"
 msgstr "プラグインの管理"
 
-#: src/Setup/Assets.php:149
+#: src/Setup/Assets.php:150
 #, fuzzy
 msgid "More plugins"
 msgstr "その他のプラグイン"
 
-#: src/Blocks/SubscriptionFormBlock.php:93
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:114
+#: src/Blocks/SubscriptionFormBlock.php:140
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:207
 msgid "Name"
 msgstr "名称"
 
-#: src/Setup/Assets.php:107
+#: src/Setup/Assets.php:109
+#, fuzzy
 msgid "Name your token, then click <strong>Generate token</strong>"
-msgstr ""
+msgstr "トークンに名前を付け、<strong>トークンを生成</strong>をクリックしてください。"
 
-#: src/Setup/Assets.php:213
+#: src/Setup/Assets.php:258
+#, fuzzy
+msgid "New"
+msgstr "新着"
+
+#: src/Setup/Assets.php:229
 msgid "New contact form"
 msgstr "新しいお問い合わせフォーム"
 
-#: src/Setup/Assets.php:154
+#: src/Setup/Assets.php:155
 msgid "New page"
 msgstr "新しいページ"
 
-#: src/Setup/Assets.php:133
+#: src/Setup/Assets.php:134
 msgid "New subscribers"
 msgstr "新規登録者"
 
-#: frontend/blocks/subscription-block/src/edit.js:220
+#: frontend/blocks/subscription-block/src/edit.js:360
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:326
+#: frontend/dist/blocks/subscription.js:611
 #, fuzzy
 msgid "New Tag Name"
 msgstr "新しいタグ名"
@@ -709,34 +824,48 @@ msgstr "新しいタグ名"
 msgid "Ninja Forms"
 msgstr "Ninja Forms"
 
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:71
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:83
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:110
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:152
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:165
 msgid "No"
 msgstr "いいえ"
 
-#: src/Setup/Assets.php:207
+#: src/Setup/Assets.php:223
 msgid "No forms found for this integration."
 msgstr "この連携に関するフォームは見つかりませんでした。"
 
-#: src/Setup/Assets.php:155
+#: src/Setup/Assets.php:186
+#, fuzzy
+msgid "No forms yet"
+msgstr "まだフォームはありません"
+
+#: src/Integrations/Elementor/ElementorIntegration.php:119
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:56
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:162
+#, fuzzy
+msgid "No forms yet. Create your first form in Hostinger Reach."
+msgstr "まだフォームはありません。Hostinger Reachで最初のフォームを作成しましょう。"
+
+#: src/Setup/Assets.php:156
 msgid "No pages available. Create a new page to get started."
 msgstr "利用可能なページはありません。ページを新規作成してください。"
 
-#: src/Setup/Assets.php:235
+#: src/Setup/Assets.php:251
 #, fuzzy
 msgid "Not imported"
 msgstr "輸入されていない"
 
-#: src/Setup/Assets.php:186
+#: src/Setup/Assets.php:202
 #, fuzzy
 msgid "Not needed"
 msgstr "不要"
 
-#: src/Setup/Assets.php:192
+#: src/Setup/Assets.php:208
 msgid "of"
 msgstr "/"
 
-#: src/Setup/Assets.php:166
+#: src/Setup/Assets.php:167
 #, fuzzy
 msgid ""
 "Once you connect a form plugin you use on WordPress (such as Elementor or "
@@ -747,7 +876,15 @@ msgstr ""
 "WordPress で使用しているフォームプラグイン (Elementor や Contact Form 7 など) "
 "を接続すると、そのプラグインはすべての新しいフォーム送信と購読者データを自動的に Reach アカウントに転送します。"
 
-#: src/Setup/Assets.php:173
+#: src/Setup/Assets.php:278
+#, fuzzy
+msgid ""
+"Only subscribed contacts can receive automated emails. Customers must opt in "
+"to marketing and be synced to Reach before store automations can email them."
+msgstr ""
+"自動送信メールを受信できるのは、登録済みの連絡先のみです。店舗の自動化機能から顧客にメールを送信するには、顧客がマーケティング情報の受信に同意し、Reachと同期されている必要があります。"
+
+#: src/Setup/Assets.php:174
 msgid "opens in new tab"
 msgstr "新しいタブで開く"
 
@@ -756,44 +893,55 @@ msgstr "新しいタブで開く"
 msgid "OptinMonster"
 msgstr "オプチンモンスター"
 
-#: src/Setup/Assets.php:148
+#: src/Setup/Assets.php:149
 #, fuzzy
 msgid "or connect a form plugin"
 msgstr "またはフォームプラグインを接続する"
 
-#: src/Setup/Assets.php:233
+#: src/Setup/Assets.php:249
 #, fuzzy
 msgid "Partially imported"
 msgstr "一部輸入"
 
-#: src/Setup/Assets.php:110
+#: src/Setup/Assets.php:112
+#, fuzzy
 msgid "Paste your API token here"
-msgstr ""
+msgstr "ここにAPIトークンを貼り付けてください"
 
-#: src/Setup/Assets.php:122
+#: src/Setup/Assets.php:181
+#, fuzzy
+msgid "Pick a template you’d like to use or create a new one."
+msgstr "使いたいテンプレートを選ぶか、新しいテンプレートを作成してください。"
+
+#: src/Setup/Assets.php:123
 #, fuzzy
 msgid "Plan & Limits"
 msgstr "プランとリミット"
 
-#: src/Setup/Assets.php:188
+#: src/Setup/Assets.php:204
 msgid "Plugin"
 msgstr "プラグイン"
 
-#: src/Setup/Assets.php:209
+#: src/Setup/Assets.php:225
 msgid "Plugin connected successfully"
 msgstr "プラグインが正常に接続されました"
 
-#: src/Setup/Assets.php:210
+#: src/Setup/Assets.php:226
 msgid "Plugin disconnected successfully"
 msgstr "プラグインは正常に切断されました"
 
 #: src/Integrations/WooCommerce/WooCommerceIntegration.php:123
-#: src/Setup/Assets.php:249
+#: src/Setup/Assets.php:266
 #, fuzzy
 msgid "Purchases"
 msgstr "購入品"
 
-#: src/Setup/Assets.php:170
+#: src/Admin/Menus.php:109
+#, fuzzy
+msgid "Reach"
+msgstr "リーチ"
+
+#: src/Setup/Assets.php:171
 #, fuzzy
 msgid ""
 "Reach automatically tags synced contacts using the form name and also "
@@ -809,11 +957,18 @@ msgstr ""
 " "
 "Reachオプションを使用してフォームを作成する場合、複数の既存または新規タグを購読者に割り当てることもできます。各フォームは自動的にReachダッシュボードに独自のセグメントを生成し、特定のオーディエンスにキャンペーンを送信するのが簡単になります。"
 
-#: src/Setup/Assets.php:97
+#: frontend/blocks/subscription-block/src/edit.js:413
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:664
+#, fuzzy
+msgid "Reach form preview"
+msgstr "Reachフォームのプレビュー"
+
+#: src/Setup/Assets.php:99
 msgid "Reach is already connected to another site."
 msgstr "Reachはすでに別のサイトに紐づけられています。"
 
-#: src/Setup/Assets.php:162
+#: src/Setup/Assets.php:163
 #| msgid ""
 #| "Reach offers a free plan for one year– perfect for getting started. Paid "
 #| "plans are based on how many unique contacts you aim to reach and how many "
@@ -833,28 +988,57 @@ msgstr ""
 
 #: frontend/blocks/subscription-block/src/index.js:9
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:590
+#: frontend/dist/blocks/subscription.js:914
 #, fuzzy
 msgid "Reach Subscription Form"
 msgstr "リーチ購読フォーム"
 
-#: src/Setup/Assets.php:128
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:126
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:232
+#, fuzzy
+msgid "Refresh"
+msgstr "更新"
+
+#: src/Integrations/Elementor/ElementorIntegration.php:116
+#: src/Setup/Assets.php:183
+#, fuzzy
+msgid "Refresh forms"
+msgstr "フォームを更新する"
+
+#: src/Setup/Assets.php:129
 msgid "Remaining"
 msgstr "残り"
 
-#: src/Setup/Assets.php:116
+#: src/Setup/Assets.php:117
 #, fuzzy
 msgid "Review domain"
 msgstr "レビュー・ドメイン"
 
-#: src/Setup/Assets.php:124
+#: src/Setup/Assets.php:125
 #, fuzzy
 msgid "Segments"
 msgstr "セグメント"
 
-#: src/Setup/Assets.php:178
+#: src/Integrations/Elementor/ElementorIntegration.php:114
+#: src/Setup/Assets.php:180
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:42
+#: frontend/blocks/subscription-block/src/Components/SelectFormModal.js:97
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:148
+#: frontend/dist/blocks/subscription.js:203
+#, fuzzy
+msgid "Select a form"
+msgstr "フォームを選択してください"
+
+#: src/Setup/Assets.php:179
 msgid "Select page"
 msgstr "ページを選択"
+
+#: src/Setup/Assets.php:189
+#, fuzzy
+msgid "Select page for your form"
+msgstr "フォームのページを選択してください"
 
 #: src/Admin/Notices/ConnectionNotice.php:96
 #, fuzzy
@@ -866,62 +1050,68 @@ msgstr ""
 "プロがデザインしたテンプレートでニュースレターを送信し、キャンペーンを自動化し、AIを活用したセグメントを構築します。Hostinger "
 "Reachがあれば、オーディエンスの拡大は簡単です。"
 
-#: src/Setup/Assets.php:127 src/Setup/Assets.php:130
+#: src/Setup/Assets.php:128 src/Setup/Assets.php:131
 msgid "Sent"
 msgstr "送信済み"
 
-#: src/Setup/Assets.php:259
+#: src/Setup/Assets.php:276
 #, fuzzy
 msgid "Set up WooCommerce"
 msgstr "WooCommerceのセットアップ"
 
-#: src/Setup/Assets.php:138 frontend/blocks/subscription-block/src/edit.js:184
+#: src/Setup/Assets.php:139 frontend/blocks/subscription-block/src/edit.js:274
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:290
+#: frontend/dist/blocks/subscription.js:525
 msgid "Settings"
 msgstr "設定"
 
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:68
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:149
 msgid "Show Name"
 msgstr "名前を表示"
 
-#: frontend/blocks/subscription-block/src/edit.js:240
+#: frontend/blocks/subscription-block/src/edit.js:380
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:346
+#: frontend/dist/blocks/subscription.js:631
 #, fuzzy
 msgid "Show Name Field?"
 msgstr "名前フィールドを表示しますか？"
 
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:80
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:162
 msgid "Show Surname"
 msgstr "苗字を表示"
 
-#: frontend/blocks/subscription-block/src/edit.js:248
+#: frontend/blocks/subscription-block/src/edit.js:388
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:354
+#: frontend/dist/blocks/subscription.js:639
 #, fuzzy
 msgid "Show Surname Field?"
 msgstr "苗字欄を表示しますか？"
 
-#: src/Setup/Assets.php:92
+#: src/Setup/Assets.php:281
+#, fuzzy
+msgid ""
+"So how do you want to collect and sync contacts from your site to Reach?"
+msgstr "では、サイトから連絡先を収集し、Reachと同期するにはどうすればよいでしょうか？"
+
+#: src/Setup/Assets.php:96
 msgid "Something went wrong"
 msgstr "エラーが発生しました"
 
-#: src/Api/Handlers/ApiHandler.php:36 src/Blocks/SubscriptionFormBlock.php:30
+#: src/Api/Handlers/ApiHandler.php:36 src/Blocks/SubscriptionFormBlock.php:51
 msgid "Something went wrong. Please try again."
 msgstr "エラーが発生しました。もう一度お試しください。"
 
-#: src/Setup/Assets.php:193 src/Setup/Assets.php:246
+#: src/Setup/Assets.php:209 src/Setup/Assets.php:263
 msgid "Status"
 msgstr "ステータス"
 
-#: src/Setup/Assets.php:245
+#: src/Setup/Assets.php:262
 #, fuzzy
 msgid "Store Events"
 msgstr "店舗イベント"
 
-#: src/Blocks/SubscriptionFormBlock.php:110
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:130
+#: src/Blocks/SubscriptionFormBlock.php:156
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:223
 msgid "Subscribe"
 msgstr "メルマガ登録"
 
@@ -933,16 +1123,16 @@ msgstr "ニュースレターを購読"
 msgid "Subscribe to our newsletter"
 msgstr "ニュースレターを購読"
 
-#: src/Setup/Assets.php:132
+#: src/Setup/Assets.php:133
 msgid "Subscribers"
 msgstr "メルマガ登録者"
 
-#: src/Blocks/SubscriptionFormBlock.php:125
+#: src/Blocks/SubscriptionFormBlock.php:186
 #, fuzzy
 msgid "Subscription form is not available at the moment"
 msgstr "購読フォームは現在ご利用いただけません。"
 
-#: src/Setup/Assets.php:215
+#: src/Setup/Assets.php:231
 #| msgid "View supported plugins"
 msgid "Supported plugins"
 msgstr "対応プラグイン"
@@ -951,27 +1141,27 @@ msgstr "対応プラグイン"
 msgid "Sure Forms"
 msgstr "SureForms"
 
-#: src/Blocks/SubscriptionFormBlock.php:101
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:122
+#: src/Blocks/SubscriptionFormBlock.php:148
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:215
 msgid "Surname"
 msgstr "苗字"
 
-#: src/Setup/Assets.php:187
+#: src/Setup/Assets.php:203
 msgid "Sync"
 msgstr "同期"
 
-#: frontend/blocks/subscription-block/src/edit.js:193
+#: frontend/blocks/subscription-block/src/edit.js:333
 #: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:299
+#: frontend/dist/blocks/subscription.js:584
 #, fuzzy
 msgid "Tags"
 msgstr "タグ"
 
-#: src/Blocks/SubscriptionFormBlock.php:29
+#: src/Blocks/SubscriptionFormBlock.php:50
 msgid "Thanks for subscribing."
 msgstr "メルマガにご登録いただきありがとうございます。"
 
-#: src/Setup/Assets.php:237
+#: src/Setup/Assets.php:253
 #, fuzzy
 #| msgid "The selected contacts are being synced to Reach."
 msgid "The selected contacts are being imported to Reach."
@@ -983,7 +1173,7 @@ msgid ""
 "it to be synced with Reach"
 msgstr "このフォームにはメールアドレスの項目がありません。Reachと同期できるように、フォームにメールアドレスのフィールドを追加してください。"
 
-#: src/Setup/Assets.php:260
+#: src/Setup/Assets.php:277
 #, fuzzy
 msgid ""
 "This form is a Reach native form inserted directly in your page. For "
@@ -991,14 +1181,7 @@ msgid ""
 msgstr ""
 "このフォームはあなたのページに直接挿入されるリーチネイティブフォームです。これを無効にするには、エディタを使ってページから直接フォームを削除してください。"
 
-#: src/Setup/Assets.php:95
-#, fuzzy
-msgid ""
-"This is a temporary domain. In order to connect WordPress to Reach you need "
-"to connect your domain."
-msgstr "これは一時的なドメインです。WordPressをReachに接続するには、ドメインを接続する必要があります。"
-
-#: src/Setup/Assets.php:121
+#: src/Setup/Assets.php:122
 msgid "This month"
 msgstr "今月"
 
@@ -1008,81 +1191,104 @@ msgstr "今月"
 msgid "Thrive Leads"
 msgstr "スライブリード"
 
-#: src/Setup/Assets.php:135
+#: src/Setup/Assets.php:136
 msgid "Total subscribers"
 msgstr "総登録者数"
 
-#: src/Setup/Assets.php:252
+#: src/Setup/Assets.php:269
 #, fuzzy
 msgid ""
 "Tracks abandoned carts so you can trigger email automations in Reach when "
 "enabled."
 msgstr "放棄されたカートを追跡するので、有効にするとReachでEメール自動送信をトリガーできます。"
 
-#: src/Setup/Assets.php:250
+#: src/Setup/Assets.php:267
 #, fuzzy
 msgid ""
 "Tracks purchases so you can trigger email automations in Reach when enabled."
 msgstr "購入履歴を追跡することで、Reachのメール自動送信機能を有効にすることができます。"
 
-#: frontend/blocks/subscription-block/src/edit.js:190
-#: frontend/dist/blocks/subscription.js:1
-#: frontend/dist/blocks/subscription.js:296
-#, fuzzy
-msgid "Unique identifier for this form"
-msgstr "このフォームの一意の識別子"
-
-#: src/Setup/Assets.php:134
+#: src/Setup/Assets.php:135
 msgid "Unsubscribes"
 msgstr "配信停止"
 
-#: src/Setup/Assets.php:125
+#: src/Setup/Assets.php:126
 msgid "Upgrade"
 msgstr "アップグレード"
 
-#: src/Setup/Assets.php:241
+#: src/Setup/Assets.php:257
 #, fuzzy
 msgid "Upload as CSV"
 msgstr "CSVでアップロード"
 
-#: src/Setup/Assets.php:176
+#: src/Setup/Assets.php:177
 msgid "usage statistics"
 msgstr "利用統計"
 
-#: src/Setup/Assets.php:196
+#: src/Integrations/Elementor/ElementorIntegration.php:111
+#, fuzzy
+msgid "Use classic Reach block"
+msgstr "クラシックなリーチブロックを使用する"
+
+#: frontend/blocks/subscription-block/src/edit.js:327
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:578
+#, fuzzy
+msgid "Use classic Reach Form"
+msgstr "従来のReachフォームを使用する"
+
+#: src/Integrations/Elementor/ElementorIntegration.php:110
+#: frontend/blocks/subscription-block/src/edit.js:318
+#: frontend/dist/blocks/subscription.js:1
+#: frontend/dist/blocks/subscription.js:569
+#, fuzzy
+msgid "Use Form builder template"
+msgstr "フォームビルダーのテンプレートを使用する"
+
+#: src/Setup/Assets.php:279
+#, fuzzy
+msgid "View contacts"
+msgstr "連絡先を表示する"
+
+#: src/Setup/Assets.php:212
 msgid "View form"
 msgstr "フォームを表示"
 
-#: src/Setup/Assets.php:216
+#: src/Setup/Assets.php:232
 msgid "View more supported plugins"
 msgstr "対応プラグインをもっと見る"
 
-#: src/Setup/Assets.php:93
+#: src/Setup/Assets.php:97
 msgid "Welcome to Reach"
 msgstr "Reachをご利用いただきありがとうございます"
 
-#: src/Setup/Assets.php:171
+#: src/Setup/Assets.php:172
 #, fuzzy
 msgid "What happens if the connection breaks?"
 msgstr "接続が切れたらどうなるのですか？"
 
-#: src/Setup/Assets.php:157
+#: src/Setup/Assets.php:158
 msgid "What is Hostinger Reach email marketing service?"
 msgstr "Hostinger Reachメールマーケティングサービスとは何ですか？"
 
-#: src/Setup/Assets.php:163
+#: src/Setup/Assets.php:164
 #, fuzzy
 msgid ""
 "What's the difference between Hostinger Reach and Hostinger Reach WordPress "
 "Plugin?"
 msgstr "Hostinger ReachとHostinger Reach WordPress Pluginの違いは何ですか？"
 
-#: src/Setup/Assets.php:191
+#: src/Setup/Assets.php:207
 #, fuzzy
 msgid "When syncing is off, collected Contacts will not be sent to Reach."
 msgstr "同期がオフの場合、収集した連絡先はReachに送信されません。"
 
-#: src/Setup/Assets.php:167
+#: src/Setup/Assets.php:190
+#, fuzzy
+msgid "Will be added to the selected page"
+msgstr "選択したページに追加されます"
+
+#: src/Setup/Assets.php:168
 #, fuzzy
 msgid "Will contacts be added to my email list automatically?"
 msgstr "連絡先は自動的にEメールリストに追加されますか？"
@@ -1095,19 +1301,19 @@ msgstr "WooCommerce"
 msgid "WooCommerce Customers"
 msgstr "WooCommerceの顧客"
 
-#: src/Setup/Assets.php:257
+#: src/Setup/Assets.php:274
 #, fuzzy
 msgid "WooCommerce Plugin Connected"
 msgstr "接続されたWooCommerceプラグイン"
 
-#: src/Setup/Assets.php:185
+#: src/Setup/Assets.php:201
 #, fuzzy
 #| msgid "Would you like to sync contacts collected while sync was disabled?"
 msgid "Would you like to import contacts collected while sync was disabled?"
 msgstr "同期が無効になっている間に収集した連絡先を同期しますか？"
 
 #: src/Integrations/WPFormsLite/WpFormsLiteIntegration.php:29
-#: src/Setup/Assets.php:203
+#: src/Setup/Assets.php:219
 msgid "WP Forms Lite"
 msgstr "WPForms Lite"
 
@@ -1121,12 +1327,13 @@ msgstr "WPForms Lite %s"
 msgid "WS Form"
 msgstr "WS Form"
 
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:70
-#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:82
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:109
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:151
+#: src/Integrations/Elementor/SubscriptionFormElementorWidget.php:164
 msgid "Yes"
 msgstr "はい"
 
-#: src/Setup/Assets.php:168
+#: src/Setup/Assets.php:169
 #, fuzzy
 msgid ""
 "Yes — new subscribers are added automatically based on your setup. Some "
@@ -1157,19 +1364,19 @@ msgstr ""
 "Hostinger Reachに接続していません。このブロックに完全にアクセスするには、Hostinger Reachアカウントに接続する必要があります。"
 
 #. translators: %s: PHP version
-#: hostinger-reach.php:58
+#: hostinger-reach.php:59
 #, php-format
 msgid "You are running <b>%s</b> PHP version."
 msgstr "稼働中のPHPバージョンは<b>%s</b>です。"
 
-#: src/Setup/Assets.php:225
+#: src/Setup/Assets.php:241
 #, fuzzy
 msgid ""
 "You can import existing contacts into Reach now to use them for your email "
 "campaigns. New contacts will be synced automatically to Reach."
 msgstr "既存の連絡先をReachにインポートして、メールキャンペーンに使用することができます。新しい連絡先は自動的にReachに同期されます。"
 
-#: src/Setup/Assets.php:230
+#: src/Setup/Assets.php:246
 #, fuzzy
 #| msgid ""
 #| "You have not selected any forms to sync. Select which forms you want to "
@@ -1179,16 +1386,10 @@ msgid ""
 "import and then click on the Import button below."
 msgstr "同期するフォームが選択されていません。同期したいフォームを選択し、下の「同期」ボタンをクリックしてください。"
 
-#: src/Setup/Assets.php:109
-msgid "Your API token"
-msgstr ""
-
-#: src/Setup/Assets.php:96
+#: src/Setup/Assets.php:111
 #, fuzzy
-msgid ""
-"Your domain is not active. In order to connect WordPress to Reach you need "
-"to have an active domain."
-msgstr "ドメインがアクティブではありません。WordPressをReachに接続するには、ドメインがアクティブである必要があります。"
+msgid "Your API token"
+msgstr "APIトークン"
 
 #: frontend/blocks/subscription-block/src/Components/Dialog.js:40
 #: frontend/dist/blocks/subscription.js:1
@@ -1197,8 +1398,8 @@ msgstr "ドメインがアクティブではありません。WordPressをReach�
 msgid "Your form is ready. Go to Reach to complete setup and create templates."
 msgstr "フォームの準備ができました。Reachに移動してセットアップを完了し、テンプレートを作成します。"
 
-#: src/Api/Handlers/ReachApiHandler.php:33
-#: src/Blocks/SubscriptionFormBlock.php:123
+#: src/Api/Handlers/ReachApiHandler.php:36
+#: src/Blocks/SubscriptionFormBlock.php:184
 #, fuzzy
 msgid "Your site is not connected to Reach. Connect to Reach and try again."
 msgstr "あなたのサイトはReachに接続されていません。Reachに接続してもう一度お試しください。"
