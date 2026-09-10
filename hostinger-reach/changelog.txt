@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.8.1 (2026-09-10)
+
+- Feature: Add Shortcode support for Reach Form Builder
+- Tweak: Update Reach Form Creation URL
+
 1.8.0 (2026-09-01)
 
 - Fix: Optinmonster installation

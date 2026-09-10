@@ -19,10 +19,10 @@ import './elementor-reach-form.scss';
 		`${REACH_DOMAIN}?resourceId=${encodeURIComponent(RESOURCE_ID)}` +
 		`&routeTo=form-publish` +
 		`&routeId=${encodeURIComponent(uuid)}`;
-	const reachFormsUrl = () =>
+	const reachCreateFormUrl = () =>
 		RESOURCE_ID
-			? `${REACH_DOMAIN}?resourceId=${encodeURIComponent(RESOURCE_ID)}&domain=${encodeURIComponent(DOMAIN)}&routeTo=forms`
-			: `${REACH_DOMAIN}?routeTo=forms`;
+			? `${REACH_DOMAIN}?resourceId=${encodeURIComponent(RESOURCE_ID)}&domain=${encodeURIComponent(DOMAIN)}&routeTo=forms&action=create-form`
+			: `${REACH_DOMAIN}?routeTo=forms&action=create-form`;
 	const isValidFormId = (id) => /^[a-zA-Z0-9-]+$/.test(id || '');
 	const previewDoc = (uuid) =>
 		isValidFormId(uuid)
@@ -319,7 +319,7 @@ import './elementor-reach-form.scss';
 		footerStart.className = 'hostinger-reach-elementor-modal__footer-start';
 		const createLink = document.createElement('a');
 		createLink.className = 'hostinger-reach-elementor-modal__create';
-		createLink.href = reachFormsUrl();
+		createLink.href = reachCreateFormUrl();
 		createLink.target = '_blank';
 		createLink.rel = 'noopener noreferrer';
 		createLink.textContent = t('createForm', 'Create a new form');

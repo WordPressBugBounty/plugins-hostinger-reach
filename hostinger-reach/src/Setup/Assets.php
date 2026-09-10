@@ -178,7 +178,7 @@ class Assets {
             'hostinger_reach_ui_tooltip_ctor_info'                        => __( 'Click-to-open rate tells you what percent of opens resulted in a click too. A good CTOR is 6-17%, depending on your industry.', 'hostinger-reach' ),
             'hostinger_reach_forms_modal_title'                           => __( 'Select page', 'hostinger-reach' ),
             'hostinger_reach_select_form_modal_title'                     => __( 'Select a form', 'hostinger-reach' ),
-            'hostinger_reach_select_form_modal_subtitle'                  => __( 'Pick a template you’d like to use or create a new one.', 'hostinger-reach' ),
+            'hostinger_reach_select_form_modal_subtitle'                  => __( 'Only active forms created with Reach are displayed below. Select one or create a new one.', 'hostinger-reach' ),
             'hostinger_reach_select_form_modal_create_new'                => __( 'Create a new form', 'hostinger-reach' ),
             'hostinger_reach_select_form_modal_refresh'                   => __( 'Refresh forms', 'hostinger-reach' ),
             'hostinger_reach_select_form_modal_cancel'                    => __( 'Cancel', 'hostinger-reach' ),

@@ -66,6 +66,11 @@ export const useReachUrls = () => {
 				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=forms`
 				: `https://${reachBaseDomain.value}?routeTo=forms`
 		),
+		reachFormsCreateLink: computed(() =>
+			resourceId.value
+				? `https://${reachBaseDomain.value}?resourceId=${resourceId.value}&domain=${generalStore.domain}&routeTo=forms&action=create-form`
+				: `https://${reachBaseDomain.value}?routeTo=forms&action=create-form`
+		),
 		reachBaseDomain,
 		hpanelBaseDomain
 	};

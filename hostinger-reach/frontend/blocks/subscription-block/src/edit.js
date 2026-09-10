@@ -28,9 +28,9 @@ const formEditUrl = (formBuilderId) =>
 	`${REACH_DOMAIN}?resourceId=${encodeURIComponent(RESOURCE_ID)}` +
 	`&routeTo=form-publish` +
 	`&routeId=${encodeURIComponent(formBuilderId)}`;
-const reachFormsUrl = RESOURCE_ID
-	? `${REACH_DOMAIN}?resourceId=${encodeURIComponent(RESOURCE_ID)}&domain=${encodeURIComponent(DOMAIN)}&routeTo=forms`
-	: `${REACH_DOMAIN}?routeTo=forms`;
+const reachCreateFormUrl = RESOURCE_ID
+	? `${REACH_DOMAIN}?resourceId=${encodeURIComponent(RESOURCE_ID)}&domain=${encodeURIComponent(DOMAIN)}&routeTo=forms&action=create-form`
+	: `${REACH_DOMAIN}?routeTo=forms&action=create-form`;
 
 const PencilIcon = (
 	<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -428,7 +428,7 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 				isLoading={isFormsLoading}
 				previewImageUrl={previewImageUrl}
 				initialSelectedId={attributes.formBuilderId}
-				createFormUrl={reachFormsUrl}
+				createFormUrl={reachCreateFormUrl}
 				onRefresh={fetchForms}
 				onClose={() => setIsFormModalOpen(false)}
 				onContinue={handleSelectForm}

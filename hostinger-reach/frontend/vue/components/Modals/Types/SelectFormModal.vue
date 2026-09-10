@@ -17,7 +17,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const { closeModal, openModal } = useModal();
-const { reachFormsLink } = useReachUrls();
+const { reachFormsLink, reachFormsCreateLink } = useReachUrls();
 
 const EMBED_SCRIPT_URL = hostinger_reach_reach_data.embed_script_url;
 
@@ -199,7 +199,7 @@ onMounted(loadForms);
 			<div v-if="showFooter" class="select-form-modal__footer">
 				<div class="select-form-modal__footer-start">
 					<HHyperlink
-						:href="reachFormsLink"
+						:href="reachFormsCreateLink"
 						target="_blank"
 						variant="button-look"
 						icon-prepend="ic-plus-16"
