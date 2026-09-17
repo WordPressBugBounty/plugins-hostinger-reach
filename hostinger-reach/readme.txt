@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.0
 Tested up to: 7.1
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,13 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.2 (2026-09-16)
+
+- Tweak: Design tweaks in Form Builder
+- Tweak: Add loading state when Preview is loading in Form Builder cards
+- Tweak: Support draft pages on Form Builder
+- Tweak: Add Search input in the Form Builder modals for Admin, Elementor and Block editor
 
 1.8.1 (2026-09-10)
 

@@ -57,6 +57,76 @@ import './elementor-reach-form.scss';
 		'<path d="M4 12a8 8 0 0 1 13.657-5.657L20 8m0 0V3m0 5h-5M20 12a8 8 0 0 1-13.657 5.657L4 16m0 0v5m0-5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
 		'</svg>';
 
+	const FILE_SVG =
+		'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+		'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" stroke="#18181A" stroke-width="1.5" stroke-linejoin="round"/>' +
+		'<path d="M14 3v5h5" stroke="#18181A" stroke-width="1.5" stroke-linejoin="round"/>' +
+		'</svg>';
+
+	const PLUS_SVG =
+		'<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+		'<path d="M8 3.25v9.5M3.25 8h9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
+		'</svg>';
+
+	function createEmptyState(onRefresh) {
+		const emptyState = document.createElement('div');
+		emptyState.className = 'hostinger-reach-elementor-modal__empty-state';
+
+		const emptyIcon = document.createElement('div');
+		emptyIcon.className = 'hostinger-reach-elementor-modal__empty-icon';
+		emptyIcon.innerHTML = FILE_SVG;
+		emptyState.appendChild(emptyIcon);
+
+		const emptyBody = document.createElement('div');
+		emptyBody.className = 'hostinger-reach-elementor-modal__empty-body';
+
+		const emptyText = document.createElement('div');
+		emptyText.className = 'hostinger-reach-elementor-modal__empty-text';
+
+		const emptyTitle = document.createElement('h3');
+		emptyTitle.className = 'hostinger-reach-elementor-modal__empty-title';
+		emptyTitle.textContent = t('emptyTitle', 'No forms yet');
+		emptyText.appendChild(emptyTitle);
+
+		const emptySubtitle = document.createElement('p');
+		emptySubtitle.className = 'hostinger-reach-elementor-modal__empty-subtitle';
+		emptySubtitle.textContent = t('emptySubtitle', 'Build your first form in Hostinger Reach and add it to any page on your site.');
+		emptyText.appendChild(emptySubtitle);
+
+		emptyBody.appendChild(emptyText);
+
+		const emptyAction = document.createElement('div');
+		emptyAction.className = 'hostinger-reach-elementor-modal__empty-action';
+		const emptyCreate = document.createElement('a');
+		emptyCreate.className = 'hostinger-reach-elementor-modal__empty-create';
+		emptyCreate.href = reachCreateFormUrl();
+		emptyCreate.target = '_blank';
+		emptyCreate.rel = 'noopener noreferrer';
+		emptyCreate.insertAdjacentHTML('beforeend', PLUS_SVG);
+		const emptyCreateLabel = document.createElement('span');
+		emptyCreateLabel.textContent = t('emptyCreate', 'Create a form in Reach');
+		emptyCreate.appendChild(emptyCreateLabel);
+		emptyAction.appendChild(emptyCreate);
+
+		if (typeof onRefresh === 'function') {
+			const emptyRefresh = document.createElement('button');
+			emptyRefresh.type = 'button';
+			emptyRefresh.className = 'hostinger-reach-elementor-modal__empty-refresh';
+			emptyRefresh.insertAdjacentHTML('beforeend', REFRESH_SVG);
+			const emptyRefreshLabel = document.createElement('span');
+			emptyRefreshLabel.textContent = t('refresh', 'Refresh forms');
+			emptyRefresh.appendChild(emptyRefreshLabel);
+			emptyRefresh.addEventListener('click', onRefresh);
+			emptyAction.appendChild(emptyRefresh);
+		}
+
+		emptyBody.appendChild(emptyAction);
+
+		emptyState.appendChild(emptyBody);
+
+		return emptyState;
+	}
+
 	let formsCache = null;
 	let formsFetching = false;
 	let pendingCallbacks = [];
@@ -99,7 +169,11 @@ import './elementor-reach-form.scss';
 	}
 
 	function getFormName(uuid) {
-		const form = (formsCache || []).find((item) => item.uuid === uuid);
+		if (!formsCache) {
+			return t('loading', 'Loading…');
+		}
+
+		const form = formsCache.find((item) => item.uuid === uuid);
 		return form ? form.name : uuid;
 	}
 
@@ -309,9 +383,33 @@ import './elementor-reach-form.scss';
 		header.appendChild(close);
 		modal.appendChild(header);
 
+		const searchWrap = document.createElement('div');
+		searchWrap.className = 'hostinger-reach-elementor-modal__search';
+		const searchInput = document.createElement('input');
+		searchInput.type = 'search';
+		searchInput.className = 'hostinger-reach-elementor-modal__search-input';
+		searchInput.placeholder = t('searchPlaceholder', 'Search forms');
+		searchInput.setAttribute('aria-label', t('searchPlaceholder', 'Search forms'));
+		searchWrap.appendChild(searchInput);
+
 		const body = document.createElement('div');
 		body.className = 'hostinger-reach-elementor-modal__body';
 		modal.appendChild(body);
+
+		const listCol = document.createElement('div');
+		listCol.className = 'hostinger-reach-elementor-modal__list-col';
+		listCol.appendChild(searchWrap);
+
+		const list = document.createElement('div');
+		list.className = 'hostinger-reach-elementor-modal__list';
+		listCol.appendChild(list);
+
+		const preview = document.createElement('div');
+		preview.className = 'hostinger-reach-elementor-modal__preview';
+		const frame = document.createElement('iframe');
+		frame.className = 'hostinger-reach-elementor-modal__preview-frame';
+		frame.title = t('selectForm', 'Select a form');
+		preview.appendChild(frame);
 
 		const footer = document.createElement('div');
 		footer.className = 'hostinger-reach-elementor-modal__footer';
@@ -360,6 +458,9 @@ import './elementor-reach-form.scss';
 		});
 
 		let selectedId = getCurrentTemplateId(ctx);
+		let allForms = [];
+		let searchQuery = '';
+		let renderedPreviewId = null;
 
 		continueBtn.addEventListener('click', () => {
 			if (!selectedId) {
@@ -375,28 +476,50 @@ import './elementor-reach-form.scss';
 			}
 		});
 
-		refreshBtn.addEventListener('click', () => {
+		function refreshForms() {
 			formsCache = null;
 			continueBtn.disabled = true;
 			renderBody();
+		}
+
+		refreshBtn.addEventListener('click', refreshForms);
+
+		searchInput.addEventListener('input', () => {
+			searchQuery = searchInput.value;
+			renderResults();
 		});
 
-		const renderBody = () => {
-			body.textContent = '';
-			const loading = document.createElement('div');
-			loading.className = 'hostinger-reach-elementor-modal__loading';
-			loading.innerHTML =
-				'<span class="hostinger-reach-elementor-spinner" role="status" aria-label="' + t('loading', 'Loading…') + '"></span>';
-			body.appendChild(loading);
+		const getFilteredForms = () => {
+			const query = searchQuery.trim().toLowerCase();
 
-			fetchForms((forms) => {
+			if (!query) {
+				return allForms;
+			}
+
+			return allForms.filter((form) => form.name.toLowerCase().includes(query));
+		};
+
+		const ensureResultsLayout = () => {
+			if (body.firstChild === listCol) {
+				return;
+			}
 			body.textContent = '';
+			body.appendChild(listCol);
+			body.appendChild(preview);
+		};
+
+		const renderResults = () => {
+			const forms = getFilteredForms();
+
+			list.textContent = '';
 
 			if (!forms.length) {
-				const empty = document.createElement('div');
-				empty.className = 'hostinger-reach-elementor-modal__empty';
-				empty.textContent = t('noForms', 'No forms yet. Create your first form in Hostinger Reach.');
-				body.appendChild(empty);
+				const noResults = document.createElement('div');
+				noResults.className = 'hostinger-reach-elementor-modal__no-results';
+				noResults.textContent = t('noResults', 'No forms match your search.');
+				list.appendChild(noResults);
+				continueBtn.disabled = !selectedId;
+				frame.style.display = 'none';
 				return;
 			}
 
@@ -404,20 +527,7 @@ import './elementor-reach-form.scss';
 				selectedId = forms[0].uuid;
 			}
 			continueBtn.disabled = false;
-
-			const list = document.createElement('div');
-			list.className = 'hostinger-reach-elementor-modal__list';
-
-			const preview = document.createElement('div');
-			preview.className = 'hostinger-reach-elementor-modal__preview';
-			const frame = document.createElement('iframe');
-			frame.className = 'hostinger-reach-elementor-modal__preview-frame';
-			frame.title = t('selectForm', 'Select a form');
-			preview.appendChild(frame);
-
-			const updatePreview = () => {
-				frame.srcdoc = previewDoc(selectedId);
-			};
+			frame.style.display = '';
 
 			forms.forEach((form) => {
 				const item = document.createElement('button');
@@ -445,15 +555,47 @@ import './elementor-reach-form.scss';
 						el.classList.remove('is-selected')
 					);
 					item.classList.add('is-selected');
-					updatePreview();
+					if (renderedPreviewId !== selectedId) {
+						renderedPreviewId = selectedId;
+						frame.srcdoc = previewDoc(selectedId);
+					}
 				});
 
 				list.appendChild(item);
 			});
 
-			body.appendChild(list);
-			body.appendChild(preview);
-			updatePreview();
+			if (renderedPreviewId !== selectedId) {
+				renderedPreviewId = selectedId;
+				frame.srcdoc = previewDoc(selectedId);
+			}
+		};
+
+		const renderBody = () => {
+			body.textContent = '';
+
+			const loading = document.createElement('div');
+			loading.className = 'hostinger-reach-elementor-modal__loading';
+			loading.innerHTML =
+				'<span class="hostinger-reach-elementor-spinner" role="status" aria-label="' + t('loading', 'Loading…') + '"></span>';
+			body.appendChild(loading);
+
+			fetchForms((forms) => {
+				allForms = forms || [];
+
+				if (!allForms.length) {
+					body.textContent = '';
+					const empty = document.createElement('div');
+					empty.className = 'hostinger-reach-elementor-modal__empty';
+					empty.appendChild(createEmptyState(refreshForms));
+					body.appendChild(empty);
+					footer.style.display = 'none';
+					continueBtn.disabled = true;
+					return;
+				}
+
+				footer.style.display = '';
+				ensureResultsLayout();
+				renderResults();
 			});
 		};
 

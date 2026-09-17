@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { HButton, HHyperlink, HIcon, HIconButton, HSkeletonLoader, HText } from '@hostinger/hcomponents';
+import { HButton, HHyperlink, HIcon, HIconButton, HInput, HSkeletonLoader, HText } from '@hostinger/hcomponents';
 import { storeToRefs } from 'pinia';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 
 import BaseModal from '@/components/Modals/Base/BaseModal.vue';
+import SelectFormEmptyState from '@/components/Modals/Types/SelectFormEmptyState.vue';
 import { useModal } from '@/composables';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { useBuilderFormsStore } from '@/stores';
@@ -17,7 +18,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const { closeModal, openModal } = useModal();
-const { reachFormsLink, reachFormsCreateLink } = useReachUrls();
+const { reachFormsCreateLink } = useReachUrls();
 
 const EMBED_SCRIPT_URL = hostinger_reach_reach_data.embed_script_url;
 
@@ -26,17 +27,33 @@ const { forms, isLoading, isLoaded } = storeToRefs(builderFormsStore);
 const { previewImageUrl } = builderFormsStore;
 
 const selectedFormId = ref('');
+const searchQuery = ref('');
 const failedPreviews = ref<Set<string>>(new Set());
 
 const markPreviewFailed = (uuid: string) => {
 	failedPreviews.value = new Set(failedPreviews.value).add(uuid);
 };
 
+const filteredForms = computed(() => {
+	const query = searchQuery.value.trim().toLowerCase();
+
+	if (!query) return forms.value;
+
+	return forms.value.filter((form) => form.name.toLowerCase().includes(query));
+});
+
 const isLoadingForms = computed(() => isLoading.value || !isLoaded.value);
 const isEmpty = computed(() => isLoaded.value && forms.value.length === 0);
+const showSearch = computed(() => !isLoadingForms.value && forms.value.length > 0);
 const showFooter = computed(() => !isEmpty.value);
 
 const selectedForm = computed(() => forms.value.find((form) => form.uuid === selectedFormId.value));
+
+watch(filteredForms, (list) => {
+	if (!list.some((form) => form.uuid === selectedFormId.value)) {
+		selectedFormId.value = list[0]?.uuid ?? '';
+	}
+});
 
 const previewDoc = (uuid: string) =>
 	`<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="margin:0;">` +
@@ -90,7 +107,7 @@ const handleContinue = () => {
 				backButtonRedirectAction: openFormModal
 			}
 		},
-		{ hasCloseButton: true, noContentPadding: true }
+		{ hasCloseButton: true, noContentPadding: true, isMD: true }
 	);
 };
 
@@ -108,15 +125,17 @@ onMounted(loadForms);
 				class="select-form-modal__content"
 				:class="{
 					'select-form-modal__content--empty': isEmpty,
-					'select-form-modal__content--forms': isLoadingForms || forms.length > 0
+					'select-form-modal__content--forms': !isEmpty
 				}"
 			>
 				<div v-if="isLoadingForms" class="select-form-modal__list">
 					<div class="select-form-modal__list-forms">
-						<div v-for="n in 4" :key="`skeleton-${n}`" class="select-form-modal__form-item">
-							<HSkeletonLoader width="60%" height="20px" border-radius="sm" />
-							<div class="select-form-modal__form-thumb">
-								<HSkeletonLoader width="100%" height="100%" border-radius="lg" />
+						<div class="select-form-modal__forms-grid">
+							<div v-for="n in 4" :key="`skeleton-${n}`" class="select-form-modal__form-item">
+								<HSkeletonLoader width="60%" height="20px" border-radius="sm" />
+								<div class="select-form-modal__form-thumb">
+									<HSkeletonLoader width="100%" height="100%" border-radius="lg" />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -126,31 +145,48 @@ onMounted(loadForms);
 					</div>
 				</div>
 
-				<div v-else-if="forms.length > 0" class="select-form-modal__list">
+				<div v-else-if="!isEmpty" class="select-form-modal__list">
 					<div class="select-form-modal__list-forms">
-						<button
-							v-for="form in forms"
-							:key="form.uuid"
-							type="button"
-							class="select-form-modal__form-item"
-							:class="{ 'select-form-modal__form-item--selected': form.uuid === selectedFormId }"
-							@click="selectedFormId = form.uuid"
-						>
-							<HText variant="body-1-bold" as="span" class="select-form-modal__form-name">
-								{{ form.name }}
-							</HText>
-							<div class="select-form-modal__form-thumb">
-								<img
-									v-if="!failedPreviews.has(form.uuid)"
-									class="select-form-modal__form-image"
-									:src="previewImageUrl(form.uuid)"
-									:alt="form.name"
-									loading="lazy"
-									@error="markPreviewFailed(form.uuid)"
-								/>
-								<HIcon v-else name="ic-image-24" color="neutral--400" />
-							</div>
-						</button>
+						<div v-if="showSearch" class="select-form-modal__search">
+							<HInput
+								v-model="searchQuery"
+								size="small"
+								icon-prepend="ic-search-16"
+								:show-clear-icon="true"
+								:remove-bottom-padding="true"
+								:placeholder="translate('hostinger_reach_select_form_modal_search_placeholder')"
+							/>
+						</div>
+
+						<div v-if="filteredForms.length > 0" class="select-form-modal__forms-grid">
+							<button
+								v-for="form in filteredForms"
+								:key="form.uuid"
+								type="button"
+								class="select-form-modal__form-item"
+								:class="{ 'select-form-modal__form-item--selected': form.uuid === selectedFormId }"
+								@click="selectedFormId = form.uuid"
+							>
+								<HText variant="body-1-bold" as="span" class="select-form-modal__form-name">
+									{{ form.name }}
+								</HText>
+								<div class="select-form-modal__form-thumb">
+									<img
+										v-if="!failedPreviews.has(form.uuid)"
+										class="select-form-modal__form-image"
+										:src="previewImageUrl(form.uuid)"
+										:alt="form.name"
+										loading="lazy"
+										@error="markPreviewFailed(form.uuid)"
+									/>
+									<HIcon v-else name="ic-image-24" color="neutral--400" />
+								</div>
+							</button>
+						</div>
+
+						<HText v-else as="p" variant="body-2" class="select-form-modal__no-results">
+							{{ translate('hostinger_reach_select_form_modal_no_results') }}
+						</HText>
 					</div>
 
 					<div class="select-form-modal__list-preview">
@@ -164,41 +200,13 @@ onMounted(loadForms);
 					</div>
 				</div>
 
-				<div v-else class="select-form-modal__empty">
-					<div class="select-form-modal__empty-icon">
-						<HIcon name="ic-file-16" color="neutral--800" />
-					</div>
-
-					<div class="select-form-modal__empty-body">
-						<div class="select-form-modal__empty-text">
-							<HText as="h3" variant="heading-3" class="select-form-modal__empty-title">
-								{{ translate('hostinger_reach_select_form_modal_empty_title') }}
-							</HText>
-							<HText as="p" variant="body-2" class="select-form-modal__empty-subtitle">
-								{{ translate('hostinger_reach_select_form_modal_empty_subtitle') }}
-							</HText>
-						</div>
-
-						<div class="select-form-modal__empty-action">
-							<HHyperlink
-								:href="reachFormsLink"
-								target="_blank"
-								variant="button-look"
-								icon-prepend="ic-plus-16"
-								icon-append="ic-arrow-up-right-square-16"
-								icon-size="16px"
-								:button-look-props="{ variant: 'contain', color: 'neutral', size: 'small' }"
-							>
-								{{ translate('hostinger_reach_select_form_modal_empty_create') }}
-							</HHyperlink>
-						</div>
-					</div>
-				</div>
+				<SelectFormEmptyState v-else @refresh="handleRefresh" />
 			</div>
 
 			<div v-if="showFooter" class="select-form-modal__footer">
 				<div class="select-form-modal__footer-start">
 					<HHyperlink
+						class="select-form-modal__footer-create"
 						:href="reachFormsCreateLink"
 						target="_blank"
 						variant="button-look"
@@ -211,6 +219,7 @@ onMounted(loadForms);
 					</HHyperlink>
 
 					<HIconButton
+						class="select-form-modal__footer-refresh"
 						icon="ic-refresh-16"
 						:icon-description="translate('hostinger_reach_select_form_modal_refresh')"
 						variant="outline"
@@ -259,6 +268,23 @@ onMounted(loadForms);
 		}
 	}
 
+	&__search {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		padding: 16px 24px 8px;
+		background: var(--neutral--0, #fff);
+
+		:deep(.h-form-field) {
+			margin-bottom: 0;
+		}
+
+		:deep(input:focus) {
+			box-shadow: none;
+			outline: 0;
+		}
+	}
+
 	&__list {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -266,21 +292,39 @@ onMounted(loadForms);
 	}
 
 	&__list-forms {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		overflow-y: auto;
+	}
+
+	&__forms-grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-auto-rows: 200px;
 		gap: 16px;
 		align-content: start;
-		overflow-y: auto;
+		padding: 24px;
+	}
+
+	&__no-results {
+		padding: 24px 16px;
+		color: var(--neutral--300);
+		text-align: center;
 		padding: 16px;
+	}
+
+	&__no-results {
+		padding: 24px 16px;
+		color: var(--neutral--300);
+		text-align: center;
 	}
 
 	&__list-preview {
 		display: flex;
 		flex-direction: column;
 		overflow-y: auto;
-		padding: 16px;
-		background: var(--neutral--100);
+		padding: 24px;
+		background: #f5f5f6;
 	}
 
 	&__form-item {
@@ -304,13 +348,12 @@ onMounted(loadForms);
 
 	&__form-thumb {
 		display: flex;
-		flex: 1;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		min-height: 0;
+		height: 140px;
 		overflow: hidden;
-		background: var(--neutral--100);
+		background: #f5f5f6;
 		border-radius: 16px;
 		border: 3px solid transparent;
 		transition: border-color 0.2s ease;
@@ -334,50 +377,6 @@ onMounted(loadForms);
 		border-radius: 12px;
 	}
 
-	&__empty {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 32px;
-		max-width: 372px;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	&__empty-icon {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 60px;
-		height: 60px;
-		border: 1px solid rgba(235, 235, 235, 1);
-		border-radius: 12px;
-		background: rgba(250, 250, 250, 1);
-	}
-
-	&__empty-body {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 24px;
-	}
-
-	&__empty-text {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 4px;
-	}
-
-	&__empty-title {
-		font-size: 18px;
-		font-weight: 600;
-	}
-
-	&__empty-subtitle {
-		color: var(--neutral--300);
-	}
-
 	&__footer {
 		display: flex;
 		justify-content: space-between;
@@ -398,6 +397,25 @@ onMounted(loadForms);
 		display: flex;
 		align-items: center;
 		gap: 8px;
+	}
+
+	&__footer-create,
+	&__footer-refresh {
+		border: 1px solid var(--neutral--300) !important;
+	}
+
+	@media (max-width: 768px) {
+		&__list {
+			grid-template-columns: 1fr;
+		}
+
+		&__forms-grid {
+			grid-template-columns: 1fr;
+		}
+
+		&__list-preview {
+			display: none;
+		}
 	}
 }
 </style>

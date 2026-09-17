@@ -73,6 +73,11 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 	const [lastStatus, setLastStatus] = useState(null);
 
 	const selectedForm = forms.find((form) => form.uuid === attributes.formBuilderId);
+	const selectedFormName = selectedForm
+		? selectedForm.name
+		: isFormsLoading
+			? __('Loading…', 'hostinger-reach')
+			: attributes.formBuilderId;
 
 	const layoutOptions = [
 		{label: __('Default', 'hostinger-reach'), value: 'default'},
@@ -278,16 +283,16 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 						<div className="hostinger-reach-block-selected-form__title">
 							{ReachIcon}
 							<span className="hostinger-reach-block-selected-form__name">
-								{selectedForm ? selectedForm.name : attributes.formBuilderId}
+								{selectedFormName}
 							</span>
 						</div>
 						<img
 							className="hostinger-reach-block-selected-form__image"
 							src={previewImageUrl(attributes.formBuilderId)}
-							alt={selectedForm ? selectedForm.name : attributes.formBuilderId}
+							alt={selectedFormName}
 						/>
 						<Button
-							variant="link"
+							variant="tertiary"
 							className="hostinger-reach-block-selected-form__change"
 							onClick={() => setIsFormModalOpen(true)}
 						>

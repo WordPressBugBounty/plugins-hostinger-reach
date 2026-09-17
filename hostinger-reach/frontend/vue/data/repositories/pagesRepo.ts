@@ -36,6 +36,7 @@ export const pagesRepo = {
 		params.append('hostinger_reach_page_query', '1');
 		params.append('page', page.toString());
 		params.append('per_page', perPage.toString());
+		params.append('status', 'publish,draft');
 
 		const config = {
 			headers: {
@@ -63,6 +64,7 @@ export const pagesRepo = {
 						id: page.id.toString(),
 						name: decode(page.title.rendered),
 						link: pageUrl,
+						status: page.status,
 						isAdded: page.HostingerReachPluginHasSubscriptionBlock ?? false
 					};
 				}) || [];

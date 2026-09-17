@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { HButton, HIcon, HSkeletonLoader, HText } from '@hostinger/hcomponents';
+import { HButton, HIcon, HRadio, HSkeletonLoader, HText } from '@hostinger/hcomponents';
 import { computed, onMounted, ref } from 'vue';
 
 import BaseModal from '@/components/Modals/Base/BaseModal.vue';
@@ -54,15 +54,19 @@ const currentPages = computed(() => {
 });
 
 const getPageDisplayName = (page: Page | WordPressPage): string => {
+	let name = translate('hostinger_reach_forms_no_title');
+
 	if ('name' in page && page.name) {
-		return page.name;
+		name = page.name;
+	} else if ('title' in page && page.title?.rendered) {
+		name = page.title.rendered;
 	}
 
-	if ('title' in page && page.title?.rendered) {
-		return page.title.rendered;
+	if (page.status === 'draft') {
+		name = `${name} ${translate('hostinger_reach_forms_page_draft_suffix')}`;
 	}
 
-	return translate('hostinger_reach_forms_no_title');
+	return name;
 };
 
 const isPageSelected = (page: Page | WordPressPage): boolean => selectedPageId.value === String(page.id);
@@ -198,9 +202,11 @@ onMounted(async () => {
 								</div>
 
 								<div>
-									<HIcon
-										:name="isPageSelected(page) ? 'ic-checkmark-circle-filled-24' : 'ic-circle-empty-24'"
-										:color="isPageSelected(page) ? 'primary--500' : 'neutral--200'"
+									<HRadio
+										:value="String(page.id)"
+										:model-value="selectedPageId ?? ''"
+										color="primary"
+										non-interactive-mode
 									/>
 								</div>
 							</template>
@@ -300,7 +306,7 @@ onMounted(async () => {
 		justify-content: space-between;
 		gap: 12px;
 		width: 100%;
-		margin-top: 16px;
+		margin-top: 24px;
 		padding: 12px;
 		border: 2px solid transparent;
 		border-radius: var(--h-border-radius-lg);
@@ -376,6 +382,7 @@ onMounted(async () => {
 
 		&--selected {
 			border-color: var(--primary--500);
+			background: #f5f6ff;
 		}
 
 		&--loading {
@@ -446,7 +453,6 @@ onMounted(async () => {
 		align-items: center;
 		gap: 8px;
 		padding: 16px 24px;
-		border-top: 1px solid var(--neutral--200);
 	}
 
 	&__footer-actions {

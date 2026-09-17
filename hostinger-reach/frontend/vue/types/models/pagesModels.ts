@@ -2,6 +2,7 @@ export interface Page {
 	id: string;
 	link: string;
 	name: string;
+	status?: string;
 	isAdded?: boolean;
 }
 

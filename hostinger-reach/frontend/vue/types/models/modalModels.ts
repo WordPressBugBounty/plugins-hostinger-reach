@@ -10,6 +10,7 @@ export interface ModalContent {
 }
 
 export interface ModalSettings {
+	isMD?: boolean;
 	isXL?: boolean;
 	isXXL?: boolean;
 	isLG?: boolean;

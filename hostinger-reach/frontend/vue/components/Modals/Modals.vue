@@ -23,7 +23,8 @@ const modalComponent = computed(() => {
 				:class="{
 					'base-modal__container--xxl': activeModal.settings?.isXXL,
 					'base-modal__container--xl': activeModal.settings?.isXL,
-					'base-modal__container--lg': activeModal.settings?.isLG
+					'base-modal__container--lg': activeModal.settings?.isLG,
+					'base-modal__container--md': activeModal.settings?.isMD
 				}"
 			>
 				<button
@@ -109,6 +110,10 @@ $modal-z-index: 9999;
 		&--auto-width {
 			max-width: none !important;
 			width: auto;
+		}
+
+		&--md {
+			max-width: 578px;
 		}
 
 		&--lg {
