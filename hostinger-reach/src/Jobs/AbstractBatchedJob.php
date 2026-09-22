@@ -25,7 +25,7 @@ abstract class AbstractBatchedJob extends AbstractJob {
     public function handle_create_batch_action( int $batch_number, array $args ): void {
         $items = $this->get_batch( $batch_number, $args );
 
-        if ( empty( $items ) || $batch_number > self::BATCH_LIMIT_PER_JOB ) {
+        if ( empty( $items ) || $batch_number > $this->get_batch_limit_per_job() ) {
             $this->handle_complete( $batch_number, $args );
         } else {
             $this->set_items_as_processing( $items );
@@ -36,6 +36,10 @@ abstract class AbstractBatchedJob extends AbstractJob {
 
     protected function get_batch_size(): int {
         return apply_filters( 'hostinger_reach_batch_item_limit', 1 );
+    }
+
+    protected function get_batch_limit_per_job(): int {
+        return self::BATCH_LIMIT_PER_JOB;
     }
 
 

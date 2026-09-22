@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.8.3 (2026-09-22)
+
+- Tweak: Optimize assets loading in Reach Blocks
+- Tweak: Increase the job size for WooCommerce import to cover max 10000 contact imports
+
 1.8.2 (2026-09-16)
 
 - Tweak: Design tweaks in Form Builder

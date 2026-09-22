@@ -8,10 +8,12 @@ use Hostinger\WpHelper\Utils as Helper;
 
 class AmplitudeManager
 {
-    public const AMPLITUDE_ENDPOINT = '/v3/wordpress/plugin/trigger-event';
+    public const AMPLITUDE_ENDPOINT = '/api/v1/events/trigger';
+    public const PROXY_REST_URI = 'https://wh-wordpress-proxy-api.hostinger.io';
     public const CACHE_THREE_HOURS = 10800;
     public const CACHE_ONE_HOUR = 3600;
     public const ERROR_LOG_THROTTLE_SECONDS = 300;
+    private const PROXY_CONFIG_KEY = 'base_proxy_rest_uri';
     private const LOGIN_DATA = 'hostinger_login_data';
     private const OPTION_PREFIX = 'amplitude_event_';
     private const OPTION_COUNT_PREFIX = 'amplitude_count_';
@@ -21,6 +23,8 @@ class AmplitudeManager
     private Config $configHandler;
     private Client $client;
     private Helper $helper;
+    private ?Client $proxyClient = null;
+    private ?SoftwareIdResolver $softwareIdResolver = null;
 
     public function __construct(
         Helper $helper,
@@ -39,6 +43,16 @@ class AmplitudeManager
                 return [];
             }
 
+            $softwareId = $this->getSoftwareIdResolver()->getSoftwareId();
+            if (empty($softwareId)) {
+                $this->logErrorThrottled(
+                    'Hostinger WP Amplitude package: could not resolve software ID, dropping event.',
+                    'missing_software_id'
+                );
+
+                return [];
+            }
+
             if (! $this->shouldSendAmplitudeEvent($params)) {
                 return [];
             }
@@ -46,15 +60,26 @@ class AmplitudeManager
             $params  = $this->addImpersonationData($params);
             $params  = $this->addDomainAndDirectory($params);
 
-            $headers = $this->extractCorrelationIdHeader($headers);
-
-            $response = $this->client->post($endpoint, [ 'params' => $params ], $headers);
+            $headers  = $this->extractCorrelationIdHeader($headers);
+            $payload  = $this->buildEventPayload($params, $softwareId);
+            $response = $this->getProxyClient()->post($endpoint, $payload, $headers);
 
             if (is_wp_error($response)) {
                 $this->logErrorThrottled(
                     'Hostinger WP Amplitude package: ' . $response->get_error_message(),
                     'wp_error_' . $response->get_error_code()
                 );
+                return [];
+            }
+
+            $responseCode = (int) wp_remote_retrieve_response_code($response);
+            if ($responseCode < 200 || $responseCode >= 300) {
+                $this->logErrorThrottled(
+                    'Hostinger WP Amplitude package: unexpected response code ' . $responseCode .
+                    ' from ' . $endpoint,
+                    'http_' . $responseCode
+                );
+
                 return [];
             }
 
@@ -67,6 +92,58 @@ class AmplitudeManager
 
             return [ 'status' => 'error', 'message' => 'An error occurred while sending the request.' ];
         }
+    }
+
+    public function buildEventPayload(array $params, string $softwareId): array
+    {
+        $eventName = sanitize_text_field($params['action'] ?? '');
+        unset($params['action']);
+
+        return [
+            'softwareId' => $softwareId,
+            'event'      => [
+                'name'   => $eventName,
+                'params' => $params,
+            ],
+        ];
+    }
+
+    public function getProxyClient(): Client
+    {
+        if ($this->proxyClient === null) {
+            $this->proxyClient = new Client(
+                $this->configHandler->getConfigValue(self::PROXY_CONFIG_KEY, self::PROXY_REST_URI),
+                [
+                    Config::TOKEN_HEADER  => $this->helper::getApiToken(),
+                    Config::DOMAIN_HEADER => $this->helper->getHostInfo(),
+                ]
+            );
+        }
+
+        return $this->proxyClient;
+    }
+
+    public function setProxyClient(Client $proxyClient): void
+    {
+        $this->proxyClient = $proxyClient;
+    }
+
+    public function getSoftwareIdResolver(): SoftwareIdResolver
+    {
+        if ($this->softwareIdResolver === null) {
+            $this->softwareIdResolver = new SoftwareIdResolver(
+                $this->helper,
+                $this->configHandler,
+                $this->getProxyClient()
+            );
+        }
+
+        return $this->softwareIdResolver;
+    }
+
+    public function setSoftwareIdResolver(SoftwareIdResolver $softwareIdResolver): void
+    {
+        $this->softwareIdResolver = $softwareIdResolver;
     }
 
     public function addDomainAndDirectory(array $params): array

@@ -17,24 +17,19 @@ abstract class Block {
     public function __construct( Assets $assets, Functions $functions ) {
         $this->assets    = $assets;
         $this->functions = $functions;
-        add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_style' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
     }
-
 
     public function get_block_name(): string {
         return "hostinger-reach-$this->name-block";
-    }
-
-    public function enqueue_scripts(): void {
-        $this->enqueue_block_script();
     }
 
     public function register(): void {
         register_block_type(
             HOSTINGER_REACH_PLUGIN_DIR . "frontend/blocks/$this->name-block/block.json",
             array(
-                'render_callback' => array( $this, 'render' ),
+                'render_callback'     => array( $this, 'render' ),
+                'style_handles'       => $this->register_block_style(),
+                'view_script_handles' => $this->register_block_script(),
             )
         );
     }
@@ -52,7 +47,6 @@ abstract class Block {
             true
         );
 
-        $this->enqueue_block_style();
         wp_set_script_translations( $this->get_block_name(), 'hostinger-reach', HOSTINGER_REACH_PLUGIN_DIR . 'languages' );
 
         wp_localize_script(
@@ -64,36 +58,32 @@ abstract class Block {
         $this->autoloader();
     }
 
-    protected function get_block_editor_data(): array {
-        return array(
-            'rest_url'         => esc_url_raw( rest_url() ),
-            'embed_script_url' => HOSTINGER_REACH_EMBED_SCRIPT_URL,
-            'nonce'            => wp_create_nonce( 'wp_rest' ),
-        );
-    }
-
-    public function enqueue_block_style(): void {
+    public function register_block_style(): array {
         if ( $this->functions->block_file_exists( "$this->name.css" ) === false ) {
-            return;
+            return array();
         }
 
-        wp_enqueue_style(
-            $this->get_block_name(),
+        $handle = $this->get_block_name();
+
+        wp_register_style(
+            $handle,
             $this->functions->get_blocks_url() . "$this->name.css",
             array(),
             filemtime( $this->functions->get_block_file_name( "$this->name.css" ) )
         );
+
+        return array( $handle );
     }
 
-    public function enqueue_block_script(): void {
+    public function register_block_script(): array {
         if ( $this->functions->block_file_exists( "$this->name-view.js" ) === false ) {
-            return;
+            return array();
         }
 
-        $handler = $this->get_block_name() . '-view';
+        $handle = $this->get_block_name() . '-view';
 
-        wp_enqueue_script(
-            $handler,
+        wp_register_script(
+            $handle,
             $this->functions->get_blocks_url() . "$this->name-view.js",
             array(),
             filemtime( $this->functions->get_block_file_name( "$this->name-view.js" ) ),
@@ -101,9 +91,19 @@ abstract class Block {
         );
 
         wp_localize_script(
-            $handler,
+            $handle,
             "hostinger_reach_{$this->name}_block_data",
             $this->data()
+        );
+
+        return array( $handle );
+    }
+
+    protected function get_block_editor_data(): array {
+        return array(
+            'rest_url'         => esc_url_raw( rest_url() ),
+            'embed_script_url' => HOSTINGER_REACH_EMBED_SCRIPT_URL,
+            'nonce'            => wp_create_nonce( 'wp_rest' ),
         );
     }
 

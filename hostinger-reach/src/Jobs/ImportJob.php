@@ -21,7 +21,11 @@ class ImportJob extends AbstractBatchedJob {
     }
 
     protected function get_batch_size(): int {
-        return 50;
+        return 100;
+    }
+
+    protected function get_batch_limit_per_job(): int {
+        return 100;
     }
 
     protected function get_batch( int $batch_number, array $args ): array {

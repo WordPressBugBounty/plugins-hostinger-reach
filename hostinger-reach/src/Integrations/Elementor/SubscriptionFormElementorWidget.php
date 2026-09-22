@@ -42,6 +42,14 @@ class SubscriptionFormElementorWidget extends Widget_Base {
         );
     }
 
+    public function get_style_depends(): array {
+        return array( 'hostinger-reach-subscription-block' );
+    }
+
+    public function get_script_depends(): array {
+        return array( 'hostinger-reach-subscription-block-view' );
+    }
+
     protected function register_controls(): void {
 
         $this->start_controls_section(
@@ -190,30 +198,30 @@ class SubscriptionFormElementorWidget extends Widget_Base {
             <div data-reach-form="{{ reachFormBuilderId }}"></div>
         <# } else { #>
         <div class="hostinger-reach-block-subscription-form-wrapper">
-            <form id="{{{ settings.formId }}}" class="hostinger-reach-block-subscription-form">
-                <input type="hidden" name="id" value="{{{ settings.formId }}}">
+            <form id="{{ settings.formId }}" class="hostinger-reach-block-subscription-form">
+                <input type="hidden" name="id" value="{{ settings.formId }}">
                 <input type="hidden" name="metadata.plugin" value="elementor">
 
                 <div class="hostinger-reach-block-form-field">
                     <label
-                        for="{{{ settings.formId }}}-email"><?php esc_html_e( 'Email', 'hostinger-reach' ); ?>
+                        for="{{ settings.formId }}-email"><?php esc_html_e( 'Email', 'hostinger-reach' ); ?>
                         <span class="required">*</span></label>
-                    <input type="email" id="{{{ settings.formId }}}-email" name="email" required>
+                    <input type="email" id="{{ settings.formId }}-email" name="email" required>
                 </div>
 
                 <# if ( settings.showName ) { #>
                     <div class="hostinger-reach-block-form-field">
                         <label
-                            for="{{{ settings.formId }}}-name"><?php esc_html_e( 'Name', 'hostinger-reach' ); ?></label>
-                        <input type="text" id="{{{ settings.formId }}}-name" name="name">
+                            for="{{ settings.formId }}-name"><?php esc_html_e( 'Name', 'hostinger-reach' ); ?></label>
+                        <input type="text" id="{{ settings.formId }}-name" name="name">
                     </div>
                 <# } #>
 
                 <# if ( settings.showSurname ) { #>
                     <div class="hostinger-reach-block-form-field">
                         <label
-                            for="{{{ settings.formId }}}-surname"><?php esc_html_e( 'Surname', 'hostinger-reach' ); ?></label>
-                        <input type="text" id="{{{ settings.formId }}}-surname" name="surname">
+                            for="{{ settings.formId }}-surname"><?php esc_html_e( 'Surname', 'hostinger-reach' ); ?></label>
+                        <input type="text" id="{{ settings.formId }}-surname" name="surname">
                     </div>
                 <# } #>
 
