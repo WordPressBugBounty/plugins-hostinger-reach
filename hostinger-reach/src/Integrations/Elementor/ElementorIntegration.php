@@ -49,6 +49,15 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
     public function init(): void {
         parent::init();
         add_action( 'hostinger_reach_integration_activated', array( $this, 'on_integration_activated' ) );
+        $this->register_widget_hooks();
+    }
+
+    public function register_widget_hooks(): void {
+        add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
+        add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
+        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scroll_script' ) );
+        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_form_selector' ) );
+        add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_preview_styles' ) );
     }
 
     public function enqueue_editor_scroll_script(): void {
@@ -106,7 +115,13 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
                 'domain'      => $this->reach_api_handler->get_functions()->get_host_info(),
                 'widgetName'  => SubscriptionFormElementorWidget::WIDGET_NAME,
                 'embedScript' => HOSTINGER_REACH_EMBED_SCRIPT_URL,
+                'isConnected' => $this->reach_api_handler->is_connected() ? 'yes' : 'no',
+                'connectUrl'  => admin_url( 'admin.php?page=hostinger-reach' ),
                 'i18n'        => array(
+                    'connectTitle'      => __( 'You are not connected to Hostinger Reach', 'hostinger-reach' ),
+                    'connectSubtitle'   => __( 'You are not connected to Hostinger Reach. To gain full access to this block, you need to connect your Hostinger Reach account.', 'hostinger-reach' ),
+                    'connectToReach'    => __( 'Connect to Reach', 'hostinger-reach' ),
+                    'cardNotConnected'  => __( 'Reach is not Connected', 'hostinger-reach' ),
                     'useTemplate'       => __( 'Use Form builder template', 'hostinger-reach' ),
                     'useClassic'        => __( 'Use classic Reach block', 'hostinger-reach' ),
                     'changeSelection'   => __( 'Change the selection', 'hostinger-reach' ),
@@ -149,11 +164,6 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         add_action( 'elementor_pro/forms/new_record', array( $this, 'handle_elementor_pro_new_record' ) );
         add_action( 'wp_insert_post', array( $this, 'flag_new_elementor_post' ), 10, 3 );
         add_action( 'admin_init', array( $this, 'flag_existing_elementor_post' ) );
-        add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_insert_reach_widget' ) );
-        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scroll_script' ) );
-        add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_form_selector' ) );
-        add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_preview_styles' ) );
-        add_action( 'elementor/widgets/register', array( $this, 'register_new_widgets' ) );
     }
 
     public function on_integration_activated( string $integration_name ): void {
@@ -600,6 +610,10 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
         $is_reach_widget = ( $element['widgetType'] ?? '' ) === SubscriptionFormElementorWidget::WIDGET_NAME;
         $form_id         = $element['settings']['formId'] ?? '';
 
+        if ( $is_reach_widget && empty( $form_id ) && ! empty( $element['id'] ) ) {
+            $form_id = SubscriptionFormElementorWidget::FORM_ID_PREFIX . $element['id'];
+        }
+
         if ( $is_reach_widget && ! empty( $form_id ) ) {
             $form_ids[] = $form_id;
         }
@@ -636,7 +650,7 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
             return array();
         }
         $form_ids = array();
-        $pattern  = '/<form id="' . SubscriptionFormElementorWidget::FORM_ID_PREFIX . '(\d+)"/';
+        $pattern  = '/<form id="' . SubscriptionFormElementorWidget::FORM_ID_PREFIX . '([A-Za-z0-9]+)"/';
         preg_match_all( $pattern, $content, $matches );
         foreach ( $matches[1] as $form_id ) {
             $form_ids[] = SubscriptionFormElementorWidget::FORM_ID_PREFIX . $form_id;

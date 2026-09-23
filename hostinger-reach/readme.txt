@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.0
 Tested up to: 7.1
-Stable tag: 1.8.3
+Stable tag: 1.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,12 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.4 (2026-09-23)
+
+- Fix: Form added to Elementor page is not displayed in Forms table
+- Tweak: Improve Connect to Reach notices in Reach Block
+- Tweak: Allow Reach Block to be inserted in Elementor when Reach is not connected
 
 1.8.3 (2026-09-22)
 

@@ -277,51 +277,77 @@ const Edit = ({attributes, setAttributes, clientId}) => {
 	return <div {...blockProps}>
 		<InspectorControls key="hostinger-reach-block-controls">
 			<PanelBody title={__("Settings", "hostinger-reach")}>
-				{!isConnected && <Connect/>}
+				{!isConnected && <Connect hideButton />}
 				{attributes.formBuilderId ? (
 					<div className="hostinger-reach-block-selected-form">
 						<div className="hostinger-reach-block-selected-form__title">
 							{ReachIcon}
 							<span className="hostinger-reach-block-selected-form__name">
-								{selectedFormName}
+								{isConnected ? selectedFormName : __('You are not connected to Hostinger Reach', 'hostinger-reach')}
 							</span>
 						</div>
-						<img
-							className="hostinger-reach-block-selected-form__image"
-							src={previewImageUrl(attributes.formBuilderId)}
-							alt={selectedFormName}
-						/>
-						<Button
-							variant="tertiary"
-							className="hostinger-reach-block-selected-form__change"
-							onClick={() => setIsFormModalOpen(true)}
-						>
-							{__('Change the selection', 'hostinger-reach')}
-						</Button>
-						{RESOURCE_ID && (
+						{isConnected ? (
+							<>
+								<img
+									className="hostinger-reach-block-selected-form__image"
+									src={previewImageUrl(attributes.formBuilderId)}
+									alt={selectedFormName}
+								/>
+								<Button
+									variant="tertiary"
+									className="hostinger-reach-block-selected-form__change"
+									onClick={() => setIsFormModalOpen(true)}
+								>
+									{__('Change the selection', 'hostinger-reach')}
+								</Button>
+								{RESOURCE_ID && (
+									<Button
+										className="hostinger-reach-block-selected-form__edit"
+										href={formEditUrl(attributes.formBuilderId)}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{PencilIcon}
+										<span className="hostinger-reach-block-selected-form__edit-text">
+											{__('Edit in Reach', 'hostinger-reach')}
+										</span>
+										{ArrowSquareIcon}
+									</Button>
+								)}
+							</>
+						) : (
 							<Button
-								className="hostinger-reach-block-selected-form__edit"
-								href={formEditUrl(attributes.formBuilderId)}
+								variant="tertiary"
+								className="hostinger-reach-block-selected-form__change"
+								href="/wp-admin/admin.php?page=hostinger-reach"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								{PencilIcon}
-								<span className="hostinger-reach-block-selected-form__edit-text">
-									{__('Edit in Reach', 'hostinger-reach')}
-								</span>
-								{ArrowSquareIcon}
+								{__('Connect to Reach', 'hostinger-reach')}
 							</Button>
 						)}
 					</div>
 				) : (
-					<Button
-						variant="secondary"
-						icon="plus"
-						className="hostinger-reach-block-use-template"
-						onClick={() => setIsFormModalOpen(true)}
-					>
-						{__('Use Form builder template', 'hostinger-reach')}
-					</Button>
+					isConnected ? (
+						<Button
+							variant="secondary"
+							icon="plus"
+							className="hostinger-reach-block-use-template"
+							onClick={() => setIsFormModalOpen(true)}
+						>
+							{__('Use Form builder template', 'hostinger-reach')}
+						</Button>
+					) : (
+						<Button
+							variant="secondary"
+							className="hostinger-reach-block-use-template"
+							href="/wp-admin/admin.php?page=hostinger-reach"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{__('Connect to Reach', 'hostinger-reach')}
+						</Button>
+					)
 				)}
 				{attributes.formBuilderId && (
 					<Button

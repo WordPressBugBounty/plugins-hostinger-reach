@@ -214,7 +214,7 @@ class IntegrationsApiHandler extends ApiHandler {
                 array(
                     'is_plugin_active'                      => $is_plugin_active,
                     Integration::INTEGRATION_IMPORT_ENABLED => $import_enabled,
-                    Integration::INTEGRATION_IS_ACTIVE      => $is_hostinger_reach || $is_elementor || $is_active,
+                    Integration::INTEGRATION_IS_ACTIVE      => $is_hostinger_reach || ( $is_elementor && $is_plugin_active ) || $is_active,
                     'can_deactivate'                        => ! $is_hostinger_reach && ! $is_elementor,
                     'is_go_to_plugin_visible'               => ! $is_hostinger_reach,
                     'import_status'                         => $this->import_manager->get_status( $integration_name ),

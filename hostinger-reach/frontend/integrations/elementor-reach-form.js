@@ -9,6 +9,8 @@ import './elementor-reach-form.scss';
 	const NONCE = data.nonce || '';
 	const WIDGET_NAME = data.widgetName || 'hostinger-reach';
 	const EMBED_SCRIPT = data.embedScript;
+	const IS_CONNECTED = data.isConnected !== 'no';
+	const CONNECT_URL = data.connectUrl || '/wp-admin/admin.php?page=hostinger-reach';
 	const i18n = data.i18n || {};
 
 	const t = (key, fallback) => i18n[key] || fallback;
@@ -67,6 +69,26 @@ import './elementor-reach-form.scss';
 		'<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
 		'<path d="M8 3.25v9.5M3.25 8h9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
 		'</svg>';
+
+	function createConnectBanner() {
+		const banner = document.createElement('div');
+		banner.className = 'hostinger-reach-elementor-connect';
+
+		const title = document.createElement('div');
+		title.className = 'hostinger-reach-elementor-connect__title';
+		title.textContent = t('connectTitle', 'You are not connected to Hostinger Reach');
+		banner.appendChild(title);
+
+		const subtitle = document.createElement('div');
+		subtitle.className = 'hostinger-reach-elementor-connect__subtitle';
+		subtitle.textContent = t(
+			'connectSubtitle',
+			'You are not connected to Hostinger Reach. To gain full access to this block, you need to connect your Hostinger Reach account.'
+		);
+		banner.appendChild(subtitle);
+
+		return banner;
+	}
 
 	function createEmptyState(onRefresh) {
 		const emptyState = document.createElement('div');
@@ -269,12 +291,22 @@ import './elementor-reach-form.scss';
 		return (getSetting(ctx, 'formBuilderId') || '').trim();
 	}
 
-	function renderButton(mount, render) {
+	function renderUseFormBuilderButton(mount, render) {
 		const button = document.createElement('button');
 		button.type = 'button';
 		button.className = 'hostinger-reach-elementor-selector__use';
 		button.textContent = t('useTemplate', 'Use Form builder template');
 		button.addEventListener('click', () => openModal(mount.__reachCtx, render));
+		mount.appendChild(button);
+	}
+
+	function renderConnectButton(mount) {
+		const button = document.createElement('a');
+		button.className = 'hostinger-reach-elementor-selector__use';
+		button.href = CONNECT_URL;
+		button.target = '_blank';
+		button.rel = 'noopener noreferrer';
+		button.textContent = t('connectToReach', 'Connect to Reach');
 		mount.appendChild(button);
 	}
 
@@ -287,9 +319,23 @@ import './elementor-reach-form.scss';
 		title.innerHTML = REACH_SVG;
 		const name = document.createElement('span');
 		name.className = 'hostinger-reach-elementor-card__name';
-		name.textContent = getFormName(uuid);
+		name.textContent = IS_CONNECTED
+			? getFormName(uuid)
+			: t('cardNotConnected', 'Reach is not Connected');
 		title.appendChild(name);
 		card.appendChild(title);
+
+		if (!IS_CONNECTED) {
+			const connect = document.createElement('a');
+			connect.className = 'hostinger-reach-elementor-card__change';
+			connect.href = CONNECT_URL;
+			connect.target = '_blank';
+			connect.rel = 'noopener noreferrer';
+			connect.textContent = t('connectToReach', 'Connect to Reach');
+			card.appendChild(connect);
+			mount.appendChild(card);
+			return;
+		}
 
 		const image = document.createElement('img');
 		image.className = 'hostinger-reach-elementor-card__image';
@@ -344,12 +390,20 @@ import './elementor-reach-form.scss';
 			const current = getCurrentTemplateId(mount.__reachCtx);
 			mount.innerHTML = '';
 
+			if (!IS_CONNECTED && !current) {
+				mount.appendChild(createConnectBanner());
+			}
+
 			if (!current) {
-				renderButton(mount, render);
+				if (IS_CONNECTED) {
+					renderUseFormBuilderButton(mount, render);
+				} else {
+					renderConnectButton(mount);
+				}
 				return;
 			}
 
-			if (!formsCache) {
+			if (IS_CONNECTED && !formsCache) {
 				fetchForms(() => render());
 			}
 

@@ -1,3 +1,23 @@
+.hostinger-reach-elementor-connect {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	background: #fff6e9;
+	padding: 14px;
+	font-size: 14px;
+	margin: 0 0 14px;
+
+	&__title {
+		color: #1d1e20;
+		font-weight: 700;
+		margin-bottom: 4px;
+	}
+
+	&__subtitle {
+		color: #727586;
+	}
+}
+
 .hostinger-reach-elementor-selector {
 	display: block;
 	margin-bottom: 8px;

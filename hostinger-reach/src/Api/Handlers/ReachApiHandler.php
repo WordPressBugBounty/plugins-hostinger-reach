@@ -38,6 +38,8 @@ class ReachApiHandler extends ApiHandler {
 
     public function init_hooks(): void {
 
+        add_filter( 'hostinger_reach_is_connected', array( $this, 'is_connected' ) );
+
         add_filter(
             'allowed_http_origins',
             function ( $origins ) {

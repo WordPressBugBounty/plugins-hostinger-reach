@@ -3,6 +3,7 @@
 namespace Hostinger\Reach\Integrations\Elementor;
 
 use Elementor\Controls_Manager;
+use Elementor\Plugin as ElementorPlugin;
 use Elementor\Widget_Base;
 use Hostinger\Reach\Blocks\SubscriptionFormBlock;
 
@@ -66,7 +67,7 @@ class SubscriptionFormElementorWidget extends Widget_Base {
                 'label'      => esc_html__( 'Form ID', 'hostinger-reach' ),
                 'type'       => Controls_Manager::HIDDEN,
                 'input_type' => 'hidden',
-                'default'    => self::FORM_ID_PREFIX . random_int( 1, PHP_INT_MAX ),
+                'default'    => '',
             )
         );
 
@@ -183,45 +184,61 @@ class SubscriptionFormElementorWidget extends Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 
+        if ( empty( $settings['formId'] ) ) {
+            $settings['formId'] = self::FORM_ID_PREFIX . $this->get_id();
+        }
+
         if ( ( $settings['formBuilderManual'] ?? '' ) === 'yes' && ! empty( $settings['formBuilderIdManual'] ) ) {
             $settings['formBuilderId'] = $settings['formBuilderIdManual'];
         }
 
-        SubscriptionFormBlock::render_block_html( $settings, ElementorIntegration::INTEGRATION_NAME );
+        $is_connected = (bool) apply_filters( 'hostinger_reach_is_connected', true );
+
+        if ( ! $is_connected && $this->is_elementor_editor() ) {
+            $this->print_connect_notice();
+        }
+
+        SubscriptionFormBlock::render_block_html( $settings, ElementorIntegration::INTEGRATION_NAME, $is_connected );
     }
 
     protected function content_template(): void {
+        $is_connected = (bool) apply_filters( 'hostinger_reach_is_connected', true );
+
+        if ( ! $is_connected ) {
+            $this->print_connect_notice();
+        }
         ?>
         <# var reachFormBuilderId = 'yes' === settings.formBuilderManual ? settings.formBuilderIdManual : settings.formBuilderId; #>
         <# reachFormBuilderId = reachFormBuilderId && /^[a-zA-Z0-9-]+$/.test( reachFormBuilderId ) ? reachFormBuilderId : ''; #>
+        <# var reachFormId = settings.formId ? settings.formId : '<?php echo esc_js( self::FORM_ID_PREFIX ); ?>preview'; #>
         <# if ( reachFormBuilderId ) { #>
             <div data-reach-form="{{ reachFormBuilderId }}"></div>
         <# } else { #>
         <div class="hostinger-reach-block-subscription-form-wrapper">
-            <form id="{{ settings.formId }}" class="hostinger-reach-block-subscription-form">
-                <input type="hidden" name="id" value="{{ settings.formId }}">
+            <form id="{{ reachFormId }}" class="hostinger-reach-block-subscription-form">
+                <input type="hidden" name="id" value="{{ reachFormId }}">
                 <input type="hidden" name="metadata.plugin" value="elementor">
 
                 <div class="hostinger-reach-block-form-field">
                     <label
-                        for="{{ settings.formId }}-email"><?php esc_html_e( 'Email', 'hostinger-reach' ); ?>
+                        for="{{ reachFormId }}-email"><?php esc_html_e( 'Email', 'hostinger-reach' ); ?>
                         <span class="required">*</span></label>
-                    <input type="email" id="{{ settings.formId }}-email" name="email" required>
+                    <input type="email" id="{{ reachFormId }}-email" name="email" required>
                 </div>
 
                 <# if ( settings.showName ) { #>
                     <div class="hostinger-reach-block-form-field">
                         <label
-                            for="{{ settings.formId }}-name"><?php esc_html_e( 'Name', 'hostinger-reach' ); ?></label>
-                        <input type="text" id="{{ settings.formId }}-name" name="name">
+                            for="{{ reachFormId }}-name"><?php esc_html_e( 'Name', 'hostinger-reach' ); ?></label>
+                        <input type="text" id="{{ reachFormId }}-name" name="name">
                     </div>
                 <# } #>
 
                 <# if ( settings.showSurname ) { #>
                     <div class="hostinger-reach-block-form-field">
                         <label
-                            for="{{ settings.formId }}-surname"><?php esc_html_e( 'Surname', 'hostinger-reach' ); ?></label>
-                        <input type="text" id="{{ settings.formId }}-surname" name="surname">
+                            for="{{ reachFormId }}-surname"><?php esc_html_e( 'Surname', 'hostinger-reach' ); ?></label>
+                        <input type="text" id="{{ reachFormId }}-surname" name="surname">
                     </div>
                 <# } #>
 
@@ -235,6 +252,41 @@ class SubscriptionFormElementorWidget extends Widget_Base {
             </form>
         </div>
         <# } #>
+        <?php
+    }
+
+    private function is_elementor_editor(): bool {
+        if ( ! class_exists( 'Elementor\Plugin' ) ) {
+            return false;
+        }
+
+        $plugin = ElementorPlugin::instance();
+
+        $is_edit_mode    = isset( $plugin->editor ) && $plugin->editor->is_edit_mode();
+        $is_preview_mode = isset( $plugin->preview ) && $plugin->preview->is_preview_mode();
+
+        return $is_edit_mode || $is_preview_mode;
+    }
+
+    private function print_connect_notice(): void {
+        ?>
+        <div class="hostinger-reach-block-connect">
+            <div class="hostinger-reach-block-connect__title">
+                <?php esc_html_e( 'You are not connected to Hostinger Reach', 'hostinger-reach' ); ?>
+            </div>
+            <div class="hostinger-reach-block-connect__subtitle">
+                <?php esc_html_e( 'You are not connected to Hostinger Reach. To gain full access to this block, you need to connect your Hostinger Reach account.', 'hostinger-reach' ); ?>
+            </div>
+            <div class="hostinger-reach-block-connect__button-wrap">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="<?php echo esc_url( admin_url( 'admin.php?page=hostinger-reach' ) ); ?>"
+                    class="hostinger-block-button hostinger-block-button--is-normal hostinger-block-button--is-primary">
+                    <?php esc_html_e( 'Connect Now', 'hostinger-reach' ); ?>
+                </a>
+            </div>
+        </div>
         <?php
     }
 }

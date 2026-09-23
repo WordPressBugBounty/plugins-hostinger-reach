@@ -75,6 +75,10 @@ class Menus {
     }
 
     public function render_plugin_content(): void {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'hostinger-reach' ), '', array( 'response' => 403 ) );
+        }
+
         $allowed_tags = array_merge(
             wp_kses_allowed_html( 'post' ),
             array(
