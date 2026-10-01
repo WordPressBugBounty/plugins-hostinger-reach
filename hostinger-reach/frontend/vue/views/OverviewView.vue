@@ -8,6 +8,7 @@ import ActionButtonsSection from '@/components/ActionButtonsSection.vue';
 import Banner from '@/components/Banner.vue';
 import FAQ from '@/components/FAQ.vue';
 import Integrations from '@/components/Integrations.vue';
+import UpdateBanner from '@/components/UpdateBanner.vue';
 import WooCommerce from '@/components/WooCommerce.vue';
 import { useModal } from '@/composables';
 import { useOverviewData } from '@/composables/useOverviewData';
@@ -295,6 +296,8 @@ const shouldShowConnect = computed(
 		</header>
 
 		<div class="overview__content">
+			<UpdateBanner />
+
 			<div class="overview__section">
 				<div class="overview__section-content">
 					<ActionButtonsSection :buttons="actionButtons" />

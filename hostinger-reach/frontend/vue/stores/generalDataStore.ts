@@ -22,6 +22,9 @@ export const useGeneralDataStore = defineStore(
 		const rawDomain = computed(() => data.value.rawDomain.replace(/\s+/g, ''));
 		const hasValidResourceId = computed(() => data.value.hasValidResourceId);
 		const resourceId = computed(() => data.value.resourceId);
+		const isUpdateAvailable = computed(() => data.value.isUpdateAvailable);
+		const latestVersion = computed(() => data.value.latestVersion);
+		const pluginsPageUrl = computed(() => data.value.pluginsPageUrl);
 
 		return {
 			data,
@@ -37,7 +40,10 @@ export const useGeneralDataStore = defineStore(
 			domain,
 			hasValidResourceId,
 			resourceId,
-			rawDomain
+			rawDomain,
+			isUpdateAvailable,
+			latestVersion,
+			pluginsPageUrl
 		};
 	},
 	{

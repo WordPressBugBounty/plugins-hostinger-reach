@@ -4,6 +4,7 @@ import { computed } from 'vue';
 import reachBackgroundImage from '@/assets/images/backgrounds/reach-welcome-background.png';
 import reachBackgroundImageMobile from '@/assets/images/backgrounds/reach-welcome-background-mobile.png';
 import reachLogo from '@/assets/images/icons/reach-logo.svg';
+import UpdateBanner from '@/components/UpdateBanner.vue';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { translate } from '@/utils/translate';
 
@@ -45,6 +46,8 @@ const props = withDefaults(defineProps<Props>(), {
 				</HButton>
 			</div>
 		</header>
+
+		<UpdateBanner />
 
 		<HCard border-radius="20px" padding="0" border-color="neutral--200">
 			<div class="hero__image">

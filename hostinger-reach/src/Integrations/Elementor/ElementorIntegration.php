@@ -268,25 +268,26 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
 
     public function handle_elementor_pro_new_record( Form_Record $record ): void {
         $email = $this->find_email( $record->get_formatted_data() );
-        if ( $email ) {
-            $form                 = $this->get_form_by_request();
-            $form_repository_item = $this->form_repository->get( $form->id ?? '' );
-            if ( empty( $form_repository_item ) || $form_repository_item['is_active'] === false ) {
-                return;
-            }
-
-            do_action(
-                'hostinger_reach_submit',
-                array(
-                    'group'    => ! empty( $form ) ? $form->name : self::INTEGRATION_NAME,
-                    'email'    => $email,
-                    'metadata' => array(
-                        'plugin'  => self::INTEGRATION_NAME . '-pro',
-                        'form_id' => ! empty( $form ) ? $form->id : null,
-                    ),
-                )
-            );
+        if ( ! $email ) {
+            return;
         }
+
+        $form = $this->get_form_by_request();
+        if ( ! $this->form_repository->is_form_active( $form->id ?? '' ) ) {
+            return;
+        }
+
+        do_action(
+            'hostinger_reach_submit',
+            array(
+                'group'    => ! empty( $form ) ? $form->name : self::INTEGRATION_NAME,
+                'email'    => $email,
+                'metadata' => array(
+                    'plugin'  => self::INTEGRATION_NAME . '-pro',
+                    'form_id' => ! empty( $form ) ? $form->id : null,
+                ),
+            )
+        );
     }
 
     public function flag_new_elementor_post( int $post_id, WP_Post $post, bool $update ): void {

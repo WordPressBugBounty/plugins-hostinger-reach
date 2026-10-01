@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.0
 Tested up to: 7.1
-Stable tag: 1.8.4
+Stable tag: 1.8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,11 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.5 (2026-10-01)
+
+- Tweak: Show update banner when a newer Reach version is available
+- Fix: Prevent fatals when Elementor Pro fails fetching Reach Forms
 
 1.8.4 (2026-09-23)
 

@@ -123,6 +123,23 @@ class Functions {
         return isset( $_SERVER['H_STAGING'] ) && filter_var( wp_unslash( $_SERVER['H_STAGING'] ), FILTER_VALIDATE_BOOLEAN ) === true;
     }
 
+    public function get_available_plugin_version(): string {
+        $update_plugins = get_site_transient( 'update_plugins' );
+
+        if ( empty( $update_plugins ) || empty( $update_plugins->response ) ) {
+            return '';
+        }
+
+        $plugin_basename = plugin_basename( HOSTINGER_REACH_PLUGIN_FILE );
+        $new_version     = $update_plugins->response[ $plugin_basename ]->new_version ?? '';
+
+        if ( empty( $new_version ) || version_compare( $new_version, HOSTINGER_REACH_PLUGIN_VERSION, '<=' ) ) {
+            return '';
+        }
+
+        return $new_version;
+    }
+
     public function has_reach_subscription_block( int $post_id ): bool {
         $content = get_post_field( 'post_content', $post_id );
 

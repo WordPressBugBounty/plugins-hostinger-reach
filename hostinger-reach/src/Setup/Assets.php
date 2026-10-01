@@ -63,6 +63,8 @@ class Assets {
         $siteurl    = preg_replace( '#^https?://(?:www\.)?#i', '', $siteurl );
         $raw_domain = implode( ' ', str_split( $siteurl ) );
 
+        $latest_version = $this->functions->get_available_plugin_version();
+
         wp_localize_script(
             'hostinger-reach',
             'hostinger_reach_reach_data',
@@ -86,6 +88,10 @@ class Assets {
                 'is_elementor_active'    => ElementorIntegration::is_active(),
                 'elementor_new_page_url' => ElementorIntegration::get_new_page_url(),
                 'embed_script_url'       => HOSTINGER_REACH_EMBED_SCRIPT_URL,
+                'plugin_version'         => HOSTINGER_REACH_PLUGIN_VERSION,
+                'latest_version'         => $latest_version,
+                'is_update_available'    => ! empty( $latest_version ) && current_user_can( 'update_plugins' ),
+                'plugins_page_url'       => admin_url( 'plugins.php' ),
             )
         );
     }
@@ -283,6 +289,9 @@ class Assets {
             'hostinger_reach_connection_success_modal_title'              => __( 'is connected!', 'hostinger-reach' ),
             'hostinger_reach_connection_success_modal_subtitle'           => __( 'So how do you want to collect and sync contacts from your site to Reach?', 'hostinger-reach' ),
             'hostinger_reach_connection_success_modal_add_form'           => __( 'Add Reach form', 'hostinger-reach' ),
+            'hostinger_reach_update_banner_title'                         => __( 'Update available', 'hostinger-reach' ),
+            'hostinger_reach_update_banner_description'                   => __( 'A new version of Hostinger Reach is available. Update now to get the latest features and fixes.', 'hostinger-reach' ),
+            'hostinger_reach_update_banner_button'                        => __( 'Update Plugin', 'hostinger-reach' ),
         );
     }
 }
