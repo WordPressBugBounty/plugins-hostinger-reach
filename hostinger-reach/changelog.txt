@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.8.6 (2026-10-07)
+
+- Fix: Include the customer's last name when importing WooCommerce customers
+
 1.8.5 (2026-10-01)
 
 - Tweak: Show update banner when a newer Reach version is available

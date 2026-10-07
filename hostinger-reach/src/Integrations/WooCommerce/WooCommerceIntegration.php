@@ -220,9 +220,8 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
         }
 
         global $wpdb;
-        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-        $table = $wpdb->prefix . 'wc_customer_lookup';
-        $sql   = "SELECT email, first_name FROM {$table}";
+        $table = $this->get_woocommerce_customer_table();
+        $sql   = "SELECT email, first_name, last_name FROM {$table}";
 
         if ( $limit > 0 ) {
             $sql .= $wpdb->prepare( ' LIMIT %d', $limit );
@@ -237,6 +236,7 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
                 return array(
                     'email'    => $user->email ?? '',
                     'name'     => $user->first_name ?? '',
+                    'surname'  => $user->last_name ?? '',
                     'metadata' => array(
                         'form_id' => wc_get_page_id( 'checkout' ),
                         'plugin'  => self::INTEGRATION_NAME,
@@ -244,7 +244,7 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
                     ),
                 );
             },
-            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- The table name is built from the database prefix; the limit and offset go through prepare().
             $wpdb->get_results( $sql )
         );
     }
@@ -256,7 +256,7 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
         }
 
         $table = $this->get_woocommerce_customer_table();
-        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- The table name is built from the database prefix.
         return $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" ) ?? 0;
     }
 
@@ -294,7 +294,7 @@ class WooCommerceIntegration extends IntegrationWithForms implements Integration
     private function is_woo_customer_data_available(): bool {
         global $wpdb;
         $table = $this->get_woocommerce_customer_table();
-        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- The table name is built from the database prefix.
         $table_exists = $wpdb->get_var( "SHOW TABLES LIKE '$table'" ) === $table;
         return function_exists( 'wc_get_page_id' ) && $table_exists;
     }

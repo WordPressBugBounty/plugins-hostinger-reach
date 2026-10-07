@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.0
 Tested up to: 7.1
-Stable tag: 1.8.5
+Stable tag: 1.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,10 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.6 (2026-10-07)
+
+- Fix: Include the customer's last name when importing WooCommerce customers
 
 1.8.5 (2026-10-01)
 
