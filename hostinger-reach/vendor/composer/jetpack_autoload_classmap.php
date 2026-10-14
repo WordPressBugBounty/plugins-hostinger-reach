@@ -782,6 +782,10 @@ return array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/RestoreCartTest.php'
 	),
+	'Hostinger\\Reach\\Tests\\Integration\\Utils\\PhoneNumberFormatterTest' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/tests/phpunit/Integration/Utils/PhoneNumberFormatterTest.php'
+	),
 	'Hostinger\\Reach\\Tests\\Unit\\Api\\ResourceIdManagerTest' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/ResourceIdManagerTest.php'
@@ -793,6 +797,10 @@ return array(
 	'Hostinger\\Reach\\Tracking\\RestoreCart' => array(
 		'version' => 'dev-main',
 		'path'    => $baseDir . '/src/Tracking/RestoreCart.php'
+	),
+	'Hostinger\\Reach\\Utils\\PhoneNumberFormatter' => array(
+		'version' => 'dev-main',
+		'path'    => $baseDir . '/src/Utils/PhoneNumberFormatter.php'
 	),
 	'Hostinger\\Surveys\\Ajax' => array(
 		'version' => '1.1.24.0',
