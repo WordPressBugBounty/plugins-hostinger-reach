@@ -103,11 +103,28 @@ class IntegrationsApiHandler extends ApiHandler {
         $integration_data  = $integrations_data[ $integration ] ?? array();
         $has_download_url  = ! empty( $integration_data['download_url'] ?? false );
         $current_is_active = $integration_data[ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
-        $should_update     = ! $is_active || $this->activate_integration( $integration, $has_download_url );
 
         if ( $current_is_active === $is_active ) {
-            $should_update = false;
+            return $this->handle_response(
+                array(
+                    'response' => array(
+                        'code' => 200,
+                    ),
+                )
+            );
         }
+
+        if ( $is_active && ! $this->can_activate_integration( $integration, $has_download_url ) ) {
+            return $this->handle_wp_error(
+                new WP_Error(
+                    'insufficient_permissions',
+                    __( 'You are not allowed to install or activate plugins', 'hostinger-reach' ),
+                    array( 'status' => 403 )
+                )
+            );
+        }
+
+        $should_update = ! $is_active || $this->activate_integration( $integration, $has_download_url );
 
         if ( $should_update ) {
             $this->save_integration( $integration, array( Integration::INTEGRATION_IS_ACTIVE => $is_active ) );
@@ -225,6 +242,19 @@ class IntegrationsApiHandler extends ApiHandler {
         }
 
         return $integrations;
+    }
+
+    private function can_activate_integration( string $integration_name, bool $can_install ): bool {
+        $needs_install = $can_install && ! $this->plugin_manager->is_installed( $integration_name );
+        if ( $needs_install && ! current_user_can( 'install_plugins' ) ) {
+            return false;
+        }
+
+        if ( ! $this->plugin_manager->is_active( $integration_name ) && ! current_user_can( 'activate_plugins' ) ) {
+            return false;
+        }
+
+        return true;
     }
 
     private function save_integration( string $integration_name, array $data ): bool {

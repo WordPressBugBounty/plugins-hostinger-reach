@@ -127,6 +127,10 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
             );
 
             if ( $this->form_repository->exists( $block['formId'] ) ) {
+                if ( empty( $this->form_repository->get( $block['formId'] )['post'] ) ) {
+                    $form['post_id'] = $post->ID;
+                }
+
                 $this->form_repository->update( $form );
             } else {
                 $this->form_repository->insert( array_merge( $form, array( 'post_id' => $post->ID ) ) );

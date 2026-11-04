@@ -66,22 +66,26 @@ class OptInMonsterIntegration extends Integration implements IntegrationInterfac
 
         try {
             $data    = json_decode( $request->get_body() ?? '', true );
-            $form_id = $this->get_post_id_by_form_id( $data['formId'] ?? '' );
-            if ( $form_id && ! $this->is_form_enabled( $form_id ) ) {
+            $form_id = $this->get_post_id_by_form_id( (string) ( $data['formId'] ?? '' ) );
+            if ( ! $form_id ) {
+                return $this->handle_response( 404, array( 'errors' => 'Form not found' ) );
+            }
+
+            if ( ! $this->is_form_enabled( $form_id ) ) {
                 return $this->handle_response( 403, array( 'errors' => 'Form is not active' ) );
             }
+
             $email = $this->find_email( $data['fields'] ?? array() );
             if ( $email ) {
-                $campaign_name = $data['tags']['campaign_name'] ?? '';
-                $form_name     = $data['tags']['form_name'] ?? '';
-                $group         = $campaign_name . ' - ' . $form_name;
+                $title = get_post_field( 'post_title', $form_id );
                 do_action(
                     'hostinger_reach_submit',
                     array(
                         'email'    => $email,
-                        'group'    => empty( $group ) ? self::INTEGRATION_NAME : $group,
+                        'group'    => empty( $title ) ? self::INTEGRATION_NAME : $title,
                         'metadata' => array(
-                            'plugin' => self::INTEGRATION_NAME,
+                            'plugin'  => self::INTEGRATION_NAME,
+                            'form_id' => $form_id,
                         ),
                     )
                 );

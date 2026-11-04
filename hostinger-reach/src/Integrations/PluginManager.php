@@ -22,6 +22,10 @@ class PluginManager {
             return true;
         }
 
+        if ( ! current_user_can( 'install_plugins' ) ) {
+            return new WP_Error( 'insufficient_permissions', 'You are not allowed to install plugins' );
+        }
+
         require_once ABSPATH . 'wp-admin/includes/file.php';
         require_once ABSPATH . 'wp-admin/includes/misc.php';
         require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -58,6 +62,10 @@ class PluginManager {
 
         if ( $this->is_active( $plugin_name ) ) {
             return true;
+        }
+
+        if ( ! current_user_can( 'activate_plugins' ) ) {
+            return false;
         }
 
         return is_null( activate_plugin( $this->get_plugin_path( $plugin_name ) ) );

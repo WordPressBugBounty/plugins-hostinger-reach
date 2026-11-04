@@ -2,10 +2,13 @@
 
 namespace Hostinger\Reach\Api\Handlers;
 
+use Exception;
 use Hostinger\Reach\Api\ApiKeyManager;
 use Hostinger\Reach\Api\ResourceIdManager;
 use Hostinger\Reach\Functions;
 use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
+use Hostinger\Reach\Repositories\ContactListRepository;
+use Hostinger\Reach\Repositories\FormRepository;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -22,11 +25,15 @@ class ReachApiHandler extends ApiHandler {
     protected string $reach_domain;
     public ApiKeyManager $api_key_manager;
     public ResourceIdManager $resource_id_manager;
+    private FormRepository $form_repository;
+    private ContactListRepository $contact_list_repository;
 
-    public function __construct( Functions $functions, ApiKeyManager $api_key_manager, ResourceIdManager $resource_id_manager ) {
+    public function __construct( Functions $functions, ApiKeyManager $api_key_manager, ResourceIdManager $resource_id_manager, FormRepository $form_repository, ContactListRepository $contact_list_repository ) {
         parent::__construct( $functions );
-        $this->api_key_manager     = $api_key_manager;
-        $this->resource_id_manager = $resource_id_manager;
+        $this->api_key_manager         = $api_key_manager;
+        $this->resource_id_manager     = $resource_id_manager;
+        $this->form_repository         = $form_repository;
+        $this->contact_list_repository = $contact_list_repository;
         $this->set_api_base_name();
         $this->init_hooks();
     }
@@ -151,25 +158,27 @@ class ReachApiHandler extends ApiHandler {
             return $this->handle_wp_error( new WP_Error( $this->get_not_connected_error_message(), 'You cannot perform this action' ) );
         }
 
-        $email    = $request->get_param( 'email' );
-        $name     = $request->get_param( 'name' );
-        $surname  = $request->get_param( 'surname' );
-        $phone    = $request->get_param( 'phone' );
-        $form_id  = $request->get_param( 'id' );
-        $metadata = $request->get_param( 'metadata' );
-        $tags     = $request->get_param( 'tags' );
-        $group    = apply_filters( 'hostinger_reach_get_group', $request->get_param( 'group' ), $form_id );
+        $form_id = (string) $request->get_param( 'id' );
+        $form    = $this->get_active_form( $form_id );
+        if ( empty( $form ) ) {
+            return $this->handle_wp_error( new WP_Error( 'Form not found', 'Form not found', array( 'status' => 404 ) ) );
+        }
+
+        $settings = $this->get_form_settings( $form_id, $form );
+        $group    = apply_filters( 'hostinger_reach_get_group', $settings['group'], $form_id );
 
         return $this->post_contact(
             array(
                 'form_id'  => $form_id,
                 'group'    => $group,
-                'tags'     => $tags,
-                'email'    => $email,
-                'name'     => $name,
-                'surname'  => $surname,
-                'phone'    => $phone,
-                'metadata' => $metadata,
+                'tags'     => $settings['tags'],
+                'email'    => $request->get_param( 'email' ),
+                'name'     => $request->get_param( 'name' ),
+                'surname'  => $request->get_param( 'surname' ),
+                'phone'    => $request->get_param( 'phone' ),
+                'metadata' => array(
+                    'plugin' => $form['type'],
+                ),
             )
         );
     }
@@ -544,6 +553,63 @@ class ReachApiHandler extends ApiHandler {
         }
 
         $this->api_base_name = $this->reach_domain . 'api/public/v1/';
+    }
+
+    private function get_active_form( string $form_id ): array {
+        if ( empty( $form_id ) ) {
+            return array();
+        }
+
+        try {
+            $form = $this->form_repository->get( $form_id );
+        } catch ( Exception $exception ) {
+            return array();
+        }
+
+        if ( ! $form['is_active'] ) {
+            return array();
+        }
+
+        return $form;
+    }
+
+    private function get_form_settings( string $form_id, array $form ): array {
+        $settings = array(
+            'group' => '',
+            'tags'  => '',
+        );
+
+        $post_id = (int) ( $form['post']['ID'] ?? 0 );
+        if ( ! $post_id ) {
+            $settings['group'] = $this->get_contact_list_name( (int) ( $form['contact_list_id'] ?? 0 ) );
+
+            return $settings;
+        }
+
+        foreach ( $this->get_functions()->get_reach_subscription_blocks( $post_id ) as $block ) {
+            if ( ( $block['formId'] ?? '' ) !== $form_id ) {
+                continue;
+            }
+
+            $tags = is_array( $block['tags'] ?? null ) ? $block['tags'] : array();
+
+            return array(
+                'group' => (string) ( $block['contactList'] ?? '' ),
+                'tags'  => implode( ',', $tags ),
+            );
+        }
+
+        return $settings;
+    }
+
+    private function get_contact_list_name( int $contact_list_id ): string {
+        if ( ! $contact_list_id ) {
+            return '';
+        }
+
+        $contact_lists = $this->contact_list_repository->all( array( 'id' => $contact_list_id ) );
+
+        return (string) ( $contact_lists[0]['name'] ?? '' );
     }
 
     private function get_tag_ids( string $tag_names, string $group_name ): array {

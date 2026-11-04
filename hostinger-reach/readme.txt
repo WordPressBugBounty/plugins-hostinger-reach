@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.1
 Tested up to: 7.1
-Stable tag: 1.8.7
+Stable tag: 1.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,13 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.8 (2026-11-04)
+
+- Fix: Use saved form settings when adding contacts from forms
+- Fix: Improve permission checks when installing and activating integrations
+- Fix: Improve OptinMonster form handling
+- Tweak: Update dependencies
 
 1.8.7 (2026-10-14)
 
