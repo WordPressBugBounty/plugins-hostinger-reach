@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.1
 Tested up to: 7.1
-Stable tag: 1.8.8
+Stable tag: 1.8.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,10 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.9 (2026-11-10)
+
+- Fix: Keep disabled default forms disabled when their block is removed
 
 1.8.8 (2026-11-04)
 

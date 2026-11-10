@@ -41,9 +41,7 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
     }
 
     public function init_default_forms(): void {
-        $form_ids = apply_filters( 'hostinger_reach_default_forms', array() );
-
-        foreach ( $form_ids as $form_id ) {
+        foreach ( $this->get_default_form_ids() as $form_id ) {
             if ( ! $this->form_repository->exists( $form_id ) ) {
                 $this->form_repository->insert(
                     array(
@@ -101,6 +99,51 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
         return $current_form_ids;
     }
 
+    protected function remove_form( string $form_id ): void {
+        if ( $this->is_default_form( $form_id ) ) {
+            $this->unlink_form( $form_id );
+
+            return;
+        }
+
+        parent::remove_form( $form_id );
+    }
+
+    protected function unset_all_forms( WP_Post $post ): void {
+        $forms = $this->form_repository->all(
+            array(
+                'post_id' => $post->ID,
+                'type'    => self::INTEGRATION_NAME,
+            )
+        );
+
+        foreach ( $forms as $form ) {
+            if ( $this->is_default_form( $form['form_id'] ) ) {
+                $this->unlink_form( $form['form_id'] );
+            }
+        }
+
+        parent::unset_all_forms( $post );
+    }
+
+    private function get_default_form_ids(): array {
+        return (array) apply_filters( 'hostinger_reach_default_forms', array() );
+    }
+
+    private function is_default_form( string $form_id ): bool {
+        return in_array( $form_id, $this->get_default_form_ids(), true );
+    }
+
+    private function unlink_form( string $form_id ): void {
+        $this->form_repository->update(
+            array(
+                'form_id' => $form_id,
+                'post_id' => null,
+                'type'    => '',
+            )
+        );
+    }
+
     private function set_contact_list( string $name ): array {
         if ( ! $this->contact_list_repository->exists( $name ) ) {
             $this->contact_list_repository->insert( array( 'name' => $name ) );
@@ -126,15 +169,27 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
                 'type'            => self::INTEGRATION_NAME,
             );
 
-            if ( $this->form_repository->exists( $block['formId'] ) ) {
-                if ( empty( $this->form_repository->get( $block['formId'] )['post'] ) ) {
-                    $form['post_id'] = $post->ID;
-                }
-
-                $this->form_repository->update( $form );
-            } else {
+            if ( ! $this->form_repository->exists( $block['formId'] ) ) {
                 $this->form_repository->insert( array_merge( $form, array( 'post_id' => $post->ID ) ) );
+                continue;
             }
+
+            $existing_form = $this->form_repository->get( $block['formId'] );
+            if ( ! $this->is_own_form( $existing_form ) ) {
+                continue;
+            }
+
+            if ( empty( $existing_form['post'] ) ) {
+                $form['post_id'] = $post->ID;
+            }
+
+            $this->form_repository->update( $form );
         }
+    }
+
+    private function is_own_form( array $form ): bool {
+        $type = $form['type'] ?? '';
+
+        return $type === '' || $type === self::INTEGRATION_NAME;
     }
 }

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.8.9 (2026-11-10)
+
+- Fix: Keep disabled default forms disabled when their block is removed
+
 1.8.8 (2026-11-04)
 
 - Fix: Use saved form settings when adding contacts from forms

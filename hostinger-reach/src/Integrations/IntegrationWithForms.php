@@ -31,9 +31,13 @@ abstract class IntegrationWithForms extends Integration {
 
         foreach ( $previous_form_ids as $form_id ) {
             if ( ! in_array( $form_id, $current_form_ids, true ) ) {
-                $this->form_repository->delete( $form_id );
+                $this->remove_form( $form_id );
             }
         }
+    }
+
+    protected function remove_form( string $form_id ): void {
+        $this->form_repository->delete( $form_id );
     }
 
     protected function unset_all_forms( WP_Post $post ): void {

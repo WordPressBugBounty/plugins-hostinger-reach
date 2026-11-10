@@ -36,7 +36,7 @@
     "@vitejs/plugin-vue": "^6.0.10",
     "@vitest/coverage-v8": "^5.0.4",
     "@vue/test-utils": "^2.5.1",
-    "@wordpress/babel-preset-default": "^10.0.0",
+    "@wordpress/babel-preset-default": "^10.1.0",
     "@wordpress/components": "^43.0.0",
     "@wordpress/scripts": "^37.0.0",
     "@wordpress/server-side-render": "^7.0.0",
@@ -53,12 +53,12 @@
     "ts-loader": "^9.6.2",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
-    "vite": "^8.3.5",
+    "vite": "^8.3.6",
     "vitest": "^5.0.5",
-    "vue": "^3.5.44",
+    "vue": "^3.5.45",
     "vue-loader": "^17.4.2",
     "webpack": "^5.112.2",
-    "webpack-cli": "^7.2.3"
+    "webpack-cli": "^7.3.1"
   },
   "engines": {
     "node": ">=20.17.0",
@@ -75,9 +75,9 @@
   "dependencies": {
     "@babel/runtime": "^8.0.10",
     "@hostinger/hcomponents": "^14.0.2",
-    "@wordpress/api-fetch": "^8.0.0",
-    "@wordpress/block-editor": "^19.0.0",
-    "@wordpress/blocks": "^17.0.0",
+    "@wordpress/api-fetch": "^8.1.0",
+    "@wordpress/block-editor": "^20.0.0",
+    "@wordpress/blocks": "^17.1.0",
     "@wordpress/jest-console": "^9.3.0",
     "axios": "^1.19.0",
     "esbuild": "^0.28.2",

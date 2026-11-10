@@ -11,7 +11,6 @@ use Hostinger\Reach\Integrations\IntegrationInterface;
 use OMAPI;
 use OMAPI_Api;
 use stdClass;
-use WP_Post;
 use WP_REST_Request;
 use WP_REST_Response;
 
@@ -267,12 +266,24 @@ class OptInMonsterIntegration extends Integration implements IntegrationInterfac
         if ( ! $form_id ) {
             return 0;
         }
-        $post = get_page_by_path( $form_id, OBJECT, 'omapi' );
-        if ( $post instanceof WP_Post ) {
-            return $post->ID;
+
+        $post_ids = get_posts(
+            array(
+                'name'             => $form_id,
+                'post_type'        => $this->get_post_type(),
+                'post_status'      => 'publish',
+                'posts_per_page'   => 1,
+                'fields'           => 'ids',
+                'no_found_rows'    => true,
+                'suppress_filters' => true,
+            )
+        );
+
+        if ( empty( $post_ids ) ) {
+            return 0;
         }
 
-        return 0;
+        return (int) $post_ids[0];
     }
 
     private function handle_response( int $code, array $data ): WP_REST_Response {
