@@ -638,10 +638,13 @@ class ElementorIntegration extends IntegrationWithForms implements IntegrationIn
                 'type'    => self::INTEGRATION_NAME,
             );
 
-            if ( $this->form_repository->exists( $form_id ) ) {
-                $this->form_repository->update( $form );
-            } else {
+            if ( ! $this->form_repository->exists( $form_id ) ) {
                 $this->form_repository->insert( array_merge( $form, array( 'post_id' => $post_id ) ) );
+                continue;
+            }
+
+            if ( $this->can_update_form( $this->form_repository->get( $form_id ), $post_id ) ) {
+                $this->form_repository->update( $form );
             }
         }
     }

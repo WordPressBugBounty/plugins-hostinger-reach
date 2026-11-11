@@ -7,6 +7,7 @@ import { useModal } from '@/composables/useModal';
 import { useReachUrls } from '@/composables/useReachUrls';
 import { reachRepo } from '@/data/repositories/reachRepo';
 import { Route } from '@/types/enums/routeEnum';
+import { sanitizeHtml } from '@/utils/sanitizeHtml';
 import { translate } from '@/utils/translate';
 
 interface Props {
@@ -127,21 +128,21 @@ const handleSaveAndConnect = async () => {
 						<span class="reach-api-key-modal__step-number">2</span>
 						<p
 							class="h-typography h-t-body-2 reach-api-key-modal__step-text"
-							v-html="translate('hostinger_reach_reach_api_key_modal_steps_two')"
+							v-html="sanitizeHtml(translate('hostinger_reach_reach_api_key_modal_steps_two'))"
 						></p>
 					</div>
 					<div class="reach-api-key-modal__step">
 						<span class="reach-api-key-modal__step-number">3</span>
 						<p
 							class="h-typography h-t-body-2 reach-api-key-modal__step-text"
-							v-html="translate('hostinger_reach_reach_api_key_modal_steps_three')"
+							v-html="sanitizeHtml(translate('hostinger_reach_reach_api_key_modal_steps_three'))"
 						></p>
 					</div>
 					<div class="reach-api-key-modal__step">
 						<span class="reach-api-key-modal__step-number">4</span>
 						<p
 							class="h-typography h-t-body-2 reach-api-key-modal__step-text"
-							v-html="translate('hostinger_reach_reach_api_key_modal_steps_four')"
+							v-html="sanitizeHtml(translate('hostinger_reach_reach_api_key_modal_steps_four'))"
 						></p>
 					</div>
 				</div>

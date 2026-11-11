@@ -36,6 +36,20 @@ abstract class IntegrationWithForms extends Integration {
         }
     }
 
+    protected function can_update_form( array $form, int $post_id ): bool {
+        $type = $form['type'] ?? '';
+        if ( $type !== '' && $type !== $this->get_name() ) {
+            return false;
+        }
+
+        $owner_post_id = (int) ( $form['post']['ID'] ?? 0 );
+        if ( $owner_post_id ) {
+            return $owner_post_id === $post_id;
+        }
+
+        return user_can( (int) get_post_field( 'post_author', $post_id ), 'manage_options' );
+    }
+
     protected function remove_form( string $form_id ): void {
         $this->form_repository->delete( $form_id );
     }

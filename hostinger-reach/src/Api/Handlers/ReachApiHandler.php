@@ -10,6 +10,7 @@ use Hostinger\Reach\Integrations\Reach\ReachFormIntegration;
 use Hostinger\Reach\Repositories\ContactListRepository;
 use Hostinger\Reach\Repositories\FormRepository;
 use WP_Error;
+use WP_Http;
 use WP_REST_Request;
 use WP_REST_Response;
 
@@ -218,16 +219,20 @@ class ReachApiHandler extends ApiHandler {
     }
 
     public function get_connection_status_handler(): bool {
+        return $this->is_successful_status_code( $this->get_connection_status_code() );
+    }
+
+    public function get_connection_status_code(): int {
         if ( ! $this->is_connected() ) {
-            return false;
+            return WP_Http::UNAUTHORIZED;
         }
 
         $status = $this->get( 'connection/status' );
-        if ( is_wp_error( $status ) || wp_remote_retrieve_response_code( $status ) >= 400 ) {
-            return false;
+        if ( is_wp_error( $status ) ) {
+            return 0;
         }
 
-        return true;
+        return (int) wp_remote_retrieve_response_code( $status );
     }
 
     public function post_token_handler( WP_REST_Request $request ): WP_REST_Response {
@@ -307,11 +312,17 @@ class ReachApiHandler extends ApiHandler {
     }
 
     public function get_overview_handler(): WP_REST_Response {
-        if ( ! $this->get_connection_status_handler() ) {
+        $status_code = $this->get_connection_status_code();
+
+        if ( $this->is_token_rejected( $status_code ) ) {
             $this->api_key_manager->clear_token();
             $this->resource_id_manager->clear_resource_id();
 
-            return $this->handle_wp_error( new WP_Error( $this->get_not_connected_error_message(), 'You cannot perform this action', array( 'status' => 403 ) ) );
+            return $this->handle_wp_error( new WP_Error( $this->get_not_connected_error_message(), 'You cannot perform this action', array( 'status' => WP_Http::FORBIDDEN ) ) );
+        }
+
+        if ( ! $this->is_successful_status_code( $status_code ) ) {
+            return $this->handle_wp_error( new WP_Error( $this->get_generic_error_message(), 'Reach is temporarily unavailable', array( 'status' => WP_Http::SERVICE_UNAVAILABLE ) ) );
         }
 
         $response = $this->get( 'overview' );
@@ -541,6 +552,14 @@ class ReachApiHandler extends ApiHandler {
 
     private function set_connection_success_transient(): void {
         set_transient( self::CONNECTION_SUCCESS_TRANSIENT, true, self::CONNECTION_SUCCESS_TRANSIENT_EXPIRATION );
+    }
+
+    private function is_successful_status_code( int $status_code ): bool {
+        return $status_code > 0 && $status_code < WP_Http::BAD_REQUEST;
+    }
+
+    private function is_token_rejected( int $status_code ): bool {
+        return in_array( $status_code, array( WP_Http::UNAUTHORIZED, WP_Http::FORBIDDEN ), true );
     }
 
     private function set_api_base_name(): void {

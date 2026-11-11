@@ -71,735 +71,735 @@ return array(
 		'path'    => $vendorDir . '/hostinger/hostinger-wp-amplitude/src/SoftwareIdResolver.php'
 	),
 	'Hostinger\\Reach\\Admin\\Database\\CartsTable' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Database/CartsTable.php'
 	),
 	'Hostinger\\Reach\\Admin\\Database\\ContactListsTable' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Database/ContactListsTable.php'
 	),
 	'Hostinger\\Reach\\Admin\\Database\\DatabaseInterface' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Database/DatabaseInterface.php'
 	),
 	'Hostinger\\Reach\\Admin\\Database\\DatabaseTable' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Database/DatabaseTable.php'
 	),
 	'Hostinger\\Reach\\Admin\\Database\\FormsTable' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Database/FormsTable.php'
 	),
 	'Hostinger\\Reach\\Admin\\Menus' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Menus.php'
 	),
 	'Hostinger\\Reach\\Admin\\Notices\\AddFormNotice' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Notices/AddFormNotice.php'
 	),
 	'Hostinger\\Reach\\Admin\\Notices\\ConnectionNotice' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Notices/ConnectionNotice.php'
 	),
 	'Hostinger\\Reach\\Admin\\Redirects' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Redirects.php'
 	),
 	'Hostinger\\Reach\\Admin\\Surveys\\SatisfactionSurvey' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Surveys/SatisfactionSurvey.php'
 	),
 	'Hostinger\\Reach\\Admin\\Surveys\\Survey' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Admin/Surveys/Survey.php'
 	),
 	'Hostinger\\Reach\\Admin\\Tests\\RedirectsTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/RedirectsTest.php'
 	),
 	'Hostinger\\Reach\\Amplitude\\Amplitude' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Amplitude/Amplitude.php'
 	),
 	'Hostinger\\Reach\\Amplitude\\Events' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Amplitude/Events.php'
 	),
 	'Hostinger\\Reach\\Api\\ApiKeyManager' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/ApiKeyManager.php'
 	),
 	'Hostinger\\Reach\\Api\\Handlers\\ApiHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Handlers/ApiHandler.php'
 	),
 	'Hostinger\\Reach\\Api\\Handlers\\FormsApiHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Handlers/FormsApiHandler.php'
 	),
 	'Hostinger\\Reach\\Api\\Handlers\\HostingApiHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Handlers/HostingApiHandler.php'
 	),
 	'Hostinger\\Reach\\Api\\Handlers\\IntegrationsApiHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Handlers/IntegrationsApiHandler.php'
 	),
 	'Hostinger\\Reach\\Api\\Handlers\\ReachApiHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Handlers/ReachApiHandler.php'
 	),
 	'Hostinger\\Reach\\Api\\ResourceIdManager' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/ResourceIdManager.php'
 	),
 	'Hostinger\\Reach\\Api\\Routes\\FormsRoutes' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Routes/FormsRoutes.php'
 	),
 	'Hostinger\\Reach\\Api\\Routes\\HostingRoutes' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Routes/HostingRoutes.php'
 	),
 	'Hostinger\\Reach\\Api\\Routes\\IntegrationsRoutes' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Routes/IntegrationsRoutes.php'
 	),
 	'Hostinger\\Reach\\Api\\Routes\\ReachRoutes' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Routes/ReachRoutes.php'
 	),
 	'Hostinger\\Reach\\Api\\Routes\\Routes' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Routes/Routes.php'
 	),
 	'Hostinger\\Reach\\Api\\Webhooks\\Handlers\\CartAbandoned' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Webhooks/Handlers/CartAbandoned.php'
 	),
 	'Hostinger\\Reach\\Api\\Webhooks\\Handlers\\OrderPurchased' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Webhooks/Handlers/OrderPurchased.php'
 	),
 	'Hostinger\\Reach\\Api\\Webhooks\\Handlers\\WebhookHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Api/Webhooks/Handlers/WebhookHandler.php'
 	),
 	'Hostinger\\Reach\\Blocks\\Block' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Blocks/Block.php'
 	),
 	'Hostinger\\Reach\\Blocks\\SubscriptionFormBlock' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Blocks/SubscriptionFormBlock.php'
 	),
 	'Hostinger\\Reach\\Boot' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Boot.php'
 	),
 	'Hostinger\\Reach\\Container' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Container.php'
 	),
 	'Hostinger\\Reach\\Dto\\Cart' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Dto/Cart.php'
 	),
 	'Hostinger\\Reach\\Dto\\CartItem' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Dto/CartItem.php'
 	),
 	'Hostinger\\Reach\\Dto\\PluginData' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Dto/PluginData.php'
 	),
 	'Hostinger\\Reach\\Dto\\ReachContact' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Dto/ReachContact.php'
 	),
 	'Hostinger\\Reach\\Dto\\Totals' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Dto/Totals.php'
 	),
 	'Hostinger\\Reach\\Functions' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Functions.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Brave\\BraveIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Brave/BraveIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\ContactForm7\\ContactForm7Integration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/ContactForm7/ContactForm7Integration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Elementor\\ElementorIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Elementor/ElementorIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Elementor\\SubscriptionFormElementorWidget' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Elementor/SubscriptionFormElementorWidget.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Forminator\\ForminatorIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Forminator/ForminatorIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\ImportManager' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/ImportManager.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Integration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Integration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\IntegrationInterface' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/IntegrationInterface.php'
 	),
 	'Hostinger\\Reach\\Integrations\\IntegrationWithForms' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/IntegrationWithForms.php'
 	),
 	'Hostinger\\Reach\\Integrations\\NinjaForms\\NinjaFormsIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/NinjaForms/NinjaFormsIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\OptInMonster\\OptInMonsterIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/OptInMonster/OptInMonsterIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\PluginManager' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/PluginManager.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Reach\\ReachFormBuilder' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Reach/ReachFormBuilder.php'
 	),
 	'Hostinger\\Reach\\Integrations\\Reach\\ReachFormIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/Reach/ReachFormIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\SureForms\\SureFormsIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/SureForms/SureFormsIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\ThriveLeads\\ThriveLeadsIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/ThriveLeads/ThriveLeadsIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\WPFormsLite\\WpFormsLiteIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/WPFormsLite/WpFormsLiteIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\WSForms\\WSFormsIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/WSForms/WSFormsIntegration.php'
 	),
 	'Hostinger\\Reach\\Integrations\\WooCommerce\\WooCommerceIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Integrations/WooCommerce/WooCommerceIntegration.php'
 	),
 	'Hostinger\\Reach\\Jobs\\AbandonedCartsJob' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/AbandonedCartsJob.php'
 	),
 	'Hostinger\\Reach\\Jobs\\AbstractBatchedJob' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/AbstractBatchedJob.php'
 	),
 	'Hostinger\\Reach\\Jobs\\AbstractJob' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/AbstractJob.php'
 	),
 	'Hostinger\\Reach\\Jobs\\ActionScheduler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/ActionScheduler.php'
 	),
 	'Hostinger\\Reach\\Jobs\\CleanupCartsJob' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/CleanupCartsJob.php'
 	),
 	'Hostinger\\Reach\\Jobs\\ImportJob' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/ImportJob.php'
 	),
 	'Hostinger\\Reach\\Jobs\\JobInterface' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/JobInterface.php'
 	),
 	'Hostinger\\Reach\\Jobs\\RecurringJobInterface' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Jobs/RecurringJobInterface.php'
 	),
 	'Hostinger\\Reach\\Models\\Cart' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Models/Cart.php'
 	),
 	'Hostinger\\Reach\\Models\\ContactList' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Models/ContactList.php'
 	),
 	'Hostinger\\Reach\\Models\\Form' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Models/Form.php'
 	),
 	'Hostinger\\Reach\\Models\\Model' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Models/Model.php'
 	),
 	'Hostinger\\Reach\\Models\\PluginData' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Models/PluginData.php'
 	),
 	'Hostinger\\Reach\\Providers\\AmplitudeProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/AmplitudeProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\AssetsProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/AssetsProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\BlocksProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/BlocksProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\ClientProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/ClientProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\ContainerProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/ContainerProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\DatabaseProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/DatabaseProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\HostingRoutesProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/HostingRoutesProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\IntegrationsProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/IntegrationsProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\JobsProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/JobsProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\MenusProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/MenusProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\NoticesProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/NoticesProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\ProviderInterface' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/ProviderInterface.php'
 	),
 	'Hostinger\\Reach\\Providers\\RedirectsProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/RedirectsProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\RoutesProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/RoutesProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\SurveysProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/SurveysProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\TrackingProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/TrackingProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\WebhooksProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/WebhooksProvider.php'
 	),
 	'Hostinger\\Reach\\Providers\\WpdbProvider' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Providers/WpdbProvider.php'
 	),
 	'Hostinger\\Reach\\Repositories\\CartRepository' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Repositories/CartRepository.php'
 	),
 	'Hostinger\\Reach\\Repositories\\ContactListRepository' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Repositories/ContactListRepository.php'
 	),
 	'Hostinger\\Reach\\Repositories\\FormRepository' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Repositories/FormRepository.php'
 	),
 	'Hostinger\\Reach\\Repositories\\Repository' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Repositories/Repository.php'
 	),
 	'Hostinger\\Reach\\Repositories\\RepositoryInterface' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Repositories/RepositoryInterface.php'
 	),
 	'Hostinger\\Reach\\Setup\\Activator' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Setup/Activator.php'
 	),
 	'Hostinger\\Reach\\Setup\\Assets' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Setup/Assets.php'
 	),
 	'Hostinger\\Reach\\Setup\\Blocks' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Setup/Blocks.php'
 	),
 	'Hostinger\\Reach\\Setup\\Database' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Setup/Database.php'
 	),
 	'Hostinger\\Reach\\Setup\\Encrypt' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Setup/Encrypt.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\ActivatorTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Setup/ActivatorTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Database\\CartsTableTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Database/CartsTableTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Database\\ContactListsTableTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Database/ContactListsTableTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Database\\DatabaseTableTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Database/DatabaseTableTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Database\\FormsTableTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Database/FormsTableTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\MenusProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/MenusProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\MenusTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/MenusTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Notices\\AddFormNoticeTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Notices/AddFormNoticeTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Notices\\ConnectionNoticeScreenTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Notices/ConnectionNoticeTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\RedirectsProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/RedirectsProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Admin\\Surveys\\SatisfactionSurveyTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Admin/Surveys/SatisfactionSurveyTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\ApiKeyManagerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/ApiKeyManagerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\ApiHandlerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/ApiHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\FormsApiHandlerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/FormsApiHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\HostingApiHandlerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/HostingApiHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\IntegrationsApiHandlerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/IntegrationsApiHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Handlers\\ReachApiHandlerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Handlers/ReachApiHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\RoutesTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/RoutesTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\FormsRoutesTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/FormsRoutesTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\HostingRoutesTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/HostingRoutesTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\IntegrationsRoutesTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/IntegrationsRoutesTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Routes\\ReachRoutesTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Routes/ReachRoutesTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\CartAbandonedTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/CartAbandonedTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\DummyWebhookHandler' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/WebhookHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\OrderPurchasedTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/OrderPurchasedTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Api\\Webhooks\\Handlers\\WebhookHandlerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/Webhooks/Handlers/WebhookHandlerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\AssetsTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Setup/AssetsTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Blocks\\BlockTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Blocks/BlockTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Blocks\\SubscriptionFormBlockTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Blocks/SubscriptionFormBlockTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\BootTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/BootTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\ContainerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/ContainerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Dto\\CartTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Dto/CartTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Dto\\PluginDataTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Dto/PluginDataTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\FunctionsTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/FunctionsTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\BraveIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/BraveIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ConcreteIntegration' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/IntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ContactForm7IntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ContactForm7IntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ElementorIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ElementorIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ForminatorIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ForminatorIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ImportManagerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ImportManagerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\IntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/IntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\NinjaFormsIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/NinjaFormsIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\OptInMonsterIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/OptInMonsterIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormBuilderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ReachFormBuilderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ReachFormIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ReachFormIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\SubscriptionFormElementorWidgetTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SubscriptionFormElementorWidgetTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\SureFormsIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/SureFormsIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\ThriveLeadsIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/ThriveLeadsIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WooCommerceIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/WooCommerceIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Integrations\\WpFormsLiteIntegrationTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/WpFormsLiteIntegrationTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Jobs\\AbandonedCartsJobTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Jobs/AbandonedCartsJobTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Jobs\\CleanupCartsJobTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Jobs/CleanupCartsJobTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Jobs\\ImportJobTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Jobs/ImportJobTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Models\\CartItemTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Dto/CartItemTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Models\\CartTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Models/CartTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Models\\ContactListTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Models/ContactListTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Models\\FormTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Models/FormTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\PluginManagerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Integrations/PluginManagerTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\AmplitudeProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/AmplitudeProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\AssetsProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/AssetsProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\BlocksProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/BlocksProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\ClientProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/ClientProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\DatabaseProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/DatabaseProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\HostingRoutesProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/HostingRoutesProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\IntegrationsProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/IntegrationsProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\JobsProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/JobsProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\NoticesProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/NoticesProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\RoutesProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/RoutesProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\SurveysProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/SurveysProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\TrackingProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/TrackingProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Providers\\WebhooksProviderTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Providers/WebhooksProviderTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Repositories\\CartRepositoryTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Repositories/CartRepositoryTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Repositories\\ContactListRepositoryTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Repositories/ContactListRepositoryTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Repositories\\FormRepositoryTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Repositories/FormRepositoryTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Setup\\BlocksTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Setup/BlocksTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Setup\\DatabaseTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Setup/DatabaseTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\TestCase' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/TestCase.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Tracking\\AbandonedCartsTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/AbandonedCartsTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Tracking\\RestoreCartTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Tracking/RestoreCartTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Integration\\Utils\\PhoneNumberFormatterTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Utils/PhoneNumberFormatterTest.php'
 	),
 	'Hostinger\\Reach\\Tests\\Unit\\Api\\ResourceIdManagerTest' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/tests/phpunit/Integration/Api/ResourceIdManagerTest.php'
 	),
 	'Hostinger\\Reach\\Tracking\\AbandonedCarts' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Tracking/AbandonedCarts.php'
 	),
 	'Hostinger\\Reach\\Tracking\\RestoreCart' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Tracking/RestoreCart.php'
 	),
 	'Hostinger\\Reach\\Utils\\PhoneNumberFormatter' => array(
-		'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
+		'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
 		'path'    => $baseDir . '/src/Utils/PhoneNumberFormatter.php'
 	),
 	'Hostinger\\Surveys\\Ajax' => array(

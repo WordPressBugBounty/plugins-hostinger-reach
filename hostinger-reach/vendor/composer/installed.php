@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'hostinger/hostinger-reach',
-        'pretty_version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
-        'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
-        'reference' => 'b4a3774175fba67b88f843480070c859e391fa51',
+        'pretty_version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
+        'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
+        'reference' => '546c66074630f290bcd555cce3a48d82bdf7a5be',
         'type' => 'plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'hostinger/hostinger-reach' => array(
-            'pretty_version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
-            'version' => 'dev-b4a3774175fba67b88f843480070c859e391fa51',
-            'reference' => 'b4a3774175fba67b88f843480070c859e391fa51',
+            'pretty_version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
+            'version' => 'dev-546c66074630f290bcd555cce3a48d82bdf7a5be',
+            'reference' => '546c66074630f290bcd555cce3a48d82bdf7a5be',
             'type' => 'plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

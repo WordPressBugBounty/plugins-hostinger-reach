@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 
 import type { FAQItem } from '@/data/faq';
+import { sanitizeHtml } from '@/utils/sanitizeHtml';
 import { translate } from '@/utils/translate';
 
 interface Props {
@@ -54,7 +55,7 @@ const toggleFAQ = (id: string) => {
 						:aria-labelledby="`faq-question-${faq.id}`"
 						role="region"
 					>
-						<div v-html="faq.answer"></div>
+						<div v-html="sanitizeHtml(faq.answer)"></div>
 					</div>
 				</div>
 			</div>

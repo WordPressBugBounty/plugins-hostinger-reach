@@ -4,7 +4,7 @@ Contributors: hostinger
 Requires at least: 6.3
 Requires PHP: 8.1
 Tested up to: 7.1
-Stable tag: 1.8.9
+Stable tag: 1.8.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,13 @@ Not yet. Currently, Reach is focused on one-time newsletters and promotional cam
 == Screenshots ==
 
 == Changelog ==
+
+1.8.10 (2026-11-11)
+
+- Fix: Make the public status endpoint lightweight
+- Fix: Escape translated text shown in the Reach admin screens
+- Fix: Prevent post authors from changing forms they don't own
+- Fix: Keep the Reach connection when Reach is temporarily unavailable
 
 1.8.9 (2026-11-10)
 

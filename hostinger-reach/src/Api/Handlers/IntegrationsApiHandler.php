@@ -45,17 +45,17 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     public function trigger_active_integrations(): void {
-        do_action( 'hostinger_reach_integrations_loaded', $this->get_integrations_data() );
+        do_action( 'hostinger_reach_integrations_loaded', $this->get_integrations_state() );
     }
 
     public function is_active( string $integration_name ): bool {
-        $data = $this->get_integrations_data();
+        $data = $this->get_integrations_state();
 
         return $data[ $integration_name ][ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
     }
 
     public function is_import_enabled( string $integration_name ): bool {
-        $data = $this->get_integrations_data();
+        $data = $this->get_integrations_state();
 
         $is_active      = $data[ $integration_name ][ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
         $import_enabled = $data[ $integration_name ][ Integration::INTEGRATION_IMPORT_ENABLED ] ?? false;
@@ -75,7 +75,7 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     public function get_status_handler(): WP_REST_Response {
-        $integrations_data = $this->get_integrations_data();
+        $integrations_data = $this->get_integrations_state();
         $woocommerce_data  = $integrations_data['woocommerce'] ?? array();
 
         return $this->handle_response(
@@ -86,9 +86,9 @@ class IntegrationsApiHandler extends ApiHandler {
                 'body'     => wp_json_encode(
                     array(
                         'woocommerce' => array(
-                            'is_plugin_active'      => $woocommerce_data['is_plugin_active'],
-                            'is_integration_active' => $woocommerce_data['is_active'],
-                            'is_installable'        => $woocommerce_data['is_installable'],
+                            'is_plugin_active'      => $woocommerce_data['is_plugin_active'] ?? false,
+                            'is_integration_active' => $woocommerce_data[ Integration::INTEGRATION_IS_ACTIVE ] ?? false,
+                            'is_installable'        => $woocommerce_data['is_installable'] ?? false,
                         ),
                     )
                 ),
@@ -99,7 +99,7 @@ class IntegrationsApiHandler extends ApiHandler {
     public function post_integrations_handler( WP_REST_Request $request ): WP_REST_Response {
         $is_active         = $request->get_param( Integration::INTEGRATION_IS_ACTIVE );
         $integration       = $request->get_param( 'integration' );
-        $integrations_data = $this->get_integrations_data();
+        $integrations_data = $this->get_integrations_state();
         $integration_data  = $integrations_data[ $integration ] ?? array();
         $has_download_url  = ! empty( $integration_data['download_url'] ?? false );
         $current_is_active = $integration_data[ Integration::INTEGRATION_IS_ACTIVE ] ?? false;
@@ -205,6 +205,16 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     public function get_integrations_data(): array {
+        $integrations = $this->get_integrations_state();
+
+        foreach ( array_keys( $integrations ) as $integration_name ) {
+            $integrations[ $integration_name ]['import_status'] = $this->import_manager->get_status( $integration_name );
+        }
+
+        return $integrations;
+    }
+
+    public function get_integrations_state(): array {
         $available_integrations       = self::get_integrations();
         $integrations_state           = get_option( self::INTEGRATIONS_OPTION_NAME, array() );
         $available_integrations_state = array_intersect_key( $integrations_state, $available_integrations );
@@ -234,7 +244,6 @@ class IntegrationsApiHandler extends ApiHandler {
                     Integration::INTEGRATION_IS_ACTIVE      => $is_hostinger_reach || ( $is_elementor && $is_plugin_active ) || $is_active,
                     'can_deactivate'                        => ! $is_hostinger_reach && ! $is_elementor,
                     'is_go_to_plugin_visible'               => ! $is_hostinger_reach,
-                    'import_status'                         => $this->import_manager->get_status( $integration_name ),
                     'is_installable'                        => $this->plugin_manager->is_installed( $integration_name ) || ! empty( $integrations[ $integration_name ]['download_url'] ),
                 )
             );
@@ -258,7 +267,7 @@ class IntegrationsApiHandler extends ApiHandler {
     }
 
     private function save_integration( string $integration_name, array $data ): bool {
-        $integrations_data                      = $this->get_integrations_data();
+        $integrations_data                      = $this->get_integrations_state();
         $integrations_data[ $integration_name ] = $data;
 
         return $this->save_integrations_data( $integrations_data );

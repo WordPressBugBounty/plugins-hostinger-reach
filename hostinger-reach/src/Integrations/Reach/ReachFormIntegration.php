@@ -175,7 +175,7 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
             }
 
             $existing_form = $this->form_repository->get( $block['formId'] );
-            if ( ! $this->is_own_form( $existing_form ) ) {
+            if ( ! $this->can_update_form( $existing_form, $post->ID ) ) {
                 continue;
             }
 
@@ -185,11 +185,5 @@ class ReachFormIntegration extends IntegrationWithForms implements IntegrationIn
 
             $this->form_repository->update( $form );
         }
-    }
-
-    private function is_own_form( array $form ): bool {
-        $type = $form['type'] ?? '';
-
-        return $type === '' || $type === self::INTEGRATION_NAME;
     }
 }

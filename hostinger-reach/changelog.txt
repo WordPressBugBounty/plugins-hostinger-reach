@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.8.10 (2026-11-11)
+
+- Fix: Make the public status endpoint lightweight
+- Fix: Escape translated text shown in the Reach admin screens
+- Fix: Prevent post authors from changing forms they don't own
+- Fix: Keep the Reach connection when Reach is temporarily unavailable
+
 1.8.9 (2026-11-10)
 
 - Fix: Keep disabled default forms disabled when their block is removed
