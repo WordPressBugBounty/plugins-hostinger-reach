@@ -42,6 +42,8 @@ class Rest
      */
     private Client $client;
 
+    private ?ExperimentsManager $experimentsManager = null;
+
     public function __construct()
     {
         $this->helper          = new Helper();
@@ -108,27 +110,15 @@ class Rest
      */
     public function getExperiments(): \WP_REST_Response
     {
-        $data = array();
-
         $response = new \WP_REST_Response();
 
         try {
             $response->set_status(\WP_Http::OK);
 
-            $request = $this->client->get('/v3/wordpress/amplitude/experiments', array( 'domain' => $this->helper->getHostInfo() ));
-
-            $data = $request;
-
-            if (!empty($request['body'])) {
-                $json = json_decode($request['body'], true);
-
-                if (!empty($json['data'])) {
-                    $data = array(
-                        'status' => 'success',
-                        'data' => $json['data']
-                    );
-                }
-            }
+            $data = array(
+                'status' => 'success',
+                'data'   => $this->getExperimentsManager()->getExperiments(),
+            );
         } catch (\Exception $exception) {
             $response->set_status(\WP_Http::BAD_REQUEST);
 
@@ -145,6 +135,21 @@ class Rest
         $response->set_headers(array( 'Cache-Control' => 'no-cache' ));
 
         return $response;
+    }
+
+    public function getExperimentsManager(): ExperimentsManager
+    {
+        if ($this->experimentsManager === null) {
+            $amplitudeManager         = new AmplitudeManager($this->helper, $this->configHandler, $this->client);
+            $this->experimentsManager = new ExperimentsManager($amplitudeManager->getProxyClient());
+        }
+
+        return $this->experimentsManager;
+    }
+
+    public function setExperimentsManager(ExperimentsManager $experimentsManager): void
+    {
+        $this->experimentsManager = $experimentsManager;
     }
 
     public function sendAmplitudeEvent($request)

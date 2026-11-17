@@ -2,7 +2,9 @@
 
 namespace Hostinger\Reach\Providers;
 
+use Hostinger\Reach\Api\Handlers\IntegrationsApiHandler;
 use Hostinger\Reach\Api\Handlers\ReachApiHandler;
+use Hostinger\Reach\Api\Handlers\ReachStoreApiHandler;
 use Hostinger\Reach\Api\Webhooks\Handlers\CartAbandoned;
 use Hostinger\Reach\Container;
 use Hostinger\Reach\Integrations\ImportManager;
@@ -10,6 +12,8 @@ use Hostinger\Reach\Jobs\AbandonedCartsJob;
 use Hostinger\Reach\Jobs\ActionScheduler;
 use Hostinger\Reach\Jobs\ImportJob;
 use Hostinger\Reach\Jobs\CleanupCartsJob;
+use Hostinger\Reach\Jobs\CouponSyncJob;
+use Hostinger\Reach\Jobs\ProductSyncJob;
 use Hostinger\Reach\Repositories\CartRepository;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -43,6 +47,18 @@ class JobsProvider implements ProviderInterface {
                 $container->get( ActionScheduler::class ),
                 $container->get( ReachApiHandler::class ),
                 $container->get( CartRepository::class ),
+            ),
+            ProductSyncJob::class    => array(
+                $container->get( ActionScheduler::class ),
+                $container->get( ReachApiHandler::class ),
+                $container->get( ReachStoreApiHandler::class ),
+                $container->get( IntegrationsApiHandler::class ),
+            ),
+            CouponSyncJob::class     => array(
+                $container->get( ActionScheduler::class ),
+                $container->get( ReachApiHandler::class ),
+                $container->get( ReachStoreApiHandler::class ),
+                $container->get( IntegrationsApiHandler::class ),
             ),
         );
 

@@ -76,6 +76,18 @@ class ApiHandler {
         return wp_remote_post( $url, $request_args );
     }
 
+    public function put( string $endpoint, array $params = array(), array $headers = array(), int $timeout = 120 ): mixed {
+        $url          = $this->get_api_basename() . $endpoint;
+        $request_args = array(
+            'method'  => 'PUT',
+            'timeout' => $timeout,
+            'headers' => array_merge( $this->get_default_headers(), $headers ),
+            'body'    => $params,
+        );
+
+        return wp_remote_request( $url, $request_args );
+    }
+
     public function handle_wp_error( WP_Error $error ): WP_REST_Response {
         $response   = new WP_REST_Response();
         $error_data = $error->get_error_data() ?? array( 'status' => WP_Http::BAD_REQUEST );

@@ -153,11 +153,10 @@ class SurveyManager
     {
         $data = [
             'identifier' => self::CLIENT_SURVEY_IDENTIFIER,
-            'is_mobile'  => $is_mobile,
             'answers'    => [
                 [
-                    'question_slug' => self::LOCATION_SLUG,
-                    'answer'        => $surveyLocation,
+                    'questionSlug' => self::LOCATION_SLUG,
+                    'answer'       => $surveyLocation,
                 ]
             ],
         ];
@@ -443,8 +442,8 @@ class SurveyManager
     {
         foreach ($answers as $answerSlug => $answer) {
             $data['answers'][] = [
-                'question_slug' => $answerSlug,
-                'answer'        => $answer,
+                'questionSlug' => $answerSlug,
+                'answer'       => $answer,
             ];
         }
 

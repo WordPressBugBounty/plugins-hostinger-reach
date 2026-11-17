@@ -46,4 +46,23 @@ class ActionScheduler {
 
         return as_next_scheduled_action( $hook, $args, $this->get_group() ) !== false;
     }
+
+    public function has_pending_action( string $hook, array $args = array() ): bool {
+        if ( ! function_exists( 'as_get_scheduled_actions' ) ) {
+            return false;
+        }
+
+        $action_ids = as_get_scheduled_actions(
+            array(
+                'hook'     => $hook,
+                'args'     => $args,
+                'group'    => $this->get_group(),
+                'status'   => self::STATUS_PENDING,
+                'per_page' => 1,
+            ),
+            'ids'
+        );
+
+        return ! empty( $action_ids );
+    }
 }

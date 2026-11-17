@@ -14,6 +14,7 @@ const goToPluginsPage = (): void => {
 <template>
 	<HNotificationRow
 		v-if="generalDataStore.isUpdateAvailable"
+		class="update-banner"
 		:show-close-icon="false"
 		:label="translate('hostinger_reach_update_banner_title')"
 		:description="translate('hostinger_reach_update_banner_description')"
@@ -23,3 +24,17 @@ const goToPluginsPage = (): void => {
 		@primary-action-click="goToPluginsPage"
 	/>
 </template>
+
+<style scoped lang="scss">
+.update-banner {
+	margin-bottom: 20px;
+
+	@media (max-width: 768px) {
+		margin-bottom: 16px;
+	}
+
+	@media (max-width: 480px) {
+		margin-bottom: 12px;
+	}
+}
+</style>

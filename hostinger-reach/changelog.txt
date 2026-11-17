@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.8.11 (2026-11-17)
+
+- Feature: Sync WooCommerce products and coupons to Reach
+- Fix: Add bottom margin to update available banner
+- Tweak: Update dependencies
+
 1.8.10 (2026-11-11)
 
 - Fix: Make the public status endpoint lightweight

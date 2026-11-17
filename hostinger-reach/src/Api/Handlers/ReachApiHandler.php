@@ -125,6 +125,10 @@ class ReachApiHandler extends ApiHandler {
         return ! empty( $this->api_key_manager->get_token() );
     }
 
+    public function get_site_domain(): string {
+        return (string) apply_filters( 'hostinger_reach_domain', parse_url( get_option( 'siteurl' ), PHP_URL_HOST ) );
+    }
+
     public function get_reach_domain(): string {
         return $this->reach_domain;
     }
@@ -261,7 +265,7 @@ class ReachApiHandler extends ApiHandler {
             return new WP_REST_Response( array( 'success' => false ), 400 );
         }
 
-        $domain = apply_filters( 'hostinger_reach_domain', parse_url( get_option( 'siteurl' ), PHP_URL_HOST ) );
+        $domain = $this->get_site_domain();
 
         $this->delete(
             'websites/connect',
